@@ -4,14 +4,36 @@
   "type": "module",
   "packageManager": "pnpm@9.0.0",
   "scripts": {
-    "lint": "biome check .",
-    "lint:fix": "biome check --write .",
+    "check": "biome check .",
+    "check:fix": "biome check --write .",
     "format": "biome format --write .",
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test",
-    "build": "pnpm -r build"
+    "build": "pnpm -r build",
+    "prepare": "is-ci || husky",
+    "commit": "cz"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.0"
+    "@biomejs/biome": "^2.3.0",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^21.0.2",
+    "@rtorcato/js-tooling": "latest",
+    "@types/node": "^25.9.1",
+    "husky": "^9.1.7",
+    "is-ci": "^4.1.0",
+    "lint-staged": "^15.5.2",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.8"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "biome check --write --no-errors-on-unmatched"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "biome format --write --no-errors-on-unmatched"
+    ]
   }
 }

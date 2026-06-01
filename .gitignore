@@ -1,9 +1,11 @@
 node_modules/
 dist/
 coverage/
+*.tsbuildinfo
 .DS_Store
 *.log
 .env
 .env.local
 CLAUDE.local.md
 .claude/settings.local.json
+.claude/doctor-fix-applied.json

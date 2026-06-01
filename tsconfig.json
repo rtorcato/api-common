@@ -1,0 +1,8 @@
+{
+	"extends": "@rtorcato/js-tooling/typescript/base",
+	"compilerOptions": {
+		"lib": ["esnext"]
+	},
+	"include": [],
+	"exclude": ["node_modules", "dist", "build", "coverage"]
+}
