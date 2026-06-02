@@ -1,4 +1,4 @@
-name: 🚀 CI/CD Pipeline
+name: CI
 
 on:
   push:
@@ -26,166 +26,66 @@ jobs:
             echo "should-skip=false" >> $GITHUB_OUTPUT
           fi
 
-  dependencies:
+  lint:
     runs-on: ubuntu-latest
     needs: check-skip
     if: needs.check-skip.outputs.should-skip != 'true'
-    outputs:
-      cache-key: ${{ steps.cache-key.outputs.key }}
     steps:
-      - name: 📦 Checkout repository
-        uses: actions/checkout@v4
-
-      - name: 📦 Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          node-version: '20'
-
-      - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v4
+          version: 9
+      - uses: actions/setup-node@v4
         with:
-          version: latest
-
-      - name: 📦 Generate cache key
-        id: cache-key
-        run: echo "key=${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
-
-      - name: 📦 Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.pnpm-store
-            node_modules
-          key: ${{ steps.cache-key.outputs.key }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-
-
-      - name: 📦 Install dependencies
-        run: pnpm install --frozen-lockfile
-
-  lint:
-    runs-on: ubuntu-latest
-    needs: [dependencies, check-skip]
-    if: needs.check-skip.outputs.should-skip != 'true'
-    steps:
-      - name: 📦 Checkout repository
-        uses: actions/checkout@v4
-
-      - name: 📦 Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: latest
-
-      - name: 📦 Restore dependencies cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.pnpm-store
-            node_modules
-          key: ${{ needs.dependencies.outputs.cache-key }}
-
-      - name: 🔍 Run linting
-        run: pnpm check
+          node-version: '22'
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
 
   typecheck:
     runs-on: ubuntu-latest
-    needs: [dependencies, check-skip]
+    needs: check-skip
     if: needs.check-skip.outputs.should-skip != 'true'
     steps:
-      - name: 📦 Checkout repository
-        uses: actions/checkout@v4
-
-      - name: 📦 Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          node-version: '20'
-
-      - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v4
+          version: 9
+      - uses: actions/setup-node@v4
         with:
-          version: latest
-
-      - name: 📦 Restore dependencies cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.pnpm-store
-            node_modules
-          key: ${{ needs.dependencies.outputs.cache-key }}
-
-      - name: 🔍 Type check
-        run: pnpm typecheck
+          node-version: '22'
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
 
   test:
     runs-on: ubuntu-latest
-    needs: [dependencies, check-skip]
+    needs: check-skip
     if: needs.check-skip.outputs.should-skip != 'true'
     steps:
-      - name: 📦 Checkout repository
-        uses: actions/checkout@v4
-
-      - name: 📦 Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          node-version: '20'
-
-      - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v4
+          version: 9
+      - uses: actions/setup-node@v4
         with:
-          version: latest
-
-      - name: 📦 Restore dependencies cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.pnpm-store
-            node_modules
-          key: ${{ needs.dependencies.outputs.cache-key }}
-
-      - name: 🧪 Run tests
-        run: pnpm test
+          node-version: '22'
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
 
   build:
     runs-on: ubuntu-latest
-    needs: [dependencies, check-skip]
+    needs: check-skip
     if: needs.check-skip.outputs.should-skip != 'true'
     steps:
-      - name: 📦 Checkout repository
-        uses: actions/checkout@v4
-
-      - name: 📦 Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          node-version: '20'
-
-      - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v4
+          version: 9
+      - uses: actions/setup-node@v4
         with:
-          version: latest
-
-      - name: 📦 Restore dependencies cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.pnpm-store
-            node_modules
-          key: ${{ needs.dependencies.outputs.cache-key }}
-
-      - name: 🏗️ Build project
-        run: pnpm build
-
-      - name: 📦 Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-artifacts
-          path: |
-            dist/
-            package.json
-            README.md
-          retention-days: 7
-
+          node-version: '22'
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
