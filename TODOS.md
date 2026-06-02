@@ -17,7 +17,13 @@ Roadmap derived from the old [`gitlab.com/rtorcato/api-common`](https://gitlab.c
 
 ## Tooling / repo
 
-- [ ] Publish pipeline — port `semantic-release` config from the old repo and wire per-package releases (changesets or semantic-release-monorepo).
+- [x] Publish pipeline — changesets + `.github/workflows/release.yml`. Push to `main` opens a Version Packages PR; merging publishes to npm via `NPM_TOKEN` repo secret.
 - [ ] Resolve the `@rtorcato/js-tooling` peer-dep warning (wants `@commitlint/cli@^20`, we have `^19`).
-- [ ] Pin `@rtorcato/js-tooling` in root `devDependencies` instead of `"latest"`.
+- [x] Pin `@rtorcato/js-tooling` in root `devDependencies` instead of `"latest"`.
 - [ ] Decide whether the existing root CI workflow needs per-package matrix builds.
+
+
+## 
+- [ ] can we delete this? https://github.com/rtorcato/hono-open-api-starter does this library replace the need for this repo. if so delete the repo.
+- [ ] do we need stoker? https://github.com/rtorcato/stoker
+  
