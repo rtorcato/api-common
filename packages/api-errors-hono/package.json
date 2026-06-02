@@ -1,0 +1,39 @@
+{
+  "name": "@rtorcato/api-errors-hono",
+  "version": "0.0.0",
+  "description": "Hono middleware for @rtorcato/api-errors (error handler + not-found handler).",
+  "type": "module",
+  "license": "MIT",
+  "author": "Richard Torcato",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@rtorcato/api-errors": "workspace:*"
+  },
+  "peerDependencies": {
+    "hono": "^4.0.0"
+  },
+  "devDependencies": {
+    "hono": "^4.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
