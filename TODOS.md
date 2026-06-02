@@ -13,7 +13,7 @@ Roadmap derived from the old [`gitlab.com/rtorcato/api-common`](https://gitlab.c
 - [ ] `@rtorcato/api-amqp` — amqplib publisher/consumer helpers.
 - [ ] `@rtorcato/api-openapi-express` — swagger-ui-express mount helper.
 - [ ] `@rtorcato/api-ts-rest-express` — `@ts-rest/express` + `@ts-rest/open-api` wiring helpers.
-- [ ] Hono variants of the above where it makes sense (start with `api-errors-hono`).
+- [ ] Hono adapters for each new core package, mirroring the `api-errors` / `api-errors-hono` pattern. Evaluate per package — only adapt where Hono integration adds real value (e.g. logger, auth, validation).
 
 ## Tooling / repo
 

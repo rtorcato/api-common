@@ -19,6 +19,7 @@ The old single-package repo lives at https://gitlab.com/rtorcato/api-common and 
 | --- | --- |
 | [`@rtorcato/api-errors`](./packages/api-errors) | Framework-agnostic HTTP error classes (`HttpError` + 400/401/403/404/409/500 subclasses). |
 | [`@rtorcato/api-errors-express`](./packages/api-errors-express) | Express middleware: `errorHandler` + `notFoundHandler` built on `@rtorcato/api-errors`. |
+| [`@rtorcato/api-errors-hono`](./packages/api-errors-hono) | Hono middleware: `errorHandler` + `notFoundHandler` built on `@rtorcato/api-errors`. |
 
 ## Commands
 
