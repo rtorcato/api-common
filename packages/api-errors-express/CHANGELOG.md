@@ -1,5 +1,13 @@
 # @rtorcato/api-errors-express
 
+## 0.1.1
+
+### Patch Changes
+
+- 8c3e3e5: Expand README with install + usage examples. No code changes.
+- Updated dependencies [8c3e3e5]
+  - @rtorcato/api-errors@0.1.1
+
 ## 0.1.0
 
 ### Minor Changes
