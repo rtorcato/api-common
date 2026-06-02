@@ -18,7 +18,7 @@ importers:
         specifier: ^21.0.2
         version: 21.0.2
       '@rtorcato/js-tooling':
-        specifier: latest
+        specifier: ^2.7.0
         version: 2.7.0(@biomejs/biome@2.4.16)(@commitlint/cli@19.8.1(@types/node@25.9.1)(typescript@6.0.3))(@commitlint/config-conventional@21.0.2)(@commitlint/types@21.0.1)(@types/node@25.9.1)(conventional-changelog-conventionalcommits@9.3.1)(typescript@6.0.3)(vitest@4.1.8(@types/node@25.9.1)(vite@8.0.16(@types/node@25.9.1)(jiti@2.6.1)(yaml@2.9.0)))
       '@types/node':
         specifier: ^25.9.1
