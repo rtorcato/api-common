@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/api-errors-hono",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Hono middleware for @rtorcato/api-errors (error handler + not-found handler).",
   "type": "module",
   "license": "MIT",
