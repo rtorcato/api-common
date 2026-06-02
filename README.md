@@ -15,11 +15,33 @@ The old single-package repo lives at https://gitlab.com/rtorcato/api-common and 
 
 ## Packages
 
-| Package | Description |
-| --- | --- |
-| [`@rtorcato/api-errors`](./packages/api-errors) | Framework-agnostic HTTP error classes (`HttpError` + 400/401/403/404/409/500 subclasses). |
-| [`@rtorcato/api-errors-express`](./packages/api-errors-express) | Express middleware: `errorHandler` + `notFoundHandler` built on `@rtorcato/api-errors`. |
-| [`@rtorcato/api-errors-hono`](./packages/api-errors-hono) | Hono middleware: `errorHandler` + `notFoundHandler` built on `@rtorcato/api-errors`. |
+| Package | npm | Description |
+| --- | --- | --- |
+| [`@rtorcato/api-errors`](./packages/api-errors) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-errors.svg)](https://www.npmjs.com/package/@rtorcato/api-errors) | Framework-agnostic HTTP error classes (`HttpError` + 400/401/403/404/409/500 subclasses). |
+| [`@rtorcato/api-errors-express`](./packages/api-errors-express) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-errors-express.svg)](https://www.npmjs.com/package/@rtorcato/api-errors-express) | Express middleware: `errorHandler` + `notFoundHandler` built on `@rtorcato/api-errors`. |
+| [`@rtorcato/api-errors-hono`](./packages/api-errors-hono) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-errors-hono.svg)](https://www.npmjs.com/package/@rtorcato/api-errors-hono) | Hono middleware: `errorHandler` + `notFoundHandler` built on `@rtorcato/api-errors`. |
+
+### Install
+
+```sh
+pnpm add @rtorcato/api-errors                       # error classes only
+pnpm add @rtorcato/api-errors @rtorcato/api-errors-express express
+pnpm add @rtorcato/api-errors @rtorcato/api-errors-hono hono
+```
+
+Per-package READMEs (on npm and in each `packages/*/README.md`) carry the usage examples.
+
+### Releases
+
+Versioning + publishing is automated via [Changesets](https://github.com/changesets/changesets). To propose a release:
+
+```sh
+pnpm changeset           # describe what changed, pick affected packages + bump type
+git commit -am "feat: …"
+git push                 # the Release workflow opens a "Version Packages" PR
+```
+
+Merging the auto-PR bumps versions, writes per-package `CHANGELOG.md`, and publishes to npm.
 
 ## Commands
 
