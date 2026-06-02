@@ -12,66 +12,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  check-skip:
+  ci:
     runs-on: ubuntu-latest
-    outputs:
-      should-skip: ${{ steps.skip-check.outputs.should-skip }}
-    steps:
-      - name: Check for skip CI
-        id: skip-check
-        run: |
-          if [[ "${{ github.event.head_commit.message }}" =~ \[(ci skip|skip ci)\] ]]; then
-            echo "should-skip=true" >> $GITHUB_OUTPUT
-          else
-            echo "should-skip=false" >> $GITHUB_OUTPUT
-          fi
-
-  lint:
-    runs-on: ubuntu-latest
-    needs: check-skip
-    if: needs.check-skip.outputs.should-skip != 'true'
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm check
-
-  typecheck:
-    runs-on: ubuntu-latest
-    needs: check-skip
-    if: needs.check-skip.outputs.should-skip != 'true'
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm typecheck
-
-  test:
-    runs-on: ubuntu-latest
-    needs: check-skip
-    if: needs.check-skip.outputs.should-skip != 'true'
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm test
-
-  build:
-    runs-on: ubuntu-latest
-    needs: check-skip
-    if: needs.check-skip.outputs.should-skip != 'true'
+    if: ${{ !contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]') }}
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -81,3 +24,6 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
+      - run: pnpm check
+      - run: pnpm typecheck
+      - run: pnpm test
