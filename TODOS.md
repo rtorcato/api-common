@@ -39,6 +39,8 @@ Roadmap derived from the old [`gitlab.com/rtorcato/api-common`](https://gitlab.c
 
 ### CI / quality gates
 
+- [ ] Re-enable CodeQL workflow once the repo visibility decision is made (public unlocks free code scanning; private requires GHAS). Was removed because code scanning isn't enabled and every run failed on the upload step.
+
 - [ ] Triage 7 open Dependabot PRs (`#1`–`#7`). Several cross majors:
   - `#1` `github/codeql-action` 3 → 4
   - `#2` `pnpm/action-setup` 4 → 6
