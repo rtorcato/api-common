@@ -22,7 +22,7 @@
     "@commitlint/cli": "^21.0.2",
     "@commitlint/config-conventional": "^21.0.2",
     "@rtorcato/js-tooling": "^2.7.0",
-    "@types/node": "^25.9.1",
+    "@types/node": "^25.9.2",
     "husky": "^9.1.7",
     "is-ci": "^4.1.0",
     "lint-staged": "^17.0.7",
