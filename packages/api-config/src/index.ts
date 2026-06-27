@@ -1,4 +1,5 @@
 import path from 'node:path'
+import { isTest } from '@rtorcato/js-common/env'
 import { config as loadDotenv } from 'dotenv'
 import { expand } from 'dotenv-expand'
 import type { z } from 'zod'
@@ -24,9 +25,7 @@ export interface LoadEnvOptions {
  */
 export function loadEnv<T extends z.ZodType>(schema: T, options: LoadEnvOptions = {}): z.infer<T> {
 	if (!options.skipDotenv) {
-		const envPath =
-			options.path ??
-			path.resolve(process.cwd(), process.env['NODE_ENV'] === 'test' ? '.env.test' : '.env')
+		const envPath = options.path ?? path.resolve(process.cwd(), isTest() ? '.env.test' : '.env')
 		expand(loadDotenv({ path: envPath }))
 	}
 

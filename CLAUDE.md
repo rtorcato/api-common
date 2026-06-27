@@ -35,6 +35,7 @@ When verifying changes, prefer the `/verify` skill — it runs typecheck + tests
 - Packages must be framework-agnostic where possible. If a utility only makes sense for Express, put it in an Express-specific package; don't pull Express into a shared package.
 - Public API is whatever a package's `exports` field exposes. Internal modules are not part of the contract.
 - New packages: ask before adding runtime dependencies. Prefer peer-deps for framework integrations (Express, Hono) so consumers control the version.
+- Before writing a generic utility (env-mode checks, date/uuid/crypto/string helpers, error-message extraction, retries), check `@rtorcato/js-common` first and depend on it instead of reinventing — keeps these libs DRY and avoids drift. Keep HTTP/framework-specific code (status-coded error classes, middleware) here; js-common is for framework-agnostic helpers.
 
 ## Module-specific instructions
 

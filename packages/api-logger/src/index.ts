@@ -1,3 +1,4 @@
+import { isProd } from '@rtorcato/js-common/env'
 import pino, { type DestinationStream, type Logger, type LoggerOptions } from 'pino'
 
 export interface CreateLoggerOptions extends LoggerOptions {
@@ -23,11 +24,7 @@ export function createLogger(
 	options: CreateLoggerOptions = {},
 	destination?: DestinationStream
 ): Logger {
-	const {
-		pretty = process.env['NODE_ENV'] !== 'production',
-		level = process.env['LOG_LEVEL'] ?? 'info',
-		...rest
-	} = options
+	const { pretty = !isProd(), level = process.env['LOG_LEVEL'] ?? 'info', ...rest } = options
 
 	const pinoOptions: LoggerOptions = { level, ...rest }
 
