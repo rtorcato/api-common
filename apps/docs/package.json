@@ -1,0 +1,52 @@
+{
+	"name": "@rtorcato/api-common-docs",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"docusaurus": "docusaurus",
+		"prestart": "node ../../scripts/aggregate-changelog.mjs",
+		"start": "docusaurus start",
+		"predev": "node ../../scripts/aggregate-changelog.mjs",
+		"dev": "docusaurus start",
+		"prebuild": "node ../../scripts/aggregate-changelog.mjs",
+		"build": "docusaurus build",
+		"serve": "docusaurus serve",
+		"clear": "docusaurus clear",
+		"swizzle": "docusaurus swizzle",
+		"typecheck": "tsc --noEmit",
+		"test:e2e": "playwright test",
+		"test:e2e:install": "playwright install chromium"
+	},
+	"dependencies": {
+		"@docusaurus/core": "^3.8.1",
+		"@docusaurus/preset-classic": "^3.8.1",
+		"@easyops-cn/docusaurus-search-local": "^0.55.2",
+		"@mdx-js/react": "^3.1.0",
+		"clsx": "^2.1.1",
+		"prism-react-renderer": "^2.4.1",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0"
+	},
+	"devDependencies": {
+		"@docusaurus/module-type-aliases": "^3.8.1",
+		"@docusaurus/tsconfig": "^3.8.1",
+		"@docusaurus/types": "^3.8.1",
+		"@playwright/test": "^1.61.0",
+		"@types/react": "^19.0.0",
+		"docusaurus-plugin-typedoc": "^1.4.2",
+		"typedoc": "^0.28.19",
+		"typedoc-plugin-markdown": "^4.12.0",
+		"typescript": "~5.6.3"
+	},
+	"browserslist": {
+		"production": [">0.5%", "not dead", "not op_mini all"],
+		"development": [
+			"last 3 chrome version",
+			"last 3 firefox version",
+			"last 5 safari version"
+		]
+	},
+	"engines": {
+		"node": ">=22.0"
+	}
+}

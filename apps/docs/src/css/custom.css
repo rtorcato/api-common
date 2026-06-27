@@ -1,0 +1,467 @@
+/**
+ * api-common — Docusaurus theme.
+ *
+ * Adapted from the rtorcato/browser-common theme — same structural patterns
+ * (Geist font, navy surfaces, custom design tokens) with a magenta accent
+ * (#c026d3 light / #e879f9 dark).
+ */
+
+/* ---------- Fonts ---------- */
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap");
+
+/* ---------- Light (default) ---------- */
+:root {
+	--ifm-color-primary: #c026d3;
+	--ifm-color-primary-dark: #ad22be;
+	--ifm-color-primary-darker: #a420b4;
+	--ifm-color-primary-darkest: #871a94;
+	--ifm-color-primary-light: #cb3ddb;
+	--ifm-color-primary-lighter: #d050de;
+	--ifm-color-primary-lightest: #dc7ce8;
+
+	--ifm-font-family-base: "Geist", system-ui, -apple-system, sans-serif;
+	--ifm-font-family-monospace: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+	--ifm-heading-font-weight: 800;
+	--ifm-code-font-size: 92%;
+
+	--ifm-background-color: #ffffff;
+	--ifm-background-surface-color: #ffffff;
+	--ifm-navbar-background-color: rgba(255, 255, 255, 0.8);
+	--ifm-heading-color: #0a0e16;
+	--ifm-font-color-base: #374253;
+	--ifm-link-color: #c026d3;
+	--ifm-toc-border-color: rgba(12, 18, 28, 0.1);
+	--ifm-code-background: #f3f6f9;
+	--docusaurus-highlighted-code-line-bg: rgba(192, 38, 211, 0.12);
+
+	/* browser-common custom tokens */
+	--bc-accent: #c026d3;
+	--bc-accent-fill: #c026d3;
+	--bc-on-accent: #ffffff;
+	--bc-bg: #ffffff;
+	--bc-bg2: #f6f8fb;
+	--bc-surface: #ffffff;
+	--bc-surface2: #f3f6f9;
+	--bc-code-bg: #f3f6f9;
+	--bc-border: rgba(12, 18, 28, 0.1);
+	--bc-border2: rgba(12, 18, 28, 0.16);
+	--bc-heading: #0a0e16;
+	--bc-text: #374253;
+	--bc-muted: #5b6675;
+	--bc-faint: #8a95a5;
+	--bc-accent-soft: rgba(192, 38, 211, 0.12);
+	--bc-accent-border: rgba(192, 38, 211, 0.4);
+	--bc-shadow: 0 22px 50px -26px rgba(20, 28, 44, 0.3);
+}
+
+/* ---------- Dark ---------- */
+[data-theme="dark"] {
+	--ifm-color-primary: #e879f9;
+	--ifm-color-primary-dark: #e25cf7;
+	--ifm-color-primary-darker: #df4df6;
+	--ifm-color-primary-darkest: #d518f1;
+	--ifm-color-primary-light: #ee96fb;
+	--ifm-color-primary-lighter: #f1a5fc;
+	--ifm-color-primary-lightest: #f8d0fe;
+
+	--ifm-background-color: #0a0e16;
+	--ifm-background-surface-color: #111824;
+	--ifm-navbar-background-color: #0a0e16;
+	--ifm-heading-color: #ffffff;
+	--ifm-font-color-base: #dfe5ee;
+	--ifm-link-color: #e879f9;
+	--ifm-toc-border-color: rgba(255, 255, 255, 0.08);
+	--ifm-code-background: #0d131d;
+	--docusaurus-highlighted-code-line-bg: rgba(232, 121, 249, 0.14);
+
+	--bc-accent: #e879f9;
+	--bc-accent-fill: #e879f9;
+	--bc-on-accent: #0a0e16;
+	--bc-bg: #0a0e16;
+	--bc-bg2: #0b101a;
+	--bc-surface: #111824;
+	--bc-surface2: #0d131d;
+	--bc-code-bg: #0c111b;
+	--bc-border: rgba(255, 255, 255, 0.08);
+	--bc-border2: rgba(255, 255, 255, 0.14);
+	--bc-heading: #ffffff;
+	--bc-text: #dfe5ee;
+	--bc-muted: #94a1b4;
+	--bc-faint: #647184;
+	--bc-accent-soft: rgba(232, 121, 249, 0.14);
+	--bc-accent-border: rgba(232, 121, 249, 0.34);
+	--bc-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.75);
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+	border-bottom: 1px solid var(--bc-border);
+	box-shadow: none;
+}
+.navbar__link--active {
+	color: var(--bc-heading);
+}
+/* The navbar shows the "api-common" text title next to the logo mark, so the
+   default title rendering is left in place (unlike browser-common, which baked
+   its wordmark into the SVG and hid the title). */
+
+/* ---------- Mobile drawer: collapse primary/secondary into one menu ----------
+   The primary→secondary "Back to main menu" UX is confusing here. We swizzle
+   theme/Navbar/MobileSidebar/PrimaryMenu (see src/theme/) to render the full
+   sidebar directly, and stub out SecondaryMenu so it never renders content.
+
+   On doc pages Docusaurus still flips its internal secondary state (the doc
+   plugin contributes a mobile-sidebar filler), which adds the
+   --show-secondary class — that class translates the primary menu off
+   screen, so we lock the transform here. (Separately, the swizzled
+   PrimaryMenu strips the `inert` attribute that Layout puts on the primary
+   item when secondary is "active" — `inert` made links unclickable.) */
+.navbar-sidebar__items,
+.navbar-sidebar__items.navbar-sidebar__items--show-secondary {
+	transform: translate3d(0, 0, 0) !important;
+}
+.navbar-sidebar__items > .navbar-sidebar__item:nth-child(2),
+.navbar-sidebar__back {
+	display: none !important;
+}
+.bc-mobile-menu {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding: 4px 0;
+	margin: 0;
+	list-style: none;
+}
+.bc-mobile-menu__link {
+	display: block;
+	padding: 12px 14px;
+	border-radius: 8px;
+	color: var(--bc-heading);
+	font-weight: 600;
+	font-size: 15px;
+	text-decoration: none;
+}
+.bc-mobile-menu__link:hover,
+.bc-mobile-menu__link:focus-visible {
+	background: var(--bc-surface2);
+	color: var(--bc-heading);
+	text-decoration: none;
+}
+.bc-mobile-menu__link--active {
+	background: var(--bc-accent-soft);
+	color: var(--bc-accent);
+}
+.bc-mobile-menu__external::after {
+	content: " ↗";
+	color: var(--bc-faint);
+	font-weight: 400;
+}
+
+/* ---------- Backgrounds ---------- */
+html,
+body,
+#__docusaurus,
+.main-wrapper {
+	background: var(--ifm-background-color);
+}
+/* Sidebar container: match page background, clean 1px right border, and
+   ensure the API Reference list (44 entries) scrolls without clipping the
+   page footer. The sticky positioning + bounded height come from Infima
+   defaults; the explicit overflow rule here defends against any inner
+   container with overflow: hidden. */
+.theme-doc-sidebar-container {
+	background: var(--ifm-background-color) !important;
+	border-right: 1px solid var(--bc-border) !important;
+}
+.theme-doc-sidebar-container > div,
+.theme-doc-sidebar-container nav,
+.theme-doc-sidebar-menu,
+.menu,
+.menu__list {
+	background: var(--ifm-background-color);
+}
+/* The sticky inner wrapper that holds the scrollable menu list. */
+.theme-doc-sidebar-container > div:first-child {
+	height: 100%;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+}
+
+/* ---------- Sidebar ---------- */
+.menu {
+	font-size: 14px;
+	background: transparent;
+	padding: 16px 12px;
+}
+.menu__list .menu__list {
+	padding-left: 8px;
+}
+.menu__link {
+	border-radius: 8px;
+	color: var(--bc-muted);
+	line-height: 1.4;
+}
+.menu__link:hover {
+	background: var(--bc-surface2);
+	color: var(--bc-heading);
+}
+.menu__link--active:not(.menu__link--sublist) {
+	color: var(--bc-accent);
+	background: var(--bc-accent-soft);
+	font-weight: 600;
+}
+.menu__list-item-collapsible .menu__link {
+	font-weight: 600;
+	color: var(--bc-heading);
+	background: transparent;
+}
+.menu__list-item-collapsible .menu__link--active {
+	color: var(--bc-accent);
+	background: transparent;
+}
+.menu__list-item-collapsible:hover {
+	background: var(--bc-surface2);
+	border-radius: 8px;
+}
+.menu__caret:hover {
+	background: transparent;
+}
+
+/* ---------- Table of contents ---------- */
+.table-of-contents__link--active {
+	color: var(--bc-accent);
+	font-weight: 600;
+}
+.table-of-contents .table-of-contents__link:hover {
+	color: var(--bc-heading);
+}
+
+/* ---------- Footer ---------- */
+.footer,
+.footer--dark {
+	--ifm-footer-background-color: var(--bc-bg2);
+	--ifm-footer-color: var(--bc-text);
+	--ifm-footer-link-color: var(--bc-text);
+	--ifm-footer-title-color: var(--bc-faint);
+	border-top: 1px solid var(--bc-border);
+}
+.footer__title {
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--bc-faint);
+}
+.footer__link-item {
+	color: var(--bc-text);
+}
+.footer__link-item:hover {
+	color: var(--bc-accent);
+	text-decoration: none;
+}
+.footer__copyright {
+	color: var(--bc-faint);
+	font-size: 13px;
+	text-align: left;
+}
+.footer__col {
+	font-size: 14px;
+}
+/* Hide the external-link "↗" SVG Docusaurus auto-appends to footer href links —
+   the design uses clean text labels only. The class is CSS-module hashed
+   (iconExternalLink_<hash>), so we target by attribute prefix. */
+.footer__link-item svg,
+.footer__link-item [class*="iconExternalLink"] {
+	display: none;
+}
+
+/* ---------- Code ----------
+   Prism is vsDark in both light & dark mode (to match the navy aesthetic),
+   so fenced code blocks must stay dark in BOTH themes — otherwise the pale
+   vsDark tokens wash out on a light background. Inline code (the `code` pills)
+   keeps the themed --ifm-code-background and stays readable. */
+.theme-code-block,
+div[class*="codeBlockContainer"],
+pre[class*="language-"] {
+	border: 1px solid var(--bc-border);
+	border-radius: 12px;
+	background: #0c111b !important;
+}
+.theme-code-block code,
+pre[class*="language-"] code {
+	background: transparent !important;
+	color: #dfe5ee;
+}
+div[class*="codeBlockTitle"] {
+	background: #0a0e16 !important;
+	color: #94a1b4 !important;
+	border-bottom: 1px solid var(--bc-border);
+}
+[data-theme="light"] .theme-code-block,
+[data-theme="light"] div[class*="codeBlockContainer"],
+[data-theme="light"] pre[class*="language-"] {
+	border-color: rgba(12, 18, 28, 0.16);
+	box-shadow: 0 8px 24px -18px rgba(12, 18, 28, 0.5);
+}
+code {
+	font-family: var(--ifm-font-family-monospace);
+}
+
+/* ---------- Markdown tables ----------
+   Rounded container, horizontal row dividers only (no heavy cell gridlines). */
+.markdown table,
+.theme-doc-markdown table,
+article table {
+	display: table;
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	margin: 22px 0;
+	border: 1px solid var(--bc-border);
+	border-radius: 12px;
+	overflow: hidden;
+	font-size: 14px;
+}
+.markdown table thead,
+article table thead {
+	background: var(--bc-bg2);
+}
+.markdown table thead tr,
+article table thead tr {
+	border: none;
+	background: transparent;
+}
+.markdown table th,
+article table th {
+	text-align: left;
+	font-weight: 700;
+	font-size: 12px;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--bc-faint);
+	border: none;
+	border-bottom: 1px solid var(--bc-border);
+	padding: 14px 18px;
+}
+.markdown table tbody tr,
+article table tbody tr {
+	background: transparent !important;
+	border: none;
+}
+.markdown table td,
+article table td {
+	border: none;
+	border-bottom: 1px solid var(--bc-border);
+	padding: 13px 18px;
+	vertical-align: middle;
+	color: var(--bc-text);
+}
+.markdown table tbody tr:last-child td,
+article table tbody tr:last-child td {
+	border-bottom: none;
+}
+.markdown table td:first-child,
+article table td:first-child {
+	font-weight: 600;
+	color: var(--bc-heading);
+	white-space: nowrap;
+}
+.markdown table td code,
+.markdown table th code,
+article table td code {
+	background: transparent !important;
+	border: none !important;
+	padding: 0 !important;
+	font-size: 13px;
+}
+.markdown table td:nth-child(2) code,
+article table td:nth-child(2) code {
+	color: var(--bc-accent);
+}
+.markdown table td:nth-child(3),
+article table td:nth-child(3) {
+	color: var(--bc-muted);
+	line-height: 1.9;
+}
+.markdown table td:nth-child(3) code,
+article table td:nth-child(3) code {
+	color: var(--bc-muted);
+}
+
+/* ---------- Buttons ---------- */
+.button--primary {
+	background: var(--bc-accent-fill);
+	border-color: var(--bc-accent-fill);
+	color: var(--bc-on-accent);
+	font-weight: 700;
+}
+.button--primary:hover {
+	background: var(--ifm-color-primary-light);
+	border-color: var(--ifm-color-primary-light);
+	color: var(--bc-on-accent);
+}
+.button--secondary {
+	background: transparent;
+	border-color: var(--bc-border2);
+	color: var(--bc-heading);
+}
+
+::selection {
+	background: rgba(192, 38, 211, 0.24);
+}
+
+/* ============================================================
+   HARDENED DARK SURFACES
+   Infima's dark defaults are grey (#1b1b1d) and the footer is
+   slate. These explicit overrides force the navy palette even
+   if a default loads after this file.
+   ============================================================ */
+[data-theme="dark"] {
+	--ifm-background-color: #0a0e16;
+	--ifm-background-surface-color: #111824;
+	--ifm-navbar-background-color: #0a0e16;
+	--ifm-footer-background-color: #0b101a;
+}
+[data-theme="dark"],
+[data-theme="dark"] body,
+[data-theme="dark"] #__docusaurus,
+[data-theme="dark"] .main-wrapper,
+[data-theme="dark"] .navbar,
+[data-theme="dark"] main {
+	background-color: #0a0e16;
+}
+/* Footer follows the theme: soft grey panel in light mode, page-matching navy
+   in dark mode. Selectors are theme-scoped so the config's `style: 'dark'`
+   (which adds .footer--dark in BOTH modes) can't drag the light-mode footer
+   into a dark slate. */
+html[data-theme="light"] .footer,
+html[data-theme="light"] .footer--dark {
+	background-color: var(--bc-bg2) !important;
+	border-top: 1px solid var(--bc-border);
+}
+html[data-theme="light"] .footer__link-item {
+	color: var(--bc-text) !important;
+}
+html[data-theme="light"] .footer__title {
+	color: var(--bc-faint) !important;
+}
+html[data-theme="light"] .footer__copyright {
+	color: var(--bc-faint) !important;
+}
+html[data-theme="dark"] .footer,
+html[data-theme="dark"] .footer--dark {
+	background-color: #0a0e16 !important;
+	border-top: 1px solid var(--bc-border);
+}
+html[data-theme="dark"] .footer__link-item {
+	color: var(--bc-text) !important;
+}
+html[data-theme="dark"] .footer__title {
+	color: var(--bc-faint) !important;
+}
+html[data-theme="dark"] .footer__copyright {
+	color: var(--bc-faint) !important;
+}
+.footer__link-item:hover {
+	color: var(--bc-accent) !important;
+}
