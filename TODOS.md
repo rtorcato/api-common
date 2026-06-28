@@ -6,8 +6,8 @@ Roadmap derived from the old [`gitlab.com/rtorcato/api-common`](https://gitlab.c
 
 ### Ported from the old gitlab repo
 
-- [ ] `@rtorcato/api-logger` — pino + pino-http request logger. Framework-agnostic core; consider a thin `api-logger-express` adapter if needed.
-- [ ] `@rtorcato/api-validation` — zod-based request validation helpers (body/query/params) with pretty error formatting (zod-error).
+- [x] `@rtorcato/api-logger` — pino logger factory (framework-agnostic core, seeded from api-starter). Hono/Express adapter still TODO.
+- [x] `@rtorcato/api-validation` — zod validation (`validate` throws `BadRequestError`) + pretty error formatting (zod-error).
 - [ ] `@rtorcato/api-auth` — JWT sign/verify helpers (jsonwebtoken). Framework-agnostic.
 - [ ] `@rtorcato/api-auth-express` — Express middleware over `api-auth`.
 - [ ] `@rtorcato/api-cors-express` — Express CORS wrapper with sane defaults.
@@ -19,9 +19,9 @@ Roadmap derived from the old [`gitlab.com/rtorcato/api-common`](https://gitlab.c
 
 ### Beyond the old repo (worth considering)
 
-- [ ] `@rtorcato/api-config` — env var loading + zod parsing (old repo used `dotenv` + `dotenv-cli` raw).
+- [x] `@rtorcato/api-config` — env var loading + zod parsing via `loadEnv(schema)` (throws instead of `process.exit`).
 - [ ] `@rtorcato/api-testing` — supertest helpers, request factories, common assertions for Express + Hono.
-- [ ] `@rtorcato/api-rate-limit-express` / `-hono` — common need, no equivalent in old repo.
+- [x] `@rtorcato/api-rate-limit` — framework-agnostic in-memory sliding-window limiter (bounded memory). Express/Hono adapters still TODO.
 - [ ] `@rtorcato/api-types` (optional) — shared response shapes (e.g. the `{ error, code, message }` envelope already standardized across `api-errors-express` / `api-errors-hono`).
 
 ## Tooling / repo
