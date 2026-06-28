@@ -1,3 +1,3 @@
-export { errorHandler } from './errorHandler'
-export type { ErrorHandlerOptions } from './errorHandler'
-export { notFoundHandler } from './notFoundHandler'
+export { errorHandler } from './errorHandler.js'
+export type { ErrorHandlerOptions } from './errorHandler.js'
+export { notFoundHandler } from './notFoundHandler.js'

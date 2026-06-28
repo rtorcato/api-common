@@ -27,3 +27,5 @@ jobs:
       - run: pnpm check
       - run: pnpm typecheck
       - run: pnpm test
+      - run: pnpm -r exec publint
+      - run: pnpm -r exec attw --pack --profile esm-only

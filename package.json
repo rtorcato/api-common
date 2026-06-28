@@ -17,6 +17,7 @@
     "commit": "cz"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.4",
     "@biomejs/biome": "^2.3.0",
     "@changesets/cli": "^2.31.0",
     "@commitlint/cli": "^21.0.2",
@@ -26,6 +27,7 @@
     "husky": "^9.1.7",
     "is-ci": "^4.1.0",
     "lint-staged": "^17.0.7",
+    "publint": "^0.3.21",
     "typescript": "^6.0.3",
     "vitest": "^4.1.8"
   },
