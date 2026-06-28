@@ -6,7 +6,10 @@ import {
 	HttpError,
 	InternalServerError,
 	NotFoundError,
+	ServiceUnavailableError,
+	TooManyRequestsError,
 	UnauthorizedError,
+	UnprocessableEntityError,
 } from './index'
 
 describe('HttpError', () => {
@@ -30,7 +33,10 @@ describe('subclasses', () => {
 		[ForbiddenError, 403, 'forbidden'],
 		[NotFoundError, 404, 'not_found'],
 		[ConflictError, 409, 'conflict'],
+		[UnprocessableEntityError, 422, 'unprocessable_entity'],
+		[TooManyRequestsError, 429, 'too_many_requests'],
 		[InternalServerError, 500, 'internal_server_error'],
+		[ServiceUnavailableError, 503, 'service_unavailable'],
 	]
 
 	for (const [Ctor, status, code] of cases) {
