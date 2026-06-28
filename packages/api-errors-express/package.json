@@ -5,6 +5,22 @@
   "type": "module",
   "license": "MIT",
   "author": "Richard Torcato",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtorcato/api-common.git",
+    "directory": "packages/api-errors-express"
+  },
+  "bugs": {
+    "url": "https://github.com/rtorcato/api-common/issues"
+  },
+  "homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-errors-express",
+  "keywords": [
+    "http-errors",
+    "express",
+    "middleware",
+    "nodejs",
+    "api"
+  ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
