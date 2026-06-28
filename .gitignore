@@ -9,3 +9,6 @@ coverage/
 CLAUDE.local.md
 .claude/settings.local.json
 .claude/doctor-fix-applied.json
+
+# local-only reference material
+old-reference-code/

@@ -8,13 +8,15 @@ Roadmap derived from the old [`gitlab.com/rtorcato/api-common`](https://gitlab.c
 
 - [x] `@rtorcato/api-logger` — pino logger factory (framework-agnostic core, seeded from api-starter). Hono/Express adapter still TODO.
 - [x] `@rtorcato/api-validation` — zod validation (`validate` throws `BadRequestError`) + pretty error formatting (zod-error).
-- [ ] `@rtorcato/api-auth` — JWT sign/verify helpers (jsonwebtoken). Framework-agnostic.
+- [ ] `@rtorcato/api-auth` — JWT sign/verify helpers (jsonwebtoken). Framework-agnostic. Support Bearer-header → cookie fallback for token extraction (`findToken` / `findRefreshToken`). seed: `old-reference-code/dropwallet-api-master/src/components/jwt/token.ts`.
 - [ ] `@rtorcato/api-auth-express` — Express middleware over `api-auth`.
-- [ ] `@rtorcato/api-cors-express` — Express CORS wrapper with sane defaults.
+- [ ] `@rtorcato/api-cors-express` — Express CORS wrapper with sane defaults. seed: `old-reference-code/dropwallet-api-master/src/config/cors/index.ts`.
 - [ ] `@rtorcato/api-http` — axios wrapper / typed HTTP client helpers.
 - [ ] `@rtorcato/api-amqp` — amqplib publisher/consumer helpers.
-- [ ] `@rtorcato/api-openapi-express` — swagger-ui-express mount helper.
-- [ ] `@rtorcato/api-ts-rest-express` — `@ts-rest/express` + `@ts-rest/open-api` wiring helpers.
+- [ ] `@rtorcato/api-openapi` — framework-agnostic OpenAPI 3.1 doc builder + docs HTML (Scalar or Swagger UI). seed: `old-reference-code/template-api-main/src/lib/openApi/openApi.ts`, `.../src/lib/swaggerDoc.ts`.
+- [ ] `@rtorcato/api-openapi-express` — mount on Express: Scalar + `swagger-ui-express`; optional `swagger-jsdoc` ingestion. seed: `old-reference-code/rest-api-master/commons/swagger.js`.
+- [ ] `@rtorcato/api-openapi-hono` — `@hono/zod-openapi` + `@scalar/hono-api-reference` (schema-first, default Scalar UI). seed: `old-reference-code/api-starter-main/hono-open-api-starter-main/src/lib/configure-open-api.ts`, `.../lib/create-app.ts`.
+- [ ] `@rtorcato/api-ts-rest-express` — `@ts-rest/express` + `@ts-rest/open-api` wiring helpers. seed: `old-reference-code/template-api-main/src/lib/swaggerDoc.ts`.
 - [ ] Hono adapters for each new core package, mirroring the `api-errors` / `api-errors-hono` pattern. Evaluate per package — only adapt where Hono integration adds real value (e.g. logger, auth, validation).
 
 ### Beyond the old repo (worth considering)
@@ -23,6 +25,9 @@ Roadmap derived from the old [`gitlab.com/rtorcato/api-common`](https://gitlab.c
 - [ ] `@rtorcato/api-testing` — supertest helpers, request factories, common assertions for Express + Hono.
 - [x] `@rtorcato/api-rate-limit` — framework-agnostic in-memory sliding-window limiter (bounded memory). Express/Hono adapters still TODO.
 - [ ] `@rtorcato/api-types` (optional) — shared response shapes (e.g. the `{ error, code, message }` envelope already standardized across `api-errors-express` / `api-errors-hono`).
+- [ ] `@rtorcato/api-upload` — S3 upload via `multer-s3` (public/private ACL, cache-control, custom metadata, `MulterError` size handling). Peer deps: `@aws-sdk/client-s3`, `multer`, `multer-s3`. seed: `old-reference-code/dropwallet-api-master/src/lib/AWS/S3/uploader.ts`, `.../src/config/aws/s3.ts`.
+- [ ] `@rtorcato/api-express-utils` — `getIP` (X-Forwarded-For aware) + `logRoutes` (print registered routes at boot). Skip `getCountry` (heavy geoip dep) until a consumer needs it. seed: `old-reference-code/dropwallet-api-master/src/components/express/getIP.ts`, `.../logRoutes.ts`.
+- [ ] `asyncHandler()` export in **`@rtorcato/api-errors-express`** (not a new package) — wraps an async route handler, forwards rejections to the error middleware. seed: `old-reference-code/dropwallet-api-master/src/components/express/asyncHandler.ts`.
 
 ## Tooling / repo
 
