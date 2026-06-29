@@ -46,6 +46,24 @@ For any thrown `HttpError` (or subclass), the error handler responds with:
 
 Unknown errors map to `500` / `internal_server_error`.
 
+### `asyncHandler`
+
+Wrap async route handlers so rejections are forwarded to `errorHandler`
+instead of writing `try/catch` in every route:
+
+```ts
+import { asyncHandler } from '@rtorcato/api-errors-express'
+
+app.get(
+  '/users/:id',
+  asyncHandler(async (req, res) => {
+    const user = await db.findUser(req.params.id)
+    if (!user) throw new NotFoundError('No such user')
+    res.json(user)
+  }),
+)
+```
+
 ### Options
 
 ```ts
