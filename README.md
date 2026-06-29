@@ -17,9 +17,14 @@ The old single-package repo lives at https://gitlab.com/rtorcato/api-common and 
 
 | Package | npm | Description |
 | --- | --- | --- |
-| [`@rtorcato/api-errors`](./packages/api-errors) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-errors.svg)](https://www.npmjs.com/package/@rtorcato/api-errors) | Framework-agnostic HTTP error classes (`HttpError` + 400/401/403/404/409/500 subclasses). |
-| [`@rtorcato/api-errors-express`](./packages/api-errors-express) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-errors-express.svg)](https://www.npmjs.com/package/@rtorcato/api-errors-express) | Express middleware: `errorHandler` + `notFoundHandler` built on `@rtorcato/api-errors`. |
+| [`@rtorcato/api-errors`](./packages/api-errors) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-errors.svg)](https://www.npmjs.com/package/@rtorcato/api-errors) | Framework-agnostic HTTP error classes (`HttpError` + 400/401/403/404/409/422/429/500/503 subclasses). |
+| [`@rtorcato/api-errors-express`](./packages/api-errors-express) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-errors-express.svg)](https://www.npmjs.com/package/@rtorcato/api-errors-express) | Express middleware: `errorHandler`, `notFoundHandler`, `asyncHandler` built on `@rtorcato/api-errors`. |
 | [`@rtorcato/api-errors-hono`](./packages/api-errors-hono) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-errors-hono.svg)](https://www.npmjs.com/package/@rtorcato/api-errors-hono) | Hono middleware: `errorHandler` + `notFoundHandler` built on `@rtorcato/api-errors`. |
+| [`@rtorcato/api-config`](./packages/api-config) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-config.svg)](https://www.npmjs.com/package/@rtorcato/api-config) | Load + validate environment variables with dotenv + zod. |
+| [`@rtorcato/api-logger`](./packages/api-logger) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-logger.svg)](https://www.npmjs.com/package/@rtorcato/api-logger) | Framework-agnostic pino logger factory. |
+| [`@rtorcato/api-rate-limit`](./packages/api-rate-limit) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-rate-limit.svg)](https://www.npmjs.com/package/@rtorcato/api-rate-limit) | In-memory sliding-window rate limiter. |
+| [`@rtorcato/api-response`](./packages/api-response) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-response.svg)](https://www.npmjs.com/package/@rtorcato/api-response) | Consistent success-response envelope + zod schema helper. |
+| [`@rtorcato/api-validation`](./packages/api-validation) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-validation.svg)](https://www.npmjs.com/package/@rtorcato/api-validation) | Zod request validation helpers with pretty error formatting. |
 
 ### Install
 
@@ -41,7 +46,7 @@ git commit -am "feat: …"
 git push                 # the Release workflow opens a "Version Packages" PR
 ```
 
-Merging the auto-PR bumps versions, writes per-package `CHANGELOG.md`, and publishes to npm.
+Merging the auto-PR bumps versions, writes per-package `CHANGELOG.md`, and publishes to npm. The same merge redeploys the [docs site](https://rtorcato.github.io/api-common) automatically (the `Deploy Docs` workflow runs on any `packages/**` change), so changelogs and the generated API reference stay current — no manual docs step. READMEs use unversioned install commands, so they only need editing when a package's API changes, not on every release.
 
 ## Commands
 
