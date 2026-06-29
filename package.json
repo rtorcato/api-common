@@ -11,6 +11,8 @@
     "test": "pnpm -r test",
     "build": "pnpm -r build",
     "check:exports": "pnpm -r --filter \"./packages/*\" exec publint && pnpm -r --filter \"./packages/*\" exec attw --pack . --profile esm-only --ignore-rules internal-resolution-error",
+    "gen:readme": "node scripts/gen-readme-packages.mjs",
+    "check:readme": "node scripts/gen-readme-packages.mjs --check",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "pnpm -r build && changeset publish",
