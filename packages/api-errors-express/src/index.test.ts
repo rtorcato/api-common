@@ -2,7 +2,7 @@ import { BadRequestError } from '@rtorcato/api-errors'
 import express from 'express'
 import request from 'supertest'
 import { describe, expect, it } from 'vitest'
-import { errorHandler, notFoundHandler } from './index'
+import { asyncHandler, errorHandler, notFoundHandler } from './index'
 
 function buildApp(opts?: { includeStack?: boolean }) {
 	const app = express()
@@ -18,6 +18,20 @@ function buildApp(opts?: { includeStack?: boolean }) {
 	app.get('/boom', (_req, _res, next) => {
 		next(new Error('kaboom'))
 	})
+
+	app.get(
+		'/async-ok',
+		asyncHandler(async (_req, res) => {
+			res.json({ ok: true })
+		})
+	)
+
+	app.get(
+		'/async-bad',
+		asyncHandler(async () => {
+			throw new BadRequestError('async nope', 'async_bad')
+		})
+	)
 
 	app.use(notFoundHandler)
 	app.use(errorHandler(opts))
@@ -52,6 +66,24 @@ describe('errorHandler', () => {
 	it('includes the stack when includeStack: true', async () => {
 		const res = await request(buildApp({ includeStack: true })).get('/boom')
 		expect(typeof res.body.stack).toBe('string')
+	})
+})
+
+describe('asyncHandler', () => {
+	it('passes through a resolved handler', async () => {
+		const res = await request(buildApp()).get('/async-ok')
+		expect(res.status).toBe(200)
+		expect(res.body).toEqual({ ok: true })
+	})
+
+	it('forwards a rejection to the error handler', async () => {
+		const res = await request(buildApp()).get('/async-bad')
+		expect(res.status).toBe(400)
+		expect(res.body).toMatchObject({
+			error: 'BadRequestError',
+			code: 'async_bad',
+			message: 'async nope',
+		})
 	})
 })
 
