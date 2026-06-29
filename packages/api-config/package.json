@@ -37,5 +37,24 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "keywords": [
+    "api",
+    "nodejs",
+    "typescript",
+    "env",
+    "dotenv",
+    "zod",
+    "config",
+    "environment-variables"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtorcato/api-common.git",
+    "directory": "packages/api-config"
+  },
+  "homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-config#readme",
+  "bugs": {
+    "url": "https://github.com/rtorcato/api-common/issues"
   }
 }

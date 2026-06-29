@@ -36,5 +36,22 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "keywords": [
+    "api",
+    "nodejs",
+    "typescript",
+    "zod",
+    "validation",
+    "request-validation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtorcato/api-common.git",
+    "directory": "packages/api-validation"
+  },
+  "homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-validation#readme",
+  "bugs": {
+    "url": "https://github.com/rtorcato/api-common/issues"
   }
 }

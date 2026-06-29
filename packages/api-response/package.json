@@ -32,5 +32,23 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "keywords": [
+    "api",
+    "nodejs",
+    "typescript",
+    "response",
+    "envelope",
+    "zod",
+    "openapi"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtorcato/api-common.git",
+    "directory": "packages/api-response"
+  },
+  "homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-response#readme",
+  "bugs": {
+    "url": "https://github.com/rtorcato/api-common/issues"
   }
 }
