@@ -20,8 +20,11 @@ edge-safe cores here).
    branch protection. Unblocks clean publishing.
 2. **Core packages** (framework-agnostic, highest reuse) — `api-config`,
    `api-logger` (+ request-id), `api-validation`, `api-types`, `api-auth`
-   (jose), `api-http`.
-3. **Express / Hono adapters** — `api-auth-express`, `api-cors-express`,
+   (framework-agnostic **core**: sign/verify JWTs via `jose`, extract
+   Bearer/cookie tokens, no framework imports), `api-http`.
+3. **Express / Hono adapters** — `api-auth-express` / `api-auth-hono`
+   (adapters turn a missing/invalid token into `UnauthorizedError` from
+   `@rtorcato/api-errors`), `api-cors-express`,
    `api-rate-limit-express`/`-hono`, `api-security-express`,
    `api-ts-rest-express`, `api-express-utils`, and the **OpenAPI family**
    (see below).
@@ -52,9 +55,31 @@ is **Scalar** (`@scalar/*`); `swagger-ui-express` is the legacy/JSDoc fallback.
 | `api-graceful-shutdown` | SIGTERM drain for containers/k8s |
 | `api-security-express` | `helmet` wrapper (Hono has `secureHeaders` built in) |
 | `api-openapi` / `-express` / `-hono` | OpenAPI doc builder + Scalar/Swagger UI (see above) |
-| `api-upload` | S3 upload via `multer-s3` (public/private ACL, cache headers) |
+| `api-upload` | S3 upload via `multer-s3` (public/private ACL, cache headers) — see AWS family below |
 | `api-express-utils` | `getIP` (X-Forwarded-For), `logRoutes` (print routes at boot) |
 | `asyncHandler` | fold into `api-errors-express` — forwards async rejections to the error handler |
 | request-id / correlation-ID | fold into `api-logger`, not its own package |
+
+## AWS family — narrow, never monolithic
+
+No `api-aws` blanket wrapper: AWS SDK v3 is already modular, so wrapping it only
+adds drift. One package per service-pattern actually repeated, each with
+`@aws-sdk/client-*` as a **peer** dep.
+
+| Package | Role |
+| --- | --- |
+| `api-upload` | S3 upload (public/private ACL, cache headers) — seeded from old `AWS/S3/uploader.ts` |
+| `api-email` | SES templated send — *candidate, build when repeated* |
+| (presigned URLs) | S3 presigned GET/PUT helpers — *candidate, build when repeated* |
+
+## Out of scope
+
+- **ecom (cart / orders / products / checkout)** — domain logic, not API
+  infrastructure, and app-specific (no model reuse across projects). Belongs in
+  a per-project or separate domain repo, not `api-common`.
+  - money / currency math → `@rtorcato/js-common` (framework-agnostic helper)
+  - Stripe **webhook signature verification** → only justifies a focused
+    `api-stripe-webhook` package *if* it's actually repeated; that's infra
+    (verifying an HTTP request), not domain.
 
 
