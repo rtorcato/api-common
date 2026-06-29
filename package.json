@@ -10,6 +10,7 @@
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test",
     "build": "pnpm -r build",
+    "check:exports": "pnpm -r --filter \"./packages/*\" exec publint && pnpm -r --filter \"./packages/*\" exec attw --pack . --profile esm-only --ignore-rules internal-resolution-error",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "pnpm -r build && changeset publish",
@@ -17,15 +18,17 @@
     "commit": "cz"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.3.0",
+    "@arethetypeswrong/cli": "0.18.4",
+    "@biomejs/biome": "^2.5.0",
     "@changesets/cli": "^2.31.0",
     "@commitlint/cli": "^21.0.2",
     "@commitlint/config-conventional": "^21.0.2",
-    "@rtorcato/js-tooling": "^2.7.0",
+    "@rtorcato/js-tooling": "^2.21.0",
     "@types/node": "^25.9.1",
     "husky": "^9.1.7",
     "is-ci": "^4.1.0",
     "lint-staged": "^17.0.7",
+    "publint": "0.3.21",
     "typescript": "^6.0.3",
     "vitest": "^4.1.8"
   },

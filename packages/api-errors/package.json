@@ -26,5 +26,23 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "keywords": [
+    "api",
+    "nodejs",
+    "typescript",
+    "http",
+    "errors",
+    "error-handling",
+    "http-status"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtorcato/api-common.git",
+    "directory": "packages/api-errors"
+  },
+  "homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-errors#readme",
+  "bugs": {
+    "url": "https://github.com/rtorcato/api-common/issues"
   }
 }

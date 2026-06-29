@@ -27,3 +27,5 @@ jobs:
       - run: pnpm check
       - run: pnpm typecheck
       - run: pnpm test
+      - name: Validate package exports (publint + are-the-types-wrong)
+        run: pnpm check:exports

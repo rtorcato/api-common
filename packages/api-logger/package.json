@@ -38,5 +38,22 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "keywords": [
+    "api",
+    "nodejs",
+    "typescript",
+    "pino",
+    "logger",
+    "logging"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtorcato/api-common.git",
+    "directory": "packages/api-logger"
+  },
+  "homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-logger#readme",
+  "bugs": {
+    "url": "https://github.com/rtorcato/api-common/issues"
   }
 }

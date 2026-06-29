@@ -45,9 +45,30 @@ export class ConflictError extends HttpError {
 	}
 }
 
+export class UnprocessableEntityError extends HttpError {
+	constructor(message = 'Unprocessable Entity', code = 'unprocessable_entity') {
+		super(422, message, code)
+		this.name = 'UnprocessableEntityError'
+	}
+}
+
+export class TooManyRequestsError extends HttpError {
+	constructor(message = 'Too Many Requests', code = 'too_many_requests') {
+		super(429, message, code)
+		this.name = 'TooManyRequestsError'
+	}
+}
+
 export class InternalServerError extends HttpError {
 	constructor(message = 'Internal Server Error', code = 'internal_server_error') {
 		super(500, message, code)
 		this.name = 'InternalServerError'
+	}
+}
+
+export class ServiceUnavailableError extends HttpError {
+	constructor(message = 'Service Unavailable', code = 'service_unavailable') {
+		super(503, message, code)
+		this.name = 'ServiceUnavailableError'
 	}
 }
