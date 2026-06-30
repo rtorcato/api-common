@@ -126,6 +126,9 @@ importers:
       '@rtorcato/api-errors':
         specifier: workspace:*
         version: link:../api-errors
+      '@rtorcato/js-common':
+        specifier: ^2.8.1
+        version: 2.8.1(@types/node@25.9.1)
     devDependencies:
       '@types/express':
         specifier: ^5.0.0
@@ -145,6 +148,9 @@ importers:
       '@rtorcato/api-errors':
         specifier: workspace:*
         version: link:../api-errors
+      '@rtorcato/js-common':
+        specifier: ^2.8.1
+        version: 2.8.1(@types/node@25.9.1)
     devDependencies:
       hono:
         specifier: ^4.6.0
