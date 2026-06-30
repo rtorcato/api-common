@@ -5,11 +5,11 @@ High-level plan for `api-common`. Granular task tracking lives in
 [#26](https://github.com/rtorcato/api-common/issues/26) and
 [#27](https://github.com/rtorcato/api-common/issues/27).
 
-Today the repo ships 15 packages: `api-errors`, `api-errors-express`,
+Today the repo ships 17 packages: `api-errors`, `api-errors-express`,
 `api-errors-hono`, `api-config`, `api-logger`, `api-rate-limit`,
 `api-rate-limit-express`, `api-rate-limit-hono`, `api-response`,
 `api-validation`, `api-auth`, `api-auth-express`, `api-cors-express`,
-`api-express-utils`, and `api-testing`.
+`api-express-utils`, `api-testing`, `api-openapi`, and `api-openapi-express`.
 
 Cloudflare Workers helpers live in a separate repo:
 [`cf-common`](https://github.com/rtorcato/cf-common) (depends on the
@@ -43,7 +43,7 @@ into *releases*. They sit alongside the phases — they don't replace them.
 
 | Milestone | Covers |
 | --- | --- |
-| [Beta](https://github.com/rtorcato/api-common/milestone/1) | A developer can build a fully-documented Express/Hono API end-to-end. Phase 2–3 progress: `api-auth` ✅, `api-auth-express` ✅, `api-cors-express` ✅, `api-express-utils` ✅, `asyncHandler` ✅. Remaining: `api-auth-hono`, `api-types`, `api-http`, the OpenAPI family, and runnable example apps. Tracked by epics #26 / #27. |
+| [Beta](https://github.com/rtorcato/api-common/milestone/1) | A developer can build a fully-documented Express/Hono API end-to-end. Phase 2–3 progress: `api-auth` ✅, `api-auth-express` ✅, `api-cors-express` ✅, `api-express-utils` ✅, `asyncHandler` ✅, `api-openapi` ✅, `api-openapi-express` ✅. Remaining: `api-auth-hono`, `api-openapi-hono`, `api-types`, `api-http`, and runnable example apps. Tracked by epics #26 / #27. |
 | [1.0](https://github.com/rtorcato/api-common/milestone/2) | Stable release — public API frozen, plus Phase 4 ops packages (`api-upload`, `api-health`, `api-graceful-shutdown`, `api-testing`). |
 | Post-1.0 | The Phase 5 deferred (Tier 2) packages, opened when a consumer hits the need. |
 

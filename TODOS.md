@@ -13,8 +13,8 @@ Roadmap derived from the old [`gitlab.com/rtorcato/api-common`](https://gitlab.c
 - [x] `@rtorcato/api-cors-express` — Express CORS wrapper with sane defaults. seed: `old-reference-code/dropwallet-api-master/src/config/cors/index.ts`.
 - [ ] `@rtorcato/api-http` — axios wrapper / typed HTTP client helpers.
 - [ ] `@rtorcato/api-amqp` — amqplib publisher/consumer helpers.
-- [ ] `@rtorcato/api-openapi` — framework-agnostic OpenAPI 3.1 doc builder + docs HTML (Scalar or Swagger UI). seed: `old-reference-code/template-api-main/src/lib/openApi/openApi.ts`, `.../src/lib/swaggerDoc.ts`.
-- [ ] `@rtorcato/api-openapi-express` — mount on Express: Scalar + `swagger-ui-express`; optional `swagger-jsdoc` ingestion. seed: `old-reference-code/rest-api-master/commons/swagger.js`.
+- [x] `@rtorcato/api-openapi` — framework-agnostic OpenAPI 3.1 doc builder + docs HTML (Scalar or Swagger UI). seed: `old-reference-code/template-api-main/src/lib/openApi/openApi.ts`, `.../src/lib/swaggerDoc.ts`.
+- [x] `@rtorcato/api-openapi-express` — mount on Express: Scalar + `swagger-ui-express`; optional `swagger-jsdoc` ingestion. seed: `old-reference-code/rest-api-master/commons/swagger.js`.
 - [ ] `@rtorcato/api-openapi-hono` — `@hono/zod-openapi` + `@scalar/hono-api-reference` (schema-first, default Scalar UI). seed: `old-reference-code/api-starter-main/hono-open-api-starter-main/src/lib/configure-open-api.ts`, `.../lib/create-app.ts`.
 - [ ] `@rtorcato/api-ts-rest-express` — `@ts-rest/express` + `@ts-rest/open-api` wiring helpers. seed: `old-reference-code/template-api-main/src/lib/swaggerDoc.ts`.
 - [ ] Hono adapters for each new core package, mirroring the `api-errors` / `api-errors-hono` pattern. Evaluate per package — only adapt where Hono integration adds real value (e.g. logger, auth, validation).

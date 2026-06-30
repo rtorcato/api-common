@@ -1,0 +1,48 @@
+{
+  "name": "@rtorcato/api-openapi",
+  "version": "0.0.0",
+  "description": "Framework-agnostic OpenAPI 3.1 helpers — generate Scalar docs HTML from a spec object.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Richard Torcato",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "api",
+    "nodejs",
+    "typescript",
+    "openapi",
+    "scalar",
+    "swagger",
+    "docs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtorcato/api-common.git",
+    "directory": "packages/api-openapi"
+  },
+  "homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-openapi#readme",
+  "bugs": {
+    "url": "https://github.com/rtorcato/api-common/issues"
+  }
+}
