@@ -117,6 +117,7 @@ const config: Config = {
 			items: [
 				{ to: '/docs', position: 'left', label: 'Docs' },
 				{ to: '/docs/api/api-errors', position: 'left', label: 'API' },
+				{ to: '/docs/examples/express', position: 'left', label: 'Examples' },
 				{
 					href: 'https://github.com/rtorcato/api-common',
 					label: 'GitHub',

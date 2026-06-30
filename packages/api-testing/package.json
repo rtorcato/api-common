@@ -1,7 +1,7 @@
 {
-  "name": "@rtorcato/api-express-utils",
-  "version": "0.2.0",
-  "description": "Small Express utility helpers: client IP extraction and route logging.",
+  "name": "@rtorcato/api-testing",
+  "version": "0.0.0",
+  "description": "Test helpers for API projects: supertest re-export, JWT auth fixtures, and response assertion matchers.",
   "type": "module",
   "license": "MIT",
   "author": "Richard Torcato",
@@ -24,14 +24,14 @@
   "engines": {
     "node": ">=22"
   },
-  "peerDependencies": {
-    "express": "^4.18.0 || ^5.0.0"
+  "dependencies": {
+    "@rtorcato/api-auth": "workspace:*",
+    "supertest": "^7.1.0"
   },
   "devDependencies": {
-    "@types/express": "^5.0.0",
     "@types/supertest": "^7.2.0",
-    "express": "^5.1.0",
-    "supertest": "^7.1.0"
+    "@types/express": "^5.0.0",
+    "express": "^5.1.0"
   },
   "publishConfig": {
     "access": "public"
@@ -40,17 +40,17 @@
     "api",
     "nodejs",
     "typescript",
-    "express",
-    "ip",
-    "x-forwarded-for",
-    "routes"
+    "testing",
+    "supertest",
+    "jwt",
+    "vitest"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rtorcato/api-common.git",
-    "directory": "packages/api-express-utils"
+    "directory": "packages/api-testing"
   },
-  "homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-express-utils#readme",
+  "homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-testing#readme",
   "bugs": {
     "url": "https://github.com/rtorcato/api-common/issues"
   }

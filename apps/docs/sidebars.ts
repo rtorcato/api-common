@@ -15,6 +15,21 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'category',
+			label: 'Packages',
+			collapsed: false,
+			items: [
+				'guides/api-errors',
+				'guides/api-config',
+				'guides/api-logger',
+				'guides/api-response',
+				'guides/api-validation',
+				'guides/api-rate-limit',
+				'guides/custom-errors',
+				'guides/testing',
+			],
+		},
+		{
+			type: 'category',
 			label: 'API Reference',
 			collapsed: false,
 			items: [
@@ -22,6 +37,12 @@ const sidebars: SidebarsConfig = {
 				{ type: 'doc', id: 'api/api-errors-express/index', label: 'api-errors-express' },
 				{ type: 'doc', id: 'api/api-errors-hono/index', label: 'api-errors-hono' },
 			],
+		},
+		{
+			type: 'category',
+			label: 'Examples',
+			collapsed: false,
+			items: ['examples/express', 'examples/hono', 'examples/auth'],
 		},
 		{
 			type: 'category',

@@ -1,0 +1,8 @@
+{
+	"extends": "@rtorcato/js-tooling/typescript/base",
+	"compilerOptions": {
+		"rootDir": "./src"
+	},
+	"include": ["src"],
+	"exclude": ["node_modules", "dist"]
+}

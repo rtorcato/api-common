@@ -28,3 +28,21 @@ export function successSchema<T extends z.ZodTypeAny>(dataSchema: T) {
 		message: z.string().optional(),
 	})
 }
+
+/** Error envelope produced by `api-errors-express` / `api-errors-hono` error handlers. */
+export interface ErrorResponse {
+	error: string
+	code: string
+	message: string
+	stack?: string
+}
+
+/** Zod schema for the error envelope — for OpenAPI contracts and response validation. */
+export function errorSchema() {
+	return z.object({
+		error: z.string(),
+		code: z.string(),
+		message: z.string(),
+		stack: z.string().optional(),
+	})
+}

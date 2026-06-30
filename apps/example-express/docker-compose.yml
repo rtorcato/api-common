@@ -1,0 +1,10 @@
+services:
+  api:
+    build:
+      context: ../..
+      dockerfile: apps/example-express/Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      PORT: "3001"
+      LOG_LEVEL: info
