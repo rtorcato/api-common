@@ -15,6 +15,21 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'category',
+			label: 'Packages',
+			collapsed: false,
+			items: [
+				'guides/api-errors',
+				'guides/api-config',
+				'guides/api-logger',
+				'guides/api-response',
+				'guides/api-validation',
+				'guides/api-rate-limit',
+				'guides/custom-errors',
+				'guides/testing',
+			],
+		},
+		{
+			type: 'category',
 			label: 'API Reference',
 			collapsed: false,
 			items: [
