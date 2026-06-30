@@ -1,6 +1,6 @@
 {
 	"name": "@rtorcato/api-rate-limit-hono",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "Hono middleware for @rtorcato/api-rate-limit (sliding-window rate limiter).",
 	"type": "module",
 	"license": "MIT",

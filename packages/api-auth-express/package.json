@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/api-auth-express",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Express middleware for @rtorcato/api-auth — JWT authentication with Bearer-header and cookie support.",
   "type": "module",
   "license": "MIT",
