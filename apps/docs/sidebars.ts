@@ -11,7 +11,7 @@ const sidebars: SidebarsConfig = {
 			type: 'category',
 			label: 'Start here',
 			collapsed: false,
-			items: ['index', 'guides/installation', 'guides/express', 'guides/hono'],
+			items: ['index', 'guides/installation'],
 		},
 		{
 			type: 'category',
@@ -19,6 +19,7 @@ const sidebars: SidebarsConfig = {
 			collapsed: false,
 			items: [
 				'guides/api-errors',
+				'guides/api-auth',
 				'guides/api-config',
 				'guides/api-logger',
 				'guides/api-response',
@@ -26,6 +27,18 @@ const sidebars: SidebarsConfig = {
 				'guides/api-rate-limit',
 				'guides/custom-errors',
 				'guides/testing',
+			],
+		},
+		{
+			type: 'category',
+			label: 'Middleware',
+			collapsed: false,
+			items: [
+				'guides/express',
+				'guides/hono',
+				'guides/api-auth-express',
+				'guides/api-cors-express',
+				'guides/api-express-utils',
 			],
 		},
 		{

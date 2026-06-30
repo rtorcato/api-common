@@ -23,7 +23,9 @@ Roadmap derived from the old [`gitlab.com/rtorcato/api-common`](https://gitlab.c
 
 - [x] `@rtorcato/api-config` — env var loading + zod parsing via `loadEnv(schema)` (throws instead of `process.exit`).
 - [x] `@rtorcato/api-testing` — supertest helpers, request factories, common assertions for Express + Hono.
-- [x] `@rtorcato/api-rate-limit` — framework-agnostic in-memory sliding-window limiter (bounded memory). Express/Hono adapters still TODO.
+- [x] `@rtorcato/api-rate-limit` — framework-agnostic in-memory sliding-window limiter (bounded memory).
+- [x] `@rtorcato/api-rate-limit-express` — Express middleware for api-rate-limit.
+- [x] `@rtorcato/api-rate-limit-hono` — Hono middleware for api-rate-limit.
 - [ ] `@rtorcato/api-types` (optional) — shared response shapes (e.g. the `{ error, code, message }` envelope already standardized across `api-errors-express` / `api-errors-hono`).
 - [ ] `@rtorcato/api-upload` — S3 upload via `multer-s3` (public/private ACL, cache-control, custom metadata, `MulterError` size handling). Peer deps: `@aws-sdk/client-s3`, `multer`, `multer-s3`. seed: `old-reference-code/dropwallet-api-master/src/lib/AWS/S3/uploader.ts`, `.../src/config/aws/s3.ts`.
 - [x] `@rtorcato/api-express-utils` — `getIP` (X-Forwarded-For aware) + `logRoutes` (print registered routes at boot). Skip `getCountry` (heavy geoip dep) until a consumer needs it. seed: `old-reference-code/dropwallet-api-master/src/components/express/getIP.ts`, `.../logRoutes.ts`.
