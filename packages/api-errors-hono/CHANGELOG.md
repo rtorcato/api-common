@@ -1,5 +1,14 @@
 # @rtorcato/api-errors-hono
 
+## 0.1.2
+
+### Patch Changes
+
+- fa3f320: Add `repository`, `homepage`, `bugs`, and `keywords` metadata to every package for npm discoverability.
+- Updated dependencies [fa3f320]
+- Updated dependencies [fa3f320]
+  - @rtorcato/api-errors@0.2.0
+
 ## 0.1.1
 
 ### Patch Changes
