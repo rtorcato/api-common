@@ -1,0 +1,57 @@
+{
+  "name": "@rtorcato/api-testing",
+  "version": "0.0.0",
+  "description": "Test helpers for API projects: supertest re-export, JWT auth fixtures, and response assertion matchers.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Richard Torcato",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@rtorcato/api-auth": "workspace:*",
+    "supertest": "^7.1.0"
+  },
+  "devDependencies": {
+    "@types/supertest": "^7.2.0",
+    "@types/express": "^5.0.0",
+    "express": "^5.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "api",
+    "nodejs",
+    "typescript",
+    "testing",
+    "supertest",
+    "jwt",
+    "vitest"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtorcato/api-common.git",
+    "directory": "packages/api-testing"
+  },
+  "homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-testing#readme",
+  "bugs": {
+    "url": "https://github.com/rtorcato/api-common/issues"
+  }
+}

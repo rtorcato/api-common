@@ -1,0 +1,55 @@
+{
+  "name": "@rtorcato/api-auth",
+  "version": "0.0.0",
+  "description": "Framework-agnostic JWT sign/verify helpers with Bearer-header and cookie token extraction.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Richard Torcato",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@rtorcato/api-errors": "workspace:*",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.9"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "api",
+    "nodejs",
+    "typescript",
+    "jwt",
+    "auth",
+    "authentication",
+    "jsonwebtoken"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtorcato/api-common.git",
+    "directory": "packages/api-auth"
+  },
+  "homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-auth#readme",
+  "bugs": {
+    "url": "https://github.com/rtorcato/api-common/issues"
+  }
+}
