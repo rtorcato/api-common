@@ -25,6 +25,12 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'category',
+			label: 'Examples',
+			collapsed: false,
+			items: ['examples/express', 'examples/hono', 'examples/auth'],
+		},
+		{
+			type: 'category',
 			label: 'Releases',
 			items: ['changelog'],
 		},
