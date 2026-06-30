@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/api-openapi-express",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Express router that serves Scalar API docs from an OpenAPI spec object.",
   "type": "module",
   "license": "MIT",

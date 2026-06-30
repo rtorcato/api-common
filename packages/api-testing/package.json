@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/api-testing",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Test helpers for API projects: supertest re-export, JWT auth fixtures, and response assertion matchers.",
   "type": "module",
   "license": "MIT",

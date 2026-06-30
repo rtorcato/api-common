@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/api-cors-express",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Express CORS middleware with sane defaults (credentials, standard methods, preflight).",
   "type": "module",
   "license": "MIT",
