@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@rtorcato/api-errors": "workspace:*",
-    "zod-error": "^1.5.0"
+    "zod-error": "^2.0.0"
   },
   "peerDependencies": {
     "zod": "^3.23.0"
