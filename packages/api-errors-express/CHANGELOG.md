@@ -1,5 +1,18 @@
 # @rtorcato/api-errors-express
 
+## 0.2.0
+
+### Minor Changes
+
+- 9fd03c8: Add `asyncHandler()` — wraps an async Express route handler and forwards rejections to `next()`, so `errorHandler` handles them without per-route try/catch.
+
+### Patch Changes
+
+- fa3f320: Add `repository`, `homepage`, `bugs`, and `keywords` metadata to every package for npm discoverability.
+- Updated dependencies [fa3f320]
+- Updated dependencies [fa3f320]
+  - @rtorcato/api-errors@0.2.0
+
 ## 0.1.1
 
 ### Patch Changes

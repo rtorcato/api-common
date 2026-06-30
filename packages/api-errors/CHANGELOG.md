@@ -1,5 +1,15 @@
 # @rtorcato/api-errors
 
+## 0.2.0
+
+### Minor Changes
+
+- fa3f320: Add `UnprocessableEntityError` (422), `TooManyRequestsError` (429), and `ServiceUnavailableError` (503) classes.
+
+### Patch Changes
+
+- fa3f320: Add `repository`, `homepage`, `bugs`, and `keywords` metadata to every package for npm discoverability.
+
 ## 0.1.1
 
 ### Patch Changes
