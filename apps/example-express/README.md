@@ -13,6 +13,7 @@ Runnable Express 5 API demonstrating all `@rtorcato/api-*` packages working toge
 | `api-rate-limit` | 100 req/min sliding-window limiter |
 | `api-response` | `ok()` success envelope on every response |
 | `api-validation` | `validate()` on POST body — throws `BadRequestError` on mismatch |
+| `api-openapi` + `api-openapi-express` | `serveApiDocs` (Scalar) at `/api-docs`, `serveSwaggerDocs` (Swagger UI) at `/swagger` |
 
 ## Routes
 
@@ -21,6 +22,10 @@ GET    /items
 POST   /items      body: { "name": string }
 GET    /items/:id
 DELETE /items/:id
+GET    /api-docs            Scalar API reference
+GET    /api-docs/openapi.json
+GET    /swagger             Swagger UI
+GET    /swagger/openapi.json
 ```
 
 ## Run locally
@@ -29,7 +34,8 @@ DELETE /items/:id
 cp .env.example .env
 pnpm dev
 # → http://localhost:3001
-# → http://localhost:3001/api-docs  (Swagger UI)
+# → http://localhost:3001/api-docs   (Scalar)
+# → http://localhost:3001/swagger    (Swagger UI)
 ```
 
 ## Run with Docker
@@ -37,7 +43,8 @@ pnpm dev
 ```bash
 docker compose up
 # → http://localhost:3001
-# → http://localhost:3001/api-docs  (Swagger UI)
+# → http://localhost:3001/api-docs   (Scalar)
+# → http://localhost:3001/swagger    (Swagger UI)
 ```
 
 ## Quick smoke test

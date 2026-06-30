@@ -12,6 +12,7 @@ Runnable Hono API demonstrating all `@rtorcato/api-*` packages working together.
 | `api-rate-limit` | 100 req/min sliding-window limiter keyed on forwarded IP |
 | `api-response` | `ok()` success envelope on every response |
 | `api-validation` | `validate()` on POST body — throws `BadRequestError` on mismatch |
+| `@hono/swagger-ui` | Swagger UI at `/api-docs` backed by `/api-docs/json` |
 
 ## Routes
 
@@ -20,6 +21,8 @@ GET    /items
 POST   /items      body: { "name": string }
 GET    /items/:id
 DELETE /items/:id
+GET    /api-docs        Swagger UI
+GET    /api-docs/json
 ```
 
 ## Run locally
