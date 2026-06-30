@@ -116,8 +116,8 @@ importers:
         version: 13.0.0
     devDependencies:
       zod:
-        specifier: ^3.23.8
-        version: 3.25.76
+        specifier: ^4.4.3
+        version: 4.4.3
 
   packages/api-errors: {}
 
@@ -173,8 +173,8 @@ importers:
   packages/api-response:
     devDependencies:
       zod:
-        specifier: ^3.23.8
-        version: 3.25.76
+        specifier: ^4.4.3
+        version: 4.4.3
 
   packages/api-validation:
     dependencies:
@@ -183,11 +183,11 @@ importers:
         version: link:../api-errors
       zod-error:
         specifier: ^2.0.0
-        version: 2.0.0(zod@3.25.76)
+        version: 2.0.0(zod@4.4.3)
     devDependencies:
       zod:
-        specifier: ^3.23.8
-        version: 3.25.76
+        specifier: ^4.4.3
+        version: 4.4.3
 
 packages:
 
@@ -7296,9 +7296,6 @@ packages:
     resolution: {integrity: sha512-ivSoPm7h5SEGG8GUvQ7YTwrnEx36qNmUIU5hSIGcqcdl7+ZFoTrYXAdQEs3KP/rkihrrR9REEdOeGU+fWdMoNw==}
     peerDependencies:
       zod: ^4.0.0
-
-  zod@3.25.76:
-    resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
   zod@4.4.3:
     resolution: {integrity: sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==}
@@ -16406,11 +16403,9 @@ snapshots:
 
   yocto-queue@1.2.2: {}
 
-  zod-error@2.0.0(zod@3.25.76):
+  zod-error@2.0.0(zod@4.4.3):
     dependencies:
-      zod: 3.25.76
-
-  zod@3.25.76: {}
+      zod: 4.4.3
 
   zod@4.4.3: {}
 
