@@ -19,14 +19,20 @@ interact in a real server.
 | [`api-rate-limit`](https://github.com/rtorcato/api-common/tree/main/packages/api-rate-limit) | `createRateLimiter()` — 100 req/min sliding window, in-memory |
 | [`api-response`](https://github.com/rtorcato/api-common/tree/main/packages/api-response) | `ok()` wraps every success payload in `{ success: true, data }` |
 | [`api-validation`](https://github.com/rtorcato/api-common/tree/main/packages/api-validation) | `validate()` parses POST bodies and throws `BadRequestError` on failure |
+| [`api-openapi`](https://github.com/rtorcato/api-common/tree/main/packages/api-openapi) | OpenAPI spec defined in `src/spec.ts`; `generateScalarHtml` / `generateSwaggerHtml` render the UI pages |
+| [`api-openapi-express`](https://github.com/rtorcato/api-common/tree/main/packages/api-openapi-express) | `serveApiDocs()` mounts Scalar UI at `/api-docs`; `serveSwaggerDocs()` mounts Swagger UI at `/swagger` |
 
 ## Routes
 
 ```
 GET    /items
-POST   /items      { "name": string }
+POST   /items              { "name": string }
 GET    /items/:id
 DELETE /items/:id
+GET    /api-docs           Scalar API reference
+GET    /api-docs/openapi.json
+GET    /swagger            Swagger UI
+GET    /swagger/openapi.json
 ```
 
 Items are stored in-memory — no database required.
@@ -40,7 +46,9 @@ pnpm dev
 ```
 
 The server starts on `http://localhost:3001` with pretty-printed logs.
-Swagger UI is available at `http://localhost:3001/api-docs`.
+
+- Scalar API reference → `http://localhost:3001/api-docs`
+- Swagger UI → `http://localhost:3001/swagger`
 
 ## Run with Docker
 

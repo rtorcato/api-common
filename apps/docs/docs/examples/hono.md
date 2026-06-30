@@ -19,14 +19,17 @@ so you can compare the two implementations side by side.
 | [`api-rate-limit`](https://github.com/rtorcato/api-common/tree/main/packages/api-rate-limit) | `createRateLimiter()` — 100 req/min sliding window keyed on forwarded IP |
 | [`api-response`](https://github.com/rtorcato/api-common/tree/main/packages/api-response) | `ok()` wraps every success payload in `{ success: true, data }` |
 | [`api-validation`](https://github.com/rtorcato/api-common/tree/main/packages/api-validation) | `validate()` parses POST bodies and throws `BadRequestError` on failure |
+| [`@hono/swagger-ui`](https://github.com/honojs/middleware/tree/main/packages/swagger-ui) | Swagger UI at `/api-docs`; raw spec served at `/api-docs/json` |
 
 ## Routes
 
 ```
 GET    /items
-POST   /items      { "name": string }
+POST   /items          { "name": string }
 GET    /items/:id
 DELETE /items/:id
+GET    /api-docs       Swagger UI
+GET    /api-docs/json  raw OpenAPI spec
 ```
 
 Items are stored in-memory — no database required.
@@ -40,7 +43,9 @@ pnpm dev
 ```
 
 The server starts on `http://localhost:3002` with pretty-printed logs.
-Swagger UI is available at `http://localhost:3002/api-docs`.
+
+- Swagger UI → `http://localhost:3002/api-docs`
+- Raw spec → `http://localhost:3002/api-docs/json`
 
 ## Run with Docker
 
