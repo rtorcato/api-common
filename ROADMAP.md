@@ -33,7 +33,11 @@ edge-safe cores here).
    `api-amqp`, `api-upload` (S3 / multer-s3).
 5. **Deferred (Tier 2)** — open only when a consumer hits the need:
    `api-pagination`, `api-metrics`, `api-otel`, `api-cache`,
-   `api-idempotency`.
+   `api-idempotency`, plus filed candidates `api-webhooks`
+   ([#62](https://github.com/rtorcato/api-common/issues/62)), `api-mcp`
+   ([#63](https://github.com/rtorcato/api-common/issues/63)), and `api-timeout`
+   ([#66](https://github.com/rtorcato/api-common/issues/66)). Request-ID is
+   **not** a package — it folds into `api-logger` (see below).
 
 ## Milestones
 
@@ -54,10 +58,18 @@ Principle — **schema-first**: derive the OpenAPI spec from the same Zod schema
 used by `api-validation`, so docs can't drift from validation. Default docs UI
 is **Scalar** (`@scalar/*`); `swagger-ui-express` is the legacy/JSDoc fallback.
 
+**Status:** the Express path is **renderer-only** today — `api-openapi` /
+`api-openapi-express` take a `spec` object you supply and render Scalar/Swagger
+HTML from it. They do **not** yet derive that spec from Zod, so on Express the
+spec is hand-authored and *can* drift from validation (see
+`apps/example-express/src/spec.ts`). Closing that gap — a Zod→OpenAPI builder —
+is tracked separately. Hono is the gold-standard schema-first path via
+`@hono/zod-openapi`.
+
 | Package | Role |
 | --- | --- |
-| `api-openapi` | framework-agnostic core: build the OpenAPI 3.1 document + serve the docs HTML (Scalar or Swagger UI) |
-| `api-openapi-express` | mount on Express — Scalar + `swagger-ui-express`; optional `swagger-jsdoc` ingestion for legacy JSDoc projects |
+| `api-openapi` | framework-agnostic core: render the docs HTML (Scalar or Swagger UI) from an OpenAPI 3.1 document. Zod→spec builder TODO. |
+| `api-openapi-express` | mount on Express — serves Scalar/Swagger from a supplied spec. Optional `swagger-jsdoc` ingestion (legacy) and schema-first Zod derivation are TODO. |
 | `api-openapi-hono` | `@hono/zod-openapi` + `@scalar/hono-api-reference` — the gold-standard schema-first path |
 
 ## New packages not yet in epics #26 / #27
