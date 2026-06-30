@@ -1,4 +1,5 @@
 import { HttpError } from '@rtorcato/api-errors'
+import { isDev } from '@rtorcato/js-common/env'
 import type { ErrorHandler } from 'hono'
 import type { ContentfulStatusCode } from 'hono/utils/http-status'
 
@@ -7,7 +8,7 @@ export type ErrorHandlerOptions = {
 }
 
 export function errorHandler(options: ErrorHandlerOptions = {}): ErrorHandler {
-	const includeStack = options.includeStack ?? process.env['NODE_ENV'] === 'development'
+	const includeStack = options.includeStack ?? isDev()
 
 	return (err, c) => {
 		const isHttp = err instanceof HttpError

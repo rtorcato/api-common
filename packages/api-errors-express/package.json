@@ -25,7 +25,8 @@
     "node": ">=22"
   },
   "dependencies": {
-    "@rtorcato/api-errors": "workspace:*"
+    "@rtorcato/api-errors": "workspace:*",
+    "@rtorcato/js-common": "^2.8.1"
   },
   "peerDependencies": {
     "express": "^4.18.0 || ^5.0.0"

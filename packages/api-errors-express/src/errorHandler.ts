@@ -1,4 +1,5 @@
 import { HttpError } from '@rtorcato/api-errors'
+import { isDev } from '@rtorcato/js-common/env'
 import type { ErrorRequestHandler } from 'express'
 
 export type ErrorHandlerOptions = {
@@ -6,7 +7,7 @@ export type ErrorHandlerOptions = {
 }
 
 export function errorHandler(options: ErrorHandlerOptions = {}): ErrorRequestHandler {
-	const includeStack = options.includeStack ?? process.env['NODE_ENV'] === 'development'
+	const includeStack = options.includeStack ?? isDev()
 
 	return (err, _req, res, _next) => {
 		const isHttp = err instanceof HttpError
