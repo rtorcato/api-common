@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/api-express-utils",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Small Express utility helpers: client IP extraction and route logging.",
   "type": "module",
   "license": "MIT",
