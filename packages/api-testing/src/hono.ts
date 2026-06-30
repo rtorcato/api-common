@@ -1,5 +1,5 @@
 interface FetchApp {
-	fetch: (request: Request, ...extra: unknown[]) => Response | Promise<Response>
+	fetch: (request: Request, ...extra: any[]) => Response | Promise<Response>
 }
 
 export async function honoFetch(
