@@ -156,6 +156,21 @@ importers:
         specifier: ^4.12.27
         version: 4.12.27
 
+  packages/api-express-utils:
+    devDependencies:
+      '@types/express':
+        specifier: ^5.0.0
+        version: 5.0.6
+      '@types/supertest':
+        specifier: ^7.2.0
+        version: 7.2.0
+      express:
+        specifier: ^5.1.0
+        version: 5.2.1
+      supertest:
+        specifier: ^7.1.0
+        version: 7.2.2
+
   packages/api-logger:
     dependencies:
       '@rtorcato/js-common':

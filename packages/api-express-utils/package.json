@@ -1,0 +1,57 @@
+{
+  "name": "@rtorcato/api-express-utils",
+  "version": "0.1.0",
+  "description": "Small Express utility helpers: client IP extraction and route logging.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Richard Torcato",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "peerDependencies": {
+    "express": "^4.18.0 || ^5.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/supertest": "^7.2.0",
+    "express": "^5.1.0",
+    "supertest": "^7.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "api",
+    "nodejs",
+    "typescript",
+    "express",
+    "ip",
+    "x-forwarded-for",
+    "routes"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtorcato/api-common.git",
+    "directory": "packages/api-express-utils"
+  },
+  "homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-express-utils#readme",
+  "bugs": {
+    "url": "https://github.com/rtorcato/api-common/issues"
+  }
+}
