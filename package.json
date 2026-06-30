@@ -24,7 +24,7 @@
     "@biomejs/biome": "^2.5.0",
     "@changesets/cli": "^2.31.0",
     "@commitlint/cli": "^21.2.0",
-    "@commitlint/config-conventional": "^21.0.2",
+    "@commitlint/config-conventional": "^21.2.0",
     "@rtorcato/js-tooling": "^2.21.0",
     "@types/node": "^25.9.1",
     "husky": "^9.1.7",
