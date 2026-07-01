@@ -28,13 +28,20 @@
     "@rtorcato/api-openapi": "workspace:*"
   },
   "peerDependencies": {
-    "express": "^4.18.0 || ^5.0.0"
+    "express": "^4.18.0 || ^5.0.0",
+    "swagger-jsdoc": "^6.0.0"
+  },
+  "peerDependenciesMeta": {
+    "swagger-jsdoc": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/supertest": "^7.2.0",
     "express": "^5.1.0",
-    "supertest": "^7.1.0"
+    "supertest": "^7.1.0",
+    "swagger-jsdoc": "^6.2.8"
   },
   "publishConfig": {
     "access": "public"
