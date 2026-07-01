@@ -24,6 +24,12 @@
   "engines": {
     "node": ">=22"
   },
+  "peerDependencies": {
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "zod": "^4.4.3"
+  },
   "publishConfig": {
     "access": "public"
   },

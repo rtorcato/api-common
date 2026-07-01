@@ -344,7 +344,11 @@ importers:
         specifier: ^13.0.0
         version: 13.1.3
 
-  packages/api-openapi: {}
+  packages/api-openapi:
+    devDependencies:
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
 
   packages/api-openapi-express:
     dependencies:
