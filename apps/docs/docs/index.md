@@ -1,20 +1,26 @@
 ---
 title: api-common
-description: Framework-agnostic HTTP error classes plus Express and Hono middleware for Node.js APIs.
+description: Framework-agnostic building blocks for Node.js APIs — errors, auth, rate limiting, validation, config, logging, and OpenAPI docs, with Express and Hono adapters.
 sidebar_position: 0
 ---
 
 # api-common
 
-A small family of reusable packages for building Node.js APIs. A framework-agnostic
-core of HTTP error classes, plus thin middleware adapters for Express and Hono that
-turn those errors into a consistent JSON response.
+A family of reusable packages for building Node.js APIs. Each is independently
+consumable, framework-agnostic where possible, and ships thin Express and Hono
+adapters as peer dependencies so you control the framework version.
 
-- **`@rtorcato/api-errors`** — framework-agnostic `HttpError` base class plus `BadRequestError`, `UnauthorizedError`, `ForbiddenError`, `NotFoundError`, `ConflictError`, and `InternalServerError`. Each carries a `status` and a machine-readable `code`. No HTTP framework required.
-- **`@rtorcato/api-errors-express`** — Express `errorHandler` + `notFoundHandler` middleware.
-- **`@rtorcato/api-errors-hono`** — Hono `errorHandler` + `notFoundHandler` middleware.
+- **[`@rtorcato/api-errors`](./guides/api-errors.md)** — framework-agnostic `HttpError` base class plus `BadRequestError`, `UnauthorizedError`, `ForbiddenError`, `NotFoundError`, `ConflictError`, and `InternalServerError`, each carrying a `status` and machine-readable `code`. Express and Hono adapters (`errorHandler` + `notFoundHandler`) turn thrown errors into a consistent JSON response.
+- **[`@rtorcato/api-auth`](./guides/api-auth.md)** — JWT sign/verify/extract, with an Express adapter for auth and optional-auth middleware.
+- **[`@rtorcato/api-rate-limit`](./guides/api-rate-limit.md)** — in-memory sliding-window rate limiter with Express and Hono middleware.
+- **[`@rtorcato/api-validation`](./guides/api-validation.md)** — zod request validation that throws a `BadRequestError` on failure.
+- **[`@rtorcato/api-response`](./guides/api-response.md)** — `ok()` success envelope, the counterpart to the error shape.
+- **[`@rtorcato/api-config`](./guides/api-config.md)** — load and validate env vars with dotenv + zod at startup.
+- **[`@rtorcato/api-logger`](./guides/api-logger.md)** — pino logger factory: pretty in dev, JSON in production.
+- **[`@rtorcato/api-openapi`](./guides/api-openapi.md)** — Swagger UI and Scalar HTML generators, with an Express adapter to serve them.
+- **[`@rtorcato/api-cors-express`](./guides/api-cors-express.md)** and **[`@rtorcato/api-express-utils`](./guides/api-express-utils.md)** — CORS middleware and small Express helpers (client IP, route listing).
 
-Both adapters emit the **same** response body, so switching frameworks (or running
+The error adapters emit the **same** response body, so switching frameworks (or running
 both) keeps your error contract identical:
 
 ```json

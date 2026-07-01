@@ -78,13 +78,13 @@ type Pillar = {
 
 const PILLARS: Pillar[] = [
 	{
-		title: 'Framework-agnostic core',
-		desc: '`@rtorcato/api-errors` is plain TypeScript — no HTTP framework pulled in. Throw the same errors anywhere.',
+		title: 'Mix and match',
+		desc: 'Focused packages — errors, auth, rate limiting, validation, config, logging, OpenAPI. Install only what you need.',
 		icon: 'layers',
 	},
 	{
-		title: 'Consistent error shape',
-		desc: 'Every handler maps to `{ error, code, message, stack? }` — identical JSON across Express and Hono.',
+		title: 'One response contract',
+		desc: 'Errors map to `{ error, code, message }`, successes to `{ success, data }` — identical JSON across Express and Hono.',
 		icon: 'shield',
 	},
 	{
@@ -110,29 +110,96 @@ type Package = {
 const PACKAGES: Package[] = [
 	{
 		name: '@rtorcato/api-errors',
-		tagline: 'Core',
+		tagline: 'Errors',
 		desc: 'Framework-agnostic HTTP error classes: HttpError plus 400/401/403/404/409/500 subclasses, each carrying status + code.',
-		to: '/docs/api/api-errors',
-		chips: ['HttpError', 'BadRequestError', 'NotFoundError', 'InternalServerError'],
+		to: '/docs/guides/api-errors',
+		chips: ['Core', 'Express', 'Hono'],
 	},
 	{
-		name: '@rtorcato/api-errors-express',
-		tagline: 'Express',
-		desc: 'Express middleware: errorHandler + notFoundHandler that map HttpError instances to a consistent JSON body.',
-		to: '/docs/api/api-errors-express',
-		chips: ['errorHandler', 'notFoundHandler'],
+		name: '@rtorcato/api-auth',
+		tagline: 'Auth',
+		desc: 'JWT utilities — sign, verify, and extract bearer tokens — with an Express adapter for auth and optional-auth middleware.',
+		to: '/docs/guides/api-auth',
+		chips: ['Core', 'Express'],
 	},
 	{
-		name: '@rtorcato/api-errors-hono',
-		tagline: 'Hono',
-		desc: 'Hono middleware wiring into app.onError / app.notFound, with the same response shape as the Express adapter.',
-		to: '/docs/api/api-errors-hono',
-		chips: ['errorHandler', 'notFoundHandler'],
+		name: '@rtorcato/api-rate-limit',
+		tagline: 'Rate limit',
+		desc: 'In-memory sliding-window rate limiter with matching Express and Hono middleware adapters.',
+		to: '/docs/guides/api-rate-limit',
+		chips: ['Core', 'Express', 'Hono'],
+	},
+	{
+		name: '@rtorcato/api-openapi',
+		tagline: 'API docs',
+		desc: 'HTML generators for Swagger UI and Scalar API Reference, plus an Express adapter to serve them from an OpenAPI spec.',
+		to: '/docs/guides/api-openapi',
+		chips: ['Swagger UI', 'Scalar', 'Express'],
+	},
+	{
+		name: '@rtorcato/api-validation',
+		tagline: 'Validation',
+		desc: 'Zod request validation that throws a BadRequestError on failure — wires straight into the error handler.',
+		to: '/docs/guides/api-validation',
+		chips: ['zod', 'BadRequestError'],
+	},
+	{
+		name: '@rtorcato/api-response',
+		tagline: 'Responses',
+		desc: 'Consistent success-response envelope for JSON APIs — the success-path counterpart to api-errors.',
+		to: '/docs/guides/api-response',
+		chips: ['envelope'],
+	},
+	{
+		name: '@rtorcato/api-config',
+		tagline: 'Config',
+		desc: 'Load and validate environment variables with dotenv + zod at startup, failing fast on bad config.',
+		to: '/docs/guides/api-config',
+		chips: ['dotenv', 'zod'],
+	},
+	{
+		name: '@rtorcato/api-logger',
+		tagline: 'Logging',
+		desc: 'Pino logger factory — pretty output in development, structured JSON in production.',
+		to: '/docs/guides/api-logger',
+		chips: ['pino'],
+	},
+	{
+		name: '@rtorcato/api-cors-express',
+		tagline: 'CORS',
+		desc: 'Opinionated CORS middleware for Express with sane defaults and a small config surface.',
+		to: '/docs/guides/api-cors-express',
+		chips: ['Express'],
+	},
+	{
+		name: '@rtorcato/api-express-utils',
+		tagline: 'Express utils',
+		desc: 'Small Express helpers — client IP extraction and route listing for boot-time logging.',
+		to: '/docs/guides/api-express-utils',
+		chips: ['getIP', 'logRoutes'],
+	},
+	{
+		name: '@rtorcato/api-testing',
+		tagline: 'Testing',
+		desc: 'Helpers for testing Express and Hono routes against the shared error and response contract.',
+		to: '/docs/guides/testing',
+		chips: ['Express', 'Hono'],
 	},
 ]
 
-const HERO_CODE = `import { NotFoundError } from '@rtorcato/api-errors'
+const HERO_CODE = `import { loadEnv } from '@rtorcato/api-config'
+import { NotFoundError } from '@rtorcato/api-errors'
 import { errorHandler } from '@rtorcato/api-errors-express'
+import { ok } from '@rtorcato/api-response'
+import { validate } from '@rtorcato/api-validation'
+import { z } from 'zod'
+
+const env = loadEnv(z.object({ PORT: z.coerce.number().default(3000) }))
+
+app.post('/users', (req, res) => {
+  const body = validate(z.object({ name: z.string() }), req.body)
+  res.status(201).json(ok(body))
+})
 
 app.get('/users/:id', (req, res) => {
   throw new NotFoundError('User not found')
@@ -155,8 +222,8 @@ function Hero(): ReactElement {
 					<span className={styles.wmCommon}>common</span>
 				</div>
 				<p className={styles.tagline}>
-					Reusable, framework-agnostic building blocks for Node.js APIs — HTTP error classes plus
-					Express and Hono middleware.
+					Reusable, framework-agnostic building blocks for Node.js APIs — errors, auth, rate
+					limiting, validation, config, logging, and OpenAPI docs, with Express and Hono adapters.
 				</p>
 
 				<div className={styles.heroBody}>
@@ -171,11 +238,8 @@ function Hero(): ReactElement {
 						>
 							Get started →
 						</Link>
-						<Link
-							className={clsx('button button--lg', styles.ctaSecondary)}
-							to="/docs/api/api-errors"
-						>
-							Browse the API
+						<Link className={clsx('button button--lg', styles.ctaSecondary)} to="/docs/">
+							Browse the docs
 						</Link>
 					</div>
 					<InstallTabs pkg="@rtorcato/api-errors" />
@@ -222,13 +286,14 @@ function Packages(): ReactElement {
 		<section className={styles.section}>
 			<div className={styles.sectionHead}>
 				<div>
-					<h2 className={styles.h2}>Three packages, one error contract</h2>
+					<h2 className={styles.h2}>One toolkit, one contract</h2>
 					<p className={styles.sub}>
-						Install the core on its own, or pair it with the adapter for your framework.
+						Install only the pieces you need — each package is independent, with framework adapters
+						as peer deps.
 					</p>
 				</div>
-				<Link className={styles.viewAll} to="/docs/api/api-errors">
-					View the API →
+				<Link className={styles.viewAll} to="/docs/guides/installation">
+					Browse the guides →
 				</Link>
 			</div>
 			<div className={styles.catGrid}>
@@ -314,7 +379,7 @@ export default function Home(): ReactElement {
 	return (
 		<Layout
 			title="api-common"
-			description="Reusable, framework-agnostic building blocks for Node.js APIs — HTTP error classes plus Express and Hono middleware."
+			description="Reusable, framework-agnostic building blocks for Node.js APIs — errors, auth, rate limiting, validation, config, logging, and OpenAPI docs, with Express and Hono adapters."
 		>
 			<main>
 				<Hero />
