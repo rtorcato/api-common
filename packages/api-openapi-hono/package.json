@@ -1,0 +1,60 @@
+{
+	"name": "@rtorcato/api-openapi-hono",
+	"version": "0.0.0",
+	"description": "Hono adapter for schema-first OpenAPI docs — wires @hono/zod-openapi and serves the Scalar API reference UI.",
+	"type": "module",
+	"license": "MIT",
+	"author": "Richard Torcato",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsc -p tsconfig.build.json",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run"
+	},
+	"engines": {
+		"node": ">=22"
+	},
+	"peerDependencies": {
+		"@hono/zod-openapi": "^1.0.0",
+		"@scalar/hono-api-reference": "^0.11.0",
+		"hono": "^4.12.5"
+	},
+	"devDependencies": {
+		"@hono/zod-openapi": "^1.4.0",
+		"@scalar/hono-api-reference": "^0.11.7",
+		"hono": "^4.12.27",
+		"typescript": "~6.0.3"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"keywords": [
+		"api",
+		"nodejs",
+		"typescript",
+		"hono",
+		"openapi",
+		"scalar",
+		"swagger",
+		"docs"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rtorcato/api-common.git",
+		"directory": "packages/api-openapi-hono"
+	},
+	"homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-openapi-hono#readme",
+	"bugs": {
+		"url": "https://github.com/rtorcato/api-common/issues"
+	}
+}

@@ -132,9 +132,9 @@ const PACKAGES: Package[] = [
 	{
 		name: '@rtorcato/api-openapi',
 		tagline: 'API docs',
-		desc: 'HTML generators for Swagger UI and Scalar API Reference, plus an Express adapter to serve them from an OpenAPI spec.',
+		desc: 'HTML generators for Swagger UI and Scalar API Reference, plus Express and Hono adapters to serve them from an OpenAPI spec.',
 		to: '/docs/guides/api-openapi',
-		chips: ['Swagger UI', 'Scalar', 'Express'],
+		chips: ['Swagger UI', 'Scalar', 'Express', 'Hono'],
 	},
 	{
 		name: '@rtorcato/api-validation',
