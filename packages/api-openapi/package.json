@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/api-openapi",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Framework-agnostic OpenAPI 3.1 helpers — generate Scalar docs HTML from a spec object.",
   "type": "module",
   "license": "MIT",
