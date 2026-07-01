@@ -1,6 +1,6 @@
 {
 	"name": "@rtorcato/api-openapi-hono",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "Hono adapter for schema-first OpenAPI docs — wires @hono/zod-openapi and serves the Scalar API reference UI.",
 	"type": "module",
 	"license": "MIT",

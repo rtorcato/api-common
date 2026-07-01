@@ -1,5 +1,12 @@
 # @rtorcato/api-openapi-express
 
+## 0.1.1
+
+### Patch Changes
+
+- Updated dependencies [8701d23]
+  - @rtorcato/api-openapi@0.2.0
+
 ## 0.1.0
 
 ### Minor Changes
