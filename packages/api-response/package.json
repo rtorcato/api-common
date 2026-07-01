@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/api-response",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Consistent success-response envelope and zod schema helper for Node API projects.",
   "type": "module",
   "license": "MIT",
