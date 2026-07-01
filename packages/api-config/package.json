@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/api-config",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Load and validate environment variables with dotenv + zod for Node API projects.",
   "type": "module",
   "license": "MIT",
