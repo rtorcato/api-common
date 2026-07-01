@@ -1,5 +1,8 @@
 import Link from '@docusaurus/Link'
+import CodeBlock from '@theme/CodeBlock'
 import Layout from '@theme/Layout'
+import TabItem from '@theme/TabItem'
+import Tabs from '@theme/Tabs'
 import clsx from 'clsx'
 import type { ReactElement } from 'react'
 import InstallTabs from '@site/src/components/InstallTabs'
@@ -187,7 +190,19 @@ const PACKAGES: Package[] = [
 	},
 ]
 
-const HERO_CODE = `import { loadEnv } from '@rtorcato/api-config'
+type Example = {
+	label: string
+	file: string
+	language: string
+	code: string
+}
+
+const EXAMPLES: Example[] = [
+	{
+		label: 'Express',
+		file: 'server.ts',
+		language: 'tsx',
+		code: `import { loadEnv } from '@rtorcato/api-config'
 import { NotFoundError } from '@rtorcato/api-errors'
 import { errorHandler } from '@rtorcato/api-errors-express'
 import { ok } from '@rtorcato/api-response'
@@ -205,7 +220,51 @@ app.get('/users/:id', (req, res) => {
   throw new NotFoundError('User not found')
 })
 
-app.use(errorHandler())`
+app.use(errorHandler())`,
+	},
+	{
+		label: 'Hono',
+		file: 'server.ts',
+		language: 'tsx',
+		code: `import { NotFoundError } from '@rtorcato/api-errors'
+import { errorHandler } from '@rtorcato/api-errors-hono'
+import { ok } from '@rtorcato/api-response'
+import { validate } from '@rtorcato/api-validation'
+import { Hono } from 'hono'
+import { z } from 'zod'
+
+const app = new Hono()
+
+app.post('/users', async (c) => {
+  const body = validate(z.object({ name: z.string() }), await c.req.json())
+  return c.json(ok(body), 201)
+})
+
+app.get('/users/:id', () => {
+  throw new NotFoundError('User not found')
+})
+
+app.onError(errorHandler())`,
+	},
+	{
+		label: 'Auth',
+		file: 'auth.ts',
+		language: 'tsx',
+		code: `import { signToken, verifyToken } from '@rtorcato/api-auth'
+import { requireAuth } from '@rtorcato/api-auth-express'
+
+const token = signToken({ sub: user.id }, env.JWT_SECRET, {
+  expiresIn: '1h',
+})
+
+// Reject anything without a valid bearer token, then read the claims.
+app.get('/me', requireAuth(env.JWT_SECRET), (req, res) => {
+  res.json(ok({ userId: req.auth.sub }))
+})
+
+const claims = verifyToken(token, env.JWT_SECRET)`,
+	},
+]
 
 /* ------------------------------------------------------------------ */
 /* Sections                                                            */
@@ -252,13 +311,16 @@ function Hero(): ReactElement {
 function CodeWindow(): ReactElement {
 	return (
 		<div className={styles.codeWindow}>
-			<div className={styles.codeBar}>
-				<span className={styles.dot} style={{ background: '#ff5f57' }} />
-				<span className={styles.dot} style={{ background: '#febc2e' }} />
-				<span className={styles.dot} style={{ background: '#28c840' }} />
-				<span className={styles.codeFile}>server.ts</span>
-			</div>
-			<pre className={styles.codePre}>{HERO_CODE}</pre>
+			<Tabs className={styles.codeTabs} groupId="hero-example">
+				{EXAMPLES.map((ex) => (
+					<TabItem key={ex.label} value={ex.label} label={ex.label}>
+						<div className={styles.codeFile}>{ex.file}</div>
+						<CodeBlock language={ex.language} className={styles.codePre}>
+							{ex.code}
+						</CodeBlock>
+					</TabItem>
+				))}
+			</Tabs>
 		</div>
 	)
 }
