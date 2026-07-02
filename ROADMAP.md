@@ -58,18 +58,18 @@ Principle — **schema-first**: derive the OpenAPI spec from the same Zod schema
 used by `api-validation`, so docs can't drift from validation. Default docs UI
 is **Scalar** (`@scalar/*`); `swagger-ui-express` is the legacy/JSDoc fallback.
 
-**Status:** the Express path is **renderer-only** today — `api-openapi` /
-`api-openapi-express` take a `spec` object you supply and render Scalar/Swagger
-HTML from it. They do **not** yet derive that spec from Zod, so on Express the
-spec is hand-authored and *can* drift from validation (see
-`apps/example-express/src/spec.ts`). Closing that gap — a Zod→OpenAPI builder —
-is tracked separately. Hono is the gold-standard schema-first path via
+**Status:** schema-first is **delivered on Express**. `api-openapi` exposes
+`buildOpenApiDocument`, which turns route Zod schemas (the same ones
+`api-validation` validates with) into an OpenAPI 3.1 document via Zod 4's native
+`z.toJSONSchema` — no extra runtime dependency. `apps/example-express/src/spec.ts`
+now generates its spec from the route schemas rather than hand-authoring it, so
+the docs can't drift from validation. Hono gets the same guarantee via
 `@hono/zod-openapi`.
 
 | Package | Role |
 | --- | --- |
-| `api-openapi` | framework-agnostic core: render the docs HTML (Scalar or Swagger UI) from an OpenAPI 3.1 document. Zod→spec builder TODO. |
-| `api-openapi-express` | mount on Express — serves Scalar/Swagger from a supplied spec. Optional `swagger-jsdoc` ingestion (legacy) and schema-first Zod derivation are TODO. |
+| `api-openapi` | framework-agnostic core: `buildOpenApiDocument` (Zod→OpenAPI 3.1) plus render the docs HTML (Scalar or Swagger UI) from a document. |
+| `api-openapi-express` | mount on Express — serves Scalar/Swagger from a spec (supplied or `buildOpenApiDocument`-generated). Optional `swagger-jsdoc` ingestion (legacy) remains a TODO. |
 | `api-openapi-hono` | `@hono/zod-openapi` + `@scalar/hono-api-reference` — the gold-standard schema-first path |
 
 ## New packages not yet in epics #26 / #27

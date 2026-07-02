@@ -21,6 +21,7 @@
 		"@rtorcato/api-response": "workspace:*",
 		"@rtorcato/api-rate-limit-express": "workspace:*",
 		"@rtorcato/api-validation": "workspace:*",
+		"@rtorcato/api-openapi": "workspace:*",
 		"@rtorcato/api-openapi-express": "workspace:*",
 		"express": "^5.1.0",
 		"zod": "^4.0.0"

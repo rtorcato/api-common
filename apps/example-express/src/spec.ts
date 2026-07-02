@@ -1,121 +1,51 @@
-export const spec = {
-	openapi: '3.0.3',
+import { buildOpenApiDocument } from '@rtorcato/api-openapi'
+import { errorSchema, successSchema } from '@rtorcato/api-response'
+import { z } from 'zod'
+import { createItemBody, itemParams, itemSchema } from './routes/items.js'
+
+// Schema-first: the OpenAPI 3.1 spec is derived from the same Zod schemas the
+// routes validate with (createItemBody, itemParams) and return (itemSchema
+// wrapped in the api-response success envelope), so the docs can't drift.
+export const spec = buildOpenApiDocument({
 	info: { title: 'Example Express API', version: '1.0.0' },
-	components: {
-		schemas: {
-			Item: {
-				type: 'object',
-				required: ['id', 'name'],
-				properties: {
-					id: { type: 'string', format: 'uuid' },
-					name: { type: 'string' },
-				},
-			},
-			// Matches ErrorResponse from @rtorcato/api-response
-			Error: {
-				type: 'object',
-				required: ['error', 'code', 'message'],
-				properties: {
-					error: { type: 'string', example: 'NotFoundError' },
-					code: { type: 'string', example: 'not_found' },
-					message: { type: 'string' },
-					stack: { type: 'string' },
-				},
+	routes: [
+		{
+			method: 'get',
+			path: '/items',
+			summary: 'List items',
+			responses: {
+				200: { description: 'Success', schema: successSchema(z.array(itemSchema)) },
 			},
 		},
-	},
-	paths: {
-		'/items': {
-			get: {
-				summary: 'List items',
-				responses: {
-					200: {
-						description: 'Success',
-						content: {
-							'application/json': {
-								schema: {
-									type: 'object',
-									properties: {
-										success: { type: 'boolean', example: true },
-										data: { type: 'array', items: { $ref: '#/components/schemas/Item' } },
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-			post: {
-				summary: 'Create an item',
-				requestBody: {
-					required: true,
-					content: {
-						'application/json': {
-							schema: {
-								type: 'object',
-								required: ['name'],
-								properties: { name: { type: 'string', minLength: 1 } },
-							},
-						},
-					},
-				},
-				responses: {
-					201: {
-						description: 'Created',
-						content: {
-							'application/json': {
-								schema: {
-									type: 'object',
-									properties: {
-										success: { type: 'boolean', example: true },
-										data: { $ref: '#/components/schemas/Item' },
-									},
-								},
-							},
-						},
-					},
-					400: {
-						description: 'Validation error',
-						content: { 'application/json': { schema: { $ref: '#/components/schemas/Error' } } },
-					},
-				},
+		{
+			method: 'post',
+			path: '/items',
+			summary: 'Create an item',
+			request: { body: createItemBody },
+			responses: {
+				201: { description: 'Created', schema: successSchema(itemSchema) },
+				400: { description: 'Validation error', schema: errorSchema() },
 			},
 		},
-		'/items/{id}': {
-			parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string' } }],
-			get: {
-				summary: 'Get an item',
-				responses: {
-					200: {
-						description: 'Success',
-						content: {
-							'application/json': {
-								schema: {
-									type: 'object',
-									properties: {
-										success: { type: 'boolean', example: true },
-										data: { $ref: '#/components/schemas/Item' },
-									},
-								},
-							},
-						},
-					},
-					404: {
-						description: 'Not found',
-						content: { 'application/json': { schema: { $ref: '#/components/schemas/Error' } } },
-					},
-				},
-			},
-			delete: {
-				summary: 'Delete an item',
-				responses: {
-					200: { description: 'Deleted' },
-					404: {
-						description: 'Not found',
-						content: { 'application/json': { schema: { $ref: '#/components/schemas/Error' } } },
-					},
-				},
+		{
+			method: 'get',
+			path: '/items/:id',
+			summary: 'Get an item',
+			request: { params: itemParams },
+			responses: {
+				200: { description: 'Success', schema: successSchema(itemSchema) },
+				404: { description: 'Not found', schema: errorSchema() },
 			},
 		},
-	},
-}
+		{
+			method: 'delete',
+			path: '/items/:id',
+			summary: 'Delete an item',
+			request: { params: itemParams },
+			responses: {
+				200: { description: 'Deleted', schema: successSchema(z.object({ deleted: z.boolean() })) },
+				404: { description: 'Not found', schema: errorSchema() },
+			},
+		},
+	],
+})
