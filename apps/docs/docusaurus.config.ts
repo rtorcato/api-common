@@ -1,11 +1,13 @@
 import type * as Preset from '@docusaurus/preset-classic'
 import type { Config } from '@docusaurus/types'
 import { themes as prismThemes } from 'prism-react-renderer'
+import { publishablePackages } from './publishablePackages'
 
-// One typedoc plugin instance per package. Each reads the package's `src`
-// directly (no build needed) and writes a single Markdown page at
-// docs/api/<pkg>/index.md, which sidebars.ts links to by doc id.
-const PACKAGES = ['api-errors', 'api-errors-express', 'api-errors-hono'] as const
+// One typedoc plugin instance per publishable package. Each reads the package's
+// `src` directly (no build needed) and writes a single Markdown page at
+// docs/api/<pkg>/index.md, which sidebars.ts links to by doc id. Derived from
+// the workspace so a new package gets an API Reference page automatically.
+const PACKAGES = publishablePackages
 
 const typedocPlugins = PACKAGES.map((pkg) => [
 	'docusaurus-plugin-typedoc',

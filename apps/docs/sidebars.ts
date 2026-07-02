@@ -1,4 +1,5 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs'
+import { publishablePackages } from './publishablePackages'
 
 // Each package's docusaurus-plugin-typedoc instance generates a single
 // docs/api/<pkg>/index.md (outputFileStrategy: 'modules' over a one-file
@@ -38,20 +39,26 @@ const sidebars: SidebarsConfig = {
 				'guides/express',
 				'guides/hono',
 				'guides/api-auth-express',
+				'guides/api-auth-hono',
 				'guides/api-cors-express',
 				'guides/api-express-utils',
 				'guides/api-openapi-express',
+				'guides/api-openapi-hono',
+				'guides/api-rate-limit-express',
+				'guides/api-rate-limit-hono',
 			],
 		},
 		{
 			type: 'category',
 			label: 'API Reference',
 			collapsed: false,
-			items: [
-				{ type: 'doc', id: 'api/api-errors/index', label: 'api-errors' },
-				{ type: 'doc', id: 'api/api-errors-express/index', label: 'api-errors-express' },
-				{ type: 'doc', id: 'api/api-errors-hono/index', label: 'api-errors-hono' },
-			],
+			// Derived from the workspace (same source as the typedoc instances)
+			// so every publishable package has a reference page automatically.
+			items: publishablePackages.map((pkg) => ({
+				type: 'doc' as const,
+				id: `api/${pkg}/index`,
+				label: pkg,
+			})),
 		},
 		{
 			type: 'category',
