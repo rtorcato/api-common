@@ -512,6 +512,10 @@ importers:
         version: 6.0.3
 
   packages/api-response:
+    dependencies:
+      '@rtorcato/api-errors':
+        specifier: workspace:*
+        version: link:../api-errors
     devDependencies:
       zod:
         specifier: ^4.4.3
