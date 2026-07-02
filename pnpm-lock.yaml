@@ -120,6 +120,9 @@ importers:
       '@rtorcato/api-logger':
         specifier: workspace:*
         version: link:../../packages/api-logger
+      '@rtorcato/api-openapi':
+        specifier: workspace:*
+        version: link:../../packages/api-openapi
       '@rtorcato/api-openapi-express':
         specifier: workspace:*
         version: link:../../packages/api-openapi-express

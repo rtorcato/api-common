@@ -4,8 +4,12 @@ import { validate } from '@rtorcato/api-validation'
 import { Router } from 'express'
 import { z } from 'zod'
 
-const itemSchema = z.object({ name: z.string().min(1) })
-type Item = { id: string; name: string }
+// Shared Zod schemas — the single source of truth for both request validation
+// (below) and the OpenAPI spec (src/spec.ts), so docs can't drift from the API.
+export const createItemBody = z.object({ name: z.string().min(1) })
+export const itemParams = z.object({ id: z.string() })
+export const itemSchema = z.object({ id: z.uuid(), name: z.string() })
+type Item = z.infer<typeof itemSchema>
 
 export function createItemsRouter() {
 	const items: Item[] = []
@@ -16,7 +20,7 @@ export function createItemsRouter() {
 	})
 
 	router.post('/', (req, res) => {
-		const body = validate(itemSchema, req.body)
+		const body = validate(createItemBody, req.body)
 		const item: Item = { id: crypto.randomUUID(), name: body.name }
 		items.push(item)
 		res.status(201).json(ok(item))
