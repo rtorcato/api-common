@@ -1,7 +1,7 @@
 {
-	"name": "@rtorcato/api-amqp",
-	"version": "0.2.0",
-	"description": "Typed amqplib publisher/consumer helpers for RabbitMQ — JSON encoding, exchange/queue assertion, and ack/nack handling.",
+	"name": "@rtorcato/api-health",
+	"version": "0.0.0",
+	"description": "Framework-agnostic liveness/readiness health-check registry for Node API projects.",
 	"type": "module",
 	"license": "MIT",
 	"author": "Richard Torcato",
@@ -24,14 +24,6 @@
 	"engines": {
 		"node": ">=22"
 	},
-	"peerDependencies": {
-		"amqplib": "^0.10.0"
-	},
-	"devDependencies": {
-		"@types/amqplib": "^0.10.5",
-		"amqplib": "^0.10.9",
-		"typescript": "~6.0.3"
-	},
 	"publishConfig": {
 		"access": "public"
 	},
@@ -39,17 +31,17 @@
 		"api",
 		"nodejs",
 		"typescript",
-		"amqp",
-		"amqplib",
-		"rabbitmq",
-		"messaging"
+		"health",
+		"healthcheck",
+		"liveness",
+		"readiness"
 	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/rtorcato/api-common.git",
-		"directory": "packages/api-amqp"
+		"directory": "packages/api-health"
 	},
-	"homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-amqp#readme",
+	"homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-health#readme",
 	"bugs": {
 		"url": "https://github.com/rtorcato/api-common/issues"
 	}

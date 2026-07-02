@@ -1,7 +1,7 @@
 {
-	"name": "@rtorcato/api-amqp",
-	"version": "0.2.0",
-	"description": "Typed amqplib publisher/consumer helpers for RabbitMQ — JSON encoding, exchange/queue assertion, and ack/nack handling.",
+	"name": "@rtorcato/api-health-hono",
+	"version": "0.0.0",
+	"description": "Hono liveness/readiness probe handlers for @rtorcato/api-health.",
 	"type": "module",
 	"license": "MIT",
 	"author": "Richard Torcato",
@@ -24,12 +24,14 @@
 	"engines": {
 		"node": ">=22"
 	},
+	"dependencies": {
+		"@rtorcato/api-health": "workspace:*"
+	},
 	"peerDependencies": {
-		"amqplib": "^0.10.0"
+		"hono": "^4.0.0"
 	},
 	"devDependencies": {
-		"@types/amqplib": "^0.10.5",
-		"amqplib": "^0.10.9",
+		"hono": "^4.12.27",
 		"typescript": "~6.0.3"
 	},
 	"publishConfig": {
@@ -39,17 +41,17 @@
 		"api",
 		"nodejs",
 		"typescript",
-		"amqp",
-		"amqplib",
-		"rabbitmq",
-		"messaging"
+		"hono",
+		"health",
+		"healthcheck",
+		"http"
 	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/rtorcato/api-common.git",
-		"directory": "packages/api-amqp"
+		"directory": "packages/api-health-hono"
 	},
-	"homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-amqp#readme",
+	"homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-health-hono#readme",
 	"bugs": {
 		"url": "https://github.com/rtorcato/api-common/issues"
 	}

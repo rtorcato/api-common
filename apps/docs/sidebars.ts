@@ -26,6 +26,7 @@ const sidebars: SidebarsConfig = {
 				'guides/api-response',
 				'guides/api-validation',
 				'guides/api-rate-limit',
+				'guides/api-health',
 				'guides/api-http',
 				'guides/api-amqp',
 				'guides/api-openapi',
@@ -50,6 +51,8 @@ const sidebars: SidebarsConfig = {
 				'guides/api-ts-rest-express',
 				'guides/api-rate-limit-express',
 				'guides/api-rate-limit-hono',
+				'guides/api-health-express',
+				'guides/api-health-hono',
 			],
 		},
 		{
