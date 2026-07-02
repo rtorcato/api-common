@@ -1,6 +1,6 @@
 {
 	"name": "@rtorcato/api-http",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Typed HTTP client over native fetch — base URL, default headers, timeout, and errors normalized to @rtorcato/api-errors.",
 	"type": "module",
 	"license": "MIT",
