@@ -44,6 +44,7 @@ const sidebars: SidebarsConfig = {
 				'guides/api-auth-hono',
 				'guides/api-cors-express',
 				'guides/api-express-utils',
+				'guides/api-upload',
 				'guides/api-openapi-express',
 				'guides/api-openapi-hono',
 				'guides/api-ts-rest-express',
