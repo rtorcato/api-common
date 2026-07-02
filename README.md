@@ -39,6 +39,7 @@ The old single-package repo lives at https://gitlab.com/rtorcato/api-common and 
 | [`@rtorcato/api-response`](./packages/api-response) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-response.svg)](https://www.npmjs.com/package/@rtorcato/api-response) | Consistent success-response envelope and zod schema helper for Node API projects. |
 | [`@rtorcato/api-testing`](./packages/api-testing) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-testing.svg)](https://www.npmjs.com/package/@rtorcato/api-testing) | Test helpers for API projects: supertest re-export, JWT auth fixtures, and response assertion matchers. |
 | [`@rtorcato/api-ts-rest-express`](./packages/api-ts-rest-express) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-ts-rest-express.svg)](https://www.npmjs.com/package/@rtorcato/api-ts-rest-express) | Mount a ts-rest contract on Express and serve its OpenAPI docs (Scalar) — wires @ts-rest/express + @ts-rest/open-api into api-common. |
+| [`@rtorcato/api-upload`](./packages/api-upload) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-upload.svg)](https://www.npmjs.com/package/@rtorcato/api-upload) | Promise-based S3 file upload for Express via multer-s3 — public/private ACL, cache-control, deterministic keys, typed errors. |
 | [`@rtorcato/api-validation`](./packages/api-validation) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-validation.svg)](https://www.npmjs.com/package/@rtorcato/api-validation) | Zod request validation helpers with pretty error formatting for Node API projects. |
 <!-- PACKAGES:END -->
 

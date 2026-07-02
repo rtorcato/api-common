@@ -1,0 +1,71 @@
+{
+	"name": "@rtorcato/api-upload",
+	"version": "0.1.0",
+	"description": "Promise-based S3 file upload for Express via multer-s3 — public/private ACL, cache-control, deterministic keys, typed errors.",
+	"type": "module",
+	"license": "MIT",
+	"author": "Richard Torcato",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsc -p tsconfig.build.json",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run"
+	},
+	"engines": {
+		"node": ">=22"
+	},
+	"dependencies": {
+		"@rtorcato/api-errors": "workspace:*"
+	},
+	"peerDependencies": {
+		"@aws-sdk/client-s3": "^3.0.0",
+		"express": "^4.18.0 || ^5.0.0",
+		"multer": "^2.0.0",
+		"multer-s3": "^3.0.0"
+	},
+	"devDependencies": {
+		"@aws-sdk/client-s3": "^3.700.0",
+		"aws-sdk-client-mock": "^4.1.0",
+		"@types/express": "^5.0.0",
+		"@types/multer": "^2.0.0",
+		"@types/supertest": "^7.2.0",
+		"express": "^5.1.0",
+		"multer": "^2.2.0",
+		"multer-s3": "^3.0.1",
+		"supertest": "^7.1.0",
+		"typescript": "~6.0.3"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"keywords": [
+		"api",
+		"nodejs",
+		"typescript",
+		"express",
+		"s3",
+		"upload",
+		"multer",
+		"multer-s3",
+		"aws"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rtorcato/api-common.git",
+		"directory": "packages/api-upload"
+	},
+	"homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-upload#readme",
+	"bugs": {
+		"url": "https://github.com/rtorcato/api-common/issues"
+	}
+}
