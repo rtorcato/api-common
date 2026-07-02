@@ -1,0 +1,69 @@
+{
+	"name": "@rtorcato/api-ts-rest-express",
+	"version": "0.1.0",
+	"description": "Mount a ts-rest contract on Express and serve its OpenAPI docs (Scalar) — wires @ts-rest/express + @ts-rest/open-api into api-common.",
+	"type": "module",
+	"license": "MIT",
+	"author": "Richard Torcato",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsc -p tsconfig.build.json",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run"
+	},
+	"engines": {
+		"node": ">=22"
+	},
+	"dependencies": {
+		"@rtorcato/api-openapi-express": "workspace:*"
+	},
+	"peerDependencies": {
+		"@ts-rest/core": ">=3.53.0-rc.1 <4",
+		"@ts-rest/express": ">=3.53.0-rc.1 <4",
+		"@ts-rest/open-api": ">=3.53.0-rc.1 <4",
+		"express": "^5.0.0",
+		"zod": "^4.0.0"
+	},
+	"devDependencies": {
+		"@ts-rest/core": "3.53.0-rc.1",
+		"@ts-rest/express": "3.53.0-rc.1",
+		"@ts-rest/open-api": "3.53.0-rc.1",
+		"@types/express": "^5.0.0",
+		"@types/supertest": "^7.2.0",
+		"express": "^5.1.0",
+		"supertest": "^7.1.0",
+		"typescript": "~6.0.3",
+		"zod": "^4.4.3"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"keywords": [
+		"api",
+		"nodejs",
+		"typescript",
+		"express",
+		"ts-rest",
+		"openapi",
+		"contract"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rtorcato/api-common.git",
+		"directory": "packages/api-ts-rest-express"
+	},
+	"homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-ts-rest-express#readme",
+	"bugs": {
+		"url": "https://github.com/rtorcato/api-common/issues"
+	}
+}

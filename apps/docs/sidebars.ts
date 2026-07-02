@@ -46,6 +46,7 @@ const sidebars: SidebarsConfig = {
 				'guides/api-express-utils',
 				'guides/api-openapi-express',
 				'guides/api-openapi-hono',
+				'guides/api-ts-rest-express',
 				'guides/api-rate-limit-express',
 				'guides/api-rate-limit-hono',
 			],
