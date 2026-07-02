@@ -27,8 +27,8 @@ app.use(rateLimitMiddleware({
 ```
 
 Keys on `X-Forwarded-For` → `X-Real-IP` → `'unknown'`. When the limit is exceeded it
-responds `429` with `{ success: false, code: 'rate_limited', message }` — matching the
-error envelope from [api-errors](./api-errors.md).
+responds `429` with the standard error envelope `{ error: 'TooManyRequestsError',
+code: 'too_many_requests', message }` from [api-errors](./api-errors.md).
 
 ## Per-route limits
 
