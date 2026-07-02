@@ -372,6 +372,43 @@ importers:
         specifier: ~6.0.3
         version: 6.0.3
 
+  packages/api-health: {}
+
+  packages/api-health-express:
+    dependencies:
+      '@rtorcato/api-health':
+        specifier: workspace:*
+        version: link:../api-health
+    devDependencies:
+      '@types/express':
+        specifier: ^5.0.0
+        version: 5.0.6
+      '@types/supertest':
+        specifier: ^7.2.0
+        version: 7.2.0
+      express:
+        specifier: ^5.1.0
+        version: 5.2.1
+      supertest:
+        specifier: ^7.1.0
+        version: 7.2.2
+      typescript:
+        specifier: ~6.0.3
+        version: 6.0.3
+
+  packages/api-health-hono:
+    dependencies:
+      '@rtorcato/api-health':
+        specifier: workspace:*
+        version: link:../api-health
+    devDependencies:
+      hono:
+        specifier: ^4.12.27
+        version: 4.12.27
+      typescript:
+        specifier: ~6.0.3
+        version: 6.0.3
+
   packages/api-http:
     dependencies:
       '@rtorcato/api-errors':
