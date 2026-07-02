@@ -26,6 +26,7 @@ const sidebars: SidebarsConfig = {
 				'guides/api-response',
 				'guides/api-validation',
 				'guides/api-rate-limit',
+				'guides/api-http',
 				'guides/api-openapi',
 				'guides/custom-errors',
 				'guides/testing',

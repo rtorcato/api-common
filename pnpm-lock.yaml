@@ -351,6 +351,16 @@ importers:
         specifier: ^7.1.0
         version: 7.2.2
 
+  packages/api-http:
+    dependencies:
+      '@rtorcato/api-errors':
+        specifier: workspace:*
+        version: link:../api-errors
+    devDependencies:
+      typescript:
+        specifier: ~6.0.3
+        version: 6.0.3
+
   packages/api-logger:
     dependencies:
       '@rtorcato/js-common':
