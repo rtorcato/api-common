@@ -193,6 +193,101 @@
 	text-decoration: none;
 }
 
+/* OpenAPI showcase — code/copy on the left, live Scalar preview on the right */
+.showcase {
+	display: grid;
+	grid-template-columns: 0.9fr 1.1fr;
+	gap: 32px;
+	align-items: center;
+}
+.showcaseText {
+	min-width: 0;
+}
+.eyebrow {
+	display: inline-block;
+	margin-bottom: 12px;
+	padding: 4px 10px;
+	font: 600 12px var(--ifm-font-family-monospace);
+	letter-spacing: 0.02em;
+	color: var(--bc-accent);
+	background: var(--bc-accent-soft);
+	border: 1px solid var(--bc-accent-border);
+	border-radius: 7px;
+}
+.showcaseList {
+	margin: 18px 0 22px;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.showcaseList li {
+	position: relative;
+	padding-left: 26px;
+	font-size: 14.5px;
+	line-height: 1.5;
+	color: var(--bc-text);
+}
+.showcaseList li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 3px;
+	width: 16px;
+	height: 16px;
+	border-radius: 5px;
+	background: var(--bc-accent-soft);
+	border: 1px solid var(--bc-accent-border);
+}
+.showcaseList li::after {
+	content: "";
+	position: absolute;
+	left: 5px;
+	top: 7px;
+	width: 6px;
+	height: 3px;
+	border-left: 1.6px solid var(--bc-accent);
+	border-bottom: 1.6px solid var(--bc-accent);
+	transform: rotate(-45deg);
+}
+.showcasePreview {
+	min-width: 0;
+}
+.demoLinks {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	flex-wrap: wrap;
+}
+.demoTextLink {
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--bc-muted);
+}
+.demoTextLink:hover {
+	color: var(--bc-accent);
+}
+
+/* Dedicated /openapi-demo page */
+.demoHead {
+	margin-bottom: 24px;
+}
+.h1 {
+	margin: 0 0 10px;
+	font-size: clamp(30px, 5vw, 40px);
+	letter-spacing: -0.02em;
+	font-weight: 800;
+	color: var(--bc-heading);
+}
+.demoSub {
+	max-width: 640px;
+	margin: 0 0 18px;
+	font-size: 16px;
+	line-height: 1.55;
+	color: var(--bc-muted);
+}
+
 /* Pillars */
 .pillarGrid {
 	display: grid;
@@ -304,6 +399,10 @@
 	}
 }
 @media (max-width: 996px) {
+	.showcase {
+		grid-template-columns: 1fr;
+		gap: 24px;
+	}
 	.pillarGrid {
 		grid-template-columns: repeat(2, 1fr);
 	}

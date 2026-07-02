@@ -1,0 +1,33 @@
+/* Browser-chrome frame around the embedded Scalar reference iframe. */
+.frame {
+	overflow: hidden;
+	background: var(--bc-surface);
+	border: 1px solid var(--bc-border2);
+	border-radius: 14px;
+	box-shadow: var(--bc-shadow);
+}
+.bar {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	padding: 10px 14px;
+	background: var(--bc-surface2);
+	border-bottom: 1px solid var(--bc-border);
+}
+.dot {
+	width: 11px;
+	height: 11px;
+	border-radius: 50%;
+	background: var(--bc-border2);
+}
+.url {
+	margin-left: 10px;
+	font: 500 12px var(--ifm-font-family-monospace);
+	color: var(--bc-faint);
+}
+.iframe {
+	display: block;
+	width: 100%;
+	border: 0;
+	background: #0b0d12;
+}

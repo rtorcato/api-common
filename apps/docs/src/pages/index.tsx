@@ -6,6 +6,7 @@ import Tabs from '@theme/Tabs'
 import clsx from 'clsx'
 import type { ReactElement } from 'react'
 import InstallTabs from '@site/src/components/InstallTabs'
+import ScalarFrame from '@site/src/components/ScalarFrame'
 import styles from './index.module.css'
 
 /* ------------------------------------------------------------------ */
@@ -264,6 +265,31 @@ app.get('/me', requireAuth(env.JWT_SECRET), (req, res) => {
 
 const claims = verifyToken(token, env.JWT_SECRET)`,
 	},
+	{
+		label: 'OpenAPI',
+		file: 'docs.ts',
+		language: 'tsx',
+		code: `import { buildOpenApiDocument } from '@rtorcato/api-openapi'
+import { serveApiDocs } from '@rtorcato/api-openapi-express'
+import { z } from 'zod'
+
+const User = z.object({ id: z.uuid(), name: z.string(), email: z.email() })
+
+// The same Zod schemas you validate with generate the spec — no drift.
+const spec = buildOpenApiDocument({
+  info: { title: 'Users API', version: '1.0.0' },
+  routes: [
+    {
+      method: 'post',
+      path: '/users',
+      request: { body: User.pick({ name: true, email: true }) },
+      responses: { 201: { description: 'Created', schema: User } },
+    },
+  ],
+})
+
+app.use('/docs', serveApiDocs(spec)) // → renders the Scalar UI below ↓`,
+	},
 ]
 
 /* ------------------------------------------------------------------ */
@@ -300,6 +326,9 @@ function Hero(): ReactElement {
 						<Link className={clsx('button button--lg', styles.ctaSecondary)} to="/docs/">
 							Browse the docs
 						</Link>
+						<Link className={clsx('button button--lg', styles.ctaSecondary)} to="/openapi-demo">
+							See API docs ↗
+						</Link>
 					</div>
 					<InstallTabs pkg="@rtorcato/api-errors" />
 				</div>
@@ -322,6 +351,42 @@ function CodeWindow(): ReactElement {
 				))}
 			</Tabs>
 		</div>
+	)
+}
+
+function OpenApiShowcase(): ReactElement {
+	return (
+		<section className={styles.section}>
+			<div className={styles.showcase}>
+				<div className={styles.showcaseText}>
+					<div className={styles.eyebrow}>OpenAPI</div>
+					<h2 className={styles.h2}>Docs that can't drift</h2>
+					<p className={styles.sub}>
+						Build an OpenAPI 3.1 document from the same Zod schemas you validate requests with, then
+						serve a Scalar or Swagger UI on Express or Hono. Change a schema and the reference
+						changes with it — no hand-written spec to fall out of sync.
+					</p>
+					<ul className={styles.showcaseList}>
+						<li>Schema-first — one source for validation and docs</li>
+						<li>Scalar &amp; Swagger UI, Express &amp; Hono adapters</li>
+						<li>
+							<code>ts-rest</code> contracts render docs out of the box
+						</li>
+					</ul>
+					<div className={styles.demoLinks}>
+						<Link className={styles.viewAll} to="/openapi-demo">
+							Open the live demo →
+						</Link>
+						<Link className={styles.demoTextLink} to="/docs/guides/api-openapi">
+							OpenAPI guide ↗
+						</Link>
+					</div>
+				</div>
+				<div className={styles.showcasePreview}>
+					<ScalarFrame height={440} />
+				</div>
+			</div>
+		</section>
 	)
 }
 
@@ -446,6 +511,7 @@ export default function Home(): ReactElement {
 			<main>
 				<Hero />
 				<Pillars />
+				<OpenApiShowcase />
 				<Packages />
 				<Siblings />
 			</main>
