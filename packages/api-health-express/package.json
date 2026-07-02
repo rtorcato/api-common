@@ -1,0 +1,61 @@
+{
+	"name": "@rtorcato/api-health-express",
+	"version": "0.0.0",
+	"description": "Express liveness/readiness probe handlers for @rtorcato/api-health.",
+	"type": "module",
+	"license": "MIT",
+	"author": "Richard Torcato",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsc -p tsconfig.build.json",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run"
+	},
+	"engines": {
+		"node": ">=22"
+	},
+	"dependencies": {
+		"@rtorcato/api-health": "workspace:*"
+	},
+	"peerDependencies": {
+		"express": "^4.18.0 || ^5.0.0"
+	},
+	"devDependencies": {
+		"@types/express": "^5.0.0",
+		"@types/supertest": "^7.2.0",
+		"express": "^5.1.0",
+		"supertest": "^7.1.0",
+		"typescript": "~6.0.3"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"keywords": [
+		"api",
+		"nodejs",
+		"typescript",
+		"express",
+		"health",
+		"healthcheck",
+		"http"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rtorcato/api-common.git",
+		"directory": "packages/api-health-express"
+	},
+	"homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-health-express#readme",
+	"bugs": {
+		"url": "https://github.com/rtorcato/api-common/issues"
+	}
+}
