@@ -1,5 +1,16 @@
 # @rtorcato/example-express
 
+## 0.0.4
+
+### Patch Changes
+
+- Updated dependencies [097cc1f]
+  - @rtorcato/api-errors@0.3.0
+  - @rtorcato/api-rate-limit-express@0.2.0
+  - @rtorcato/api-errors-express@0.2.1
+  - @rtorcato/api-response@0.1.1
+  - @rtorcato/api-validation@0.2.1
+
 ## 0.0.3
 
 ### Patch Changes
