@@ -8,6 +8,7 @@ import {
 	NotFoundError,
 	ServiceUnavailableError,
 	TooManyRequestsError,
+	toErrorResponse,
 	UnauthorizedError,
 	UnprocessableEntityError,
 } from './index'
@@ -47,4 +48,36 @@ describe('subclasses', () => {
 			expect(err.code).toBe(code)
 		})
 	}
+})
+
+describe('toErrorResponse', () => {
+	it('serializes an HttpError to its name/code/message', () => {
+		expect(toErrorResponse(new BadRequestError('nope', 'too_bad'))).toEqual({
+			error: 'BadRequestError',
+			code: 'too_bad',
+			message: 'nope',
+		})
+	})
+
+	it('maps a plain Error to internal_server_error', () => {
+		expect(toErrorResponse(new Error('kaboom'))).toEqual({
+			error: 'Error',
+			code: 'internal_server_error',
+			message: 'kaboom',
+		})
+	})
+
+	it('handles non-object throws with safe defaults', () => {
+		expect(toErrorResponse('nope')).toEqual({
+			error: 'InternalServerError',
+			code: 'internal_server_error',
+			message: 'An unexpected error occurred.',
+		})
+	})
+
+	it('omits the stack by default and includes it on request', () => {
+		const err = new Error('boom')
+		expect(toErrorResponse(err).stack).toBeUndefined()
+		expect(typeof toErrorResponse(err, { includeStack: true }).stack).toBe('string')
+	})
 })
