@@ -8,9 +8,18 @@ import { resolve } from 'node:path'
 // ever runs via `pnpm --filter @rtorcato/api-common-docs`.
 const packagesDir = resolve(process.cwd(), '../../packages')
 
-export const publishablePackages: string[] = readdirSync(packagesDir, { withFileTypes: true })
+const manifests = readdirSync(packagesDir, { withFileTypes: true })
 	.filter((d) => d.isDirectory())
 	.map((d) => JSON.parse(readFileSync(resolve(packagesDir, d.name, 'package.json'), 'utf8')))
 	.filter((p) => p.name && !p.private)
+
+export const publishablePackages: string[] = manifests
 	.map((p) => p.name.replace('@rtorcato/', ''))
 	.sort()
+
+// Short name -> package.json description, so the API Reference index cards can
+// show what each package does instead of TypeDoc's generic "Interfaces"/"Classes"
+// fallback. Single source of truth = the package's own manifest.
+export const packageDescriptions: Record<string, string> = Object.fromEntries(
+	manifests.map((p) => [p.name.replace('@rtorcato/', ''), (p.description ?? '') as string])
+)

@@ -1,7 +1,7 @@
 import type * as Preset from '@docusaurus/preset-classic'
 import type { Config } from '@docusaurus/types'
 import { themes as prismThemes } from 'prism-react-renderer'
-import { publishablePackages } from './publishablePackages'
+import { packageDescriptions, publishablePackages } from './publishablePackages'
 
 // One typedoc plugin instance per publishable package. Each reads the package's
 // `src` directly (no build needed) and writes a single Markdown page at
@@ -21,12 +21,17 @@ const typedocPlugins = PACKAGES.map((pkg) => [
 		skipErrorChecking: true,
 		out: `docs/api/${pkg}`,
 		readme: 'none',
-		includeVersion: false,
+		includeVersion: true,
 		excludePrivate: true,
 		excludeInternal: true,
 		excludeExternals: true,
 		sort: ['source-order'],
 		outputFileStrategy: 'modules',
+		// Stamp the package.json description onto the generated page's
+		// frontmatter so the /docs/api index cards describe each package
+		// (instead of TypeDoc's generic "Interfaces"/"Classes" fallback).
+		plugin: ['typedoc-plugin-markdown', 'typedoc-plugin-frontmatter'],
+		frontmatterGlobals: { description: packageDescriptions[pkg] },
 	},
 ])
 
@@ -118,8 +123,8 @@ const config: Config = {
 			},
 			items: [
 				{ to: '/docs', position: 'left', label: 'Docs' },
-				{ to: '/docs/api/api-errors', position: 'left', label: 'API' },
-				{ to: '/docs/examples/express', position: 'left', label: 'Examples' },
+				{ to: '/docs/api', position: 'left', label: 'API' },
+				{ to: '/docs/examples', position: 'left', label: 'Examples' },
 				{
 					href: 'https://github.com/rtorcato/api-common',
 					label: 'GitHub',
@@ -141,7 +146,7 @@ const config: Config = {
 						{ label: 'Installation', to: '/docs/guides/installation' },
 						{ label: 'Express middleware', to: '/docs/guides/express' },
 						{ label: 'Hono middleware', to: '/docs/guides/hono' },
-						{ label: 'API reference', to: '/docs/api/api-errors' },
+						{ label: 'API reference', to: '/docs/api' },
 					],
 				},
 				{
