@@ -101,6 +101,33 @@
 .navbar__link--active {
 	color: var(--bc-heading);
 }
+
+/* API Reference / Examples index cards (generated-index). Match the clean
+   "install box" look — near-page-bg fill + thin border instead of infima's dull
+   surface fill — with an accent-border hover. Full description (no one-line
+   `text--truncate` clamp) and equal card heights per row. */
+.theme-doc-card-container {
+	height: 100%;
+	background: var(--bc-code-bg);
+	border: 1px solid var(--bc-border);
+	border-radius: 14px;
+	box-shadow: none;
+	transition:
+		border-color 0.15s ease,
+		background 0.15s ease,
+		transform 0.15s ease;
+}
+.theme-doc-card-container:hover {
+	background: var(--bc-surface2);
+	border-color: var(--bc-accent-border);
+	transform: translateY(-2px);
+}
+.theme-doc-card-description.text--truncate {
+	white-space: normal;
+	overflow: visible;
+	text-overflow: unset;
+}
+
 /* The navbar shows the "api-common" text title next to the logo mark, so the
    default title rendering is left in place (unlike browser-common, which baked
    its wordmark into the SVG and hid the title). */

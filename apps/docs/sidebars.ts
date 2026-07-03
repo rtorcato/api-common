@@ -60,6 +60,15 @@ const sidebars: SidebarsConfig = {
 			type: 'category',
 			label: 'API Reference',
 			collapsed: false,
+			// Landing page at /docs/api (the nav "API" link) — auto-lists every
+			// package page as a card, nothing to hand-maintain.
+			link: {
+				type: 'generated-index',
+				title: 'API Reference',
+				description:
+					'TypeDoc reference for every published @rtorcato/api-* package. Pick a package below.',
+				slug: '/api',
+			},
 			// Derived from the workspace (same source as the typedoc instances)
 			// so every publishable package has a reference page automatically.
 			items: publishablePackages.map((pkg) => ({
@@ -72,6 +81,13 @@ const sidebars: SidebarsConfig = {
 			type: 'category',
 			label: 'Examples',
 			collapsed: false,
+			// Landing page at /docs/examples (the nav "Examples" link).
+			link: {
+				type: 'generated-index',
+				title: 'Examples',
+				description: 'Runnable apps that wire the api-common packages together end to end.',
+				slug: '/examples',
+			},
 			items: ['examples/express', 'examples/hono', 'examples/auth'],
 		},
 		{
