@@ -1,7 +1,7 @@
 {
-	"name": "@rtorcato/api-health",
+	"name": "@rtorcato/api-graceful-shutdown",
 	"version": "0.1.0",
-	"description": "Framework-agnostic liveness/readiness health-check registry for Node API projects.",
+	"description": "Framework-agnostic graceful shutdown for Node API servers — SIGTERM/SIGINT drain with ordered cleanup hooks and a hard timeout.",
 	"type": "module",
 	"license": "MIT",
 	"author": "Richard Torcato",
@@ -24,6 +24,10 @@
 	"engines": {
 		"node": ">=22"
 	},
+	"devDependencies": {
+		"@types/node": "^22.0.0",
+		"typescript": "~6.0.3"
+	},
 	"publishConfig": {
 		"access": "public"
 	},
@@ -31,17 +35,17 @@
 		"api",
 		"nodejs",
 		"typescript",
-		"health",
-		"healthcheck",
-		"liveness",
-		"readiness"
+		"graceful-shutdown",
+		"sigterm",
+		"lifecycle",
+		"kubernetes"
 	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/rtorcato/api-common.git",
-		"directory": "packages/api-health"
+		"directory": "packages/api-graceful-shutdown"
 	},
-	"homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-health#readme",
+	"homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-graceful-shutdown#readme",
 	"bugs": {
 		"url": "https://github.com/rtorcato/api-common/issues"
 	}

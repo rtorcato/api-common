@@ -1,0 +1,154 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Users API",
+    "version": "1.0.0",
+    "description": "Generated from the same Zod schemas that validate requests — with `@rtorcato/api-openapi`'s `buildOpenApiDocument`. This reference can't drift from what the API actually accepts and returns."
+  },
+  "servers": [{ "url": "https://api.example.com" }],
+  "tags": [{ "name": "Users", "description": "Create and read users." }],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "List users",
+        "operationId": "listUsers",
+        "responses": {
+          "200": {
+            "description": "A list of users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "const": true },
+                    "data": { "type": "array", "items": { "$ref": "#/components/schemas/User" } }
+                  },
+                  "required": ["success", "data"]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create a user",
+        "operationId": "createUser",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string", "minLength": 1 },
+                  "email": { "type": "string", "format": "email" }
+                },
+                "required": ["name", "email"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The created user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "const": true },
+                    "data": { "$ref": "#/components/schemas/User" }
+                  },
+                  "required": ["success", "data"]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": { "type": "string", "format": "uuid" }
+        }
+      ],
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get a user",
+        "operationId": "getUser",
+        "responses": {
+          "200": {
+            "description": "The user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "const": true },
+                    "data": { "$ref": "#/components/schemas/User" }
+                  },
+                  "required": ["success", "data"]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Users"],
+        "summary": "Delete a user",
+        "operationId": "deleteUser",
+        "responses": {
+          "204": { "description": "Deleted" },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "name": { "type": "string" },
+          "email": { "type": "string", "format": "email" }
+        },
+        "required": ["id", "name", "email"]
+      },
+      "Error": {
+        "type": "object",
+        "description": "The error envelope produced by @rtorcato/api-errors handlers.",
+        "properties": {
+          "error": { "type": "string", "examples": ["NotFoundError"] },
+          "code": { "type": "string", "examples": ["not_found"] },
+          "message": { "type": "string" }
+        },
+        "required": ["error", "code", "message"]
+      }
+    }
+  }
+}
