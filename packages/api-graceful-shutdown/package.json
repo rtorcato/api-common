@@ -1,6 +1,6 @@
 {
 	"name": "@rtorcato/api-graceful-shutdown",
-	"version": "0.2.0",
+	"version": "1.0.0",
 	"description": "Framework-agnostic graceful shutdown for Node API servers — SIGTERM/SIGINT drain with ordered cleanup hooks and a hard timeout.",
 	"type": "module",
 	"license": "MIT",

@@ -1,6 +1,6 @@
 {
 	"name": "@rtorcato/api-ts-rest-express",
-	"version": "0.2.1",
+	"version": "1.0.0",
 	"description": "Mount a ts-rest contract on Express and serve its OpenAPI docs (Scalar) — wires @ts-rest/express + @ts-rest/open-api into api-common.",
 	"type": "module",
 	"license": "MIT",
