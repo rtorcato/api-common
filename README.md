@@ -94,3 +94,7 @@ The Packages table above is generated from each `package.json` — run `pnpm gen
 - Packages must be framework-agnostic where possible. Framework-specific helpers live in their own package (e.g. `api-errors` is generic, `api-errors-express` is the adapter).
 - Public API is whatever a package's `exports` field exposes. Internal modules are not part of the contract.
 - Conventional commits are enforced by commitlint.
+
+## Roadmap & tasks
+
+The roadmap lives in [Milestones](https://github.com/rtorcato/api-common/milestones); individual work is tracked as [Issues](https://github.com/rtorcato/api-common/issues). Reference issues from PRs with `Closes #NN`.
