@@ -23,6 +23,6 @@ describe('rateLimitMiddleware', () => {
 		await request(app).get('/')
 		const res = await request(app).get('/')
 		expect(res.status).toBe(429)
-		expect(res.body).toMatchObject({ success: false, code: 'rate_limited' })
+		expect(res.body).toMatchObject({ error: 'TooManyRequestsError', code: 'too_many_requests' })
 	})
 })

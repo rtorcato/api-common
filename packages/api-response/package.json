@@ -24,6 +24,9 @@
   "engines": {
     "node": ">=22"
   },
+  "dependencies": {
+    "@rtorcato/api-errors": "workspace:*"
+  },
   "peerDependencies": {
     "zod": "^4.0.0"
   },

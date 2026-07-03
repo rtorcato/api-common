@@ -18,7 +18,7 @@ import { rateLimitMiddleware } from '@rtorcato/api-rate-limit-express'
 app.use(rateLimitMiddleware({ requests: 100, windowMs: 60_000 }))
 ```
 
-Responds `429` with `{ success: false, code: 'rate_limited', message }` when the limit is exceeded. Keys on client IP via `X-Forwarded-For`.
+Responds `429` with the standard error envelope `{ error: 'TooManyRequestsError', code: 'too_many_requests', message }` when the limit is exceeded. Keys on client IP via `X-Forwarded-For`.
 
 ## Related
 

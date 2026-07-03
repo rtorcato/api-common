@@ -29,13 +29,10 @@ export function successSchema<T extends z.ZodTypeAny>(dataSchema: T) {
 	})
 }
 
-/** Error envelope produced by `api-errors-express` / `api-errors-hono` error handlers. */
-export interface ErrorResponse {
-	error: string
-	code: string
-	message: string
-	stack?: string
-}
+// Error envelope produced by the error handlers. Single source of truth is
+// `@rtorcato/api-errors` (`toErrorResponse`) — re-exported here so the response
+// helpers and the schema below reference the same type.
+export type { ErrorResponse } from '@rtorcato/api-errors'
 
 /** Zod schema for the error envelope — for OpenAPI contracts and response validation. */
 export function errorSchema() {
