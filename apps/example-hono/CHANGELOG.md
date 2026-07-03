@@ -1,5 +1,18 @@
 # @rtorcato/example-hono
 
+## 0.0.4
+
+### Patch Changes
+
+- Updated dependencies [352ee8e]
+  - @rtorcato/api-config@1.0.0
+  - @rtorcato/api-errors@1.0.0
+  - @rtorcato/api-errors-hono@1.0.0
+  - @rtorcato/api-logger@1.0.0
+  - @rtorcato/api-rate-limit-hono@1.0.0
+  - @rtorcato/api-response@1.0.0
+  - @rtorcato/api-validation@1.0.0
+
 ## 0.0.3
 
 ### Patch Changes

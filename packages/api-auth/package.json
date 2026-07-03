@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/api-auth",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Framework-agnostic JWT sign/verify helpers with Bearer-header and cookie token extraction.",
   "type": "module",
   "license": "MIT",

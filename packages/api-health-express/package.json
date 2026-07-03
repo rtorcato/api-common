@@ -1,6 +1,6 @@
 {
 	"name": "@rtorcato/api-health-express",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"description": "Express liveness/readiness probe handlers for @rtorcato/api-health.",
 	"type": "module",
 	"license": "MIT",

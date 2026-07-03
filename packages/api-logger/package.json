@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/api-logger",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Framework-agnostic pino logger factory for Node API projects.",
   "type": "module",
   "license": "MIT",

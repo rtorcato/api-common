@@ -1,6 +1,6 @@
 {
 	"name": "@rtorcato/api-rate-limit-express",
-	"version": "0.2.0",
+	"version": "1.0.0",
 	"description": "Express middleware for @rtorcato/api-rate-limit (sliding-window rate limiter).",
 	"type": "module",
 	"license": "MIT",
