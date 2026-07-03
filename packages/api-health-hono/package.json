@@ -1,6 +1,6 @@
 {
 	"name": "@rtorcato/api-health-hono",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "Hono liveness/readiness probe handlers for @rtorcato/api-health.",
 	"type": "module",
 	"license": "MIT",
