@@ -140,4 +140,17 @@ export function docsHtml(options: DocsHtmlOptions): string {
 </html>`
 }
 
-export * from './builder.js'
+// Explicit re-exports (not `export *`) so the public surface is enumerated and
+// can't silently widen/narrow when builder.ts changes.
+export {
+	buildOpenApiDocument,
+	type HttpMethod,
+	type OpenApiDocument,
+	type OpenApiDocumentConfig,
+	type OpenApiInfo,
+	type RouteConfig,
+	type RouteRequest,
+	type RouteResponse,
+	type ServerObject,
+	type TagObject,
+} from './builder'

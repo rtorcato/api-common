@@ -16,11 +16,11 @@ pnpm add @rtorcato/api-graceful-shutdown
 ## Usage
 
 ```ts
-import { createShutdownHandler, closeHttpServer } from '@rtorcato/api-graceful-shutdown'
+import { createShutdownController, closeHttpServer } from '@rtorcato/api-graceful-shutdown'
 
 const server = app.listen(3000)
 
-const shutdown = createShutdownHandler({
+const shutdown = createShutdownController({
   timeoutMs: 10_000,   // force-exit(1) if cleanup exceeds this
   logger: console.log, // optional progress lines
 })

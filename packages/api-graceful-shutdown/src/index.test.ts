@@ -1,6 +1,6 @@
 import { createServer } from 'node:http'
 import { afterEach, describe, expect, it } from 'vitest'
-import { closeHttpServer, createShutdownHandler, type ShutdownController } from './index'
+import { closeHttpServer, createShutdownController, type ShutdownController } from './index'
 
 // Track controllers so each test's signal listeners are removed afterward.
 let active: ShutdownController | undefined
@@ -12,7 +12,7 @@ afterEach(() => {
 function build(options = {}) {
 	const codes: number[] = []
 	const logs: string[] = []
-	const handler = createShutdownHandler({
+	const handler = createShutdownController({
 		exit: (code) => codes.push(code),
 		logger: (msg) => logs.push(msg),
 		...options,
@@ -21,7 +21,7 @@ function build(options = {}) {
 	return { handler, codes, logs }
 }
 
-describe('createShutdownHandler', () => {
+describe('createShutdownController', () => {
 	it('runs hooks in registration order and exits 0', async () => {
 		const order: string[] = []
 		const { handler, codes } = build()

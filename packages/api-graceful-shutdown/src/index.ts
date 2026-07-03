@@ -32,7 +32,7 @@ export interface ShutdownController {
  * Framework-agnostic — pass `server.close`, an AMQP `connection.close`, a DB
  * pool `end`, etc. as hooks. Use `closeHttpServer(server)` for the common case.
  */
-export function createShutdownHandler(options: ShutdownOptions = {}): ShutdownController {
+export function createShutdownController(options: ShutdownOptions = {}): ShutdownController {
 	const signals = options.signals ?? ['SIGTERM', 'SIGINT']
 	const timeoutMs = options.timeoutMs ?? 10_000
 	const log = options.logger ?? (() => {})

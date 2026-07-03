@@ -14,13 +14,13 @@ pnpm add @rtorcato/api-upload @aws-sdk/client-s3 multer multer-s3 express
 
 ```ts
 import { S3Client } from '@aws-sdk/client-s3'
-import { uploader } from '@rtorcato/api-upload'
+import { uploadFile } from '@rtorcato/api-upload'
 
 const s3 = new S3Client({ region: 'us-east-1' })
 
 app.post('/avatar', async (req, res, next) => {
   try {
-    const file = await uploader(req, res, {
+    const file = await uploadFile(req, res, {
       s3,
       bucket: 'avatars',
       field: 'avatar',              // multipart form field
@@ -39,7 +39,7 @@ app.post('/avatar', async (req, res, next) => {
 
 ## Errors
 
-`uploader` rejects with an `HttpError` (from `@rtorcato/api-errors`) that drops straight into the `api-errors-express` handler:
+`uploadFile` rejects with an `HttpError` (from `@rtorcato/api-errors`) that drops straight into the `api-errors-express` handler:
 
 - **`413 file_too_large`** — the request `Content-Length` exceeds `maxSizeBytes`. Checked **before** anything streams to S3.
 - **`400 no_file`** — the field was empty.

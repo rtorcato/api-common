@@ -51,7 +51,7 @@ export interface UploadOptions {
  * ```ts
  * app.post('/avatar', async (req, res, next) => {
  *   try {
- *     const file = await uploader(req, res, {
+ *     const file = await uploadFile(req, res, {
  *       s3, bucket: 'avatars', field: 'avatar', key: `users/${req.user.id}.png`, isPublic: true,
  *     })
  *     res.json({ url: file.location })
@@ -59,7 +59,7 @@ export interface UploadOptions {
  * })
  * ```
  */
-export async function uploader(
+export async function uploadFile(
 	req: Request,
 	res: Response,
 	options: UploadOptions

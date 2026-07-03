@@ -22,13 +22,13 @@ you bring your own versions and S3 client.
 
 ```ts
 import { S3Client } from '@aws-sdk/client-s3'
-import { uploader } from '@rtorcato/api-upload'
+import { uploadFile } from '@rtorcato/api-upload'
 
 const s3 = new S3Client({ region: 'us-east-1' })
 
 app.post('/avatar', async (req, res, next) => {
   try {
-    const file = await uploader(req, res, {
+    const file = await uploadFile(req, res, {
       s3,
       bucket: 'avatars',
       field: 'avatar',
@@ -47,7 +47,7 @@ app.post('/avatar', async (req, res, next) => {
 
 ## Errors
 
-`uploader` rejects with an `HttpError`:
+`uploadFile` rejects with an `HttpError`:
 
 - **`413 file_too_large`** — request `Content-Length` exceeds `maxSizeBytes`
   (checked before anything streams to S3).

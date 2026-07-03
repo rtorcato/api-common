@@ -17,7 +17,10 @@ export interface AmqpChannel {
 }
 
 /** Open a connection and a channel to the broker (e.g. `amqp://localhost`). */
-export async function connect(url: string, socketOptions?: unknown): Promise<AmqpChannel> {
+export async function connect(
+	url: string,
+	socketOptions?: Parameters<typeof amqp.connect>[1]
+): Promise<AmqpChannel> {
 	const connection = await amqp.connect(url, socketOptions)
 	const channel = await connection.createChannel()
 	return { connection, channel }

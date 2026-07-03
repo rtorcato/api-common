@@ -3,7 +3,7 @@ import { mockClient } from 'aws-sdk-client-mock'
 import express from 'express'
 import request from 'supertest'
 import { afterEach, describe, expect, it } from 'vitest'
-import { uploader, type UploadOptions } from './index'
+import { type UploadOptions, uploadFile } from './index'
 
 // aws-sdk-client-mock wraps a real S3Client (so lib-storage's endpointProvider
 // exists) and intercepts the commands multer-s3 sends.
@@ -16,7 +16,7 @@ function buildApp(options: Omit<UploadOptions, 's3'>) {
 	const app = express()
 	app.post('/upload', async (req, res) => {
 		try {
-			const file = await uploader(req, res, { ...options, s3 })
+			const file = await uploadFile(req, res, { ...options, s3 })
 			res.json({ key: file.key, bucket: file.bucket })
 		} catch (err) {
 			const e = err as { status?: number; code?: string }
@@ -26,7 +26,7 @@ function buildApp(options: Omit<UploadOptions, 's3'>) {
 	return app
 }
 
-describe('uploader', () => {
+describe('uploadFile', () => {
 	it('rejects with 400 no_file when the field is empty', async () => {
 		s3Mock.on(PutObjectCommand).resolves({ ETag: '"e"' })
 		const res = await request(buildApp({ bucket: 'b', field: 'file', key: 'k' })).post('/upload')
