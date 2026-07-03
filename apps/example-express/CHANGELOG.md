@@ -1,5 +1,13 @@
 # @rtorcato/example-express
 
+## 0.0.5
+
+### Patch Changes
+
+- Updated dependencies [7a51835]
+  - @rtorcato/api-openapi@0.2.1
+  - @rtorcato/api-openapi-express@0.2.1
+
 ## 0.0.4
 
 ### Patch Changes

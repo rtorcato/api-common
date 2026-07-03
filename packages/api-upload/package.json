@@ -1,6 +1,6 @@
 {
 	"name": "@rtorcato/api-upload",
-	"version": "0.2.1",
+	"version": "0.3.0",
 	"description": "Promise-based S3 file upload for Express via multer-s3 — public/private ACL, cache-control, deterministic keys, typed errors.",
 	"type": "module",
 	"license": "MIT",
