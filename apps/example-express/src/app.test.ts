@@ -1,5 +1,7 @@
+import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3'
 import { errorBody, successBody, supertest } from '@rtorcato/api-testing'
-import { beforeEach, describe, expect, it } from 'vitest'
+import { mockClient } from 'aws-sdk-client-mock'
+import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { createApp } from './app.js'
 
 describe('items API (express)', () => {
@@ -38,5 +40,76 @@ describe('items API (express)', () => {
 		const res = await req.get('/nope')
 		expect(res.status).toBe(404)
 		expect(res.body).toMatchObject(errorBody('not_found'))
+	})
+})
+
+describe('auth API (express)', () => {
+	let req: ReturnType<typeof supertest>
+
+	beforeEach(() => {
+		req = supertest(createApp())
+	})
+
+	it('POST /login returns a token', async () => {
+		const res = await req.post('/login').send({ username: 'alice' })
+		expect(res.status).toBe(200)
+		expect(typeof res.body.data.token).toBe('string')
+	})
+
+	it('GET /me returns the user for a valid token', async () => {
+		const login = await req.post('/login').send({ username: 'alice' })
+		const res = await req.get('/me').set('Authorization', `Bearer ${login.body.data.token}`)
+		expect(res.status).toBe(200)
+		expect(res.body.data.user.sub).toBe('alice')
+	})
+
+	it('GET /me without a token returns 401', async () => {
+		const res = await req.get('/me')
+		expect(res.status).toBe(401)
+		expect(res.body).toMatchObject(errorBody('missing_token'))
+	})
+})
+
+describe('health API (express)', () => {
+	let req: ReturnType<typeof supertest>
+
+	beforeEach(() => {
+		req = supertest(createApp())
+	})
+
+	it('GET /healthz reports healthy', async () => {
+		const res = await req.get('/healthz')
+		expect(res.status).toBe(200)
+		expect(res.body).toMatchObject({ status: 'healthy' })
+	})
+
+	it('GET /readyz reports ready', async () => {
+		const res = await req.get('/readyz')
+		expect(res.status).toBe(200)
+		expect(res.body).toMatchObject({ status: 'healthy' })
+	})
+})
+
+describe('upload API (express)', () => {
+	// aws-sdk-client-mock wraps a real S3Client so lib-storage works, then
+	// intercepts the PutObjectCommand multer-s3 sends — no MinIO needed.
+	const s3Mock = mockClient(S3Client)
+	const s3 = new S3Client({ region: 'us-east-1' })
+
+	afterEach(() => s3Mock.reset())
+
+	it('POST /upload stores the file and returns 201', async () => {
+		s3Mock.on(PutObjectCommand).resolves({ ETag: '"etag123"' })
+		const res = await supertest(createApp({ s3, bucket: 'test' }))
+			.post('/upload')
+			.attach('file', Buffer.from('hi'), 'hi.txt')
+		expect(res.status).toBe(201)
+		expect(res.body).toMatchObject(successBody({ bucket: 'test' }))
+	})
+
+	it('POST /upload returns 400 no_file when nothing is attached', async () => {
+		const res = await supertest(createApp({ s3, bucket: 'test' })).post('/upload')
+		expect(res.status).toBe(400)
+		expect(res.body).toMatchObject(errorBody('no_file'))
 	})
 })

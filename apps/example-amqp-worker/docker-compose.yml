@@ -1,0 +1,15 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+  worker:
+    build:
+      context: ../..
+      dockerfile: apps/example-amqp-worker/Dockerfile
+    depends_on:
+      - rabbitmq
+    environment:
+      AMQP_URL: "amqp://rabbitmq:5672"
+      LOG_LEVEL: info
