@@ -3,7 +3,7 @@ import express from 'express'
 import request from 'supertest'
 import { describe, expect, it } from 'vitest'
 import { z } from 'zod'
-import { initServer, mountTsRest } from './index'
+import { defaultErrorSchema, initServer, mountTsRest, withDefaultErrors } from './index'
 
 const c = initContract()
 const contract = c.router({
@@ -71,5 +71,31 @@ describe('mountTsRest', () => {
 		const res = await request(buildApp()).get('/docs')
 		expect(res.status).toBe(200)
 		expect(res.text).toContain('api-reference')
+	})
+})
+
+describe('withDefaultErrors', () => {
+	it('adds 400/404/500 default error schemas', () => {
+		const responses = withDefaultErrors({ 200: z.object({ id: z.string() }) })
+		expect(responses[400]).toBe(defaultErrorSchema)
+		expect(responses[404]).toBe(defaultErrorSchema)
+		expect(responses[500]).toBe(defaultErrorSchema)
+	})
+
+	it('lets caller-defined statuses win over the defaults', () => {
+		const custom404 = z.object({ message: z.string() })
+		const responses = withDefaultErrors({ 200: z.object({ id: z.string() }), 404: custom404 })
+		expect(responses[404]).toBe(custom404)
+		expect(responses[400]).toBe(defaultErrorSchema)
+	})
+
+	it('produces schemas matching the api-errors envelope shape', () => {
+		expect(
+			defaultErrorSchema.parse({ error: 'NotFoundError', code: 'not_found', message: 'nope' })
+		).toEqual({
+			error: 'NotFoundError',
+			code: 'not_found',
+			message: 'nope',
+		})
 	})
 })

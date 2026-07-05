@@ -30,4 +30,17 @@ describe('createLogger', () => {
 		const log = createLogger({ pretty: false })
 		expect(log.level).toBe('info')
 	})
+
+	it('accepts prettyOptions without leaking them into the log output', () => {
+		// prettyOptions must be destructured out of the pino options; a destination
+		// stream wins over the pretty transport, so this stays worker-free.
+		const { lines, stream } = sink()
+		const log = createLogger({ prettyOptions: { colorize: true, singleLine: true } }, stream)
+
+		log.info('hello')
+
+		expect(lines).toHaveLength(1)
+		expect(lines[0]).toContain('hello')
+		expect(lines[0]).not.toContain('colorize')
+	})
 })
