@@ -1,5 +1,11 @@
 # @rtorcato/api-logger
 
+## 1.1.0
+
+### Minor Changes
+
+- e80cdcc: Add `prettyOptions` to `createLogger` — forwards options to `pino-pretty` (e.g. `colorize`, `singleLine`, `translateTime`, `ignore`) when `pretty` is on, so consumers no longer have to bypass the factory to configure the dev transport.
+
 ## 1.0.0
 
 ### Major Changes
