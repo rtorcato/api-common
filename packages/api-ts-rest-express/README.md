@@ -49,6 +49,37 @@ mountTsRest(app, {
 
 `initContract` / `initServer` are re-exported so you can build the contract and server from one import.
 
+## Default error responses
+
+`withDefaultErrors` attaches the shared error envelope (`400`/`404`/`500`) to a route's `responses` so every contract documents errors the same way — matching the body emitted by [`@rtorcato/api-errors-express`](https://github.com/rtorcato/api-common/tree/main/packages/api-errors-express) (`{ error, code, message, stack? }`). Statuses you define yourself win over the defaults.
+
+```ts
+import { withDefaultErrors } from '@rtorcato/api-ts-rest-express'
+
+const contract = c.router({
+  getUser: {
+    method: 'GET',
+    path: '/users/:id',
+    pathParams: z.object({ id: z.string() }),
+    responses: withDefaultErrors({ 200: z.object({ id: z.string(), name: z.string() }) }),
+    // → 200 + 400 + 404 + 500 documented
+  },
+})
+```
+
+`defaultErrorSchema` is exported if you want the zod error schema on its own.
+
+### Inference helpers
+
+`RestRequest<T>` and `RestResponse<T>` alias ts-rest's `ServerInferRequest` / `ServerInferResponses` for typing handlers off a contract or route:
+
+```ts
+import type { RestRequest, RestResponse } from '@rtorcato/api-ts-rest-express'
+
+type GetUserReq = RestRequest<typeof contract.getUser>
+type GetUserRes = RestResponse<typeof contract.getUser>
+```
+
 ## Options
 
 `mountTsRest(app, options)`:

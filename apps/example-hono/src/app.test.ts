@@ -44,3 +44,59 @@ describe('items API (hono)', () => {
 		expect(await res.json()).toMatchObject(errorBody('not_found'))
 	})
 })
+
+describe('auth (hono)', () => {
+	it('issues a token and accepts it on the protected route', async () => {
+		const app = createApp()
+		const login = await honoFetch(app, '/login', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ username: 'ada' }),
+		})
+		expect(login.status).toBe(200)
+		const { data } = (await login.json()) as { data: { token: string } }
+		expect(data.token).toBeDefined()
+
+		const me = await honoFetch(app, '/me', { headers: { authorization: `Bearer ${data.token}` } })
+		expect(me.status).toBe(200)
+		const body = (await me.json()) as { data: { user: { sub: string } } }
+		expect(body.data.user.sub).toBe('ada')
+	})
+
+	it('rejects the protected route without a token', async () => {
+		const res = await honoFetch(createApp(), '/me')
+		expect(res.status).toBe(401)
+		expect(await res.json()).toMatchObject(errorBody('missing_token'))
+	})
+})
+
+describe('health + docs (hono)', () => {
+	it('GET /healthz reports liveness', async () => {
+		const res = await honoFetch(createApp(), '/healthz')
+		expect(res.status).toBe(200)
+		expect(await res.json()).toEqual({ status: 'healthy' })
+	})
+
+	it('GET /readyz reports readiness', async () => {
+		const res = await honoFetch(createApp(), '/readyz')
+		expect(res.status).toBe(200)
+		expect(await res.json()).toMatchObject({
+			status: 'healthy',
+			checks: { self: { status: 'healthy' } },
+		})
+	})
+
+	it('serves the OpenAPI 3.1 doc generated from the route schemas', async () => {
+		const res = await honoFetch(createApp(), '/doc')
+		expect(res.status).toBe(200)
+		const spec = (await res.json()) as { openapi: string; paths: Record<string, unknown> }
+		expect(spec.openapi).toMatch(/^3\.1/)
+		expect(spec.paths['/items']).toBeDefined()
+	})
+
+	it('serves the Scalar reference UI', async () => {
+		const res = await honoFetch(createApp(), '/reference')
+		expect(res.status).toBe(200)
+		expect(res.headers.get('content-type')).toContain('text/html')
+	})
+})

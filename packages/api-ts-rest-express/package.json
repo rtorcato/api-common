@@ -25,7 +25,8 @@
 		"node": ">=22"
 	},
 	"dependencies": {
-		"@rtorcato/api-openapi-express": "workspace:*"
+		"@rtorcato/api-openapi-express": "workspace:*",
+		"@rtorcato/api-response": "workspace:*"
 	},
 	"peerDependencies": {
 		"@ts-rest/core": ">=3.53.0-rc.1 <4",

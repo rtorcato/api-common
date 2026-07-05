@@ -1,10 +1,10 @@
 {
-	"name": "@rtorcato/example-hono",
-	"version": "0.0.4",
+	"name": "@rtorcato/example-ts-rest-express",
+	"version": "0.0.0",
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"dev": "tsx src/index.ts",
+		"dev": "exec tsx src/index.ts",
 		"test": "vitest run",
 		"typecheck": "tsc --noEmit"
 	},
@@ -12,26 +12,25 @@
 		"node": ">=22"
 	},
 	"dependencies": {
-		"@rtorcato/api-auth": "workspace:*",
-		"@rtorcato/api-auth-hono": "workspace:*",
 		"@rtorcato/api-config": "workspace:*",
 		"@rtorcato/api-errors": "workspace:*",
-		"@rtorcato/api-errors-hono": "workspace:*",
+		"@rtorcato/api-errors-express": "workspace:*",
+		"@rtorcato/api-express-utils": "workspace:*",
 		"@rtorcato/api-graceful-shutdown": "workspace:*",
 		"@rtorcato/api-health": "workspace:*",
-		"@rtorcato/api-health-hono": "workspace:*",
+		"@rtorcato/api-health-express": "workspace:*",
 		"@rtorcato/api-logger": "workspace:*",
-		"@rtorcato/api-openapi-hono": "workspace:*",
-		"@rtorcato/api-rate-limit-hono": "workspace:*",
 		"@rtorcato/api-response": "workspace:*",
-		"@hono/node-server": "^1.0.0",
-		"@hono/zod-openapi": "^1.4.0",
-		"@scalar/hono-api-reference": "^0.11.7",
-		"hono": "^4.12.27",
+		"@rtorcato/api-ts-rest-express": "workspace:*",
+		"@ts-rest/core": "3.53.0-rc.1",
+		"@ts-rest/express": "3.53.0-rc.1",
+		"@ts-rest/open-api": "3.53.0-rc.1",
+		"express": "^5.1.0",
 		"zod": "^4.0.0"
 	},
 	"devDependencies": {
 		"@rtorcato/api-testing": "workspace:*",
+		"@types/express": "^5.0.0",
 		"pino-pretty": "^13.0.0",
 		"tsx": "^4.0.0",
 		"typescript": "~6.0.3"

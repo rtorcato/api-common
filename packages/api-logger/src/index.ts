@@ -8,6 +8,12 @@ export interface CreateLoggerOptions extends LoggerOptions {
 	 * Requires pino-pretty to be installed (optional peer dependency).
 	 */
 	pretty?: boolean
+	/**
+	 * Options forwarded to pino-pretty when `pretty` is on, e.g.
+	 * `{ colorize: true, singleLine: true, translateTime: 'HH:MM:ss', ignore: 'pid,hostname' }`.
+	 * Ignored when `pretty` is false or a `destination` is supplied.
+	 */
+	prettyOptions?: Record<string, unknown>
 }
 
 /**
@@ -24,11 +30,20 @@ export function createLogger(
 	options: CreateLoggerOptions = {},
 	destination?: DestinationStream
 ): Logger {
-	const { pretty = !isProd(), level = process.env['LOG_LEVEL'] ?? 'info', ...rest } = options
+	const {
+		pretty = !isProd(),
+		prettyOptions,
+		level = process.env['LOG_LEVEL'] ?? 'info',
+		...rest
+	} = options
 
 	const pinoOptions: LoggerOptions = { level, ...rest }
 
 	if (destination) return pino(pinoOptions, destination)
-	if (pretty) return pino({ ...pinoOptions, transport: { target: 'pino-pretty' } })
+	if (pretty)
+		return pino({
+			...pinoOptions,
+			transport: { target: 'pino-pretty', options: prettyOptions },
+		})
 	return pino(pinoOptions)
 }

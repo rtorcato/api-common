@@ -1,0 +1,10 @@
+services:
+  api:
+    build:
+      context: ../..
+      dockerfile: apps/example-ts-rest-express/Dockerfile
+    ports:
+      - "3003:3003"
+    environment:
+      PORT: "3003"
+      LOG_LEVEL: info
