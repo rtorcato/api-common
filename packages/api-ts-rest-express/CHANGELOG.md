@@ -1,5 +1,11 @@
 # @rtorcato/api-ts-rest-express
 
+## 1.1.0
+
+### Minor Changes
+
+- e80cdcc: Add `withDefaultErrors` and `defaultErrorSchema` for attaching the shared `400`/`404`/`500` error envelope (matching `@rtorcato/api-errors-express`) to a ts-rest route's `responses`, plus `RestRequest` / `RestResponse` inference-type aliases for typing handlers off a contract.
+
 ## 1.0.0
 
 ### Major Changes
