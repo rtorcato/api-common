@@ -1,5 +1,10 @@
 # @rtorcato/api-openapi-hono
 
+[![npm version](https://img.shields.io/npm/v/@rtorcato/api-openapi-hono.svg)](https://www.npmjs.com/package/@rtorcato/api-openapi-hono)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-openapi-hono.svg)](https://www.npmjs.com/package/@rtorcato/api-openapi-hono)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-openapi-hono)](https://bundlephobia.com/package/@rtorcato/api-openapi-hono)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Schema-first OpenAPI docs for Hono. Wires [`@hono/zod-openapi`](https://github.com/honojs/middleware/tree/main/packages/zod-openapi) and serves the [Scalar](https://github.com/scalar/scalar) API reference UI — the spec derives from your route Zod schemas, so the docs can't drift from validation.
 
 ## Install

@@ -45,7 +45,12 @@ const typedocPlugins = PACKAGES.map((pkg) => [
 		// Stamp the package.json description onto the generated page's
 		// frontmatter so the /docs/api index cards describe each package
 		// (instead of TypeDoc's generic "Interfaces"/"Classes" fallback).
-		plugin: ['typedoc-plugin-markdown', 'typedoc-plugin-frontmatter'],
+		plugin: [
+			'typedoc-plugin-markdown',
+			'typedoc-plugin-frontmatter',
+			// Local: moves each function's `#### Example` above Parameters/Returns.
+			`${__dirname}/typedoc-plugin-reorder-example.mjs`,
+		],
 		frontmatterGlobals: { description: packageDescriptions[pkg] },
 	},
 ])

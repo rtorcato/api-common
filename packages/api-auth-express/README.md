@@ -1,5 +1,10 @@
 # @rtorcato/api-auth-express
 
+[![npm version](https://img.shields.io/npm/v/@rtorcato/api-auth-express.svg)](https://www.npmjs.com/package/@rtorcato/api-auth-express)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-auth-express.svg)](https://www.npmjs.com/package/@rtorcato/api-auth-express)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-auth-express)](https://bundlephobia.com/package/@rtorcato/api-auth-express)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Express middleware for JWT authentication, built on `@rtorcato/api-auth`.
 
 ## Install

@@ -1,5 +1,10 @@
 # @rtorcato/api-response
 
+[![npm version](https://img.shields.io/npm/v/@rtorcato/api-response.svg)](https://www.npmjs.com/package/@rtorcato/api-response)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-response.svg)](https://www.npmjs.com/package/@rtorcato/api-response)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-response)](https://bundlephobia.com/package/@rtorcato/api-response)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Consistent success-response envelope for Node API projects. Pairs with
 `@rtorcato/api-errors` — success bodies carry `success: true` + `data`, error
 bodies carry `status`/`code`/`message`.
