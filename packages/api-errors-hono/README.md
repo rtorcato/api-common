@@ -1,5 +1,10 @@
 # @rtorcato/api-errors-hono
 
+[![npm version](https://img.shields.io/npm/v/@rtorcato/api-errors-hono.svg)](https://www.npmjs.com/package/@rtorcato/api-errors-hono)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-errors-hono.svg)](https://www.npmjs.com/package/@rtorcato/api-errors-hono)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-errors-hono)](https://bundlephobia.com/package/@rtorcato/api-errors-hono)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Hono middleware for [`@rtorcato/api-errors`](https://www.npmjs.com/package/@rtorcato/api-errors): error handler + not-found handler.
 
 ## Install

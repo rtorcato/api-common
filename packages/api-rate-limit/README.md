@@ -1,5 +1,10 @@
 # @rtorcato/api-rate-limit
 
+[![npm version](https://img.shields.io/npm/v/@rtorcato/api-rate-limit.svg)](https://www.npmjs.com/package/@rtorcato/api-rate-limit)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-rate-limit.svg)](https://www.npmjs.com/package/@rtorcato/api-rate-limit)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-rate-limit)](https://bundlephobia.com/package/@rtorcato/api-rate-limit)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Framework-agnostic in-memory sliding-window rate limiter.
 
 ```ts
