@@ -88,7 +88,13 @@ const sidebars: SidebarsConfig = {
 				description: 'Runnable apps that wire the api-common packages together end to end.',
 				slug: '/examples',
 			},
-			items: ['examples/express', 'examples/hono', 'examples/auth'],
+			items: [
+				'examples/express',
+				'examples/hono',
+				'examples/ts-rest-express',
+				'examples/amqp-worker',
+				'examples/auth',
+			],
 		},
 		{
 			type: 'category',
