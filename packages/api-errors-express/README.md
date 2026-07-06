@@ -1,5 +1,10 @@
 # @rtorcato/api-errors-express
 
+[![npm version](https://img.shields.io/npm/v/@rtorcato/api-errors-express.svg)](https://www.npmjs.com/package/@rtorcato/api-errors-express)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-errors-express.svg)](https://www.npmjs.com/package/@rtorcato/api-errors-express)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-errors-express)](https://bundlephobia.com/package/@rtorcato/api-errors-express)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Express middleware for [`@rtorcato/api-errors`](https://www.npmjs.com/package/@rtorcato/api-errors): error handler + not-found handler.
 
 ## Install
