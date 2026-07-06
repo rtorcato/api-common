@@ -144,7 +144,7 @@ const config: Config = {
 					type: 'dropdown',
 					label: 'Projects',
 					position: 'left',
-					items: [...PROJECT_FAMILY, { label: 'All on GitHub →', href: GITHUB_PROFILE }],
+					items: [{ label: 'All on GitHub →', href: GITHUB_PROFILE }, ...PROJECT_FAMILY],
 				},
 				{
 					href: 'https://github.com/rtorcato/api-common',
