@@ -1,5 +1,10 @@
 # @rtorcato/api-validation
 
+[![npm version](https://img.shields.io/npm/v/@rtorcato/api-validation.svg)](https://www.npmjs.com/package/@rtorcato/api-validation)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-validation.svg)](https://www.npmjs.com/package/@rtorcato/api-validation)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-validation)](https://bundlephobia.com/package/@rtorcato/api-validation)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Zod request validation helpers with pretty error formatting. Pairs with
 `@rtorcato/api-errors` so validation failures surface as `BadRequestError`.
 

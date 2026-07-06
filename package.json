@@ -9,6 +9,7 @@
     "format": "biome format --write .",
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test",
+    "test:coverage": "vitest run --config vitest.coverage.mjs --coverage",
     "build": "pnpm -r build",
     "check:exports": "pnpm -r --filter \"./packages/*\" exec publint && pnpm -r --filter \"./packages/*\" exec attw --pack . --profile esm-only --ignore-rules internal-resolution-error",
     "gen:readme": "node scripts/gen-readme-packages.mjs",
@@ -28,12 +29,13 @@
     "@commitlint/config-conventional": "^21.2.0",
     "@rtorcato/js-tooling": "^2.21.0",
     "@types/node": "^26.0.1",
+    "@vitest/coverage-v8": "^4.1.10",
     "husky": "^9.1.7",
     "is-ci": "^4.1.0",
     "lint-staged": "^17.0.8",
     "publint": "0.3.21",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.8"
+    "vitest": "^4.1.10"
   },
   "engines": {
     "node": ">=22"

@@ -1,5 +1,10 @@
 # @rtorcato/api-testing
 
+[![npm version](https://img.shields.io/npm/v/@rtorcato/api-testing.svg)](https://www.npmjs.com/package/@rtorcato/api-testing)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-testing.svg)](https://www.npmjs.com/package/@rtorcato/api-testing)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-testing)](https://bundlephobia.com/package/@rtorcato/api-testing)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Test helpers for API projects: supertest re-export, JWT auth fixtures, and response assertion matchers.
 
 ## Install

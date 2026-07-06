@@ -1,5 +1,10 @@
 # @rtorcato/api-logger
 
+[![npm version](https://img.shields.io/npm/v/@rtorcato/api-logger.svg)](https://www.npmjs.com/package/@rtorcato/api-logger)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-logger.svg)](https://www.npmjs.com/package/@rtorcato/api-logger)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-logger)](https://bundlephobia.com/package/@rtorcato/api-logger)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Framework-agnostic [pino](https://getpino.io) logger factory for Node API projects.
 
 ```ts
