@@ -1,5 +1,10 @@
 # @rtorcato/api-openapi
 
+[![npm version](https://img.shields.io/npm/v/@rtorcato/api-openapi.svg)](https://www.npmjs.com/package/@rtorcato/api-openapi)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-openapi.svg)](https://www.npmjs.com/package/@rtorcato/api-openapi)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-openapi)](https://bundlephobia.com/package/@rtorcato/api-openapi)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Framework-agnostic OpenAPI 3.1 helpers:
 
 - **`buildOpenApiDocument`** — build an OpenAPI 3.1 document from route definitions whose request/response shapes are **Zod schemas**. Schema-first: the spec derives from the same schemas you validate with, so the docs can't drift.

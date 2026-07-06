@@ -1,5 +1,10 @@
 # @rtorcato/api-openapi-express
 
+[![npm version](https://img.shields.io/npm/v/@rtorcato/api-openapi-express.svg)](https://www.npmjs.com/package/@rtorcato/api-openapi-express)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-openapi-express.svg)](https://www.npmjs.com/package/@rtorcato/api-openapi-express)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-openapi-express)](https://bundlephobia.com/package/@rtorcato/api-openapi-express)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Serve [Scalar](https://scalar.com) or [Swagger UI](https://swagger.io/tools/swagger-ui/) API docs in Express from an OpenAPI spec — as a self-contained router, or mounted directly onto your app.
 
 ## Install

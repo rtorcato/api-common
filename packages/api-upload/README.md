@@ -1,5 +1,10 @@
 # @rtorcato/api-upload
 
+[![npm version](https://img.shields.io/npm/v/@rtorcato/api-upload.svg)](https://www.npmjs.com/package/@rtorcato/api-upload)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-upload.svg)](https://www.npmjs.com/package/@rtorcato/api-upload)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-upload)](https://bundlephobia.com/package/@rtorcato/api-upload)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Promise-based S3 file upload for Express via [multer-s3](https://github.com/anacronw/multer-s3) — public/private ACL, cache-control, deterministic keys, and errors normalized to [`@rtorcato/api-errors`](https://github.com/rtorcato/api-common/tree/main/packages/api-errors).
 
 ## Install

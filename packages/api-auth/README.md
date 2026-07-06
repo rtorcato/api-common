@@ -1,5 +1,10 @@
 # @rtorcato/api-auth
 
+[![npm version](https://img.shields.io/npm/v/@rtorcato/api-auth.svg)](https://www.npmjs.com/package/@rtorcato/api-auth)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-auth.svg)](https://www.npmjs.com/package/@rtorcato/api-auth)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-auth)](https://bundlephobia.com/package/@rtorcato/api-auth)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Framework-agnostic JWT sign/verify helpers with Bearer-header and cookie token extraction.
 
 ## Install

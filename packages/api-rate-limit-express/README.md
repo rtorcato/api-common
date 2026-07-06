@@ -1,5 +1,10 @@
 # @rtorcato/api-rate-limit-express
 
+[![npm version](https://img.shields.io/npm/v/@rtorcato/api-rate-limit-express.svg)](https://www.npmjs.com/package/@rtorcato/api-rate-limit-express)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-rate-limit-express.svg)](https://www.npmjs.com/package/@rtorcato/api-rate-limit-express)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-rate-limit-express)](https://bundlephobia.com/package/@rtorcato/api-rate-limit-express)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Express middleware for `@rtorcato/api-rate-limit` — sliding-window rate limiter.
 
 ## Install
