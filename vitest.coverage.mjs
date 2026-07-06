@@ -6,13 +6,13 @@ import { defineConfig } from 'vitest/config'
 // the example apps aren't published. Per-package `pnpm -r test` is unaffected —
 // it runs each package's own config, never this one.
 export default defineConfig({
-  test: {
-    projects: ['packages/*'],
-    coverage: {
-      provider: 'v8',
-      reporter: ['text-summary', 'lcov'],
-      reportsDirectory: './coverage',
-      include: ['packages/*/src/**'],
-    },
-  },
+	test: {
+		projects: ['packages/*'],
+		coverage: {
+			provider: 'v8',
+			reporter: ['text-summary', 'lcov'],
+			reportsDirectory: './coverage',
+			include: ['packages/*/src/**'],
+		},
+	},
 })
