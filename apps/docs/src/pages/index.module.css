@@ -53,6 +53,19 @@
 	color: var(--bc-muted);
 }
 
+.heroBadges {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 8px;
+	margin: -16px auto 32px;
+}
+
+.heroBadges img {
+	display: block;
+	height: 20px;
+}
+
 .heroBody {
 	display: flex;
 	justify-content: center;

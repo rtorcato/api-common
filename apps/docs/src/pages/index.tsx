@@ -311,6 +311,22 @@ function Hero(): ReactElement {
 					limiting, validation, config, logging, and OpenAPI docs, with Express and Hono adapters.
 				</p>
 
+				<div className={styles.heroBadges}>
+					<a
+						href="https://github.com/rtorcato/api-common/actions/workflows/ci.yml"
+						target="_blank"
+						rel="noreferrer"
+					>
+						<img
+							src="https://github.com/rtorcato/api-common/actions/workflows/ci.yml/badge.svg"
+							alt="CI status"
+						/>
+					</a>
+					<a href="https://opensource.org/licenses/MIT" target="_blank" rel="noreferrer">
+						<img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" />
+					</a>
+				</div>
+
 				<div className={styles.heroBody}>
 					<CodeWindow />
 				</div>
