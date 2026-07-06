@@ -173,16 +173,13 @@ const config: Config = {
 						{ label: 'Express middleware', to: '/docs/guides/express' },
 						{ label: 'Hono middleware', to: '/docs/guides/hono' },
 						{ label: 'API reference', to: '/docs/api' },
+						{ label: 'Examples', to: '/docs/examples' },
 					],
 				},
 				{
 					title: 'Resources',
 					items: [
 						{ label: 'GitHub', href: 'https://github.com/rtorcato/api-common' },
-						{
-							label: 'npm: api-errors',
-							href: 'https://www.npmjs.com/package/@rtorcato/api-errors',
-						},
 						{ label: 'Changelog', to: '/docs/changelog' },
 					],
 				},
@@ -193,7 +190,7 @@ const config: Config = {
 				{
 					title: 'Community',
 					items: [
-						{ label: 'GitHub profile', href: GITHUB_PROFILE },
+						{ label: '@rtorcato', href: GITHUB_PROFILE },
 						{ label: 'Issues', href: 'https://github.com/rtorcato/api-common/issues' },
 						{
 							label: 'License (MIT)',
