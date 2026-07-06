@@ -474,6 +474,30 @@ const SIBLINGS: Sibling[] = [
 		href: 'https://rtorcato.github.io/js-tooling/',
 		dest: 'Docs',
 	},
+	{
+		name: '@rtorcato/db-common',
+		tagline: 'Shared, tree-shakeable TypeScript database utilities for Node projects.',
+		href: 'https://rtorcato.github.io/db-common/',
+		dest: 'Docs',
+	},
+	{
+		name: '@rtorcato/cf-common',
+		tagline: 'Common helpers for Cloudflare developers — Workers, Pages, and the edge runtime.',
+		href: 'https://rtorcato.github.io/cf-common/',
+		dest: 'Docs',
+	},
+	{
+		name: '@rtorcato/react-common',
+		tagline: 'Published React 19 component library — shared UI primitives.',
+		href: 'https://github.com/rtorcato/react-common',
+		dest: 'GitHub',
+	},
+	{
+		name: '@rtorcato/swift-common',
+		tagline: 'SwiftUI package of reusable views and helpers to build apps faster.',
+		href: 'https://rtorcato.github.io/swift-common/',
+		dest: 'Docs',
+	},
 ]
 
 function Siblings(): ReactElement {
