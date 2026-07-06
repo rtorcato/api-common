@@ -1,5 +1,10 @@
 # @rtorcato/api-amqp
 
+[![npm version](https://img.shields.io/npm/v/@rtorcato/api-amqp.svg)](https://www.npmjs.com/package/@rtorcato/api-amqp)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-amqp.svg)](https://www.npmjs.com/package/@rtorcato/api-amqp)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-amqp)](https://bundlephobia.com/package/@rtorcato/api-amqp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Typed [amqplib](https://github.com/amqp-node/amqplib) publisher/consumer helpers for RabbitMQ — JSON encoding, exchange/queue assertion, and ack-on-success / nack-on-throw.
 
 ## Install

@@ -1,5 +1,10 @@
 # @rtorcato/api-http
 
+[![npm version](https://img.shields.io/npm/v/@rtorcato/api-http.svg)](https://www.npmjs.com/package/@rtorcato/api-http)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-http.svg)](https://www.npmjs.com/package/@rtorcato/api-http)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-http)](https://bundlephobia.com/package/@rtorcato/api-http)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Typed HTTP client over native `fetch` — base URL, default headers, timeout, optional retry, and errors normalized to [`@rtorcato/api-errors`](https://github.com/rtorcato/api-common/tree/main/packages/api-errors).
 
 No `axios`, no wrapper dependency — built on Node's global `fetch` and `AbortSignal.timeout` (Node 22+).
