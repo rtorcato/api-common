@@ -1,5 +1,10 @@
 # @rtorcato/api-config
 
+[![npm version](https://img.shields.io/npm/v/@rtorcato/api-config.svg)](https://www.npmjs.com/package/@rtorcato/api-config)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-config.svg)](https://www.npmjs.com/package/@rtorcato/api-config)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-config)](https://bundlephobia.com/package/@rtorcato/api-config)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Load and validate environment variables with [dotenv](https://github.com/motdotla/dotenv)
 + [zod](https://zod.dev) — you supply the schema, you get a typed, validated env.
 

@@ -1,5 +1,10 @@
 # @rtorcato/api-express-utils
 
+[![npm version](https://img.shields.io/npm/v/@rtorcato/api-express-utils.svg)](https://www.npmjs.com/package/@rtorcato/api-express-utils)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-express-utils.svg)](https://www.npmjs.com/package/@rtorcato/api-express-utils)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-express-utils)](https://bundlephobia.com/package/@rtorcato/api-express-utils)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Small Express utility helpers.
 
 ```bash
