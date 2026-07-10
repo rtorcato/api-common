@@ -1,5 +1,6 @@
 import type * as Preset from '@docusaurus/preset-classic'
 import type { Config } from '@docusaurus/types'
+import { GITHUB_PROFILE, projectFamilyItems } from '@rtorcato/shared-docs'
 import { themes as prismThemes } from 'prism-react-renderer'
 import { packageDescriptions, publishablePackages } from './publishablePackages'
 
@@ -11,18 +12,9 @@ const PACKAGES = publishablePackages
 
 // The @rtorcato open-source family. Surfaced as a navbar "Projects" dropdown
 // (Docusaurus renders navbar items in the mobile menu too) and in the footer,
-// so every sibling site cross-links to the rest. Keep in sync across repos.
-const GITHUB_PROFILE = 'https://github.com/rtorcato'
-const PROJECT_FAMILY = [
-	{ label: 'js-common', href: 'https://rtorcato.github.io/js-common/' },
-	{ label: 'api-common', href: 'https://rtorcato.github.io/api-common/' },
-	{ label: 'browser-common', href: 'https://rtorcato.github.io/browser-common/' },
-	{ label: 'db-common', href: 'https://rtorcato.github.io/db-common/' },
-	{ label: 'cf-common', href: 'https://rtorcato.github.io/cf-common/' },
-	{ label: 'react-common', href: 'https://github.com/rtorcato/react-common' },
-	{ label: 'swift-common', href: 'https://rtorcato.github.io/swift-common/' },
-	{ label: 'js-tooling', href: 'https://rtorcato.github.io/js-tooling/' },
-]
+// so every sibling site cross-links to the rest. Single source of truth lives
+// in @rtorcato/shared-docs — edit the family there, every sibling site follows.
+const PROJECT_FAMILY = projectFamilyItems()
 
 const typedocPlugins = PACKAGES.map((pkg) => [
 	'docusaurus-plugin-typedoc',
