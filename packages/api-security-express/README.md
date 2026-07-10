@@ -6,7 +6,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Express security-headers middleware — a thin [helmet](https://helmetjs.github.io/)
-wrapper with API-friendly defaults.
+wrapper that applies its full, sane default header suite under the
+`@rtorcato/api-*` naming.
 
 Hono ships [`secureHeaders`](https://hono.dev/docs/middleware/builtin/secure-headers)
 built in, so this adapter is Express-only.
@@ -22,26 +23,20 @@ pnpm add @rtorcato/api-security-express
 ```ts
 import { securityMiddleware } from '@rtorcato/api-security-express'
 
-// Sane defaults for a JSON API.
+// helmet's secure defaults.
 app.use(securityMiddleware())
 
-// Serving HTML too? Turn on helmet's default CSP.
-app.use(securityMiddleware({ contentSecurityPolicy: true }))
-
-// Plain-HTTP local dev? Drop HSTS.
-app.use(securityMiddleware({ hsts: false }))
+// Serving HTML with a custom Content-Security-Policy? Pass helmet options through.
+app.use(securityMiddleware({
+  contentSecurityPolicy: { directives: { 'script-src': ["'self'"] } },
+}))
 ```
 
-## Defaults
-
-- Sets helmet's full header suite — `X-Content-Type-Options: nosniff`,
-  `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy`, `X-DNS-Prefetch-Control`,
-  and more.
-- **CSP off** — helmet's default Content-Security-Policy is tuned for HTML apps
-  and routinely blocks assets on a JSON API. Enable it with
-  `contentSecurityPolicy: true` if you serve HTML.
-- **HSTS on** — `Strict-Transport-Security` is set; disable with `hsts: false`
-  for plain-HTTP local development.
+Called with no arguments, it applies helmet's full default suite:
+`X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`,
+`Referrer-Policy`, `Strict-Transport-Security`, a default
+`Content-Security-Policy`, and more. Any [helmet option](https://helmetjs.github.io/)
+you pass is forwarded verbatim.
 
 `express` is a peer dependency (v4 or v5) — you control the version.
 

@@ -11,32 +11,23 @@ function buildApp(mw: express.RequestHandler = securityMiddleware()) {
 }
 
 describe('securityMiddleware', () => {
-	it('sets baseline security headers', async () => {
+	it('applies helmet baseline security headers', async () => {
 		const res = await request(buildApp()).get('/')
 		expect(res.headers['x-content-type-options']).toBe('nosniff')
 		expect(res.headers['x-frame-options']).toBe('SAMEORIGIN')
 		expect(res.headers['x-dns-prefetch-control']).toBe('off')
 	})
 
-	it('enables HSTS by default', async () => {
+	it('sets HSTS and a default CSP out of the box', async () => {
 		const res = await request(buildApp()).get('/')
 		expect(res.headers['strict-transport-security']).toBeDefined()
-	})
-
-	it('disables CSP by default (API-friendly)', async () => {
-		const res = await request(buildApp()).get('/')
-		expect(res.headers['content-security-policy']).toBeUndefined()
-	})
-
-	it('enables CSP when requested', async () => {
-		const res = await request(buildApp(securityMiddleware({ contentSecurityPolicy: true }))).get(
-			'/'
-		)
 		expect(res.headers['content-security-policy']).toBeDefined()
 	})
 
-	it('disables HSTS when requested', async () => {
-		const res = await request(buildApp(securityMiddleware({ hsts: false }))).get('/')
-		expect(res.headers['strict-transport-security']).toBeUndefined()
+	it('forwards options to helmet', async () => {
+		// helmet's default Referrer-Policy is `no-referrer`; override proves passthrough.
+		const app = buildApp(securityMiddleware({ referrerPolicy: { policy: 'same-origin' } }))
+		const res = await request(app).get('/')
+		expect(res.headers['referrer-policy']).toBe('same-origin')
 	})
 })

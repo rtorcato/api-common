@@ -1,10 +1,11 @@
 ---
 title: api-security-express
-description: Express security-headers middleware — a thin helmet wrapper with API-friendly defaults.
+description: Express security-headers middleware — a thin helmet wrapper applying its sane defaults.
 ---
 
-`@rtorcato/api-security-express` wraps [helmet](https://helmetjs.github.io/) with
-defaults tuned for JSON APIs. Hono ships
+`@rtorcato/api-security-express` is a thin wrapper over
+[helmet](https://helmetjs.github.io/) that applies its full, sane default header
+suite under the `@rtorcato/api-*` naming. Hono ships
 [`secureHeaders`](https://hono.dev/docs/middleware/builtin/secure-headers) built
 in, so this adapter is Express-only.
 
@@ -27,38 +28,29 @@ const app = express()
 app.use(securityMiddleware())
 ```
 
-Register it before your routes so it applies everywhere.
-
-## Options
-
-```ts
-securityMiddleware({
-  /**
-   * Enable helmet's Content-Security-Policy. helmet's default CSP is tuned for
-   * HTML apps and routinely blocks assets on a JSON API. Default: false.
-   */
-  contentSecurityPolicy: false,
-
-  /**
-   * Enable HTTP Strict-Transport-Security. Turn off for plain-HTTP local dev.
-   * Default: true.
-   */
-  hsts: true,
-})
-```
+Register it before your routes so it applies everywhere. Called with no
+arguments, it uses helmet's secure defaults.
 
 ## What it sets
 
 helmet's full header suite — `X-Content-Type-Options: nosniff`,
 `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy`, `X-DNS-Prefetch-Control`,
-`Strict-Transport-Security`, and more.
+`Strict-Transport-Security`, a default `Content-Security-Policy`, and more.
 
-- **CSP is off by default** — enable it with `contentSecurityPolicy: true` if
-  this service also serves HTML.
-- **HSTS is on by default** — disable with `hsts: false` for plain-HTTP local
-  development.
+## Customizing
+
+Any [helmet option](https://helmetjs.github.io/) is forwarded verbatim:
+
+```ts
+// Serve HTML with a custom Content-Security-Policy.
+app.use(securityMiddleware({
+  contentSecurityPolicy: {
+    directives: { 'script-src': ["'self'"] },
+  },
+}))
+```
 
 :::tip
-For a pure JSON API the defaults are what you want. Only reach for the CSP toggle
-when the same service renders HTML pages.
+For a pure JSON API the defaults are what you want — call `securityMiddleware()`
+with no arguments. Reach for options only when the same service renders HTML.
 :::
