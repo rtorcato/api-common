@@ -12,8 +12,8 @@ importers:
         specifier: 0.18.4
         version: 0.18.4
       '@biomejs/biome':
-        specifier: ^2.5.0
-        version: 2.5.1
+        specifier: ^2.5.3
+        version: 2.5.3
       '@changesets/cli':
         specifier: ^2.31.0
         version: 2.31.0(@types/node@26.0.1)
@@ -25,7 +25,7 @@ importers:
         version: 21.2.0
       '@rtorcato/js-tooling':
         specifier: ^2.29.1
-        version: 2.29.1(@biomejs/biome@2.5.1)(@commitlint/cli@21.2.0(@types/node@26.0.1)(conventional-commits-parser@7.0.0)(typescript@6.0.3))(@commitlint/config-conventional@21.2.0)(@commitlint/types@21.2.0)(@types/node@26.0.1)(conventional-changelog-conventionalcommits@10.2.0)(esbuild@0.28.1)(prettier@2.8.8)(tslib@2.8.1)(typescript@6.0.3)(vitest@4.1.10(@types/node@26.0.1)(@vitest/coverage-v8@4.1.10)(vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)))
+        version: 2.29.1(@biomejs/biome@2.5.3)(@commitlint/cli@21.2.0(@types/node@26.0.1)(conventional-commits-parser@7.0.0)(typescript@6.0.3))(@commitlint/config-conventional@21.2.0)(@commitlint/types@21.2.0)(@types/node@26.0.1)(conventional-changelog-conventionalcommits@10.2.0)(esbuild@0.28.1)(prettier@2.8.8)(tslib@2.8.1)(typescript@6.0.3)(vitest@4.1.10(@types/node@26.0.1)(@vitest/coverage-v8@4.1.10)(vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0)))
       '@types/node':
         specifier: ^26.0.1
         version: 26.0.1
@@ -49,7 +49,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^4.1.10
-        version: 4.1.10(@types/node@26.0.1)(@vitest/coverage-v8@4.1.10)(vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))
+        version: 4.1.10(@types/node@26.0.1)(@vitest/coverage-v8@4.1.10)(vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0))
 
   apps/docs:
     dependencies:
@@ -140,8 +140,8 @@ importers:
         specifier: ^13.0.0
         version: 13.1.3
       tsx:
-        specifier: ^4.0.0
-        version: 4.22.4
+        specifier: ^4.23.0
+        version: 4.23.0
       typescript:
         specifier: ~6.0.3
         version: 6.0.3
@@ -234,8 +234,8 @@ importers:
         specifier: ^13.0.0
         version: 13.1.3
       tsx:
-        specifier: ^4.0.0
-        version: 4.22.4
+        specifier: ^4.23.0
+        version: 4.23.0
       typescript:
         specifier: ~6.0.3
         version: 6.0.3
@@ -244,10 +244,10 @@ importers:
     dependencies:
       '@hono/node-server':
         specifier: ^1.0.0
-        version: 1.19.14(hono@4.12.27)
+        version: 1.19.14(hono@4.12.29)
       '@hono/zod-openapi':
         specifier: ^1.4.0
-        version: 1.4.0(hono@4.12.27)(zod@4.4.3)
+        version: 1.4.0(hono@4.12.29)(zod@4.4.3)
       '@rtorcato/api-auth':
         specifier: workspace:*
         version: link:../../packages/api-auth
@@ -285,11 +285,11 @@ importers:
         specifier: workspace:*
         version: link:../../packages/api-response
       '@scalar/hono-api-reference':
-        specifier: ^0.11.7
-        version: 0.11.7(hono@4.12.27)
+        specifier: ^0.11.9
+        version: 0.11.9(hono@4.12.29)
       hono:
-        specifier: ^4.12.27
-        version: 4.12.27
+        specifier: ^4.12.29
+        version: 4.12.29
       zod:
         specifier: ^4.0.0
         version: 4.4.3
@@ -301,8 +301,8 @@ importers:
         specifier: ^13.0.0
         version: 13.1.3
       tsx:
-        specifier: ^4.0.0
-        version: 4.22.4
+        specifier: ^4.23.0
+        version: 4.23.0
       typescript:
         specifier: ~6.0.3
         version: 6.0.3
@@ -365,8 +365,8 @@ importers:
         specifier: ^13.0.0
         version: 13.1.3
       tsx:
-        specifier: ^4.0.0
-        version: 4.22.4
+        specifier: ^4.23.0
+        version: 4.23.0
       typescript:
         specifier: ~6.0.3
         version: 6.0.3
@@ -428,8 +428,8 @@ importers:
         version: link:../api-errors
     devDependencies:
       hono:
-        specifier: ^4.12.27
-        version: 4.12.27
+        specifier: ^4.12.29
+        version: 4.12.29
       typescript:
         specifier: ~6.0.3
         version: 6.0.3
@@ -506,8 +506,8 @@ importers:
         version: 2.8.1(@types/node@26.0.1)
     devDependencies:
       hono:
-        specifier: ^4.12.27
-        version: 4.12.27
+        specifier: ^4.12.29
+        version: 4.12.29
 
   packages/api-express-utils:
     devDependencies:
@@ -564,8 +564,8 @@ importers:
         version: link:../api-health
     devDependencies:
       hono:
-        specifier: ^4.12.27
-        version: 4.12.27
+        specifier: ^4.12.29
+        version: 4.12.29
       typescript:
         specifier: ~6.0.3
         version: 6.0.3
@@ -624,13 +624,13 @@ importers:
     devDependencies:
       '@hono/zod-openapi':
         specifier: ^1.4.0
-        version: 1.4.0(hono@4.12.27)(zod@4.4.3)
+        version: 1.4.0(hono@4.12.29)(zod@4.4.3)
       '@scalar/hono-api-reference':
-        specifier: ^0.11.7
-        version: 0.11.7(hono@4.12.27)
+        specifier: ^0.11.9
+        version: 0.11.9(hono@4.12.29)
       hono:
-        specifier: ^4.12.27
-        version: 4.12.27
+        specifier: ^4.12.29
+        version: 4.12.29
       typescript:
         specifier: ~6.0.3
         version: 6.0.3
@@ -675,8 +675,8 @@ importers:
         version: link:../api-rate-limit
     devDependencies:
       hono:
-        specifier: ^4.12.27
-        version: 4.12.27
+        specifier: ^4.12.29
+        version: 4.12.29
       typescript:
         specifier: ~6.0.3
         version: 6.0.3
@@ -1645,55 +1645,55 @@ packages:
     resolution: {integrity: sha512-6zABk/ECA/QYSCQ1NGiVwwbQerUCZ+TQbp64Q3AgmfNvurHH0j8TtXa1qbShXA6qqkpAj4V5W8pP6mLe1mcMqA==}
     engines: {node: '>=18'}
 
-  '@biomejs/biome@2.5.1':
-    resolution: {integrity: sha512-IXWLCxKmae+rI7LOHS1B3EbVisQ6GRAWbhN9msa6KjNCyFWrvKZWR4oUdinaNssrV852OrSHuSPa95h1GPJc7Q==}
+  '@biomejs/biome@2.5.3':
+    resolution: {integrity: sha512-MrJswFdei9EfDwwUy2tQrPDpK0AO+RmMFvBoaaJ6ayBc3sUbHdCE+XG5N8vp+5So41ZupZJQm0roHFFhMGVD7A==}
     engines: {node: '>=14.21.3'}
     hasBin: true
 
-  '@biomejs/cli-darwin-arm64@2.5.1':
-    resolution: {integrity: sha512-npqDzvqv7vFaWRiNN1Te71siRgPaqS9MpqgYCdP/CrUbkJ7ApezaeaKjueKHRN/JH/6lRjJQAHi8acQDCAz22w==}
+  '@biomejs/cli-darwin-arm64@2.5.3':
+    resolution: {integrity: sha512-QhYP9muVQ0nUO5zztFuPbEwi4+94sJWVjaZds9aMi1l/KNZBiUjdiSUrGHsTaMGDXrYl+r4AS2sUKfgH3w+V3g==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [darwin]
 
-  '@biomejs/cli-darwin-x64@2.5.1':
-    resolution: {integrity: sha512-RgwTqPAM8g2tn1j+b5oRjF/DbSBX8a4gwojtuG9XuhfK7GgomvZ9+T+tqjXiVbjLEeGJOoL6VEk8mvRTVeSybw==}
+  '@biomejs/cli-darwin-x64@2.5.3':
+    resolution: {integrity: sha512-NC1Ss13UaW7QZX+y8j44bF7AP0jSJdBl6iRhe0MAkvaSqZy+mWg3GaXsrb+eSoHoGDBtaXWEbMVV0iVN2cZ7cQ==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [darwin]
 
-  '@biomejs/cli-linux-arm64-musl@2.5.1':
-    resolution: {integrity: sha512-WMcvMLgByyTqVxGlq918NBBYliq9FRR9GAQVETHb+VjGVqXCZFfHlZHC1FX4ibuYY/Hg6TJE3rHU0xVrdJXNRw==}
+  '@biomejs/cli-linux-arm64-musl@2.5.3':
+    resolution: {integrity: sha512-fccix0w6xp6csCXgxeC0dU/3ecgRQal0y+cv2SP9ajNlhe7Yrk2Ug7UDe2j9AT9ZDYitkXpvUKgZjjuoYeP4Vg==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
 
-  '@biomejs/cli-linux-arm64@2.5.1':
-    resolution: {integrity: sha512-yhV35CzZh38VyMvTEXi3JTjxZBs++oCKK9KG8vB6VI5+uvQvZNR3BFWEKKzuOmx9DJJj7sQpZ4LQJcmbGTs3+Q==}
+  '@biomejs/cli-linux-arm64@2.5.3':
+    resolution: {integrity: sha512-ksx1KWeyYW18ILL04msF/J4ZBtBDN33znYK8Z/aNv/vlBVxL9/g3mGP+omgHJKy4+KWbK87vcmmpmurfNjSgiA==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
 
-  '@biomejs/cli-linux-x64-musl@2.5.1':
-    resolution: {integrity: sha512-ANTowtlLmPYm5yeMckWY8Xzb9Ix+JJP3tgHR/n6xRj1VWyIzzWtfRfih9hv9VmClwadpBvZduISZIbBsIlYG3A==}
+  '@biomejs/cli-linux-x64-musl@2.5.3':
+    resolution: {integrity: sha512-O/yU9YKRUiHhmcjF2f38PSjseVk3G4VLWYc0G2HWpzdBVREV6G8IGWIVEFf7MFPfWIzNUIvPsEjeAZQIOgnLcQ==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
 
-  '@biomejs/cli-linux-x64@2.5.1':
-    resolution: {integrity: sha512-J/7uHSX7NfoYDI7HijAkd8lnQIOrRb2W7j3X+tw4R+N5ExvXGsyXFiGdQcfcxfOmNQmZVSQOCDk757fwpzqQcg==}
+  '@biomejs/cli-linux-x64@2.5.3':
+    resolution: {integrity: sha512-yMkJtilsgvILDcVkh187aVLTb64xYsrxYajx5kym+r1ULkO5HUOfu9AYKLGQbOVLwJtT2utNw7hhFNg+17mUYA==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
 
-  '@biomejs/cli-win32-arm64@2.5.1':
-    resolution: {integrity: sha512-zgXnKNgWPC4iPF7Y1lR3STUeCUuZRpD6IiOrC7TZTlh0Lx6FiVUT05myuMQHQ9D+1cc7uyMldi4forE6lp0ivQ==}
+  '@biomejs/cli-win32-arm64@2.5.3':
+    resolution: {integrity: sha512-cX5z+GYwRcqEok0AH3KSfQGgqYd0Nomfp6Fbe1uiTtELE38hdH2k842wQ9wLNaF/JJ7r4rjJQ4VR+ce+fRmQbw==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [win32]
 
-  '@biomejs/cli-win32-x64@2.5.1':
-    resolution: {integrity: sha512-6uxpR9hvaglANkZemeSiN/FhYgkGasrEGn267eXIWvjrjJ2LhDlk251IhjVJq6MXzkV2/bcXwLwSroLyPtqRZg==}
+  '@biomejs/cli-win32-x64@2.5.3':
+    resolution: {integrity: sha512-ExSaJWi4/u6+GXCszlSKpWSjKNbDseAYqqkCznsCsZ/4uidZ/BEqsCc5/3ctlq6dfIubdIIRSVLC/PG9xPl70Q==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
@@ -3286,26 +3286,26 @@ packages:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
 
-  '@scalar/client-side-rendering@0.3.0':
-    resolution: {integrity: sha512-FFpLokNEyKvpKAJesa+eDh+2e+4qdhoexAJp6alhhxUA6SGqhDfTIV4P+0nZBMdMD6WPu4YeVJHa1hRrGKUVMA==}
+  '@scalar/client-side-rendering@0.3.2':
+    resolution: {integrity: sha512-HXgfSnSQSLaTZupSmN2w4O1Gv0wXdFl+GtrZHQEoNQ4HSzgCtk9fKcmSVxaZiPjyx6eon/x3Ic+Ka5T4tXskyA==}
     engines: {node: '>=22'}
 
   '@scalar/helpers@0.9.0':
     resolution: {integrity: sha512-M34CLRCttqC1bXthI/QSzQj0s5C6nrU2PFWf/vOT3RpycbiGDGQbqR+5RfFzpOIQvRqbHfNdcRbeiZBw+vCbkQ==}
     engines: {node: '>=22'}
 
-  '@scalar/hono-api-reference@0.11.7':
-    resolution: {integrity: sha512-XhQbhhHP9R2CknVIjuqKie7+fkbLWuZzKoXMKPefYGkL+tji7CfametAwvzyb/WzaPktZBl7ZxqpC3pAve0Y7A==}
+  '@scalar/hono-api-reference@0.11.9':
+    resolution: {integrity: sha512-/Rx/kozi18sfWLP6y9qK/xhjO68i667o2aFXWnRfxW0TKL2D6A+LGtWCHQTgTONPKZe0TX9iSMSWf0vy0UOsbA==}
     engines: {node: '>=22'}
     peerDependencies:
       hono: ^4.12.5
 
-  '@scalar/schemas@0.7.0':
-    resolution: {integrity: sha512-Roj0e7S29yTbGojwdx/b8C1H5arVN4h/VSPrtQ5vb9NT2ZAbrfPQVmpQYrF845rKOWX7kSzIvyBwrKNEMIAkxA==}
+  '@scalar/schemas@0.7.2':
+    resolution: {integrity: sha512-6Ble6WcbiKgD3ypIva+wgZv1qIClmeEjXA6jrOo1bKpYUu6sh4e89LZxDK+LULa2jQl/2O5GEaa6aZ0ImlpkHg==}
     engines: {node: '>=22'}
 
-  '@scalar/types@0.16.0':
-    resolution: {integrity: sha512-26OSrvZjKWZ7F236wWmJajBGDVFJuvXFJqKPFqbt/PxlgZKXQXfJsZorASRQmdNogT576nxYalQ7oaYWEnQwfw==}
+  '@scalar/types@0.16.2':
+    resolution: {integrity: sha512-QAlCtDVRsX/UV1N9ctLqPsKQy84eceFf4dMnTZM0JhaRfwS/Ovwp8oFf3POSpqQILNiqLFZLE6IV6p/5rNoAag==}
     engines: {node: '>=22'}
 
   '@scalar/validation@0.6.0':
@@ -5382,6 +5382,10 @@ packages:
 
   hono@4.12.27:
     resolution: {integrity: sha512-1yrb/+w6HWQJrUCLkJ2IF5jNIPvvFkblV5RNOYl6bV+OA6p9GLcMpHFFGTosSvHvcAUibuUukRqhlYI4z32C7Q==}
+    engines: {node: '>=16.9.0'}
+
+  hono@4.12.29:
+    resolution: {integrity: sha512-1hNiRjawYrLq/4m3DQQjPGFg0VZkk4RjQJDff/excI6Dm9BiL75qxGrd7/c6YOxPdq6AscP3LiXhQ6fKFC1Waw==}
     engines: {node: '>=16.9.0'}
 
   hosted-git-info@4.1.0:
@@ -8131,8 +8135,8 @@ packages:
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
-  tsx@4.22.4:
-    resolution: {integrity: sha512-X8EX+XV4QR5xCsrgxaED954zTDfY8KqlDtskKEL0cHhyS/P8b4IFOvGDQpsC9Q1XnLq915wEfwwY/zzskCtmhg==}
+  tsx@4.23.0:
+    resolution: {integrity: sha512-eUdUIaCr963q2h5u3+QwvYp0+eqPvn+egeqZUm0hwERCqqx1E3kK5ehbGCvqSE5MQAULr67ww0cA3jKc3YkM1w==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -9774,39 +9778,39 @@ snapshots:
 
   '@bcoe/v8-coverage@1.0.2': {}
 
-  '@biomejs/biome@2.5.1':
+  '@biomejs/biome@2.5.3':
     optionalDependencies:
-      '@biomejs/cli-darwin-arm64': 2.5.1
-      '@biomejs/cli-darwin-x64': 2.5.1
-      '@biomejs/cli-linux-arm64': 2.5.1
-      '@biomejs/cli-linux-arm64-musl': 2.5.1
-      '@biomejs/cli-linux-x64': 2.5.1
-      '@biomejs/cli-linux-x64-musl': 2.5.1
-      '@biomejs/cli-win32-arm64': 2.5.1
-      '@biomejs/cli-win32-x64': 2.5.1
+      '@biomejs/cli-darwin-arm64': 2.5.3
+      '@biomejs/cli-darwin-x64': 2.5.3
+      '@biomejs/cli-linux-arm64': 2.5.3
+      '@biomejs/cli-linux-arm64-musl': 2.5.3
+      '@biomejs/cli-linux-x64': 2.5.3
+      '@biomejs/cli-linux-x64-musl': 2.5.3
+      '@biomejs/cli-win32-arm64': 2.5.3
+      '@biomejs/cli-win32-x64': 2.5.3
 
-  '@biomejs/cli-darwin-arm64@2.5.1':
+  '@biomejs/cli-darwin-arm64@2.5.3':
     optional: true
 
-  '@biomejs/cli-darwin-x64@2.5.1':
+  '@biomejs/cli-darwin-x64@2.5.3':
     optional: true
 
-  '@biomejs/cli-linux-arm64-musl@2.5.1':
+  '@biomejs/cli-linux-arm64-musl@2.5.3':
     optional: true
 
-  '@biomejs/cli-linux-arm64@2.5.1':
+  '@biomejs/cli-linux-arm64@2.5.3':
     optional: true
 
-  '@biomejs/cli-linux-x64-musl@2.5.1':
+  '@biomejs/cli-linux-x64-musl@2.5.3':
     optional: true
 
-  '@biomejs/cli-linux-x64@2.5.1':
+  '@biomejs/cli-linux-x64@2.5.3':
     optional: true
 
-  '@biomejs/cli-win32-arm64@2.5.1':
+  '@biomejs/cli-win32-arm64@2.5.3':
     optional: true
 
-  '@biomejs/cli-win32-x64@2.5.1':
+  '@biomejs/cli-win32-x64@2.5.3':
     optional: true
 
   '@braidai/lang@1.1.2': {}
@@ -11682,21 +11686,21 @@ snapshots:
     dependencies:
       '@hapi/hoek': 9.3.0
 
-  '@hono/node-server@1.19.14(hono@4.12.27)':
+  '@hono/node-server@1.19.14(hono@4.12.29)':
     dependencies:
-      hono: 4.12.27
+      hono: 4.12.29
 
-  '@hono/zod-openapi@1.4.0(hono@4.12.27)(zod@4.4.3)':
+  '@hono/zod-openapi@1.4.0(hono@4.12.29)(zod@4.4.3)':
     dependencies:
       '@asteasolutions/zod-to-openapi': 8.5.0(zod@4.4.3)
-      '@hono/zod-validator': 0.8.0(hono@4.12.27)(zod@4.4.3)
-      hono: 4.12.27
+      '@hono/zod-validator': 0.8.0(hono@4.12.29)(zod@4.4.3)
+      hono: 4.12.29
       openapi3-ts: 4.6.0
       zod: 4.4.3
 
-  '@hono/zod-validator@0.8.0(hono@4.12.27)(zod@4.4.3)':
+  '@hono/zod-validator@0.8.0(hono@4.12.29)(zod@4.4.3)':
     dependencies:
-      hono: 4.12.27
+      hono: 4.12.29
       zod: 4.4.3
 
   '@inquirer/ansi@2.0.7': {}
@@ -12334,7 +12338,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@rtorcato/js-tooling@2.29.1(@biomejs/biome@2.5.1)(@commitlint/cli@21.2.0(@types/node@26.0.1)(conventional-commits-parser@7.0.0)(typescript@6.0.3))(@commitlint/config-conventional@21.2.0)(@commitlint/types@21.2.0)(@types/node@26.0.1)(conventional-changelog-conventionalcommits@10.2.0)(esbuild@0.28.1)(prettier@2.8.8)(tslib@2.8.1)(typescript@6.0.3)(vitest@4.1.10(@types/node@26.0.1)(@vitest/coverage-v8@4.1.10)(vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)))':
+  '@rtorcato/js-tooling@2.29.1(@biomejs/biome@2.5.3)(@commitlint/cli@21.2.0(@types/node@26.0.1)(conventional-commits-parser@7.0.0)(typescript@6.0.3))(@commitlint/config-conventional@21.2.0)(@commitlint/types@21.2.0)(@types/node@26.0.1)(conventional-changelog-conventionalcommits@10.2.0)(esbuild@0.28.1)(prettier@2.8.8)(tslib@2.8.1)(typescript@6.0.3)(vitest@4.1.10(@types/node@26.0.1)(@vitest/coverage-v8@4.1.10)(vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0)))':
     dependencies:
       chalk: 5.6.2
       commander: 14.0.3
@@ -12342,7 +12346,7 @@ snapshots:
       fs-extra: 11.3.5
       inquirer: 14.0.2(@types/node@26.0.1)
     optionalDependencies:
-      '@biomejs/biome': 2.5.1
+      '@biomejs/biome': 2.5.3
       '@commitlint/cli': 21.2.0(@types/node@26.0.1)(conventional-commits-parser@7.0.0)(typescript@6.0.3)
       '@commitlint/config-conventional': 21.2.0
       '@commitlint/types': 21.2.0
@@ -12351,7 +12355,7 @@ snapshots:
       prettier: 2.8.8
       tslib: 2.8.1
       typescript: 6.0.3
-      vitest: 4.1.10(@types/node@26.0.1)(@vitest/coverage-v8@4.1.10)(vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))
+      vitest: 4.1.10(@types/node@26.0.1)(@vitest/coverage-v8@4.1.10)(vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0))
     transitivePeerDependencies:
       - '@types/node'
 
@@ -12360,25 +12364,25 @@ snapshots:
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
 
-  '@scalar/client-side-rendering@0.3.0':
+  '@scalar/client-side-rendering@0.3.2':
     dependencies:
-      '@scalar/schemas': 0.7.0
-      '@scalar/types': 0.16.0
+      '@scalar/schemas': 0.7.2
+      '@scalar/types': 0.16.2
       '@scalar/validation': 0.6.0
 
   '@scalar/helpers@0.9.0': {}
 
-  '@scalar/hono-api-reference@0.11.7(hono@4.12.27)':
+  '@scalar/hono-api-reference@0.11.9(hono@4.12.29)':
     dependencies:
-      '@scalar/client-side-rendering': 0.3.0
-      hono: 4.12.27
+      '@scalar/client-side-rendering': 0.3.2
+      hono: 4.12.29
 
-  '@scalar/schemas@0.7.0':
+  '@scalar/schemas@0.7.2':
     dependencies:
       '@scalar/helpers': 0.9.0
       '@scalar/validation': 0.6.0
 
-  '@scalar/types@0.16.0':
+  '@scalar/types@0.16.2':
     dependencies:
       '@scalar/helpers': 0.9.0
       nanoid: 5.1.16
@@ -12871,7 +12875,7 @@ snapshots:
       obug: 2.1.1
       std-env: 4.1.0
       tinyrainbow: 3.1.0
-      vitest: 4.1.10(@types/node@26.0.1)(@vitest/coverage-v8@4.1.10)(vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))
+      vitest: 4.1.10(@types/node@26.0.1)(@vitest/coverage-v8@4.1.10)(vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0))
 
   '@vitest/expect@4.1.10':
     dependencies:
@@ -12882,13 +12886,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@4.1.10(vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))':
+  '@vitest/mocker@4.1.10(vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0))':
     dependencies:
       '@vitest/spy': 4.1.10
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)
+      vite: 8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0)
 
   '@vitest/pretty-format@4.1.10':
     dependencies:
@@ -14777,6 +14781,8 @@ snapshots:
       react-is: 16.13.1
 
   hono@4.12.27: {}
+
+  hono@4.12.29: {}
 
   hosted-git-info@4.1.0:
     dependencies:
@@ -17940,7 +17946,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tsx@4.22.4:
+  tsx@4.23.0:
     dependencies:
       esbuild: 0.28.1
     optionalDependencies:
@@ -18162,7 +18168,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0):
+  vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.5
@@ -18175,13 +18181,13 @@ snapshots:
       fsevents: 2.3.3
       jiti: 2.6.1
       terser: 5.48.0
-      tsx: 4.22.4
+      tsx: 4.23.0
       yaml: 2.9.0
 
-  vitest@4.1.10(@types/node@26.0.1)(@vitest/coverage-v8@4.1.10)(vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)):
+  vitest@4.1.10(@types/node@26.0.1)(@vitest/coverage-v8@4.1.10)(vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0)):
     dependencies:
       '@vitest/expect': 4.1.10
-      '@vitest/mocker': 4.1.10(vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))
+      '@vitest/mocker': 4.1.10(vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0))
       '@vitest/pretty-format': 4.1.10
       '@vitest/runner': 4.1.10
       '@vitest/snapshot': 4.1.10
@@ -18198,7 +18204,7 @@ snapshots:
       tinyexec: 1.2.4
       tinyglobby: 0.2.17
       tinyrainbow: 3.1.0
-      vite: 8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)
+      vite: 8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 26.0.1
