@@ -13,9 +13,8 @@ export interface WebhookOptions extends SignatureOptions {
  * Express webhook middleware: captures the **raw** request body, verifies its
  * HMAC signature, then parses the JSON onto `req.body` for downstream handlers.
  *
- * Returns an array of handlers — mount it as the route's middleware, **before**
- * any `express.json()`, which would otherwise consume the raw body needed to
- * verify the signature:
+ * Mount it as the route's middleware, **before** any `express.json()`, which
+ * would otherwise consume the raw body needed to verify the signature:
  *
  * ```ts
  * app.post('/webhooks/github', webhookMiddleware({
@@ -31,29 +30,33 @@ export interface WebhookOptions extends SignatureOptions {
  * Responds `401` on a missing/invalid signature and `400` on an unparseable
  * JSON body, using the standard `@rtorcato/api-errors` envelope.
  */
-export function webhookMiddleware(options: WebhookOptions): RequestHandler[] {
+export function webhookMiddleware(options: WebhookOptions): RequestHandler {
 	const { secret, header = 'x-signature', ...signatureOptions } = options
+	// Capture the raw bytes ourselves so this works regardless of any JSON parser
+	// mounted app-wide; a single composed handler keeps Express's route typing.
 	const captureRaw = express.raw({ type: '*/*' })
 
-	const verify: RequestHandler = (req, res, next) => {
-		const signature = req.header(header)
-		const raw: Buffer = Buffer.isBuffer(req.body) ? req.body : Buffer.alloc(0)
+	return (req, res, next) => {
+		captureRaw(req, res, (rawErr?: unknown) => {
+			if (rawErr) return next(rawErr)
 
-		if (!verifySignature(raw, signature, secret, signatureOptions)) {
-			const err = new UnauthorizedError('Invalid webhook signature')
-			res.status(err.status).json(toErrorResponse(err))
-			return
-		}
+			const signature = req.header(header)
+			const raw: Buffer = Buffer.isBuffer(req.body) ? req.body : Buffer.alloc(0)
 
-		try {
-			req.body = raw.length ? JSON.parse(raw.toString('utf8')) : {}
-		} catch {
-			const err = new BadRequestError('Invalid webhook JSON body')
-			res.status(err.status).json(toErrorResponse(err))
-			return
-		}
-		next()
+			if (!verifySignature(raw, signature, secret, signatureOptions)) {
+				const err = new UnauthorizedError('Invalid webhook signature')
+				res.status(err.status).json(toErrorResponse(err))
+				return
+			}
+
+			try {
+				req.body = raw.length ? JSON.parse(raw.toString('utf8')) : {}
+			} catch {
+				const err = new BadRequestError('Invalid webhook JSON body')
+				res.status(err.status).json(toErrorResponse(err))
+				return
+			}
+			next()
+		})
 	}
-
-	return [captureRaw, verify]
 }
