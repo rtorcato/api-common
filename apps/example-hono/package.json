@@ -24,7 +24,7 @@
 		"@rtorcato/api-openapi-hono": "workspace:*",
 		"@rtorcato/api-rate-limit-hono": "workspace:*",
 		"@rtorcato/api-response": "workspace:*",
-		"@hono/node-server": "^1.0.0",
+		"@hono/node-server": "^2.0.8",
 		"@hono/zod-openapi": "^1.4.0",
 		"@scalar/hono-api-reference": "^0.11.7",
 		"hono": "^4.12.27",
