@@ -55,6 +55,9 @@ The old single-package repo lives at https://gitlab.com/rtorcato/api-common and 
 | [`@rtorcato/api-ts-rest-express`](./packages/api-ts-rest-express) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-ts-rest-express.svg)](https://www.npmjs.com/package/@rtorcato/api-ts-rest-express) | Mount a ts-rest contract on Express and serve its OpenAPI docs (Scalar) — wires @ts-rest/express + @ts-rest/open-api into api-common. |
 | [`@rtorcato/api-upload`](./packages/api-upload) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-upload.svg)](https://www.npmjs.com/package/@rtorcato/api-upload) | Promise-based S3 file upload for Express via multer-s3 — public/private ACL, cache-control, deterministic keys, typed errors. |
 | [`@rtorcato/api-validation`](./packages/api-validation) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-validation.svg)](https://www.npmjs.com/package/@rtorcato/api-validation) | Zod request validation helpers with pretty error formatting for Node API projects. |
+| [`@rtorcato/api-webhooks`](./packages/api-webhooks) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-webhooks.svg)](https://www.npmjs.com/package/@rtorcato/api-webhooks) | Framework-agnostic webhook signature verification (HMAC) for Node API projects. |
+| [`@rtorcato/api-webhooks-express`](./packages/api-webhooks-express) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-webhooks-express.svg)](https://www.npmjs.com/package/@rtorcato/api-webhooks-express) | Express webhook middleware for @rtorcato/api-webhooks — raw-body capture + HMAC signature verification. |
+| [`@rtorcato/api-webhooks-hono`](./packages/api-webhooks-hono) | [![npm](https://img.shields.io/npm/v/@rtorcato/api-webhooks-hono.svg)](https://www.npmjs.com/package/@rtorcato/api-webhooks-hono) | Hono webhook middleware for @rtorcato/api-webhooks — HMAC signature verification over the raw body. |
 <!-- PACKAGES:END -->
 
 ### Install

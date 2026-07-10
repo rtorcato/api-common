@@ -863,6 +863,49 @@ importers:
         specifier: ^4.4.3
         version: 4.4.3
 
+  packages/api-webhooks: {}
+
+  packages/api-webhooks-express:
+    dependencies:
+      '@rtorcato/api-errors':
+        specifier: workspace:*
+        version: link:../api-errors
+      '@rtorcato/api-webhooks':
+        specifier: workspace:*
+        version: link:../api-webhooks
+    devDependencies:
+      '@types/express':
+        specifier: ^5.0.0
+        version: 5.0.6
+      '@types/supertest':
+        specifier: ^7.2.0
+        version: 7.2.0
+      express:
+        specifier: ^5.1.0
+        version: 5.2.1
+      supertest:
+        specifier: ^7.1.0
+        version: 7.2.2
+      typescript:
+        specifier: ~6.0.3
+        version: 6.0.3
+
+  packages/api-webhooks-hono:
+    dependencies:
+      '@rtorcato/api-errors':
+        specifier: workspace:*
+        version: link:../api-errors
+      '@rtorcato/api-webhooks':
+        specifier: workspace:*
+        version: link:../api-webhooks
+    devDependencies:
+      hono:
+        specifier: ^4.12.29
+        version: 4.12.29
+      typescript:
+        specifier: ~6.0.3
+        version: 6.0.3
+
 packages:
 
   '@algolia/abtesting@1.21.1':

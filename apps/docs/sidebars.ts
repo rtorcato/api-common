@@ -32,6 +32,7 @@ const sidebars: SidebarsConfig = {
 				'guides/api-http',
 				'guides/api-amqp',
 				'guides/api-openapi',
+				'guides/api-webhooks',
 				'guides/custom-errors',
 				'guides/testing',
 			],
@@ -58,6 +59,8 @@ const sidebars: SidebarsConfig = {
 				'guides/api-timeout-hono',
 				'guides/api-health-express',
 				'guides/api-health-hono',
+				'guides/api-webhooks-express',
+				'guides/api-webhooks-hono',
 			],
 		},
 		{
