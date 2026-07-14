@@ -30,7 +30,7 @@
 		"@rtorcato/api-validation": "workspace:*",
 		"@rtorcato/api-openapi": "workspace:*",
 		"@rtorcato/api-openapi-express": "workspace:*",
-		"@aws-sdk/client-s3": "^3.1080.0",
+		"@aws-sdk/client-s3": "^3.1086.0",
 		"express": "^5.1.0",
 		"multer": "^2.2.0",
 		"multer-s3": "^3.0.1",
