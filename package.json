@@ -22,7 +22,7 @@
     "commit": "cz"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "0.18.4",
+    "@arethetypeswrong/cli": "0.18.5",
     "@biomejs/biome": "^2.5.3",
     "@changesets/cli": "^2.31.0",
     "@commitlint/cli": "^21.2.0",
