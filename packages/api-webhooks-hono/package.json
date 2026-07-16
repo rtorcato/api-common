@@ -1,6 +1,6 @@
 {
 	"name": "@rtorcato/api-webhooks-hono",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "Hono webhook middleware for @rtorcato/api-webhooks — HMAC signature verification over the raw body.",
 	"type": "module",
 	"license": "MIT",

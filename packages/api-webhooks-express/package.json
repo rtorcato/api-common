@@ -1,6 +1,6 @@
 {
 	"name": "@rtorcato/api-webhooks-express",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "Express webhook middleware for @rtorcato/api-webhooks — raw-body capture + HMAC signature verification.",
 	"type": "module",
 	"license": "MIT",

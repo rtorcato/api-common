@@ -1,6 +1,6 @@
 {
 	"name": "@rtorcato/api-timeout-hono",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "Hono middleware for @rtorcato/api-timeout — fail a request with 503 if it isn't answered within a deadline.",
 	"type": "module",
 	"license": "MIT",
