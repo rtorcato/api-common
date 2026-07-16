@@ -199,12 +199,21 @@ importers:
       '@rtorcato/api-response':
         specifier: workspace:*
         version: link:../../packages/api-response
+      '@rtorcato/api-security-express':
+        specifier: workspace:*
+        version: link:../../packages/api-security-express
+      '@rtorcato/api-timeout-express':
+        specifier: workspace:*
+        version: link:../../packages/api-timeout-express
       '@rtorcato/api-upload':
         specifier: workspace:*
         version: link:../../packages/api-upload
       '@rtorcato/api-validation':
         specifier: workspace:*
         version: link:../../packages/api-validation
+      '@rtorcato/api-webhooks-express':
+        specifier: workspace:*
+        version: link:../../packages/api-webhooks-express
       express:
         specifier: ^5.1.0
         version: 5.2.1

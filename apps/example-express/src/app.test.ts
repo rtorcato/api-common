@@ -1,3 +1,4 @@
+import { createHmac } from 'node:crypto'
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3'
 import { errorBody, successBody, supertest } from '@rtorcato/api-testing'
 import { mockClient } from 'aws-sdk-client-mock'
@@ -67,6 +68,41 @@ describe('auth API (express)', () => {
 		const res = await req.get('/me')
 		expect(res.status).toBe(401)
 		expect(res.body).toMatchObject(errorBody('missing_token'))
+	})
+})
+
+describe('security headers (express)', () => {
+	it('sets helmet security headers on responses', async () => {
+		const res = await supertest(createApp()).get('/items')
+		expect(res.status).toBe(200)
+		expect(res.headers['x-content-type-options']).toBe('nosniff')
+	})
+})
+
+describe('webhooks API (express)', () => {
+	const secret = 'whsec_test'
+	const sign = (raw: string) => `sha256=${createHmac('sha256', secret).update(raw).digest('hex')}`
+
+	it('POST /webhooks accepts a correctly signed payload', async () => {
+		const raw = JSON.stringify({ event: 'ping' })
+		const res = await supertest(createApp({ webhookSecret: secret }))
+			.post('/webhooks')
+			.set('content-type', 'application/json')
+			.set('x-hub-signature-256', sign(raw))
+			.send(raw)
+		expect(res.status).toBe(200)
+		expect(res.body).toMatchObject(successBody({ received: true }))
+	})
+
+	it('POST /webhooks rejects a bad signature with 401', async () => {
+		const raw = JSON.stringify({ event: 'ping' })
+		const res = await supertest(createApp({ webhookSecret: secret }))
+			.post('/webhooks')
+			.set('content-type', 'application/json')
+			.set('x-hub-signature-256', 'sha256=deadbeef')
+			.send(raw)
+		expect(res.status).toBe(401)
+		expect(res.body).toMatchObject(errorBody('unauthorized'))
 	})
 })
 
