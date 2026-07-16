@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/api-timeout",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Framework-agnostic per-request timeout for Node API projects — race a promise against a deadline and reject with a ServiceUnavailableError.",
   "type": "module",
   "license": "MIT",

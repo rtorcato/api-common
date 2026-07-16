@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/api-security-express",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Express security-headers middleware — a thin helmet wrapper with API-friendly defaults.",
   "type": "module",
   "license": "MIT",

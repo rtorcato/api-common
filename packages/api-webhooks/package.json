@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/api-webhooks",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Framework-agnostic webhook signature verification (HMAC) for Node API projects.",
   "type": "module",
   "license": "MIT",
