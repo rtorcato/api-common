@@ -13,14 +13,24 @@ interact in a real server.
 |---|---|
 | [`api-config`](https://github.com/rtorcato/api-common/tree/main/packages/api-config) | `loadEnv()` validates `PORT` + `LOG_LEVEL` from `.env` at startup |
 | [`api-logger`](https://github.com/rtorcato/api-common/tree/main/packages/api-logger) | `createLogger()` gives a pino logger, pretty-printed in dev |
+| [`api-auth`](https://github.com/rtorcato/api-common/tree/main/packages/api-auth) | `signToken()` issues a JWT on `POST /login` |
+| [`api-auth-express`](https://github.com/rtorcato/api-common/tree/main/packages/api-auth-express) | `authMiddleware()` guards `GET /me` |
 | [`api-errors`](https://github.com/rtorcato/api-common/tree/main/packages/api-errors) | `NotFoundError` is thrown when an item ID doesn't exist |
-| [`api-errors-express`](https://github.com/rtorcato/api-common/tree/main/packages/api-errors-express) | `errorHandler()` + `notFoundHandler` convert those errors to JSON |
+| [`api-errors-express`](https://github.com/rtorcato/api-common/tree/main/packages/api-errors-express) | `errorHandler()` + `notFoundHandler` convert those errors to JSON; `asyncHandler()` wraps async routes |
 | [`api-express-utils`](https://github.com/rtorcato/api-common/tree/main/packages/api-express-utils) | `getIP()` keys the rate limiter; `logRoutes()` prints routes on start |
-| [`api-rate-limit`](https://github.com/rtorcato/api-common/tree/main/packages/api-rate-limit) | `createRateLimiter()` — 100 req/min sliding window, in-memory |
-| [`api-response`](https://github.com/rtorcato/api-common/tree/main/packages/api-response) | `ok()` wraps every success payload in `{ success: true, data }` |
+| [`api-security-express`](https://github.com/rtorcato/api-common/tree/main/packages/api-security-express) | `securityMiddleware()` sets helmet security headers on every response |
+| [`api-cors-express`](https://github.com/rtorcato/api-common/tree/main/packages/api-cors-express) | `corsMiddleware()` applies the CORS policy |
+| [`api-timeout-express`](https://github.com/rtorcato/api-common/tree/main/packages/api-timeout-express) | `timeoutMiddleware({ ms })` — a slow request is failed with a `503` instead of hanging |
+| [`api-rate-limit-express`](https://github.com/rtorcato/api-common/tree/main/packages/api-rate-limit-express) | `rateLimitMiddleware()` — 100 req/min sliding window, in-memory |
+| [`api-webhooks-express`](https://github.com/rtorcato/api-common/tree/main/packages/api-webhooks-express) | `webhookMiddleware()` verifies an HMAC signature on `POST /webhooks` (opt-in via `webhookSecret`) |
+| [`api-health`](https://github.com/rtorcato/api-common/tree/main/packages/api-health) | `createHealthRegistry()` tracks the readiness checks |
+| [`api-health-express`](https://github.com/rtorcato/api-common/tree/main/packages/api-health-express) | `livenessHandler()` / `readinessHandler()` back `/healthz` + `/readyz` |
+| [`api-upload`](https://github.com/rtorcato/api-common/tree/main/packages/api-upload) | `uploadFile()` streams `POST /upload` to S3 (wired when an S3 client is provided) |
 | [`api-validation`](https://github.com/rtorcato/api-common/tree/main/packages/api-validation) | `validate()` parses POST bodies and throws `BadRequestError` on failure |
+| [`api-response`](https://github.com/rtorcato/api-common/tree/main/packages/api-response) | `ok()` wraps every success payload in `{ success: true, data }` |
 | [`api-openapi`](https://github.com/rtorcato/api-common/tree/main/packages/api-openapi) | OpenAPI spec defined in `src/spec.ts`; `generateScalarHtml` / `generateSwaggerHtml` render the UI pages |
 | [`api-openapi-express`](https://github.com/rtorcato/api-common/tree/main/packages/api-openapi-express) | `serveApiDocs()` mounts Scalar UI at `/api-docs`; `serveSwaggerDocs()` mounts Swagger UI at `/swagger` |
+| [`api-graceful-shutdown`](https://github.com/rtorcato/api-common/tree/main/packages/api-graceful-shutdown) | `createShutdownController()` drains the server on `SIGTERM`/`SIGINT` (in `index.ts`) |
 
 ## Routes
 
@@ -29,6 +39,12 @@ GET    /items
 POST   /items              { "name": string }
 GET    /items/:id
 DELETE /items/:id
+POST   /login             { "username": string }  → { token }
+GET    /me                Bearer token required
+POST   /upload            multipart file → S3 (when an S3 client is configured)
+POST   /webhooks          HMAC-verified receiver (when webhookSecret is set)
+GET    /healthz           liveness probe
+GET    /readyz            readiness probe
 GET    /api-docs           Scalar API reference
 GET    /api-docs/openapi.json
 GET    /swagger            Swagger UI
