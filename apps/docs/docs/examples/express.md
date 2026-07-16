@@ -21,6 +21,9 @@ interact in a real server.
 | [`api-validation`](https://github.com/rtorcato/api-common/tree/main/packages/api-validation) | `validate()` parses POST bodies and throws `BadRequestError` on failure |
 | [`api-openapi`](https://github.com/rtorcato/api-common/tree/main/packages/api-openapi) | OpenAPI spec defined in `src/spec.ts`; `generateScalarHtml` / `generateSwaggerHtml` render the UI pages |
 | [`api-openapi-express`](https://github.com/rtorcato/api-common/tree/main/packages/api-openapi-express) | `serveApiDocs()` mounts Scalar UI at `/api-docs`; `serveSwaggerDocs()` mounts Swagger UI at `/swagger` |
+| [`api-security-express`](https://github.com/rtorcato/api-common/tree/main/packages/api-security-express) | `securityMiddleware()` sets helmet security headers on every response |
+| [`api-timeout-express`](https://github.com/rtorcato/api-common/tree/main/packages/api-timeout-express) | `timeoutMiddleware({ ms })` — a slow request is failed with a `503` instead of hanging |
+| [`api-webhooks-express`](https://github.com/rtorcato/api-common/tree/main/packages/api-webhooks-express) | `webhookMiddleware()` verifies an HMAC signature on `POST /webhooks` (opt-in via `webhookSecret`) |
 
 ## Routes
 
@@ -29,6 +32,7 @@ GET    /items
 POST   /items              { "name": string }
 GET    /items/:id
 DELETE /items/:id
+POST   /webhooks           HMAC-verified receiver (when webhookSecret is set)
 GET    /api-docs           Scalar API reference
 GET    /api-docs/openapi.json
 GET    /swagger            Swagger UI
