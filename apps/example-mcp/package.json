@@ -1,0 +1,22 @@
+{
+	"name": "@rtorcato/example-mcp",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "tsx src/index.ts",
+		"test": "vitest run",
+		"typecheck": "tsc --noEmit"
+	},
+	"engines": {
+		"node": ">=22"
+	},
+	"dependencies": {
+		"@modelcontextprotocol/sdk": "^1.29.0",
+		"zod": "^4.0.0"
+	},
+	"devDependencies": {
+		"tsx": "^4.23.0",
+		"typescript": "~6.0.3"
+	}
+}
