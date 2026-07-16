@@ -100,6 +100,7 @@ const sidebars: SidebarsConfig = {
 				'examples/hono',
 				'examples/ts-rest-express',
 				'examples/amqp-worker',
+				'examples/mcp',
 				'examples/auth',
 			],
 		},
