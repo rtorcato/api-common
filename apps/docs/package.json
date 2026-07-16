@@ -18,8 +18,8 @@
 		"test:e2e:install": "playwright install chromium"
 	},
 	"dependencies": {
-		"@docusaurus/core": "^3.8.1",
-		"@docusaurus/preset-classic": "^3.8.1",
+		"@docusaurus/core": "^3.10.2",
+		"@docusaurus/preset-classic": "^3.10.2",
 		"@easyops-cn/docusaurus-search-local": "^0.55.2",
 		"@mdx-js/react": "^3.1.0",
 		"clsx": "^2.1.1",
@@ -28,9 +28,9 @@
 		"react-dom": "^19.0.0"
 	},
 	"devDependencies": {
-		"@docusaurus/module-type-aliases": "^3.8.1",
-		"@docusaurus/tsconfig": "^3.8.1",
-		"@docusaurus/types": "^3.8.1",
+		"@docusaurus/module-type-aliases": "^3.10.2",
+		"@docusaurus/tsconfig": "^3.10.2",
+		"@docusaurus/types": "^3.10.2",
 		"@playwright/test": "^1.61.0",
 		"@rtorcato/shared-docs": "github:rtorcato/shared-docs",
 		"@types/react": "^19.0.0",
