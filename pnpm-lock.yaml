@@ -293,6 +293,12 @@ importers:
       '@rtorcato/api-response':
         specifier: workspace:*
         version: link:../../packages/api-response
+      '@rtorcato/api-timeout-hono':
+        specifier: workspace:*
+        version: link:../../packages/api-timeout-hono
+      '@rtorcato/api-webhooks-hono':
+        specifier: workspace:*
+        version: link:../../packages/api-webhooks-hono
       '@scalar/hono-api-reference':
         specifier: ^0.11.9
         version: 0.11.9(hono@4.12.29)

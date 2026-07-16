@@ -19,6 +19,8 @@ so you can compare the two implementations side by side.
 | [`api-rate-limit`](https://github.com/rtorcato/api-common/tree/main/packages/api-rate-limit) | `createRateLimiter()` — 100 req/min sliding window keyed on forwarded IP |
 | [`api-response`](https://github.com/rtorcato/api-common/tree/main/packages/api-response) | `ok()` wraps every success payload in `{ success: true, data }` |
 | [`api-validation`](https://github.com/rtorcato/api-common/tree/main/packages/api-validation) | `validate()` parses POST bodies and throws `BadRequestError` on failure |
+| [`api-timeout-hono`](https://github.com/rtorcato/api-common/tree/main/packages/api-timeout-hono) | `timeoutMiddleware({ ms })` — a slow handler is failed with a `503` instead of hanging |
+| [`api-webhooks-hono`](https://github.com/rtorcato/api-common/tree/main/packages/api-webhooks-hono) | `webhookMiddleware()` verifies an HMAC signature on `POST /webhooks` (opt-in via `webhookSecret`) |
 | [`@hono/swagger-ui`](https://github.com/honojs/middleware/tree/main/packages/swagger-ui) | Swagger UI at `/api-docs`; raw spec served at `/api-docs/json` |
 
 ## Routes
@@ -28,6 +30,7 @@ GET    /items
 POST   /items          { "name": string }
 GET    /items/:id
 DELETE /items/:id
+POST   /webhooks       HMAC-verified receiver (when webhookSecret is set)
 GET    /api-docs       Swagger UI
 GET    /api-docs/json  raw OpenAPI spec
 ```
