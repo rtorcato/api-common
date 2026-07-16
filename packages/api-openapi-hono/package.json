@@ -31,8 +31,8 @@
 	},
 	"devDependencies": {
 		"@hono/zod-openapi": "^1.5.1",
-		"@scalar/hono-api-reference": "^0.11.9",
-		"hono": "^4.12.29",
+		"@scalar/hono-api-reference": "^0.11.10",
+		"hono": "^4.12.30",
 		"typescript": "~6.0.3"
 	},
 	"publishConfig": {
