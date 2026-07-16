@@ -24,8 +24,8 @@ importers:
         specifier: ^21.2.0
         version: 21.2.0
       '@rtorcato/js-tooling':
-        specifier: ^2.29.1
-        version: 2.29.1(@biomejs/biome@2.5.3)(@commitlint/cli@21.2.1(@types/node@26.1.1)(conventional-commits-parser@7.0.0)(typescript@6.0.3))(@commitlint/config-conventional@21.2.0)(@commitlint/types@21.2.0)(@types/node@26.1.1)(conventional-changelog-conventionalcommits@10.2.0)(esbuild@0.28.1)(prettier@2.8.8)(tslib@2.8.1)(typescript@6.0.3)(vitest@4.1.10(@types/node@26.1.1)(@vitest/coverage-v8@4.1.10)(vite@8.0.16(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.49.0)(tsx@4.23.0)(yaml@2.9.0)))
+        specifier: ^2.40.0
+        version: 2.40.0(@biomejs/biome@2.5.3)(@commitlint/cli@21.2.1(@types/node@26.1.1)(conventional-commits-parser@7.0.0)(typescript@6.0.3))(@commitlint/config-conventional@21.2.0)(@commitlint/types@21.2.0)(@types/node@26.1.1)(conventional-changelog-conventionalcommits@10.2.0)(esbuild@0.28.1)(prettier@2.8.8)(tslib@2.8.1)(typescript@6.0.3)(vitest@4.1.10(@types/node@26.1.1)(@vitest/coverage-v8@4.1.10)(vite@8.0.16(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.49.0)(tsx@4.23.0)(yaml@2.9.0)))
       '@types/node':
         specifier: ^26.1.1
         version: 26.1.1
@@ -3251,8 +3251,8 @@ packages:
     engines: {node: '>=22'}
     hasBin: true
 
-  '@rtorcato/js-tooling@2.29.1':
-    resolution: {integrity: sha512-Xwjic2fqaLEj9nc/e/l/WtyY/8yFu998iHkl+kPFG6YKzo87M9tzpPLIZTBNPq+69dp9gnKLK0guOcqbePSqjg==}
+  '@rtorcato/js-tooling@2.40.0':
+    resolution: {integrity: sha512-uW46SVHeXiH80rZINBC6lMiAK1Tc8QkDocm/dNoEy3/rn+movZDlwPiDzYFyyiynBQw+JBfzPD8koAmcbH6jZA==}
     engines: {node: '>=22'}
     hasBin: true
     peerDependencies:
@@ -12456,7 +12456,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@rtorcato/js-tooling@2.29.1(@biomejs/biome@2.5.3)(@commitlint/cli@21.2.1(@types/node@26.1.1)(conventional-commits-parser@7.0.0)(typescript@6.0.3))(@commitlint/config-conventional@21.2.0)(@commitlint/types@21.2.0)(@types/node@26.1.1)(conventional-changelog-conventionalcommits@10.2.0)(esbuild@0.28.1)(prettier@2.8.8)(tslib@2.8.1)(typescript@6.0.3)(vitest@4.1.10(@types/node@26.1.1)(@vitest/coverage-v8@4.1.10)(vite@8.0.16(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.49.0)(tsx@4.23.0)(yaml@2.9.0)))':
+  '@rtorcato/js-tooling@2.40.0(@biomejs/biome@2.5.3)(@commitlint/cli@21.2.1(@types/node@26.1.1)(conventional-commits-parser@7.0.0)(typescript@6.0.3))(@commitlint/config-conventional@21.2.0)(@commitlint/types@21.2.0)(@types/node@26.1.1)(conventional-changelog-conventionalcommits@10.2.0)(esbuild@0.28.1)(prettier@2.8.8)(tslib@2.8.1)(typescript@6.0.3)(vitest@4.1.10(@types/node@26.1.1)(@vitest/coverage-v8@4.1.10)(vite@8.0.16(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.49.0)(tsx@4.23.0)(yaml@2.9.0)))':
     dependencies:
       chalk: 5.6.2
       commander: 14.0.3
