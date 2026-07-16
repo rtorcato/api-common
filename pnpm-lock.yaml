@@ -61,7 +61,7 @@ importers:
         version: 3.10.2(@algolia/client-search@5.55.2)(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.7))(@types/react@19.2.17)(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(search-insights@2.17.3)(typescript@6.0.3)
       '@easyops-cn/docusaurus-search-local':
         specifier: ^0.55.2
-        version: 0.55.2(@docusaurus/theme-common@3.10.2(@docusaurus/plugin-content-docs@3.10.1(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.7))(debug@4.4.3)(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@6.0.3))(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.7))(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@6.0.3)
+        version: 0.55.2(@docusaurus/theme-common@3.10.2(@docusaurus/plugin-content-docs@3.10.1(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.7))(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@6.0.3))(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.7))(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@6.0.3)
       '@mdx-js/react':
         specifier: ^3.1.0
         version: 3.1.1(@types/react@19.2.17)(react@19.2.7)
@@ -92,7 +92,7 @@ importers:
         version: 1.61.1
       '@rtorcato/shared-docs':
         specifier: github:rtorcato/shared-docs
-        version: git+git@github.com:rtorcato/shared-docs.git#3b9778f59b1a07055fab1f4e9cfa4a0446d48785(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+        version: https://codeload.github.com/rtorcato/shared-docs/tar.gz/3b9778f59b1a07055fab1f4e9cfa4a0446d48785(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@types/react':
         specifier: ^19.0.0
         version: 19.2.17
@@ -3408,6 +3408,14 @@ packages:
         optional: true
       vitest:
         optional: true
+
+  '@rtorcato/shared-docs@https://codeload.github.com/rtorcato/shared-docs/tar.gz/3b9778f59b1a07055fab1f4e9cfa4a0446d48785':
+    resolution: {tarball: https://codeload.github.com/rtorcato/shared-docs/tar.gz/3b9778f59b1a07055fab1f4e9cfa4a0446d48785}
+    version: 1.0.0
+    engines: {node: '>=22'}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
 
   '@scalar/client-side-rendering@0.3.2':
     resolution: {integrity: sha512-HXgfSnSQSLaTZupSmN2w4O1Gv0wXdFl+GtrZHQEoNQ4HSzgCtk9fKcmSVxaZiPjyx6eon/x3Ic+Ka5T4tXskyA==}
@@ -11967,7 +11975,7 @@ snapshots:
       - uglify-js
       - webpack-cli
 
-  '@docusaurus/theme-common@3.10.2(@docusaurus/plugin-content-docs@3.10.1(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.7))(debug@4.4.3)(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@6.0.3))(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
+  '@docusaurus/theme-common@3.10.2(@docusaurus/plugin-content-docs@3.10.1(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.7))(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@6.0.3))(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@docusaurus/mdx-loader': 3.10.2(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@docusaurus/module-type-aliases': 3.10.2(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -12526,10 +12534,10 @@ snapshots:
       cssesc: 3.0.0
       immediate: 3.3.0
 
-  '@easyops-cn/docusaurus-search-local@0.55.2(@docusaurus/theme-common@3.10.2(@docusaurus/plugin-content-docs@3.10.1(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.7))(debug@4.4.3)(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@6.0.3))(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.7))(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@6.0.3)':
+  '@easyops-cn/docusaurus-search-local@0.55.2(@docusaurus/theme-common@3.10.2(@docusaurus/plugin-content-docs@3.10.1(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.7))(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@6.0.3))(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.7))(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@6.0.3)':
     dependencies:
       '@docusaurus/plugin-content-docs': 3.10.1(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.7))(debug@4.4.3)(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@6.0.3)
-      '@docusaurus/theme-common': 3.10.2(@docusaurus/plugin-content-docs@3.10.1(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.7))(debug@4.4.3)(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@6.0.3))(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@docusaurus/theme-common': 3.10.2(@docusaurus/plugin-content-docs@3.10.1(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.7))(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@6.0.3))(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@docusaurus/theme-translations': 3.10.1
       '@docusaurus/utils': 3.10.1(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@docusaurus/utils-common': 3.10.1(esbuild@0.28.1)(postcss@8.5.19)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -13480,6 +13488,11 @@ snapshots:
       vitest: 4.1.10(@types/node@26.0.1)(@vitest/coverage-v8@4.1.10)(vite@8.0.16(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(terser@5.48.0)(tsx@4.23.0)(yaml@2.9.0))
     transitivePeerDependencies:
       - '@types/node'
+
+  '@rtorcato/shared-docs@https://codeload.github.com/rtorcato/shared-docs/tar.gz/3b9778f59b1a07055fab1f4e9cfa4a0446d48785(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
+    dependencies:
+      react: 19.2.7
+      react-dom: 19.2.7(react@19.2.7)
 
   '@scalar/client-side-rendering@0.3.2':
     dependencies:
