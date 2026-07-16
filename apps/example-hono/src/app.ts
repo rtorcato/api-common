@@ -8,6 +8,8 @@ import { livenessHandler, readinessHandler } from '@rtorcato/api-health-hono'
 import { configureOpenAPI } from '@rtorcato/api-openapi-hono'
 import { rateLimitMiddleware } from '@rtorcato/api-rate-limit-hono'
 import { ok } from '@rtorcato/api-response'
+import { timeoutMiddleware } from '@rtorcato/api-timeout-hono'
+import { webhookMiddleware } from '@rtorcato/api-webhooks-hono'
 
 // Schema-first: these Zod schemas drive request validation AND the generated
 // OpenAPI doc, so the API and its docs can't drift.
@@ -27,10 +29,12 @@ type Item = z.infer<typeof ItemSchema>
 
 export interface AppOptions {
 	jwtSecret?: string
+	webhookSecret?: string
 }
 
 export function createApp(options: AppOptions = {}) {
 	const jwtSecret = options.jwtSecret ?? 'dev-secret'
+	const { webhookSecret } = options
 	const items: Item[] = []
 
 	const app = new OpenAPIHono<{ Variables: AuthVariables }>({
@@ -47,7 +51,24 @@ export function createApp(options: AppOptions = {}) {
 	app.get('/healthz', livenessHandler())
 	app.get('/readyz', readinessHandler(health))
 
+	// Fail slow requests with a 503 instead of hanging the client.
+	app.use(timeoutMiddleware({ ms: 10_000 }))
 	app.use(rateLimitMiddleware({ requests: 100, windowMs: 60_000 }))
+
+	// Webhook receiver (opt-in): verifies an HMAC signature over the raw body
+	// before the handler runs. Gated on webhookSecret so the default app needs
+	// no secret configured.
+	if (webhookSecret) {
+		app.post(
+			'/webhooks',
+			webhookMiddleware({
+				secret: webhookSecret,
+				header: 'x-hub-signature-256',
+				prefix: 'sha256=',
+			}),
+			(c) => c.json(ok({ received: true }))
+		)
+	}
 
 	// Auth: issue a token, then guard /me with it.
 	app.post('/login', async (c) => {

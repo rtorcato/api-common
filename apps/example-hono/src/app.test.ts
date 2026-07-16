@@ -1,3 +1,4 @@
+import { createHmac } from 'node:crypto'
 import { errorBody, honoFetch, successBody } from '@rtorcato/api-testing'
 import { describe, expect, it } from 'vitest'
 import { createApp } from './app.js'
@@ -67,6 +68,33 @@ describe('auth (hono)', () => {
 		const res = await honoFetch(createApp(), '/me')
 		expect(res.status).toBe(401)
 		expect(await res.json()).toMatchObject(errorBody('missing_token'))
+	})
+})
+
+describe('webhooks (hono)', () => {
+	const secret = 'whsec_test'
+	const sign = (raw: string) => `sha256=${createHmac('sha256', secret).update(raw).digest('hex')}`
+
+	it('POST /webhooks accepts a correctly signed payload', async () => {
+		const raw = JSON.stringify({ event: 'ping' })
+		const res = await honoFetch(createApp({ webhookSecret: secret }), '/webhooks', {
+			method: 'POST',
+			headers: { 'content-type': 'application/json', 'x-hub-signature-256': sign(raw) },
+			body: raw,
+		})
+		expect(res.status).toBe(200)
+		expect(await res.json()).toMatchObject(successBody({ received: true }))
+	})
+
+	it('POST /webhooks rejects a bad signature with 401', async () => {
+		const raw = JSON.stringify({ event: 'ping' })
+		const res = await honoFetch(createApp({ webhookSecret: secret }), '/webhooks', {
+			method: 'POST',
+			headers: { 'content-type': 'application/json', 'x-hub-signature-256': 'sha256=deadbeef' },
+			body: raw,
+		})
+		expect(res.status).toBe(401)
+		expect(await res.json()).toMatchObject(errorBody('unauthorized'))
 	})
 })
 
