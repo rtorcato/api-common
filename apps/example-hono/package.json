@@ -12,7 +12,7 @@
 		"node": ">=22"
 	},
 	"dependencies": {
-		"@hono/node-server": "^1.0.0",
+		"@hono/node-server": "^2.0.10",
 		"@hono/zod-openapi": "^1.5.1",
 		"@rtorcato/api-auth": "workspace:*",
 		"@rtorcato/api-auth-hono": "workspace:*",
