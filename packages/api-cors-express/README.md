@@ -7,6 +7,8 @@
 
 Express CORS middleware with sane defaults: credentials enabled, standard REST methods, preflight handled at 204.
 
+Hono ships [`cors`](https://hono.dev/docs/middleware/builtin/cors) built in, so this adapter is Express-only.
+
 ## Install
 
 ```sh
