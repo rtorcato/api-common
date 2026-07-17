@@ -70,6 +70,19 @@ pnpm add @rtorcato/api-errors @rtorcato/api-errors-hono hono
 
 Per-package READMEs (on npm and in each `packages/*/README.md`) carry the usage examples.
 
+### Use with AI
+
+This repo ships a self-contained AI skill so coding agents use these packages correctly (base-vs-adapter split, framework peer-deps, the errors throw/handler contract).
+
+**Claude Code** — install the self-hosted skill:
+
+```sh
+/plugin marketplace add rtorcato/api-common
+/plugin install api-common@api-common
+```
+
+**Cursor / Copilot / Codex** — copy the rules from [`AGENTS.md`](./AGENTS.md) (the cross-tool convention many agents read). It's generated from [`skills/api-common/SKILL.md`](./skills/api-common/SKILL.md) — edit the SKILL, then `pnpm sync:agents` (CI's `check:agents` fails if they drift).
+
 ### Releases
 
 Versioning + publishing is automated via [Changesets](https://github.com/changesets/changesets). To propose a release:

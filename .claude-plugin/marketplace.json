@@ -1,0 +1,15 @@
+{
+  "name": "api-common",
+  "owner": {
+    "name": "Richard Torcato",
+    "email": "rtorcato@me.com"
+  },
+  "description": "Claude Code skill for the @rtorcato/api-* packages — small, single-purpose libraries for building Node.js APIs on Express, Hono, or framework-agnostic.",
+  "plugins": [
+    {
+      "name": "api-common",
+      "source": "./",
+      "description": "Teaches Claude to use @rtorcato/api-* correctly: the base-vs-adapter package split, framework peer-deps, the api-errors throw/handler contract, and the api-response success envelope."
+    }
+  ]
+}
