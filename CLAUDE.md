@@ -11,7 +11,7 @@ A monorepo of reusable Node.js library packages for building API projects. Targe
 - **Package manager:** pnpm (workspaces). Use `pnpm` — never `npm` or `yarn`.
 - **Language:** TypeScript. Source is `.ts`; packages publish built output.
 - **Tests:** Vitest.
-- **Lint + format:** Biome (`biome.json` at root). Run `pnpm lint` to check, `pnpm lint:fix` to autofix, `pnpm format` to format only.
+- **Lint + format:** Biome (`biome.json` at root). Run `pnpm check` to lint + format-check, `pnpm check:fix` to autofix, `pnpm format` to format only.
 
 ## Workspace layout
 
@@ -26,7 +26,7 @@ Run from the repo root unless noted.
 - Test one package: `pnpm --filter <pkg-name> test`
 - Typecheck everything: `pnpm -r typecheck`
 - Build everything: `pnpm -r build`
-- Lint: `pnpm lint` (or `pnpm lint:fix` to autofix)
+- Lint: `pnpm check` (or `pnpm check:fix` to autofix)
 
 When verifying changes, prefer the `/verify` skill — it runs typecheck + tests across the workspace and surfaces only failures.
 

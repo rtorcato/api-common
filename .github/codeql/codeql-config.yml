@@ -1,0 +1,8 @@
+name: "CodeQL config"
+
+# Test files contain intentionally-simplified mock routes/handlers (e.g. a
+# webhook or auth endpoint with no rate limiter) that trip application-security
+# queries but are never shipped. Scan production sources only.
+paths-ignore:
+  - "**/*.test.ts"
+  - "**/*.spec.ts"
