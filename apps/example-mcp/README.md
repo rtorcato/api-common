@@ -13,11 +13,12 @@ three MCP tools:
 | `add_item` | `{ name: string }` | Create an item and return it |
 | `get_item` | `{ id: string }` | Fetch one item by id (errors if missing) |
 
-## Why no `api-mcp` package
+## About `@rtorcato/api-mcp`
 
-This demo talks to the SDK directly. The SDK already covers tool/resource
-registration and transports, so a `@rtorcato/api-mcp` wrapper would add little —
-see the reasoning in the tracking issue.
+This demo talks to the SDK directly for registration and transports — the SDK
+already covers those well. The one bit of boilerplate worth sharing is the
+tool-result shape, so `asText`/`mcpError` come from
+[`@rtorcato/api-mcp`](../../packages/api-mcp). Everything else stays on the SDK.
 
 ## Run locally
 

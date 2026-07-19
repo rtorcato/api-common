@@ -33,6 +33,7 @@ const sidebars: SidebarsConfig = {
 				'guides/api-amqp',
 				'guides/api-openapi',
 				'guides/api-webhooks',
+				'guides/api-mcp',
 				'guides/custom-errors',
 				'guides/testing',
 			],

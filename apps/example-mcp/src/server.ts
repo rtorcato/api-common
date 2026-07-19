@@ -1,4 +1,5 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
+import { asText, mcpError } from '@rtorcato/api-mcp'
 import { z } from 'zod'
 
 /**
@@ -7,18 +8,15 @@ import { z } from 'zod'
  * lives inside the closure, so every `createServer()` call is isolated (handy
  * for tests).
  *
- * Tools return their payload as a JSON string in a `text` content block, which
- * is the MCP-native shape — deliberately *not* the `{ success, data }` REST
- * envelope from `@rtorcato/api-response`, since MCP has its own contract.
+ * Tools return their payload as a JSON string in a `text` content block via
+ * `@rtorcato/api-mcp`'s `asText`/`mcpError` — the MCP-native shape, deliberately
+ * *not* the `{ success, data }` REST envelope from `@rtorcato/api-response`,
+ * since MCP has its own contract.
  */
 export function createServer() {
 	const items = new Map<string, { id: string; name: string }>()
 
 	const server = new McpServer({ name: 'example-mcp', version: '0.0.0' })
-
-	const asText = (value: unknown) => ({
-		content: [{ type: 'text' as const, text: JSON.stringify(value) }],
-	})
 
 	server.registerTool(
 		'list_items',
@@ -49,12 +47,7 @@ export function createServer() {
 		},
 		async ({ id }) => {
 			const item = items.get(id)
-			if (!item) {
-				return {
-					isError: true,
-					content: [{ type: 'text' as const, text: `Item ${id} not found` }],
-				}
-			}
+			if (!item) return mcpError(`Item ${id} not found`)
 			return asText(item)
 		}
 	)
