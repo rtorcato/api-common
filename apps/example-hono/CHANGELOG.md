@@ -1,5 +1,14 @@
 # @rtorcato/example-hono
 
+## 0.0.6
+
+### Patch Changes
+
+- Updated dependencies [c767fc4]
+  - @rtorcato/api-graceful-shutdown@1.0.1
+  - @rtorcato/api-health@1.0.1
+  - @rtorcato/api-health-hono@1.0.1
+
 ## 0.0.5
 
 ### Patch Changes

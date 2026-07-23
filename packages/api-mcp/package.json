@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/api-mcp",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Tiny result helpers for @modelcontextprotocol/sdk MCP servers.",
   "type": "module",
   "license": "MIT",
