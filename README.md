@@ -73,6 +73,12 @@ Per-package READMEs (on npm and in each `packages/*/README.md`) carry the usage 
 
 This repo ships a self-contained AI skill so coding agents use these packages correctly (base-vs-adapter split, framework peer-deps, the errors throw/handler contract).
 
+**Any agent with the [`skills`](https://www.npmjs.com/package/skills) CLI** — install it in one command, straight from GitHub (no clone, no package install):
+
+```sh
+npx skills add https://github.com/rtorcato/api-common --skill api-common
+```
+
 **Claude Code** — install the self-hosted skill:
 
 ```sh
