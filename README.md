@@ -1,9 +1,13 @@
-# api-common
+<picture>
+  <source media="(max-width: 640px)" srcset="./banner-mobile.png">
+  <img src="./banner.png" alt="js-tooling banner" width="1600">
+</picture>
+
+<br>
 
 [![CI](https://github.com/rtorcato/api-common/actions/workflows/ci.yml/badge.svg)](https://github.com/rtorcato/api-common/actions/workflows/ci.yml)
 [![npm version](https://badge.fury.io/js/@rtorcato%2Fapi-errors.svg)](https://badge.fury.io/js/@rtorcato%2Fapi-errors)
 [![npm downloads](https://img.shields.io/npm/dm/@rtorcato%2Fapi-errors)](https://www.npmjs.com/package/@rtorcato/api-errors)
-[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-errors)](https://bundlephobia.com/package/@rtorcato/api-errors)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A monorepo of reusable Node.js library packages for building API projects. Targets Express, Hono, and other Node HTTP frameworks. Each package under `packages/` is independently consumable.
