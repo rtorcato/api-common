@@ -16,16 +16,13 @@ on:
     types: [published]
   workflow_dispatch:
 
-concurrency:
-  group: pages
-  cancel-in-progress: false
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   docs:
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
     uses: rtorcato/js-tooling/.github/workflows/docs-deploy.yml@main
     with:
       build-filter: '@rtorcato/api-common-docs'
