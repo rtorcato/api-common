@@ -37,6 +37,17 @@ When verifying changes, prefer the `/verify` skill — it runs typecheck + tests
 - New packages: ask before adding runtime dependencies. Prefer peer-deps for framework integrations (Express, Hono) so consumers control the version.
 - Before writing a generic utility (env-mode checks, date/uuid/crypto/string helpers, error-message extraction, retries), check the author's public common repos first and depend on the relevant one instead of reinventing — keeps these libs DRY and avoids drift. Primary one to check: `@rtorcato/js-common` (framework-agnostic helpers); also look at the other `@rtorcato/*-common` packages (e.g. `browser-common`, `cf-common`) for domain-specific helpers. Keep HTTP/framework-specific code (status-coded error classes, middleware) here; js-common is for framework-agnostic helpers.
 
+## Releases & publishing
+
+Releases run through Changesets + **npm OIDC trusted publishing** — there is no `NPM_TOKEN`. The `release.yml` workflow needs Node 24, npm ≥ 11.5.1, and pnpm ≥ 10.13 (older pnpm forwards `--no-git-checks` to npm, which now hard-errors). Don't cut a release unless asked.
+
+**Publishing a brand-new package** takes two manual, one-time steps — OIDC can't create a package that doesn't exist yet, and the trusted-publisher config is per-package:
+
+1. First publish it once by hand to create it on npm: `npm login`, then from the package dir `npm publish --access public`.
+2. On npmjs.com → the package → **Settings → Trusted Publisher**, add: GitHub Actions, org **`rtorcato`** (exact spelling — a typo → 404 at publish), repo **`api-common`**, workflow **`release.yml`**, allow `npm publish`.
+
+After that, every release publishes it automatically. A missing/misconfigured trusted publisher shows up as an **`E404` on `PUT`** during the release. Existing packages that 404 just need step 2.
+
 ## Module-specific instructions
 
 For per-package guidance (testing quirks, public API rules, etc.), add a `CLAUDE.md` inside that package directory. Claude Code loads it automatically when working in that subtree.
