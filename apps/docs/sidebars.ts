@@ -51,6 +51,7 @@ const sidebars: SidebarsConfig = {
 				'guides/api-security-express',
 				'guides/api-express-utils',
 				'guides/api-upload',
+				'guides/api-upload-hono',
 				'guides/api-openapi-express',
 				'guides/api-openapi-hono',
 				'guides/api-ts-rest-express',
