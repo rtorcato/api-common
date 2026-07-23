@@ -1,6 +1,6 @@
 {
 	"name": "@rtorcato/api-upload-hono",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "Promise-based S3 file upload for Hono — parses multipart via c.req.parseBody() and PUTs to S3; public/private ACL, cache-control, deterministic keys, typed errors.",
 	"type": "module",
 	"license": "MIT",
