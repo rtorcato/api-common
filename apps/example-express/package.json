@@ -12,7 +12,7 @@
 		"node": ">=22"
 	},
 	"dependencies": {
-		"@aws-sdk/client-s3": "^3.1089.0",
+		"@aws-sdk/client-s3": "^3.1093.0",
 		"@rtorcato/api-auth": "workspace:*",
 		"@rtorcato/api-auth-express": "workspace:*",
 		"@rtorcato/api-config": "workspace:*",
