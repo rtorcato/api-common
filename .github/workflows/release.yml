@@ -24,12 +24,15 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: '22'
+          node-version: '24'
           cache: 'pnpm'
           registry-url: 'https://registry.npmjs.org'
 
-      # OIDC trusted publishing needs npm CLI >= 11.5.1; Node 22 ships 10.x.
-      # changeset publish -> pnpm publish delegates to this npm.
+      # OIDC trusted publishing needs npm CLI >= 11.5.1 (Node 24 ships 10.x).
+      # changeset publish -> pnpm publish delegates the upload to this npm.
+      # pnpm must be >= 10.13 so it stops forwarding --no-git-checks down to
+      # npm (npm now hard-errors on the unknown --git-checks flag); pinned via
+      # packageManager in package.json. See pnpm#9646.
       - name: Upgrade npm for OIDC trusted publishing
         run: npm install -g npm@latest
 

@@ -2,7 +2,7 @@
   "name": "api-common",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@9.0.0",
+  "packageManager": "pnpm@10.34.5",
   "scripts": {
     "check": "biome check .",
     "check:fix": "biome check --write .",
