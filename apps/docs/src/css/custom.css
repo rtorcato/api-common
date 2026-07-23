@@ -266,6 +266,7 @@ body,
 /* ---------- Footer ---------- */
 .footer,
 .footer--dark {
+	margin-top: 4rem;
 	--ifm-footer-background-color: var(--bc-bg2);
 	--ifm-footer-color: var(--bc-text);
 	--ifm-footer-link-color: var(--bc-text);
