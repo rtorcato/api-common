@@ -1,5 +1,14 @@
 # @rtorcato/example-express
 
+## 0.0.8
+
+### Patch Changes
+
+- Updated dependencies [c767fc4]
+  - @rtorcato/api-graceful-shutdown@1.0.1
+  - @rtorcato/api-health@1.0.1
+  - @rtorcato/api-health-express@1.0.1
+
 ## 0.0.7
 
 ### Patch Changes

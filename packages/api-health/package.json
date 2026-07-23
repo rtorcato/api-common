@@ -1,6 +1,6 @@
 {
 	"name": "@rtorcato/api-health",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Framework-agnostic liveness/readiness health-check registry for Node API projects.",
 	"type": "module",
 	"license": "MIT",
