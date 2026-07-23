@@ -8,8 +8,6 @@
 
 A monorepo of reusable Node.js library packages for building API projects. Targets Express, Hono, and other Node HTTP frameworks. Each package under `packages/` is independently consumable.
 
-The old single-package repo lives at https://gitlab.com/rtorcato/api-common and is being broken up and migrated here.
-
 ## Stack
 
 - **pnpm** workspaces
