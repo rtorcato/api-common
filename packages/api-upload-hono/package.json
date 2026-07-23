@@ -1,0 +1,62 @@
+{
+	"name": "@rtorcato/api-upload-hono",
+	"version": "0.0.0",
+	"description": "Promise-based S3 file upload for Hono — parses multipart via c.req.parseBody() and PUTs to S3; public/private ACL, cache-control, deterministic keys, typed errors.",
+	"type": "module",
+	"license": "MIT",
+	"author": "Richard Torcato",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsc -p tsconfig.build.json",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run"
+	},
+	"engines": {
+		"node": ">=22"
+	},
+	"dependencies": {
+		"@rtorcato/api-errors": "workspace:*"
+	},
+	"peerDependencies": {
+		"@aws-sdk/client-s3": "^3.0.0",
+		"hono": "^4.0.0"
+	},
+	"devDependencies": {
+		"@aws-sdk/client-s3": "^3.1093.0",
+		"aws-sdk-client-mock": "^4.1.0",
+		"hono": "^4.12.31",
+		"typescript": "~6.0.3"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"keywords": [
+		"api",
+		"nodejs",
+		"typescript",
+		"hono",
+		"s3",
+		"upload",
+		"multipart",
+		"aws"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rtorcato/api-common.git",
+		"directory": "packages/api-upload-hono"
+	},
+	"homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-upload-hono#readme",
+	"bugs": {
+		"url": "https://github.com/rtorcato/api-common/issues"
+	}
+}
