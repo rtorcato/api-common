@@ -8,8 +8,6 @@
 
 A monorepo of reusable Node.js library packages for building API projects. Targets Express, Hono, and other Node HTTP frameworks. Each package under `packages/` is independently consumable.
 
-The old single-package repo lives at https://gitlab.com/rtorcato/api-common and is being broken up and migrated here.
-
 ## Stack
 
 - **pnpm** workspaces
@@ -74,6 +72,12 @@ Per-package READMEs (on npm and in each `packages/*/README.md`) carry the usage 
 ### Use with AI
 
 This repo ships a self-contained AI skill so coding agents use these packages correctly (base-vs-adapter split, framework peer-deps, the errors throw/handler contract).
+
+**Any agent with the [`skills`](https://www.npmjs.com/package/skills) CLI** — install it in one command, straight from GitHub (no clone, no package install):
+
+```sh
+npx skills add https://github.com/rtorcato/api-common --skill api-common
+```
 
 **Claude Code** — install the self-hosted skill:
 
