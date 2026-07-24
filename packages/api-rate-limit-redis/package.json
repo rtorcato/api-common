@@ -1,0 +1,59 @@
+{
+	"name": "@rtorcato/api-rate-limit-redis",
+	"version": "0.1.0",
+	"description": "Redis-backed store for @rtorcato/api-rate-limit — sliding-window limits shared across instances.",
+	"type": "module",
+	"license": "MIT",
+	"author": "Richard Torcato",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsc -p tsconfig.build.json",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run"
+	},
+	"engines": {
+		"node": ">=22"
+	},
+	"dependencies": {
+		"@rtorcato/api-rate-limit": "workspace:*"
+	},
+	"peerDependencies": {
+		"ioredis": "^5.0.0"
+	},
+	"devDependencies": {
+		"ioredis": "^5.4.1",
+		"typescript": "~6.0.3"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"keywords": [
+		"api",
+		"nodejs",
+		"typescript",
+		"rate-limit",
+		"rate-limiter",
+		"sliding-window",
+		"redis",
+		"ioredis"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rtorcato/api-common.git",
+		"directory": "packages/api-rate-limit-redis"
+	},
+	"homepage": "https://github.com/rtorcato/api-common/tree/main/packages/api-rate-limit-redis#readme",
+	"bugs": {
+		"url": "https://github.com/rtorcato/api-common/issues"
+	}
+}

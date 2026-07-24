@@ -1,3 +1,4 @@
+import { memoryStore } from '@rtorcato/api-rate-limit'
 import express from 'express'
 import request from 'supertest'
 import { describe, expect, it } from 'vitest'
@@ -5,7 +6,7 @@ import { rateLimitMiddleware } from './index'
 
 function buildApp(requests: number, windowMs: number) {
 	const app = express()
-	app.use(rateLimitMiddleware({ requests, windowMs }))
+	app.use(rateLimitMiddleware({ requests, windowMs, store: memoryStore() }))
 	app.get('/', (_req, res) => res.json({ ok: true }))
 	return app
 }

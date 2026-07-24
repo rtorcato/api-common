@@ -14,12 +14,15 @@ import type { RequestHandler } from 'express'
 export function rateLimitMiddleware(options: RateLimiterOptions): RequestHandler {
 	const limiter = createRateLimiter(options)
 	return (req, res, next) => {
-		const result = limiter.check(getIP(req) ?? 'unknown')
-		if (!result.allowed) {
-			const err = new TooManyRequestsError()
-			res.status(err.status).json(toErrorResponse(err))
-			return
-		}
-		next()
+		// Catch store rejections explicitly and forward — Express 4 doesn't await
+		// async handlers, so a rejected promise would otherwise go unhandled.
+		limiter.check(getIP(req) ?? 'unknown').then((result) => {
+			if (!result.allowed) {
+				const err = new TooManyRequestsError()
+				res.status(err.status).json(toErrorResponse(err))
+				return
+			}
+			next()
+		}, next)
 	}
 }

@@ -17,17 +17,23 @@ pnpm add @rtorcato/api-rate-limit @rtorcato/api-rate-limit-express
 
 ## Usage
 
+Pass a `store` — `memoryStore()` for a single process, or `redisStore()` from
+[`@rtorcato/api-rate-limit-redis`](https://github.com/rtorcato/api-common/tree/main/packages/api-rate-limit-redis)
+to share limits across instances.
+
 ```ts
+import { memoryStore } from '@rtorcato/api-rate-limit'
 import { rateLimitMiddleware } from '@rtorcato/api-rate-limit-express'
 
-app.use(rateLimitMiddleware({ requests: 100, windowMs: 60_000 }))
+app.use(rateLimitMiddleware({ requests: 100, windowMs: 60_000, store: memoryStore() }))
 ```
 
 Responds `429` with the standard error envelope `{ error: 'TooManyRequestsError', code: 'too_many_requests', message }` when the limit is exceeded. Keys on client IP via `X-Forwarded-For`.
 
 ## Related
 
-- [`@rtorcato/api-rate-limit`](https://github.com/rtorcato/api-common/tree/main/packages/api-rate-limit) — framework-agnostic core
+- [`@rtorcato/api-rate-limit`](https://github.com/rtorcato/api-common/tree/main/packages/api-rate-limit) — framework-agnostic core (stores, sliding window)
+- [`@rtorcato/api-rate-limit-redis`](https://github.com/rtorcato/api-common/tree/main/packages/api-rate-limit-redis) — Redis store for limits shared across instances
 - [`@rtorcato/api-rate-limit-hono`](https://github.com/rtorcato/api-common/tree/main/packages/api-rate-limit-hono) — Hono adapter
 
 Source: https://github.com/rtorcato/api-common/tree/main/packages/api-rate-limit-express

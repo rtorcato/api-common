@@ -1,10 +1,11 @@
+import { memoryStore } from '@rtorcato/api-rate-limit'
 import { Hono } from 'hono'
 import { describe, expect, it } from 'vitest'
 import { rateLimitMiddleware } from './index'
 
 function buildApp(requests: number, windowMs: number) {
 	const app = new Hono()
-	app.use(rateLimitMiddleware({ requests, windowMs }))
+	app.use(rateLimitMiddleware({ requests, windowMs, store: memoryStore() }))
 	app.get('/', (c) => c.json({ ok: true }))
 	return app
 }
