@@ -1,5 +1,13 @@
 # @rtorcato/example-hono
 
+## 0.0.7
+
+### Patch Changes
+
+- Updated dependencies [66af10c]
+  - @rtorcato/api-rate-limit@2.0.0
+  - @rtorcato/api-rate-limit-hono@2.0.0
+
 ## 0.0.6
 
 ### Patch Changes
