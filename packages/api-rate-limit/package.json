@@ -1,7 +1,7 @@
 {
   "name": "@rtorcato/api-rate-limit",
   "version": "1.0.0",
-  "description": "Framework-agnostic in-memory sliding-window rate limiter for Node API projects.",
+  "description": "Framework-agnostic sliding-window rate limiter for Node API projects, with a pluggable store (in-memory or Redis).",
   "type": "module",
   "license": "MIT",
   "author": "Richard Torcato",

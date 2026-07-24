@@ -6,6 +6,7 @@ import { errorHandler, notFoundHandler } from '@rtorcato/api-errors-hono'
 import { createHealthRegistry } from '@rtorcato/api-health'
 import { livenessHandler, readinessHandler } from '@rtorcato/api-health-hono'
 import { configureOpenAPI } from '@rtorcato/api-openapi-hono'
+import { memoryStore } from '@rtorcato/api-rate-limit'
 import { rateLimitMiddleware } from '@rtorcato/api-rate-limit-hono'
 import { ok } from '@rtorcato/api-response'
 import { timeoutMiddleware } from '@rtorcato/api-timeout-hono'
@@ -53,7 +54,9 @@ export function createApp(options: AppOptions = {}) {
 
 	// Fail slow requests with a 503 instead of hanging the client.
 	app.use(timeoutMiddleware({ ms: 10_000 }))
-	app.use(rateLimitMiddleware({ requests: 100, windowMs: 60_000 }))
+	// Single-process demo → in-memory store. Swap for redisStore() from
+	// @rtorcato/api-rate-limit-redis to share limits across instances.
+	app.use(rateLimitMiddleware({ requests: 100, windowMs: 60_000, store: memoryStore() }))
 
 	// Webhook receiver (opt-in): verifies an HMAC signature over the raw body
 	// before the handler runs. Gated on webhookSecret so the default app needs

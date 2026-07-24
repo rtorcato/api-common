@@ -26,6 +26,7 @@ const sidebars: SidebarsConfig = {
 				'guides/api-response',
 				'guides/api-validation',
 				'guides/api-rate-limit',
+				'guides/api-rate-limit-redis',
 				'guides/api-timeout',
 				'guides/api-health',
 				'guides/api-graceful-shutdown',

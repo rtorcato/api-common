@@ -4,6 +4,7 @@ import { asyncHandler, errorHandler, notFoundHandler } from '@rtorcato/api-error
 import { createHealthRegistry } from '@rtorcato/api-health'
 import { livenessHandler, readinessHandler } from '@rtorcato/api-health-express'
 import { serveApiDocs, serveSwaggerDocs } from '@rtorcato/api-openapi-express'
+import { memoryStore } from '@rtorcato/api-rate-limit'
 import { rateLimitMiddleware } from '@rtorcato/api-rate-limit-express'
 import { ok } from '@rtorcato/api-response'
 import { securityMiddleware } from '@rtorcato/api-security-express'
@@ -66,7 +67,9 @@ export function createApp(
 
 	app.use('/api-docs', serveApiDocs(spec, { title: 'Example Express API' }))
 	app.use('/swagger', serveSwaggerDocs(spec, { title: 'Example Express API' }))
-	app.use(rateLimitMiddleware({ requests: 100, windowMs: 60_000 }))
+	// Single-process demo → in-memory store. Swap for redisStore() from
+	// @rtorcato/api-rate-limit-redis to share limits across instances.
+	app.use(rateLimitMiddleware({ requests: 100, windowMs: 60_000, store: memoryStore() }))
 
 	app.use('/', createAuthRouter(jwtSecret))
 	app.use('/items', createItemsRouter())
