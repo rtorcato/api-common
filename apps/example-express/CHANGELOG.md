@@ -1,5 +1,13 @@
 # @rtorcato/example-express
 
+## 0.0.9
+
+### Patch Changes
+
+- Updated dependencies [66af10c]
+  - @rtorcato/api-rate-limit@2.0.0
+  - @rtorcato/api-rate-limit-express@2.0.0
+
 ## 0.0.8
 
 ### Patch Changes

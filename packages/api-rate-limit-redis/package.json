@@ -1,6 +1,6 @@
 {
 	"name": "@rtorcato/api-rate-limit-redis",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Redis-backed store for @rtorcato/api-rate-limit — sliding-window limits shared across instances.",
 	"type": "module",
 	"license": "MIT",
