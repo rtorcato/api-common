@@ -32,9 +32,9 @@
 		"hono": "^4.0.0"
 	},
 	"devDependencies": {
-		"@aws-sdk/client-s3": "^3.1093.0",
+		"@aws-sdk/client-s3": "^3.1101.0",
 		"aws-sdk-client-mock": "^4.1.0",
-		"hono": "^4.12.31",
+		"hono": "^4.12.33",
 		"typescript": "~6.0.3"
 	},
 	"publishConfig": {

@@ -26,13 +26,13 @@
   },
   "dependencies": {
     "@rtorcato/api-errors": "workspace:*",
-    "@rtorcato/js-common": "^2.8.1"
+    "@rtorcato/js-common": "^2.8.2"
   },
   "peerDependencies": {
     "hono": "^4.0.0"
   },
   "devDependencies": {
-    "hono": "^4.12.31"
+    "hono": "^4.12.33"
   },
   "publishConfig": {
     "access": "public"

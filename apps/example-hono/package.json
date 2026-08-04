@@ -12,7 +12,7 @@
 		"node": ">=22"
 	},
 	"dependencies": {
-		"@hono/node-server": "^2.0.11",
+		"@hono/node-server": "^2.0.12",
 		"@hono/zod-openapi": "^1.5.1",
 		"@rtorcato/api-auth": "workspace:*",
 		"@rtorcato/api-auth-hono": "workspace:*",
@@ -29,8 +29,8 @@
 		"@rtorcato/api-response": "workspace:*",
 		"@rtorcato/api-timeout-hono": "workspace:*",
 		"@rtorcato/api-webhooks-hono": "workspace:*",
-		"@scalar/hono-api-reference": "^0.11.11",
-		"hono": "^4.12.31",
+		"@scalar/hono-api-reference": "^0.11.12",
+		"hono": "^4.12.33",
 		"zod": "^4.0.0"
 	},
 	"devDependencies": {
