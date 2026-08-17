@@ -1,6 +1,6 @@
 <picture>
   <source media="(max-width: 640px)" srcset="./banner-mobile.png">
-  <img src="./banner.png" alt="js-tooling banner" width="1600">
+  <img src="./banner.png" alt="api-common banner" width="1600">
 </picture>
 
 <br>
@@ -15,7 +15,7 @@ A monorepo of reusable Node.js library packages for building API projects. Targe
 ## Stack
 
 - **pnpm** workspaces
-- **TypeScript** (configs extend [`@rtorcato/js-tooling`](https://www.npmjs.com/package/@rtorcato/js-tooling))
+- **TypeScript** (configs extend [`@rtorcato/repo-tooling`](https://www.npmjs.com/package/@rtorcato/repo-tooling))
 - **Vitest** for tests
 - **Biome** for lint + format
 - **Husky** + **commitlint** (conventional commits) on commit
