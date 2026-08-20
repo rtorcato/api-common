@@ -34,7 +34,7 @@
 	"devDependencies": {
 		"@aws-sdk/client-s3": "^3.1093.0",
 		"aws-sdk-client-mock": "^4.1.0",
-		"hono": "^4.12.31",
+		"hono": "^4.12.34",
 		"typescript": "~6.0.3"
 	},
 	"publishConfig": {
