@@ -1,8 +1,8 @@
 name: Deploy Docs
 
 # WHEN to deploy lives here; HOW (build + publish to Pages) is the shared
-# reusable workflow in @rtorcato/js-tooling, so every sibling docs site stays
-# in lockstep. See rtorcato/js-tooling/.github/workflows/docs-deploy.yml
+# reusable workflow in @rtorcato/repo-tooling, so every sibling docs site stays
+# in lockstep. See rtorcato/repo-tooling/.github/workflows/docs-deploy.yml
 on:
   push:
     branches: [main]
@@ -23,6 +23,6 @@ permissions:
 
 jobs:
   docs:
-    uses: rtorcato/js-tooling/.github/workflows/docs-deploy.yml@main
+    uses: rtorcato/repo-tooling/.github/workflows/docs-deploy.yml@main
     with:
       build-filter: '@rtorcato/api-common-docs'

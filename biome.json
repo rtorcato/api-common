@@ -1,6 +1,6 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.5.1/schema.json",
-  "extends": ["@rtorcato/js-tooling/biome"],
+  "extends": ["@rtorcato/repo-tooling/biome"],
   "files": {
     "includes": ["!**/.claude"]
   }

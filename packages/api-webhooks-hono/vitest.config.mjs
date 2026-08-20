@@ -1,1 +1,1 @@
-export { default } from '@rtorcato/js-tooling/vitest/config'
+export { default } from '@rtorcato/repo-tooling/vitest/config'
