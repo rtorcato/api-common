@@ -480,8 +480,8 @@ importers:
         specifier: ^17.4.2
         version: 17.4.2
       dotenv-expand:
-        specifier: ^13.0.0
-        version: 13.0.0
+        specifier: ^1000.0.0
+        version: 1000.0.0
     devDependencies:
       zod:
         specifier: ^4.4.3
@@ -4948,9 +4948,9 @@ packages:
     resolution: {integrity: sha512-tE7ztYzXHIeyvc7N+hR3oi7FIbf/NIjVP9hmAt3yMXzrQ072/fpjGLx2GxNxGxUl5V73MEqYzioOMoVhGMJ5cA==}
     engines: {node: '>=10'}
 
-  dotenv-expand@13.0.0:
-    resolution: {integrity: sha512-aBfBS8eYIeXmpHI9ThIlA7/WLq+SLt18iXUZhb52rW89QLKQFoIpPG1bPeewoPZsTyjSSO3T7234FBVUM1V2rA==}
-    engines: {node: '>=12'}
+  dotenv-expand@1000.0.0:
+    resolution: {integrity: sha512-3T4TtUjXm5iGKFEirqKjcDJ0EheFJbv9peb5xytC+HNu3l5Ygnu4dYE8yeqkppHMsh1If9C/A//EJu7IPtNu+A==}
+    engines: {node: '>=16'}
 
   dotenv@17.4.2:
     resolution: {integrity: sha512-nI4U3TottKAcAD9LLud4Cb7b2QztQMUEfHbvhTH09bqXTxnSie8WnjPALV/WMCrJZ6UV/qHJ6L03OqO3LcdYZw==}
@@ -13984,9 +13984,7 @@ snapshots:
     dependencies:
       is-obj: 2.0.0
 
-  dotenv-expand@13.0.0:
-    dependencies:
-      dotenv: 17.4.2
+  dotenv-expand@1000.0.0: {}
 
   dotenv@17.4.2: {}
 
