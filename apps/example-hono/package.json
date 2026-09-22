@@ -12,8 +12,8 @@
 		"node": ">=22"
 	},
 	"dependencies": {
-		"@hono/node-server": "^2.0.12",
-		"@hono/zod-openapi": "^1.5.1",
+		"@hono/node-server": "^2.1.1",
+		"@hono/zod-openapi": "^1.6.3",
 		"@rtorcato/api-auth": "workspace:*",
 		"@rtorcato/api-auth-hono": "workspace:*",
 		"@rtorcato/api-config": "workspace:*",
@@ -29,14 +29,14 @@
 		"@rtorcato/api-response": "workspace:*",
 		"@rtorcato/api-timeout-hono": "workspace:*",
 		"@rtorcato/api-webhooks-hono": "workspace:*",
-		"@scalar/hono-api-reference": "^0.11.11",
-		"hono": "^4.12.31",
-		"zod": "^4.0.0"
+		"@scalar/hono-api-reference": "^0.12.2",
+		"hono": "^4.13.8",
+		"zod": "^4.6.5"
 	},
 	"devDependencies": {
 		"@rtorcato/api-testing": "workspace:*",
 		"pino-pretty": "^13.0.0",
-		"tsx": "^4.23.1",
+		"tsx": "^4.23.13",
 		"typescript": "~6.0.3"
 	}
 }
