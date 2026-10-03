@@ -53,7 +53,7 @@ const config: Config = {
 		'Reusable, framework-agnostic building blocks for Node.js APIs — HTTP error classes plus Express and Hono middleware.',
 	favicon: 'img/logo.svg',
 
-	url: 'https://rtorcato.github.io',
+	url: 'https://docs.torcato.dev',
 	baseUrl: '/api-common/',
 
 	organizationName: 'rtorcato',

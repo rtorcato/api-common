@@ -81,4 +81,4 @@ Express-only (Hono ships an equivalent built-in, so no adapter):
 
 Dev/test: `api-testing` — supertest re-export, JWT auth fixtures, response matchers.
 
-For per-package usage and full API, see each `packages/<name>/README.md`, the [docs site](https://rtorcato.github.io/api-common), or the runnable `apps/example-express`, `apps/example-hono`, and `apps/example-mcp`.
+For per-package usage and full API, see each `packages/<name>/README.md`, the [docs site](https://docs.torcato.dev/api-common/), or the runnable `apps/example-express`, `apps/example-hono`, and `apps/example-mcp`.
