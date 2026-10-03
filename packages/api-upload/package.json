@@ -40,7 +40,7 @@
 		"@types/supertest": "^7.2.1",
 		"aws-sdk-client-mock": "^4.1.0",
 		"express": "^5.1.0",
-		"multer": "^2.2.0",
+		"multer": "^2.4.0",
 		"multer-s3": "^3.0.1",
 		"supertest": "^7.1.0",
 		"typescript": "~6.0.3"
