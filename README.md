@@ -104,7 +104,7 @@ git commit -am "feat: …"
 git push                 # the Release workflow opens a "Version Packages" PR
 ```
 
-Merging the auto-PR bumps versions, writes per-package `CHANGELOG.md`, and publishes to npm. The same merge redeploys the [docs site](https://rtorcato.github.io/api-common) automatically (the `Deploy Docs` workflow runs on any `packages/**` change), so changelogs and the generated API reference stay current — no manual docs step. READMEs use unversioned install commands, so they only need editing when a package's API changes, not on every release.
+Merging the auto-PR bumps versions, writes per-package `CHANGELOG.md`, and publishes to npm. The same merge redeploys the [docs site](https://docs.torcato.dev/api-common/) automatically (the `Deploy Docs` workflow runs on any `packages/**` change), so changelogs and the generated API reference stay current — no manual docs step. READMEs use unversioned install commands, so they only need editing when a package's API changes, not on every release.
 
 ## Commands
 

@@ -7,7 +7,7 @@
     "email": "rtorcato@me.com",
     "url": "https://github.com/rtorcato"
   },
-  "homepage": "https://rtorcato.github.io/api-common/",
+  "homepage": "https://docs.torcato.dev/api-common/",
   "repository": "https://github.com/rtorcato/api-common",
   "license": "MIT",
   "keywords": ["api", "express", "hono", "nodejs", "typescript", "errors", "jwt"]
