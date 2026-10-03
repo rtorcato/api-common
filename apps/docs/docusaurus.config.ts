@@ -51,7 +51,7 @@ const config: Config = {
 	title: 'api-common',
 	tagline:
 		'Reusable, framework-agnostic building blocks for Node.js APIs — HTTP error classes plus Express and Hono middleware.',
-	favicon: 'img/logo.svg',
+	favicon: 'img/favicon.svg',
 
 	url: 'https://docs.torcato.dev',
 	baseUrl: '/api-common/',
@@ -74,6 +74,16 @@ const config: Config = {
 	},
 
 	headTags: [
+		{
+			// Docusaurus emits only the `favicon` link on its own. headTags are
+			// raw — the baseUrl prefix is NOT added, so it is hardcoded here.
+			tagName: 'link',
+			attributes: {
+				rel: 'apple-touch-icon',
+				sizes: '512x512',
+				href: '/api-common/img/favicon-512.png',
+			},
+		},
 		{
 			tagName: 'link',
 			attributes: { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -122,6 +132,9 @@ const config: Config = {
 	] as Config['plugins'],
 
 	themeConfig: {
+		// og:image / twitter:image. Must live in themeConfig — a top-level
+		// `image` fails config validation. Resolved against url + baseUrl.
+		image: 'img/social-card.png',
 		colorMode: {
 			defaultMode: 'dark',
 			respectPrefersColorScheme: true,
@@ -130,8 +143,7 @@ const config: Config = {
 			title: 'api-common',
 			logo: {
 				alt: 'api-common',
-				src: 'img/logo.svg',
-				srcDark: 'img/logo-dark.svg',
+				src: 'img/favicon.svg',
 			},
 			items: [
 				{ to: '/docs', position: 'left', label: 'Docs' },
