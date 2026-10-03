@@ -27,6 +27,7 @@ jobs:
       - run: pnpm check:docs
       - run: pnpm check:agents
       - run: pnpm build
+      - run: pnpm size
       - run: pnpm check
       - run: pnpm typecheck
       - run: pnpm test
