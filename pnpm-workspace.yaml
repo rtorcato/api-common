@@ -3,3 +3,6 @@ packages:
   - "apps/*"
 
 verifyDepsBeforeRun: false
+
+overrides:
+  "@types/express": "^5.0.0"
