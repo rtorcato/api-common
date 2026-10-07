@@ -26,7 +26,8 @@
   },
   "dependencies": {
     "@rtorcato/api-errors": "workspace:*",
-    "@rtorcato/js-common": "^2.8.1"
+    "@rtorcato/js-common": "^5.0.0",
+    "zod": "^4.1.12"
   },
   "peerDependencies": {
     "hono": "^4.0.0"

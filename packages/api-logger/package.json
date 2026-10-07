@@ -25,8 +25,9 @@
     "node": ">=22"
   },
   "dependencies": {
-    "@rtorcato/js-common": "^2.8.1",
-    "pino": "^9.5.0"
+    "@rtorcato/js-common": "^5.0.0",
+    "pino": "^9.5.0",
+    "zod": "^4.1.12"
   },
   "peerDependencies": {
     "pino-pretty": "^13.0.0"
