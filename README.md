@@ -1,7 +1,9 @@
-<picture>
-  <source media="(max-width: 640px)" srcset="./banner-mobile.png">
-  <img src="./banner.png" alt="api-common banner" width="1600">
-</picture>
+<p align="center">
+  <picture>
+    <source media="(max-width: 600px)" srcset="./brand/banner-mobile.png">
+    <img src="./brand/banner.png" alt="api-common — Framework-agnostic building blocks for Node.js APIs" width="100%">
+  </picture>
+</p>
 
 <br>
 
@@ -104,7 +106,7 @@ git commit -am "feat: …"
 git push                 # the Release workflow opens a "Version Packages" PR
 ```
 
-Merging the auto-PR bumps versions, writes per-package `CHANGELOG.md`, and publishes to npm. The same merge redeploys the [docs site](https://rtorcato.github.io/api-common) automatically (the `Deploy Docs` workflow runs on any `packages/**` change), so changelogs and the generated API reference stay current — no manual docs step. READMEs use unversioned install commands, so they only need editing when a package's API changes, not on every release.
+Merging the auto-PR bumps versions, writes per-package `CHANGELOG.md`, and publishes to npm. The same merge redeploys the [docs site](https://docs.torcato.dev/api-common/) automatically (the `Deploy Docs` workflow runs on any `packages/**` change), so changelogs and the generated API reference stay current — no manual docs step. READMEs use unversioned install commands, so they only need editing when a package's API changes, not on every release.
 
 ## Commands
 

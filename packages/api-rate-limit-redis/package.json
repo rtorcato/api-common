@@ -28,10 +28,10 @@
 		"@rtorcato/api-rate-limit": "workspace:*"
 	},
 	"peerDependencies": {
-		"ioredis": "^5.0.0"
+		"ioredis": "^5.0.0 || ^6.0.0"
 	},
 	"devDependencies": {
-		"ioredis": "^5.4.1",
+		"ioredis": "^6.0.0",
 		"typescript": "~6.0.3"
 	},
 	"publishConfig": {
