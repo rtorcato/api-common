@@ -33,11 +33,5 @@ jobs:
       # Package tests run once, in test:coverage below; apps are outside its scope.
       - run: pnpm -r --filter "./apps/*" test
       - run: pnpm test:coverage
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v7
-        with:
-          files: ./coverage/lcov.info
-          token: ${{ secrets.CODECOV_TOKEN }}
-          fail_ci_if_error: false
       - name: Validate package exports (publint + are-the-types-wrong)
         run: pnpm check:exports
