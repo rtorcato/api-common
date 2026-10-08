@@ -1,5 +1,11 @@
 # @rtorcato/api-rate-limit-redis
 
+## 0.2.1
+
+### Patch Changes
+
+- c6cf360: Widen the `ioredis` peer range to `^5.0.0 || ^6.0.0`, so ioredis 6 consumers no longer get a peer-dependency warning. The store only calls `eval`, `scan` and `del`, and their replies are the same plain arrays under ioredis 6's RESP3 default.
+
 ## 0.2.0
 
 ### Minor Changes

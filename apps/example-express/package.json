@@ -12,7 +12,7 @@
 		"node": ">=22"
 	},
 	"dependencies": {
-		"@aws-sdk/client-s3": "^3.1093.0",
+		"@aws-sdk/client-s3": "^3.1146.0",
 		"@rtorcato/api-auth": "workspace:*",
 		"@rtorcato/api-auth-express": "workspace:*",
 		"@rtorcato/api-config": "workspace:*",
@@ -35,17 +35,17 @@
 		"@rtorcato/api-validation": "workspace:*",
 		"@rtorcato/api-webhooks-express": "workspace:*",
 		"express": "^5.1.0",
-		"multer": "^2.2.0",
+		"multer": "^2.4.0",
 		"multer-s3": "^3.0.1",
-		"zod": "^4.0.0"
+		"zod": "^4.6.5"
 	},
 	"devDependencies": {
 		"@rtorcato/api-testing": "workspace:*",
 		"@types/express": "^5.0.0",
-		"@types/multer": "^2.0.0",
+		"@types/multer": "^2.3.0",
 		"aws-sdk-client-mock": "^4.1.0",
 		"pino-pretty": "^13.0.0",
-		"tsx": "^4.23.1",
+		"tsx": "^4.23.15",
 		"typescript": "~6.0.3"
 	}
 }

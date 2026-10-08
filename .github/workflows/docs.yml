@@ -1,8 +1,8 @@
 name: Deploy Docs
 
-# WHEN to deploy lives here; HOW (build + publish to Pages) is the shared
-# reusable workflow in @rtorcato/repo-tooling, so every sibling docs site stays
-# in lockstep. See rtorcato/repo-tooling/.github/workflows/docs-deploy.yml
+# WHEN to deploy lives here; HOW (build + publish) is the shared reusable
+# workflow in @rtorcato/repo-tooling, so every sibling docs site stays in
+# lockstep. See rtorcato/repo-tooling/.github/workflows/docs-deploy-cloudflare.yml
 on:
   push:
     branches: [main]
@@ -18,11 +18,71 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 jobs:
-  docs:
-    uses: rtorcato/repo-tooling/.github/workflows/docs-deploy.yml@main
+  # Primary site: https://docs.torcato.dev/api-common/
+  # Pinned to a tag, never @main: this job hands over the Cloudflare secrets.
+  cloudflare:
+    permissions:
+      contents: read
+    uses: rtorcato/repo-tooling/.github/workflows/docs-deploy-cloudflare.yml@v5.5.2
     with:
       build-filter: '@rtorcato/api-common-docs'
+      worker-name: api-common-docs
+      base-path: /api-common/
+      route: docs.torcato.dev/api-common/*
+    secrets:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+  # Old site: rtorcato.github.io/api-common/ now only redirects to the new address.
+  # GitHub Pages can't redirect server-side, so every path gets a meta-refresh
+  # stub (index.html, plus 404.html so deep links land on the same page there).
+  # Delete these two jobs once Pages is disabled in the repo settings.
+  pages-redirect-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write redirect stub
+        run: |
+          mkdir -p stub
+          cat > stub/index.html <<'EOF'
+          <!doctype html>
+          <html lang="en">
+          <head>
+          <meta charset="utf-8">
+          <title>api-common docs have moved</title>
+          <link rel="canonical" href="https://docs.torcato.dev/api-common/">
+          <meta name="robots" content="noindex">
+          <meta http-equiv="refresh" content="0; url=https://docs.torcato.dev/api-common/">
+          <script>
+          location.replace('https://docs.torcato.dev' + location.pathname + location.search + location.hash)
+          </script>
+          </head>
+          <body>
+          <p>The api-common docs have moved to <a href="https://docs.torcato.dev/api-common/">docs.torcato.dev/api-common</a>.</p>
+          </body>
+          </html>
+          EOF
+          cp stub/index.html stub/404.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: stub
+
+  pages-redirect-deploy:
+    needs: pages-redirect-build
+    runs-on: ubuntu-latest
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

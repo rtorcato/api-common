@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/api-errors-hono",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Hono middleware for @rtorcato/api-errors (error handler + not-found handler).",
   "type": "module",
   "license": "MIT",
@@ -26,13 +26,14 @@
   },
   "dependencies": {
     "@rtorcato/api-errors": "workspace:*",
-    "@rtorcato/js-common": "^2.8.1"
+    "@rtorcato/js-common": "^5.0.0",
+    "zod": "^4.1.12"
   },
   "peerDependencies": {
     "hono": "^4.0.0"
   },
   "devDependencies": {
-    "hono": "^4.12.31"
+    "hono": "^4.13.13"
   },
   "publishConfig": {
     "access": "public"

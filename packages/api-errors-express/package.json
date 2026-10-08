@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/api-errors-express",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Express middleware for @rtorcato/api-errors (error handler + not-found handler).",
   "type": "module",
   "license": "MIT",
@@ -26,7 +26,8 @@
   },
   "dependencies": {
     "@rtorcato/api-errors": "workspace:*",
-    "@rtorcato/js-common": "^2.8.1"
+    "@rtorcato/js-common": "^5.0.0",
+    "zod": "^4.1.12"
   },
   "peerDependencies": {
     "express": "^4.18.0 || ^5.0.0"
@@ -35,7 +36,7 @@
     "@types/express": "^5.0.0",
     "@types/supertest": "^7.2.1",
     "express": "^5.1.0",
-    "supertest": "^7.1.0"
+    "supertest": "^7.3.1"
   },
   "publishConfig": {
     "access": "public"
