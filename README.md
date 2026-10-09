@@ -1,9 +1,9 @@
-<p align="center">
-  <picture>
-    <source media="(max-width: 600px)" srcset="./brand/banner-mobile.png">
-    <img src="./brand/banner.png" alt="api-common — Framework-agnostic building blocks for Node.js APIs" width="100%">
-  </picture>
-</p>
+<!-- brand-kit:banner:start -->
+<picture>
+  <source media="(max-width: 640px)" srcset="./brand/banner-mobile.png">
+  <img src="./brand/banner.png" alt="api-common banner" width="1600">
+</picture>
+<!-- brand-kit:banner:end -->
 
 <br>
 
