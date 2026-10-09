@@ -1,6 +1,7 @@
 {
   "name": "api-common",
   "private": true,
+  "description": "Framework-agnostic building blocks for Node.js APIs",
   "type": "module",
   "packageManager": "pnpm@10.34.5",
   "scripts": {
