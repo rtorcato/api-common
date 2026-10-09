@@ -27,7 +27,7 @@
   "dependencies": {
     "@rtorcato/js-common": "^5.0.0",
     "dotenv": "^17.4.2",
-    "dotenv-expand": "^13.0.0"
+    "dotenv-expand": "^1000.0.0"
   },
   "peerDependencies": {
     "zod": "^4.0.0"
