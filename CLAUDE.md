@@ -41,10 +41,12 @@ When verifying changes, prefer the `/verify` skill — it runs typecheck + tests
 
 Releases run through Changesets + **npm OIDC trusted publishing** — there is no `NPM_TOKEN`. The `release.yml` workflow needs Node 24, npm ≥ 11.5.1, and pnpm ≥ 10.13 (older pnpm forwards `--no-git-checks` to npm, which now hard-errors). Don't cut a release unless asked.
 
+**Releases are batched.** Merging to `main` publishes nothing. `release.yml` runs only when a milestone is closed or the workflow is dispatched, and every run waits in the `release` environment for rtorcato's approval. With pending changesets it opens or updates the "Version Packages" PR. After that PR merges, the next approved run publishes the bumped packages. Never close a milestone or dispatch `release.yml` without rtorcato's go.
+
 **Publishing a brand-new package** takes two manual, one-time steps — OIDC can't create a package that doesn't exist yet, and the trusted-publisher config is per-package:
 
 1. First publish it once by hand to create it on npm: `npm login`, then from the package dir `npm publish --access public`.
-2. On npmjs.com → the package → **Settings → Trusted Publisher**, add: GitHub Actions, org **`rtorcato`** (exact spelling — a typo → 404 at publish), repo **`api-common`**, workflow **`release.yml`**, allow `npm publish`.
+2. On npmjs.com → the package → **Settings → Trusted Publisher**, add: GitHub Actions, org **`rtorcato`** (exact spelling — a typo → 404 at publish), repo **`api-common`**, workflow **`release.yml`**, environment **`release`** (it must match the job's `environment:`, or the publish 404s), allow `npm publish`.
 
 After that, every release publishes it automatically. A missing/misconfigured trusted publisher shows up as an **`E404` on `PUT`** during the release. Existing packages that 404 just need step 2.
 

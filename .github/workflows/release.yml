@@ -1,16 +1,27 @@
 name: Release
 
+# On demand only, never per merge: a dispatch (hotfix, ad hoc) or a closed
+# milestone ("ship this batch"). Same shape as rtorcato/react-common.
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
+  milestone:
+    types: [closed]
 
+# Queue rather than cancel: a newer run waits for the one ahead of it (approval
+# included) instead of killing a publish already in flight.
 concurrency:
-  group: release-${{ github.ref }}
+  group: release
   cancel-in-progress: false
 
 jobs:
   release:
+    # Publish only from the default branch; a dispatch from any other branch is
+    # skipped. The `release` environment adds a required-reviewer gate on top.
+    if: github.event_name == 'milestone' || github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     runs-on: ubuntu-latest
+    # Holds every run until a required reviewer approves it. The npm trusted
+    # publishers must name this environment, or the OIDC publish fails with E404.
+    environment: release
     permissions:
       contents: write
       pull-requests: write
@@ -18,6 +29,9 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
+          # The tip, not the event's SHA: the job starts after approval, and
+          # main may have moved on while it waited.
+          ref: ${{ github.event.repository.default_branch }}
           fetch-depth: 0
 
       - uses: pnpm/action-setup@v6
@@ -40,6 +54,9 @@ jobs:
 
       - run: pnpm -r build
 
+      # With pending changesets this opens or updates the "Version Packages" PR
+      # and publishes nothing. Merging that PR publishes nothing either; the
+      # next dispatch or milestone close (approved) publishes the bumped packages.
       - name: Create Release PR or Publish
         uses: changesets/action@v1
         with:
