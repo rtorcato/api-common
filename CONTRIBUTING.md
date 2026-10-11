@@ -71,5 +71,7 @@ generated file under `.changeset/`.
 ## Releasing
 
 Releases are automated via [changesets](https://github.com/changesets/changesets)
-and the `Release` GitHub Action — merging changesets to `main` opens a version
-PR, and merging that publishes to npm. Maintainers handle this.
+and the `Release` GitHub Action. Merging to `main` publishes nothing: the action
+runs only when a maintainer closes a milestone or dispatches it, and each run waits
+for approval in the `release` environment. A run with pending changesets opens the
+version PR. Once that PR merges, the next approved run publishes to npm.

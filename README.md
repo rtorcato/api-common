@@ -103,10 +103,10 @@ Versioning + publishing is automated via [Changesets](https://github.com/changes
 ```sh
 pnpm changeset           # describe what changed, pick affected packages + bump type
 git commit -am "feat: …"
-git push                 # the Release workflow opens a "Version Packages" PR
+git push                 # merge the PR; nothing is published yet
 ```
 
-Merging the auto-PR bumps versions, writes per-package `CHANGELOG.md`, and publishes to npm. The same merge redeploys the [docs site](https://docs.torcato.dev/api-common/) automatically (the `Deploy Docs` workflow runs on any `packages/**` change), so changelogs and the generated API reference stay current — no manual docs step. READMEs use unversioned install commands, so they only need editing when a package's API changes, not on every release.
+Releases are batched. Closing a milestone, or dispatching the Release workflow, waits for approval in the `release` environment and then opens a "Version Packages" PR. Merging that PR bumps versions and writes per-package `CHANGELOG.md`, and the next approved run publishes to npm. The version merge redeploys the [docs site](https://docs.torcato.dev/api-common/) automatically (the `Deploy Docs` workflow runs on any `packages/**` change), so changelogs and the generated API reference stay current — no manual docs step. READMEs use unversioned install commands, so they only need editing when a package's API changes, not on every release.
 
 ## Commands
 
