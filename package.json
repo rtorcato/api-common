@@ -33,7 +33,7 @@
     "@commitlint/config-conventional": "^21.2.3",
     "@rtorcato/brand-kit": "^1.1.0",
     "@rtorcato/repo-ai": "^3.5.1",
-    "@rtorcato/repo-tooling": "^5.5.2",
+    "@rtorcato/repo-tooling": "^6.0.0",
     "@size-limit/preset-small-lib": "^14.1.0",
     "@types/node": "^26.6.4",
     "@vitest/coverage-v8": "^4.1.10",
