@@ -425,9 +425,6 @@ importers:
 
   packages/api-amqp:
     devDependencies:
-      '@types/amqplib':
-        specifier: ^0.10.5
-        version: 0.10.8
       amqplib:
         specifier: ^2.2.0
         version: 2.2.0
