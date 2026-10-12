@@ -1,14 +1,21 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: npm
+    directory: /
     schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 10
-    versioning-strategy: "increase"
+      interval: monthly
+      time: "06:00"
+      timezone: Etc/UTC
+    # Let brand-new releases settle before opening a PR — keeps grouped bumps
+    # from tripping pnpm's minimumReleaseAge supply-chain check (a same-day
+    # release fails the frozen-lockfile install in CI).
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
+    versioning-strategy: increase
     commit-message:
-      prefix: "chore(deps)"
-      include: "scope"
+      prefix: chore
+      include: scope
     # TypeScript majors remove config options (7.0 dropped baseUrl) — a deliberate
     # migration, not a dependabot bump. Take minor/patch only.
     ignore:
@@ -20,26 +27,34 @@ updates:
       - dependency-name: "dotenv-expand"
         versions: [">=1000"]
     groups:
-      # react + react-dom must move in lockstep (React errors on mismatched versions),
-      # so group them; a lone react-dom bump can never pass CI. Inert in non-React repos.
-      react:
-        patterns:
-          - "react"
-          - "react-dom"
-          - "@types/react"
-          - "@types/react-dom"
-      # Fold every other minor/patch bump into one weekly PR to cut noise.
-      # Majors stay as individual PRs so breaking changes are reviewed on their own.
-      minor-and-patch:
-        patterns:
-          - "*"
+      # Runtime minor/patch. Grouped so react/react-dom move together, but NOT
+      # auto-merged — these ship to consumers of a published package, so they
+      # get a human (see the dependabot-automerge workflow).
+      production-minor:
+        dependency-type: production
         update-types:
-          - "minor"
-          - "patch"
+          - minor
+          - patch
+      # The tier that can auto-merge on green. "development" is Dependabot's
+      # classification, not a safety property: a package listed in both
+      # devDependencies and peerDependencies lands here, and peer deps are part
+      # of a published package's contract (#458). The auto-merge workflow
+      # re-checks every name against the manifests rather than trusting this.
+      dev-minor:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
+      # Majors batch into one PR per ecosystem — breaking by definition, so
+      # never auto-merged; triaged on the monthly cadence.
+      major-updates:
+        update-types:
+          - major
 
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: github-actions
+    directory: /
     schedule:
-      interval: "weekly"
+      interval: monthly
     commit-message:
-      prefix: "chore(ci)"
+      prefix: ci
+      include: scope

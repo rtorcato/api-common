@@ -1,0 +1,43 @@
+{
+  "$schema": "https://docs.torcato.dev/repo-tooling/schemas/lockfile.json",
+  "version": 4,
+  "record": {
+    "config": {
+      "projectName": "api-common",
+      "language": "js",
+      "projectType": "library",
+      "typescript": {
+        "enabled": true,
+        "config": "base"
+      },
+      "linting": {
+        "tool": "biome",
+        "eslintConfig": "base"
+      },
+      "formatting": {
+        "tool": "biome"
+      },
+      "testing": {
+        "framework": "vitest",
+        "environment": "node"
+      },
+      "gitHooks": true,
+      "commitLint": true,
+      "semanticRelease": false,
+      "securityAutomation": true,
+      "bundler": "none"
+    },
+    "writtenBy": "@rtorcato/repo-tooling@6.0.0",
+    "writtenAt": "2026-10-12T13:28:52.907Z"
+  },
+  "rules": {
+    "mcp": {
+      "recommended": []
+    },
+    "exceptions": {},
+    "dependabot": {
+      "onPr": "label",
+      "label": "ai-review"
+    }
+  }
+}
