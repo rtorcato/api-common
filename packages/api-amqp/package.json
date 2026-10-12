@@ -25,10 +25,9 @@
 		"node": ">=22"
 	},
 	"peerDependencies": {
-		"amqplib": "^0.10.0"
+		"amqplib": "^0.10.0 || ^2.0.0"
 	},
 	"devDependencies": {
-		"@types/amqplib": "^0.10.5",
 		"amqplib": "^2.2.0",
 		"typescript": "~6.0.3"
 	},
