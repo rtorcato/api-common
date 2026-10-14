@@ -1,9 +1,11 @@
 import Link from '@docusaurus/Link'
+import useBaseUrl from '@docusaurus/useBaseUrl'
 import { siblings } from '@rtorcato/shared-docs'
 import CodeBlock from '@theme/CodeBlock'
 import Layout from '@theme/Layout'
 import TabItem from '@theme/TabItem'
 import Tabs from '@theme/Tabs'
+import ThemedImage from '@theme/ThemedImage'
 import clsx from 'clsx'
 import type { ReactElement } from 'react'
 import InstallTabs from '@site/src/components/InstallTabs'
@@ -298,10 +300,16 @@ app.use('/docs', serveApiDocs(spec)) // → renders the Scalar UI below ↓`,
 /* ------------------------------------------------------------------ */
 
 function Hero(): ReactElement {
+	const mark = {
+		light: useBaseUrl('/img/logo.svg'),
+		dark: useBaseUrl('/img/logo-dark.svg'),
+	}
 	return (
 		<header className={styles.hero}>
 			<div className={styles.heroGlow} aria-hidden />
 			<div className={styles.heroInner}>
+				{/* Decorative: the wordmark beside it carries the name. */}
+				<ThemedImage className={styles.heroMark} alt="" sources={mark} />
 				<div className={styles.wordmark}>
 					<span className={styles.wmBrowser}>api</span>
 					<span className={styles.wmDash}>-</span>

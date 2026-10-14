@@ -143,7 +143,10 @@ const config: Config = {
 			title: 'api-common',
 			logo: {
 				alt: 'api-common',
-				src: 'img/favicon.svg',
+				src: 'img/logo.svg',
+				srcDark: 'img/logo-dark.svg',
+				width: 26,
+				height: 26,
 			},
 			items: [
 				{ to: '/docs', position: 'left', label: 'Docs' },

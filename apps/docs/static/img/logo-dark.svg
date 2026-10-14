@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="api-common">
+  <!-- lucide plug, ISC -->
+  <rect x=".5" y=".5" width="31" height="31" rx="8"
+        fill="#e879f9" fill-opacity=".13" stroke="#e879f9" stroke-opacity=".38"/>
+  <svg x="6.72" y="6.72" width="18.56" height="18.56" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+       stroke="#e879f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22v-5"/>
+    <path d="M15 8V2"/>
+    <path d="M17 8a1 1 0 0 1 1 1v4a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1z"/>
+    <path d="M9 8V2"/>
+  </svg>
+</svg>
