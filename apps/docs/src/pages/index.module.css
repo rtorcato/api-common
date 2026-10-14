@@ -23,6 +23,17 @@
 	text-align: center;
 }
 
+/* Family mark: 72px tint tile above the wordmark. Dark mode gets an accent glow. */
+.heroMark {
+	display: block;
+	width: 72px;
+	height: 72px;
+	margin: 0 auto 22px;
+}
+:global(html[data-theme="dark"]) .heroMark {
+	filter: drop-shadow(0 0 28px color-mix(in srgb, var(--ifm-color-primary) 45%, transparent));
+}
+
 /* Text-only wordmark — "browser" in heading color, "-common" in accent. */
 .wordmark {
 	display: inline-flex;

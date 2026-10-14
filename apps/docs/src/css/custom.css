@@ -101,6 +101,11 @@
 .navbar__link--active {
 	color: var(--bc-heading);
 }
+/* Family mark is drawn at 26px (DESIGN.md "Navbar standard"); Infima's 2rem would stretch the box. */
+.navbar__logo img {
+	width: 26px;
+	height: 26px;
+}
 
 /* API Reference / Examples index cards (generated-index). Match the clean
    "install box" look — near-page-bg fill + thin border instead of infima's dull
