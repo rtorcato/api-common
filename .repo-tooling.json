@@ -25,10 +25,11 @@
       "commitLint": true,
       "semanticRelease": false,
       "securityAutomation": true,
-      "bundler": "none"
+      "bundler": "none",
+      "changesets": true
     },
-    "writtenBy": "@rtorcato/repo-tooling@6.0.0",
-    "writtenAt": "2026-10-12T13:28:52.907Z"
+    "writtenBy": "@rtorcato/repo-tooling@6.1.0",
+    "writtenAt": "2026-10-14T03:23:49.397Z"
   },
   "rules": {
     "mcp": {
