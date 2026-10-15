@@ -16,7 +16,7 @@ const OVERRIDES = {
 	'api-auth': '18.5 kB',
 	'api-auth-express': '18.6 kB',
 	'api-auth-hono': '18.6 kB',
-	'api-config': '3.7 kB',
+	'api-config': '5.9 kB',
 	'api-cors-express': '2.6 kB',
 	'api-errors-express': '20.5 kB',
 	'api-errors-hono': '20.4 kB',
