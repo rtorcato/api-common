@@ -309,7 +309,9 @@ function Hero(): ReactElement {
 			<div className={styles.heroGlow} aria-hidden />
 			<div className={styles.heroInner}>
 				{/* Decorative: the wordmark beside it carries the name. */}
-				<ThemedImage className={styles.heroMark} alt="" sources={mark} />
+				<div className={styles.heroMarkWrap}>
+					<ThemedImage className={styles.heroMark} alt="" sources={mark} />
+				</div>
 				<div className={styles.wordmark}>
 					<span className={styles.wmBrowser}>api</span>
 					<span className={styles.wmDash}>-</span>

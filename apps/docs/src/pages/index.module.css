@@ -23,12 +23,16 @@
 	text-align: center;
 }
 
-/* Family mark: 72px tint tile above the wordmark. Dark mode gets an accent glow. */
+/* Family mark: 72px tint tile above the wordmark. Dark mode gets an accent glow.
+   The wrapper centres it: Docusaurus sets display: initial on the themed img, which would beat a display: block here. */
+.heroMarkWrap {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 22px;
+}
 .heroMark {
-	display: block;
 	width: 72px;
 	height: 72px;
-	margin: 0 auto 22px;
 }
 :global(html[data-theme="dark"]) .heroMark {
 	filter: drop-shadow(0 0 28px color-mix(in srgb, var(--ifm-color-primary) 45%, transparent));
