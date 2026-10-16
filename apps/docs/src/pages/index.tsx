@@ -308,7 +308,7 @@ function Hero(): ReactElement {
 		<header className={styles.hero}>
 			<div className={styles.heroGlow} aria-hidden />
 			<div className={styles.heroInner}>
-				{/* Decorative: the wordmark beside it carries the name. */}
+				{/* Decorative: the wordmark below it carries the name. */}
 				<div className={styles.heroMarkWrap}>
 					<ThemedImage className={styles.heroMark} alt="" sources={mark} />
 				</div>
