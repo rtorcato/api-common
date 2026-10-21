@@ -1,3 +1,10 @@
+<!-- brand-kit:banner:start -->
+<picture>
+  <source media="(max-width: 640px)" srcset="https://raw.githubusercontent.com/rtorcato/api-common/main/brand/banner-mobile.png">
+  <img src="https://raw.githubusercontent.com/rtorcato/api-common/main/brand/banner.png" alt="api-common banner" width="1600">
+</picture>
+<!-- brand-kit:banner:end -->
+
 # @rtorcato/api-webhooks-express
 
 [![npm version](https://img.shields.io/npm/v/@rtorcato/api-webhooks-express.svg)](https://www.npmjs.com/package/@rtorcato/api-webhooks-express)
