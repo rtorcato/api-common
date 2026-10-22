@@ -1,6 +1,6 @@
 # api-common docs
 
-[Docusaurus](https://docusaurus.io/) site for the [@rtorcato/api-errors](https://www.npmjs.com/package/@rtorcato/api-errors) family (`api-errors`, `api-errors-express`, `api-errors-hono`). Deployed to Cloudflare Workers at https://docs.torcato.dev/api-common/ via `.github/workflows/docs.yml`.
+[Docusaurus](https://docusaurus.io/) site for the `@rtorcato/api-*` packages in this monorepo. Deployed to Cloudflare Workers at https://docs.torcato.dev/api-common/ via `.github/workflows/docs.yml`.
 
 ## Develop
 
