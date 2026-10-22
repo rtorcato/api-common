@@ -12,7 +12,7 @@ sidebar_position: 0
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-errors)](https://bundlephobia.com/package/@rtorcato/api-errors)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A family of reusable packages for building Node.js APIs. Each is independently
+Reusable packages for building Node.js APIs. Each is independently
 consumable, framework-agnostic where possible, and ships thin Express and Hono
 adapters as peer dependencies so you control the framework version.
 
