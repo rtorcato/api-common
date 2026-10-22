@@ -1,6 +1,7 @@
 import Link from '@docusaurus/Link'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import { siblings } from '@rtorcato/shared-docs'
+import UseWithAI from '@rtorcato/shared-docs/components/UseWithAI'
 import CodeBlock from '@theme/CodeBlock'
 import Layout from '@theme/Layout'
 import TabItem from '@theme/TabItem'
@@ -496,6 +497,7 @@ export default function Home(): ReactElement {
 		>
 			<main>
 				<Hero />
+				<UseWithAI repo="rtorcato/api-common" plugin="api-common" skill="api-common" />
 				<Pillars />
 				<OpenApiShowcase />
 				<Packages />
