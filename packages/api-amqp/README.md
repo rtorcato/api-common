@@ -12,6 +12,8 @@
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-amqp)](https://bundlephobia.com/package/@rtorcato/api-amqp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40">](https://buymeacoffee.com/rtorcato)
+
 Typed [amqplib](https://github.com/amqp-node/amqplib) publisher/consumer helpers for RabbitMQ — JSON encoding, exchange/queue assertion, and ack-on-success / nack-on-throw.
 
 ## Install

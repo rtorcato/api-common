@@ -12,6 +12,8 @@
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-ts-rest-express)](https://bundlephobia.com/package/@rtorcato/api-ts-rest-express)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40">](https://buymeacoffee.com/rtorcato)
+
 Mount a [ts-rest](https://ts-rest.com) contract on Express and serve its OpenAPI docs (Scalar) in one call — wires `@ts-rest/express` + `@ts-rest/open-api` into the api-common docs stack.
 
 ## Install

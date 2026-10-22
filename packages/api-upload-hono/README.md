@@ -11,6 +11,8 @@
 [![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-upload-hono.svg)](https://www.npmjs.com/package/@rtorcato/api-upload-hono)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40">](https://buymeacoffee.com/rtorcato)
+
 Promise-based S3 file upload for [Hono](https://hono.dev) — the counterpart to
 [`@rtorcato/api-upload`](https://www.npmjs.com/package/@rtorcato/api-upload) (Express).
 It parses the multipart body via `c.req.parseBody()` and writes the file to S3 with the

@@ -11,7 +11,8 @@
 [![npm version](https://badge.fury.io/js/@rtorcato%2Fapi-errors.svg)](https://badge.fury.io/js/@rtorcato%2Fapi-errors)
 [![npm downloads](https://img.shields.io/npm/dm/@rtorcato%2Fapi-errors)](https://www.npmjs.com/package/@rtorcato/api-errors)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/rtorcato)
+
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40">](https://buymeacoffee.com/rtorcato)
 
 A monorepo of reusable Node.js library packages for building API projects. Targets Express, Hono, and other Node HTTP frameworks. Each package under `packages/` is independently consumable.
 

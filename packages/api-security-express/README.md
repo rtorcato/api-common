@@ -12,6 +12,8 @@
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-security-express)](https://bundlephobia.com/package/@rtorcato/api-security-express)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40">](https://buymeacoffee.com/rtorcato)
+
 Express security-headers middleware — a thin [helmet](https://helmetjs.github.io/)
 wrapper that applies its full, sane default header suite under the
 `@rtorcato/api-*` naming.

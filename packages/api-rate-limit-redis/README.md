@@ -12,6 +12,8 @@ live in Redis, so a sliding-window limit holds across every instance pointing at
 the same server — unlike the in-memory `memoryStore()`, where each replica keeps
 its own counts and the effective limit becomes N× the configured value.
 
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40">](https://buymeacoffee.com/rtorcato)
+
 ## Install
 
 ```sh
