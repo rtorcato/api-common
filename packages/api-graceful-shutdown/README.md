@@ -12,6 +12,8 @@
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-graceful-shutdown)](https://bundlephobia.com/package/@rtorcato/api-graceful-shutdown)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40">](https://buymeacoffee.com/rtorcato)
+
 Framework-agnostic graceful shutdown for Node API servers — drains cleanly on
 `SIGTERM`/`SIGINT` by running ordered cleanup hooks (stop the HTTP server, close
 the broker, end the DB pool), with a hard timeout so a stuck resource can't

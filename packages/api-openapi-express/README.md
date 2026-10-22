@@ -12,6 +12,8 @@
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-openapi-express)](https://bundlephobia.com/package/@rtorcato/api-openapi-express)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40">](https://buymeacoffee.com/rtorcato)
+
 Serve [Scalar](https://scalar.com) or [Swagger UI](https://swagger.io/tools/swagger-ui/) API docs in Express from an OpenAPI spec — as a self-contained router, or mounted directly onto your app.
 
 ## Install

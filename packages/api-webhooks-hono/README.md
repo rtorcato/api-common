@@ -11,6 +11,8 @@
 [![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-webhooks-hono.svg)](https://www.npmjs.com/package/@rtorcato/api-webhooks-hono)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40">](https://buymeacoffee.com/rtorcato)
+
 Hono webhook middleware for [api-webhooks](https://www.npmjs.com/package/@rtorcato/api-webhooks).
 Verifies the HMAC signature over the **raw** request body.
 

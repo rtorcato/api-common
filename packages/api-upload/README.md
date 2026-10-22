@@ -12,6 +12,8 @@
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-upload)](https://bundlephobia.com/package/@rtorcato/api-upload)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40">](https://buymeacoffee.com/rtorcato)
+
 Promise-based S3 file upload for Express via [multer-s3](https://github.com/anacronw/multer-s3) — public/private ACL, cache-control, deterministic keys, and errors normalized to [`@rtorcato/api-errors`](https://github.com/rtorcato/api-common/tree/main/packages/api-errors).
 
 ## Install

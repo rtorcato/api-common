@@ -11,6 +11,8 @@
 [![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-webhooks-express.svg)](https://www.npmjs.com/package/@rtorcato/api-webhooks-express)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40">](https://buymeacoffee.com/rtorcato)
+
 Express webhook middleware for [api-webhooks](https://www.npmjs.com/package/@rtorcato/api-webhooks).
 Captures the **raw** request body, verifies its HMAC signature, then parses the
 JSON onto `req.body`.

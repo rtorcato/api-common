@@ -12,6 +12,8 @@
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-http)](https://bundlephobia.com/package/@rtorcato/api-http)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40">](https://buymeacoffee.com/rtorcato)
+
 Typed HTTP client over native `fetch` — base URL, default headers, timeout, optional retry, and errors normalized to [`@rtorcato/api-errors`](https://github.com/rtorcato/api-common/tree/main/packages/api-errors).
 
 No `axios`, no wrapper dependency — built on Node's global `fetch` and `AbortSignal.timeout` (Node 22+).

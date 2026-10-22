@@ -12,6 +12,8 @@
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-validation)](https://bundlephobia.com/package/@rtorcato/api-validation)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40">](https://buymeacoffee.com/rtorcato)
+
 Zod request validation helpers with pretty error formatting. Pairs with
 `@rtorcato/api-errors` so validation failures surface as `BadRequestError`.
 

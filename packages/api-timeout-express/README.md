@@ -11,6 +11,8 @@
 [![npm downloads](https://img.shields.io/npm/dm/@rtorcato/api-timeout-express.svg)](https://www.npmjs.com/package/@rtorcato/api-timeout-express)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40">](https://buymeacoffee.com/rtorcato)
+
 Express middleware for [`@rtorcato/api-timeout`](https://www.npmjs.com/package/@rtorcato/api-timeout).
 Fails a request with `503` if the response isn't sent within a deadline.
 

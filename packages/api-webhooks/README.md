@@ -12,6 +12,8 @@
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-webhooks)](https://bundlephobia.com/package/@rtorcato/api-webhooks)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40">](https://buymeacoffee.com/rtorcato)
+
 Framework-agnostic webhook signature verification (HMAC) with timing-safe
 comparison. Use it directly, or drop in the Express or Hono adapter middleware.
 

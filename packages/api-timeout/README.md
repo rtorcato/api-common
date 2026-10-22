@@ -12,6 +12,8 @@
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/api-timeout)](https://bundlephobia.com/package/@rtorcato/api-timeout)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40">](https://buymeacoffee.com/rtorcato)
+
 Framework-agnostic per-request timeout. Races a promise against a deadline and
 rejects with a `ServiceUnavailableError` (503) from
 [`@rtorcato/api-errors`](https://www.npmjs.com/package/@rtorcato/api-errors).
