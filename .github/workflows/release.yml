@@ -23,6 +23,7 @@ jobs:
     # publishers must name this environment, or the OIDC publish fails with E404.
     environment: release
     permissions:
+      actions: write
       contents: write
       pull-requests: write
       id-token: write
@@ -58,6 +59,7 @@ jobs:
       # and publishes nothing. Merging that PR publishes nothing either; the
       # next dispatch or milestone close (approved) publishes the bumped packages.
       - name: Create Release PR or Publish
+        id: changesets
         uses: changesets/action@v1
         with:
           publish: pnpm release
@@ -69,3 +71,13 @@ jobs:
           # No NPM_TOKEN: authenticates via OIDC trusted publishing (id-token: write
           # above). Requires a trusted publisher registered for THIS workflow file
           # (release.yml) on npmjs.com. Provenance is emitted automatically.
+
+      # Releases made with GITHUB_TOKEN start no `release: published` run in
+      # docs.yml, but a GITHUB_TOKEN dispatch does start one, so rebuild the
+      # docs on main from here once a publish lands (#305).
+      - name: Rebuild the docs
+        if: steps.changesets.outputs.published == 'true'
+        run: gh workflow run docs.yml --repo "$GITHUB_REPOSITORY" --ref "$DEFAULT_BRANCH"
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}

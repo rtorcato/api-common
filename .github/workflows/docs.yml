@@ -12,8 +12,8 @@ on:
       - 'scripts/aggregate-changelog.mjs'
       - '.github/workflows/docs.yml'
       - 'pnpm-workspace.yaml'
-  release:
-    types: [published]
+  # release.yml dispatches this on main after a publish, so the site is rebuilt
+  # once the new versions are live on npm.
   workflow_dispatch:
 
 permissions:
