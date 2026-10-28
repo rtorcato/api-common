@@ -14,7 +14,7 @@
 	"dependencies": {
 		"@modelcontextprotocol/sdk": "^1.32.0",
 		"@rtorcato/api-mcp": "workspace:*",
-		"zod": "^4.6.5"
+		"zod": "^4.6.6"
 	},
 	"devDependencies": {
 		"tsx": "^4.23.15",
