@@ -17,7 +17,7 @@
 		"@rtorcato/api-graceful-shutdown": "workspace:*",
 		"@rtorcato/api-logger": "workspace:*",
 		"amqplib": "^2.2.0",
-		"zod": "^4.6.5"
+		"zod": "^4.6.6"
 	},
 	"devDependencies": {
 		"pino-pretty": "^13.0.0",

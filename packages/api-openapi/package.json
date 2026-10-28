@@ -28,7 +28,7 @@
     "zod": "^4.0.0"
   },
   "devDependencies": {
-    "zod": "^4.6.5"
+    "zod": "^4.6.6"
   },
   "publishConfig": {
     "access": "public"

@@ -31,7 +31,7 @@
 		"@rtorcato/api-webhooks-hono": "workspace:*",
 		"@scalar/hono-api-reference": "^0.12.9",
 		"hono": "^4.13.13",
-		"zod": "^4.6.5"
+		"zod": "^4.6.6"
 	},
 	"devDependencies": {
 		"@rtorcato/api-testing": "workspace:*",
