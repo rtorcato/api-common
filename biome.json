@@ -1,6 +1,8 @@
 {
-  "$schema": "https://biomejs.dev/schemas/latest/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.6.3/schema.json",
   "extends": ["@rtorcato/repo-tooling/biome"],
+  "markdown": { "formatter": { "enabled": false } },
+  "yaml": { "formatter": { "enabled": false } },
   "files": {
     "includes": ["!**/.claude"]
   }
