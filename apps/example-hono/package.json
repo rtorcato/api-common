@@ -30,7 +30,7 @@
 		"@rtorcato/api-timeout-hono": "workspace:*",
 		"@rtorcato/api-webhooks-hono": "workspace:*",
 		"@scalar/hono-api-reference": "^0.12.14",
-		"hono": "^4.13.14",
+		"hono": "^4.13.16",
 		"zod": "^4.6.7"
 	},
 	"devDependencies": {
