@@ -22,10 +22,10 @@
     "test": "vitest run"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "dependencies": {
-    "@rtorcato/js-common": "^5.0.0",
+    "@rtorcato/js-common": "^6.2.1",
     "pino": "^10.4.0",
     "zod": "^4.6.7"
   },

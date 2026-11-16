@@ -6,7 +6,7 @@ frameworks).
 
 ## Prerequisites
 
-- Node.js >= 22
+- Node.js >= 24
 - [pnpm](https://pnpm.io) (the only supported package manager — never `npm` or `yarn`)
 
 ## Setup
