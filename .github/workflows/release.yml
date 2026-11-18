@@ -100,6 +100,8 @@ jobs:
       contents: write
       pull-requests: write
       id-token: write
+      # The final step dispatches docs.yml to rebuild the changelog.
+      actions: write
     steps:
       # The commit that triggered the run, not the tip: a changeset merged while
       # this waited for approval would otherwise make it update the Version
