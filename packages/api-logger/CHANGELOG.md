@@ -1,5 +1,11 @@
 # @rtorcato/api-logger
 
+## 2.0.0
+
+### Major Changes
+
+- 2f10ea2: Require Node.js `>=24` and bump `@rtorcato/js-common` to `^6.2.1`. js-common 6 itself requires Node 24, so these four packages raise their `engines.node` floor from `>=22` to `>=24`. Consumers on Node 22 must upgrade Node before taking this release. No API changes.
+
 ## 1.1.1
 
 ### Patch Changes
