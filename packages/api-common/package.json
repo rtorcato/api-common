@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/api-common",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Framework-agnostic building blocks for Node.js APIs: HTTP errors, auth, config, logging, validation and more, with Express and Hono adapters as subpath exports.",
   "type": "module",
   "license": "MIT",
