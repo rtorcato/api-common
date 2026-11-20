@@ -1,4 +1,4 @@
-import { createConsumer, createPublisher } from '@rtorcato/api-amqp'
+import { createConsumer, createPublisher } from '@rtorcato/api-common/amqp'
 import type { Channel } from 'amqplib'
 
 const EXCHANGE = 'demo'

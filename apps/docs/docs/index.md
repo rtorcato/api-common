@@ -54,4 +54,4 @@ app.use(errorHandler()) // maps thrown HttpErrors to JSON
 
 Start with [Installation](./guides/installation.md), then the
 [Express](./guides/express.md) or [Hono](./guides/hono.md) guide. The full
-[API Reference](./api/api-errors/index.md) is generated from the package sources.
+[API Reference](./api/errors/index.md) is generated from the package sources.

@@ -6,6 +6,9 @@ build/
 # typedoc-generated API reference (regenerated on build)
 docs/api/
 
+# per-subpath typedoc tsconfigs (written by docusaurus.config.ts)
+.typedoc/
+
 # aggregated from packages/*/CHANGELOG.md on build
 docs/changelog.md
 

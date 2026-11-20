@@ -8,23 +8,13 @@
 const { readdirSync, readFileSync, existsSync } = require('node:fs')
 const { builtinModules } = require('node:module')
 
-// ~25% above measured size (minified + brotli), measured 2026-10.
-// Most packages are well under 800 B; the outliers below bundle real deps.
+// ~25% above measured size (minified + brotli). Every subpath measured under
+// 800 B on 2026-11-20 except openapi. Third-party libraries are optional peers,
+// so only own code and @rtorcato/js-common count.
 const DEFAULT_LIMIT = '1 kB'
 // Keyed by `<package dir>` or `<package dir>/<subpath>`.
 const OVERRIDES = {
-	'api-auth': '18.5 kB',
-	'api-auth-express': '18.6 kB',
-	'api-auth-hono': '18.6 kB',
-	'api-config': '5.9 kB',
-	'api-cors-express': '2.6 kB',
-	'api-errors-express': '20.5 kB',
-	'api-errors-hono': '20.4 kB',
-	'api-logger': '23.4 kB',
-	'api-openapi': '1.3 kB',
-	'api-security-express': '3.6 kB',
-	'api-testing': '42.4 kB',
-	'api-validation': '2.3 kB',
+	'api-common/openapi': '1.3 kB',
 }
 
 const builtins = builtinModules.flatMap((m) => [m, `node:${m}`])
@@ -35,7 +25,11 @@ module.exports = readdirSync('packages').flatMap((dir) => {
 	const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'))
 	if (pkg.private) return []
 	const ignore = [...builtins, ...Object.keys(pkg.peerDependencies ?? {})]
-	return Object.entries(pkg.exports ?? {}).map(([subpath, target]) => {
+	// `./package.json` and other non-code entries have nothing to measure.
+	const entries = Object.entries(pkg.exports ?? {}).filter(
+		([subpath]) => subpath !== './package.json'
+	)
+	return entries.map(([subpath, target]) => {
 		const key = subpath === '.' ? dir : `${dir}/${subpath.slice(2)}`
 		return {
 			name: key,

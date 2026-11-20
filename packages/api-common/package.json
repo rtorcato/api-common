@@ -1,0 +1,335 @@
+{
+  "name": "@rtorcato/api-common",
+  "version": "0.0.0",
+  "description": "Framework-agnostic building blocks for Node.js APIs: HTTP errors, auth, config, logging, validation and more, with Express and Hono adapters as subpath exports.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Richard Torcato",
+  "sideEffects": false,
+  "exports": {
+    "./amqp": {
+      "types": "./dist/amqp/index.d.ts",
+      "import": "./dist/amqp/index.js"
+    },
+    "./auth": {
+      "types": "./dist/auth/index.d.ts",
+      "import": "./dist/auth/index.js"
+    },
+    "./auth/express": {
+      "types": "./dist/auth/express/index.d.ts",
+      "import": "./dist/auth/express/index.js"
+    },
+    "./auth/hono": {
+      "types": "./dist/auth/hono/index.d.ts",
+      "import": "./dist/auth/hono/index.js"
+    },
+    "./config": {
+      "types": "./dist/config/index.d.ts",
+      "import": "./dist/config/index.js"
+    },
+    "./cors/express": {
+      "types": "./dist/cors/express/index.d.ts",
+      "import": "./dist/cors/express/index.js"
+    },
+    "./errors": {
+      "types": "./dist/errors/index.d.ts",
+      "import": "./dist/errors/index.js"
+    },
+    "./errors/express": {
+      "types": "./dist/errors/express/index.d.ts",
+      "import": "./dist/errors/express/index.js"
+    },
+    "./errors/hono": {
+      "types": "./dist/errors/hono/index.d.ts",
+      "import": "./dist/errors/hono/index.js"
+    },
+    "./express-utils": {
+      "types": "./dist/express-utils/index.d.ts",
+      "import": "./dist/express-utils/index.js"
+    },
+    "./graceful-shutdown": {
+      "types": "./dist/graceful-shutdown/index.d.ts",
+      "import": "./dist/graceful-shutdown/index.js"
+    },
+    "./health": {
+      "types": "./dist/health/index.d.ts",
+      "import": "./dist/health/index.js"
+    },
+    "./health/express": {
+      "types": "./dist/health/express/index.d.ts",
+      "import": "./dist/health/express/index.js"
+    },
+    "./health/hono": {
+      "types": "./dist/health/hono/index.d.ts",
+      "import": "./dist/health/hono/index.js"
+    },
+    "./http": {
+      "types": "./dist/http/index.d.ts",
+      "import": "./dist/http/index.js"
+    },
+    "./logger": {
+      "types": "./dist/logger/index.d.ts",
+      "import": "./dist/logger/index.js"
+    },
+    "./mcp": {
+      "types": "./dist/mcp/index.d.ts",
+      "import": "./dist/mcp/index.js"
+    },
+    "./openapi": {
+      "types": "./dist/openapi/index.d.ts",
+      "import": "./dist/openapi/index.js"
+    },
+    "./openapi/express": {
+      "types": "./dist/openapi/express/index.d.ts",
+      "import": "./dist/openapi/express/index.js"
+    },
+    "./openapi/hono": {
+      "types": "./dist/openapi/hono/index.d.ts",
+      "import": "./dist/openapi/hono/index.js"
+    },
+    "./rate-limit": {
+      "types": "./dist/rate-limit/index.d.ts",
+      "import": "./dist/rate-limit/index.js"
+    },
+    "./rate-limit/express": {
+      "types": "./dist/rate-limit/express/index.d.ts",
+      "import": "./dist/rate-limit/express/index.js"
+    },
+    "./rate-limit/hono": {
+      "types": "./dist/rate-limit/hono/index.d.ts",
+      "import": "./dist/rate-limit/hono/index.js"
+    },
+    "./rate-limit/redis": {
+      "types": "./dist/rate-limit/redis/index.d.ts",
+      "import": "./dist/rate-limit/redis/index.js"
+    },
+    "./response": {
+      "types": "./dist/response/index.d.ts",
+      "import": "./dist/response/index.js"
+    },
+    "./security/express": {
+      "types": "./dist/security/express/index.d.ts",
+      "import": "./dist/security/express/index.js"
+    },
+    "./testing": {
+      "types": "./dist/testing/index.d.ts",
+      "import": "./dist/testing/index.js"
+    },
+    "./timeout": {
+      "types": "./dist/timeout/index.d.ts",
+      "import": "./dist/timeout/index.js"
+    },
+    "./timeout/express": {
+      "types": "./dist/timeout/express/index.d.ts",
+      "import": "./dist/timeout/express/index.js"
+    },
+    "./timeout/hono": {
+      "types": "./dist/timeout/hono/index.d.ts",
+      "import": "./dist/timeout/hono/index.js"
+    },
+    "./ts-rest/express": {
+      "types": "./dist/ts-rest/express/index.d.ts",
+      "import": "./dist/ts-rest/express/index.js"
+    },
+    "./upload/express": {
+      "types": "./dist/upload/express/index.d.ts",
+      "import": "./dist/upload/express/index.js"
+    },
+    "./upload/hono": {
+      "types": "./dist/upload/hono/index.d.ts",
+      "import": "./dist/upload/hono/index.js"
+    },
+    "./validation": {
+      "types": "./dist/validation/index.d.ts",
+      "import": "./dist/validation/index.js"
+    },
+    "./webhooks": {
+      "types": "./dist/webhooks/index.d.ts",
+      "import": "./dist/webhooks/index.js"
+    },
+    "./webhooks/express": {
+      "types": "./dist/webhooks/express/index.d.ts",
+      "import": "./dist/webhooks/express/index.js"
+    },
+    "./webhooks/hono": {
+      "types": "./dist/webhooks/hono/index.d.ts",
+      "import": "./dist/webhooks/hono/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "@rtorcato/js-common": "^6.2.1"
+  },
+  "peerDependencies": {
+    "@aws-sdk/client-s3": "^3.0.0",
+    "@hono/zod-openapi": "^1.0.0",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@scalar/hono-api-reference": "^0.11.0 || ^0.12.0",
+    "@ts-rest/core": ">=3.53.0-rc.1 <4",
+    "@ts-rest/express": ">=3.53.0-rc.1 <4",
+    "@ts-rest/open-api": ">=3.53.0-rc.1 <4",
+    "amqplib": "^0.10.0 || ^2.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^18.0.9",
+    "dotenv-expand": "^13.0.0",
+    "express": "^4.18.0 || ^5.0.0",
+    "helmet": "^8.3.0",
+    "hono": "^4.0.0",
+    "ioredis": "^5.0.0 || ^6.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.0",
+    "multer-s3": "^3.0.0",
+    "pino": "^10.4.0",
+    "pino-pretty": "^13.0.0",
+    "supertest": "^7.3.1",
+    "swagger-jsdoc": "^6.0.0",
+    "zod": "^4.0.0",
+    "zod-error": "^2.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@aws-sdk/client-s3": {
+      "optional": true
+    },
+    "@hono/zod-openapi": {
+      "optional": true
+    },
+    "@modelcontextprotocol/sdk": {
+      "optional": true
+    },
+    "@scalar/hono-api-reference": {
+      "optional": true
+    },
+    "@ts-rest/core": {
+      "optional": true
+    },
+    "@ts-rest/express": {
+      "optional": true
+    },
+    "@ts-rest/open-api": {
+      "optional": true
+    },
+    "amqplib": {
+      "optional": true
+    },
+    "cors": {
+      "optional": true
+    },
+    "dotenv": {
+      "optional": true
+    },
+    "dotenv-expand": {
+      "optional": true
+    },
+    "express": {
+      "optional": true
+    },
+    "helmet": {
+      "optional": true
+    },
+    "hono": {
+      "optional": true
+    },
+    "ioredis": {
+      "optional": true
+    },
+    "jsonwebtoken": {
+      "optional": true
+    },
+    "multer": {
+      "optional": true
+    },
+    "multer-s3": {
+      "optional": true
+    },
+    "pino": {
+      "optional": true
+    },
+    "pino-pretty": {
+      "optional": true
+    },
+    "supertest": {
+      "optional": true
+    },
+    "swagger-jsdoc": {
+      "optional": true
+    },
+    "zod": {
+      "optional": true
+    },
+    "zod-error": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@aws-sdk/client-s3": "^3.1157.0",
+    "@hono/zod-openapi": "^1.6.3",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@scalar/hono-api-reference": "^0.12.14",
+    "@ts-rest/core": "3.53.0-rc.1",
+    "@ts-rest/express": "3.53.0-rc.1",
+    "@ts-rest/open-api": "3.53.0-rc.1",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/multer": "^2.3.0",
+    "@types/node": "^26.6.5",
+    "@types/supertest": "^7.2.1",
+    "amqplib": "^2.2.0",
+    "aws-sdk-client-mock": "^4.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^18.0.9",
+    "dotenv-expand": "^13.0.0",
+    "express": "^5.3.0",
+    "helmet": "^8.3.0",
+    "hono": "^4.13.14",
+    "ioredis": "^6.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.5.0",
+    "multer-s3": "^3.0.1",
+    "pino": "^10.4.0",
+    "supertest": "^7.3.1",
+    "swagger-jsdoc": "^6.2.8",
+    "typescript": "~6.0.3",
+    "zod": "^4.6.7",
+    "zod-error": "^2.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "api",
+    "nodejs",
+    "typescript",
+    "express",
+    "hono",
+    "middleware",
+    "http",
+    "errors",
+    "auth",
+    "jwt",
+    "validation",
+    "openapi",
+    "rate-limit",
+    "logger"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtorcato/api-common.git",
+    "directory": "packages/api-common"
+  },
+  "homepage": "https://docs.torcato.dev/api-common/",
+  "bugs": {
+    "url": "https://github.com/rtorcato/api-common/issues"
+  }
+}

@@ -1,8 +1,8 @@
 import { S3Client } from '@aws-sdk/client-s3'
-import { loadEnv } from '@rtorcato/api-config'
-import { logRoutes } from '@rtorcato/api-express-utils'
-import { closeHttpServer, createShutdownController } from '@rtorcato/api-graceful-shutdown'
-import { createLogger } from '@rtorcato/api-logger'
+import { loadEnv } from '@rtorcato/api-common/config'
+import { logRoutes } from '@rtorcato/api-common/express-utils'
+import { closeHttpServer, createShutdownController } from '@rtorcato/api-common/graceful-shutdown'
+import { createLogger } from '@rtorcato/api-common/logger'
 import { z } from 'zod'
 import { createApp } from './app.js'
 

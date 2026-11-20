@@ -1,16 +1,16 @@
 import type { S3Client } from '@aws-sdk/client-s3'
-import { corsMiddleware } from '@rtorcato/api-cors-express'
-import { asyncHandler, errorHandler, notFoundHandler } from '@rtorcato/api-errors-express'
-import { createHealthRegistry } from '@rtorcato/api-health'
-import { livenessHandler, readinessHandler } from '@rtorcato/api-health-express'
-import { serveApiDocs, serveSwaggerDocs } from '@rtorcato/api-openapi-express'
-import { memoryStore } from '@rtorcato/api-rate-limit'
-import { rateLimitMiddleware } from '@rtorcato/api-rate-limit-express'
-import { ok } from '@rtorcato/api-response'
-import { securityMiddleware } from '@rtorcato/api-security-express'
-import { timeoutMiddleware } from '@rtorcato/api-timeout-express'
-import { uploadFile } from '@rtorcato/api-upload'
-import { webhookMiddleware } from '@rtorcato/api-webhooks-express'
+import { corsMiddleware } from '@rtorcato/api-common/cors/express'
+import { asyncHandler, errorHandler, notFoundHandler } from '@rtorcato/api-common/errors/express'
+import { createHealthRegistry } from '@rtorcato/api-common/health'
+import { livenessHandler, readinessHandler } from '@rtorcato/api-common/health/express'
+import { serveApiDocs, serveSwaggerDocs } from '@rtorcato/api-common/openapi/express'
+import { memoryStore } from '@rtorcato/api-common/rate-limit'
+import { rateLimitMiddleware } from '@rtorcato/api-common/rate-limit/express'
+import { ok } from '@rtorcato/api-common/response'
+import { securityMiddleware } from '@rtorcato/api-common/security/express'
+import { timeoutMiddleware } from '@rtorcato/api-common/timeout/express'
+import { uploadFile } from '@rtorcato/api-common/upload/express'
+import { webhookMiddleware } from '@rtorcato/api-common/webhooks/express'
 import express from 'express'
 import { requestLogger } from './middleware/requestLogger.js'
 import { createAuthRouter } from './routes/auth.js'
@@ -68,7 +68,7 @@ export function createApp(
 	app.use('/api-docs', serveApiDocs(spec, { title: 'Example Express API' }))
 	app.use('/swagger', serveSwaggerDocs(spec, { title: 'Example Express API' }))
 	// Single-process demo → in-memory store. Swap for redisStore() from
-	// @rtorcato/api-rate-limit-redis to share limits across instances.
+	// @rtorcato/api-common/rate-limit/redis to share limits across instances.
 	app.use(rateLimitMiddleware({ requests: 100, windowMs: 60_000, store: memoryStore() }))
 
 	app.use('/', createAuthRouter(jwtSecret))

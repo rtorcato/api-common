@@ -1,6 +1,6 @@
-import { NotFoundError } from '@rtorcato/api-errors'
-import { ok } from '@rtorcato/api-response'
-import { validate } from '@rtorcato/api-validation'
+import { NotFoundError } from '@rtorcato/api-common/errors'
+import { ok } from '@rtorcato/api-common/response'
+import { validate } from '@rtorcato/api-common/validation'
 import { Router } from 'express'
 import { z } from 'zod'
 

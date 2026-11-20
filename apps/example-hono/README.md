@@ -1,6 +1,6 @@
 # example-hono
 
-Runnable Hono API demonstrating `@rtorcato/api-*` packages working together,
+Runnable Hono API demonstrating `@rtorcato/api-common` subpaths working together,
 built **schema-first** on `OpenAPIHono`: the item routes are defined with
 `createRoute` Zod schemas that drive both request validation and the generated
 OpenAPI doc, so the API and its docs can't drift.

@@ -1,6 +1,8 @@
-// Fail if any publishable packages/* is missing a docs guide. Mirrors
-// gen-readme-packages.mjs: package.json is the source of truth for which
-// packages must be documented. Enforces, per package:
+// Fail if any @rtorcato/api-common subpath is missing a docs guide. Mirrors
+// gen-readme-packages.mjs: packages/api-common/subpaths.json is the source of
+// truth for which subpaths must be documented. Until the guides are merged per
+// feature, each subpath's guide is still named after the package it replaced
+// (guides/api-auth-express.md for `auth/express`). Enforces, per subpath:
 //   1. a guide markdown page (or an allowlisted role-named alias)
 //   2. that guide is referenced in apps/docs/sidebars.ts
 //
@@ -9,13 +11,13 @@
 //
 //   node scripts/check-docs-coverage.mjs   # exit 1 listing every gap (CI)
 
-import { existsSync, readdirSync, readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(here, '..')
-const packagesDir = resolve(repoRoot, 'packages')
+const subpathsFile = resolve(repoRoot, 'packages/api-common/subpaths.json')
 const docsDir = resolve(repoRoot, 'apps/docs')
 const guidesDir = resolve(docsDir, 'docs/guides')
 
@@ -29,10 +31,8 @@ const GUIDE_ALIAS = {
 
 const shortName = (name) => name.replace('@rtorcato/', '')
 
-const pkgs = readdirSync(packagesDir, { withFileTypes: true })
-	.filter((d) => d.isDirectory())
-	.map((d) => JSON.parse(readFileSync(resolve(packagesDir, d.name, 'package.json'), 'utf8')))
-	.filter((p) => p.name && !p.private)
+const pkgs = JSON.parse(readFileSync(subpathsFile, 'utf8'))
+	.map((s) => ({ name: s.formerly, subpath: s.subpath }))
 	.sort((a, b) => a.name.localeCompare(b.name))
 
 const sidebars = readFileSync(resolve(docsDir, 'sidebars.ts'), 'utf8')
@@ -46,11 +46,11 @@ for (const p of pkgs) {
 	const guideId = `guides/${guideSlug}`
 
 	if (!existsSync(guideFile)) {
-		problems.push(`${pkg}: missing guide — create apps/docs/docs/${guideId}.md`)
+		problems.push(`${p.subpath}: missing guide — create apps/docs/docs/${guideId}.md`)
 		continue // no point checking the sidebar for a page that doesn't exist
 	}
 	if (!sidebars.includes(guideId)) {
-		problems.push(`${pkg}: guide not in sidebar — add '${guideId}' to apps/docs/sidebars.ts`)
+		problems.push(`${p.subpath}: guide not in sidebar — add '${guideId}' to apps/docs/sidebars.ts`)
 	}
 }
 
@@ -60,4 +60,4 @@ if (problems.length > 0) {
 	process.exit(1)
 }
 
-console.log(`Docs coverage OK — all ${pkgs.length} packages have a guide.`)
+console.log(`Docs coverage OK — all ${pkgs.length} subpaths have a guide.`)

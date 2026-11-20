@@ -1,5 +1,5 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
-import { asText, mcpError } from '@rtorcato/api-mcp'
+import { asText, mcpError } from '@rtorcato/api-common/mcp'
 import { z } from 'zod'
 
 /**
@@ -9,8 +9,8 @@ import { z } from 'zod'
  * for tests).
  *
  * Tools return their payload as a JSON string in a `text` content block via
- * `@rtorcato/api-mcp`'s `asText`/`mcpError` — the MCP-native shape, deliberately
- * *not* the `{ success, data }` REST envelope from `@rtorcato/api-response`,
+ * `@rtorcato/api-common/mcp`'s `asText`/`mcpError` — the MCP-native shape, deliberately
+ * *not* the `{ success, data }` REST envelope from `@rtorcato/api-common/response`,
  * since MCP has its own contract.
  */
 export function createServer() {

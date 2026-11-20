@@ -1,4 +1,4 @@
-import { errorBody, successBody, supertest } from '@rtorcato/api-testing'
+import { errorBody, successBody, supertest } from '@rtorcato/api-common/testing'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { createApp } from './app.js'
 

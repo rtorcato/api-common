@@ -59,5 +59,5 @@ app.onError(errorHandler({ includeStack: true }))
 `includeStack` defaults to `true` only when `process.env.NODE_ENV === 'development'`,
 adding a `stack` field to the body. Leave it off in production.
 
-See the [API reference](../api/api-errors-hono/index.md) for the full
+See the [API reference](../api/errors-hono/index.md) for the full
 `ErrorHandlerOptions` type.

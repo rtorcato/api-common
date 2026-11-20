@@ -1,6 +1,6 @@
 # example-ts-rest-express
 
-Runnable Express 5 API built **contract-first** with [ts-rest](https://ts-rest.com), via `@rtorcato/api-ts-rest-express`.
+Runnable Express 5 API built **contract-first** with [ts-rest](https://ts-rest.com), via `@rtorcato/api-common/ts-rest/express`.
 
 Where [`example-express`](../example-express) wires routes and the OpenAPI spec by hand, here a single **contract** is the source of truth: ts-rest validates requests against it and `mountTsRest` generates the OpenAPI 3.1 doc from it — the API, its validation, and its docs can't drift.
 

@@ -1,6 +1,6 @@
 # example-express
 
-Runnable Express 5 API demonstrating all `@rtorcato/api-*` packages working together.
+Runnable Express 5 API demonstrating all `@rtorcato/api-common` subpaths working together.
 
 ## What it shows
 

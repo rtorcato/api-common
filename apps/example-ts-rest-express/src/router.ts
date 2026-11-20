@@ -1,6 +1,6 @@
-import { NotFoundError, toErrorResponse } from '@rtorcato/api-errors'
-import { ok } from '@rtorcato/api-response'
-import { initServer } from '@rtorcato/api-ts-rest-express'
+import { NotFoundError, toErrorResponse } from '@rtorcato/api-common/errors'
+import { ok } from '@rtorcato/api-common/response'
+import { initServer } from '@rtorcato/api-common/ts-rest/express'
 import { contract, type Item } from './contract.js'
 
 /**
@@ -9,7 +9,7 @@ import { contract, type Item } from './contract.js'
  * from an empty list.
  *
  * Expected errors (a missing item) are returned as a typed `404` whose body is
- * the shared error envelope from `@rtorcato/api-errors`. Unexpected throws
+ * the shared error envelope from `@rtorcato/api-common/errors`. Unexpected throws
  * propagate to Express's `errorHandler()` as a `500`.
  */
 export function createRouter() {

@@ -1,6 +1,6 @@
-import { signToken } from '@rtorcato/api-auth'
-import { authMiddleware } from '@rtorcato/api-auth-express'
-import { ok } from '@rtorcato/api-response'
+import { signToken } from '@rtorcato/api-common/auth'
+import { authMiddleware } from '@rtorcato/api-common/auth/express'
+import { ok } from '@rtorcato/api-common/response'
 import { Router } from 'express'
 
 // Demo auth: POST /login mints a short-lived JWT for whatever username you send

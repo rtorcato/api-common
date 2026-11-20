@@ -1,5 +1,5 @@
-import { buildOpenApiDocument } from '@rtorcato/api-openapi'
-import { errorSchema, successSchema } from '@rtorcato/api-response'
+import { buildOpenApiDocument } from '@rtorcato/api-common/openapi'
+import { errorSchema, successSchema } from '@rtorcato/api-common/response'
 import { z } from 'zod'
 import { createItemBody, itemParams, itemSchema } from './routes/items.js'
 

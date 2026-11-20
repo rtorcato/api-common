@@ -13,7 +13,7 @@
     "test:coverage": "vitest run --config vitest.coverage.mjs --coverage",
     "build": "pnpm -r build",
     "size": "size-limit",
-    "check:exports": "pnpm -r --filter \"./packages/*\" exec publint && pnpm -r --filter \"./packages/*\" exec attw --pack . --profile esm-only --ignore-rules internal-resolution-error",
+    "check:exports": "pnpm -r --filter \"./packages/*\" exec publint && pnpm -r --filter \"./packages/*\" exec attw --pack . --profile esm-only",
     "gen:readme": "node scripts/gen-readme-packages.mjs",
     "check:readme": "node scripts/gen-readme-packages.mjs --check",
     "check:docs": "node scripts/check-docs-coverage.mjs",

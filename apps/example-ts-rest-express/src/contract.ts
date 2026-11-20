@@ -1,5 +1,5 @@
-import { initContract, withDefaultErrors } from '@rtorcato/api-ts-rest-express'
-import { successSchema } from '@rtorcato/api-response'
+import { initContract, withDefaultErrors } from '@rtorcato/api-common/ts-rest/express'
+import { successSchema } from '@rtorcato/api-common/response'
 import { z } from 'zod'
 
 // Shared Zod schemas — the single source of truth. ts-rest validates requests
@@ -13,7 +13,7 @@ export type Item = z.infer<typeof itemSchema>
 const c = initContract()
 
 // `withDefaultErrors` attaches the shared 400/404/500 error envelope
-// (`@rtorcato/api-errors-express` shape) to every route's responses.
+// (`@rtorcato/api-common/errors/express` shape) to every route's responses.
 export const contract = c.router({
 	getItems: {
 		method: 'GET',
