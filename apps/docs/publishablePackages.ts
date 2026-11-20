@@ -1,25 +1,34 @@
-import { readdirSync, readFileSync } from 'node:fs'
+import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
-// Short names (without the @rtorcato/ scope) of every publishable workspace
-// package, sorted. Single source of truth for the typedoc instances and the
-// API Reference sidebar, so neither can drift when a package is added.
+// Every subpath export of @rtorcato/api-common, sorted. Single source of truth
+// for the typedoc instances and the API Reference sidebar, so neither can drift
+// when a subpath is added. Read from packages/api-common/subpaths.json, which
+// a package test keeps in step with the `exports` map.
 // ponytail: resolves packages/ from cwd (= apps/docs); the docs pipeline only
 // ever runs via `pnpm --filter @rtorcato/api-common-docs`.
-const packagesDir = resolve(process.cwd(), '../../packages')
+interface SubpathEntry {
+	subpath: string
+	formerly: string
+	description: string
+}
 
-const manifests = readdirSync(packagesDir, { withFileTypes: true })
-	.filter((d) => d.isDirectory())
-	.map((d) => JSON.parse(readFileSync(resolve(packagesDir, d.name, 'package.json'), 'utf8')))
-	.filter((p) => p.name && !p.private)
+const subpaths: SubpathEntry[] = JSON.parse(
+	readFileSync(resolve(process.cwd(), '../../packages/api-common/subpaths.json'), 'utf8')
+)
 
-export const publishablePackages: string[] = manifests
-	.map((p) => p.name.replace('@rtorcato/', ''))
-	.sort()
+// Doc-id-safe slug for a subpath: `auth/express` -> `auth-express`.
+const slugOf = (subpath: string) => subpath.replace(/\//g, '-')
 
-// Short name -> package.json description, so the API Reference index cards can
-// show what each package does instead of TypeDoc's generic "Interfaces"/"Classes"
-// fallback. Single source of truth = the package's own manifest.
+export const publishablePackages: string[] = subpaths.map((s) => slugOf(s.subpath)).sort()
+
+// Slug -> subpath, for the typedoc entry point and the sidebar label.
+export const packageSubpaths: Record<string, string> = Object.fromEntries(
+	subpaths.map((s) => [slugOf(s.subpath), s.subpath])
+)
+
+// Slug -> description, so the API Reference index cards show what each subpath
+// does instead of TypeDoc's generic "Interfaces"/"Classes" fallback.
 export const packageDescriptions: Record<string, string> = Object.fromEntries(
-	manifests.map((p) => [p.name.replace('@rtorcato/', ''), (p.description ?? '') as string])
+	subpaths.map((s) => [slugOf(s.subpath), s.description])
 )

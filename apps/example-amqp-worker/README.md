@@ -1,8 +1,8 @@
 # example-amqp-worker
 
 A long-running RabbitMQ **worker** — the only non-HTTP example in this repo. It
-publishes and consumes messages on the same broker via `@rtorcato/api-amqp`, and
-drains cleanly on `SIGTERM`/`SIGINT` via `@rtorcato/api-graceful-shutdown`.
+publishes and consumes messages on the same broker via `@rtorcato/api-common/amqp`, and
+drains cleanly on `SIGTERM`/`SIGINT` via `@rtorcato/api-common/graceful-shutdown`.
 
 On startup it opens one connection + channel, asserts a `demo` topic exchange,
 binds a `demo.work` queue to it (pattern `demo.#`), and starts a consumer that

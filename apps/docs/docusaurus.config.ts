@@ -1,13 +1,15 @@
+import { mkdirSync, writeFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import type * as Preset from '@docusaurus/preset-classic'
 import type { Config } from '@docusaurus/types'
 import { footerCopyright, GITHUB_PROFILE, projectFamilyItems } from '@rtorcato/shared-docs'
 import { themes as prismThemes } from 'prism-react-renderer'
-import { packageDescriptions, publishablePackages } from './publishablePackages'
+import { packageDescriptions, packageSubpaths, publishablePackages } from './publishablePackages'
 
-// One typedoc plugin instance per publishable package. Each reads the package's
-// `src` directly (no build needed) and writes a single Markdown page at
-// docs/api/<pkg>/index.md, which sidebars.ts links to by doc id. Derived from
-// the workspace so a new package gets an API Reference page automatically.
+// One typedoc plugin instance per @rtorcato/api-common subpath. Each reads the
+// subpath's `src` directly (no build needed) and writes a single Markdown page at
+// docs/api/<slug>/index.md, which sidebars.ts links to by doc id. Derived from
+// packages/api-common/subpaths.json so a new subpath gets a page automatically.
 const PACKAGES = publishablePackages
 
 // The @rtorcato open-source family. Surfaced as a navbar "Projects" dropdown
@@ -16,12 +18,30 @@ const PACKAGES = publishablePackages
 // in @rtorcato/shared-docs — edit the family there, every sibling site follows.
 const PROJECT_FAMILY = projectFamilyItems()
 
+// Each instance gets a generated tsconfig whose `files` is just that subpath's
+// entry point. TypeScript then loads only the modules (and peer types) that
+// subpath imports, instead of the whole package 37 times over, which runs the
+// docs build out of memory. Written to .typedoc/ (gitignored) on config load.
+const typedocTsconfigDir = resolve(__dirname, '.typedoc')
+mkdirSync(typedocTsconfigDir, { recursive: true })
+const typedocTsconfig = (pkg: string) => {
+	const path = resolve(typedocTsconfigDir, `${pkg}.json`)
+	const tsconfig = {
+		extends: '../../../packages/api-common/tsconfig.json',
+		compilerOptions: { rootDir: '../../../packages/api-common/src' },
+		include: [],
+		files: [`../../../packages/api-common/src/${packageSubpaths[pkg]}/index.ts`],
+	}
+	writeFileSync(path, `${JSON.stringify(tsconfig, null, '\t')}\n`)
+	return path
+}
+
 const typedocPlugins = PACKAGES.map((pkg) => [
 	'docusaurus-plugin-typedoc',
 	{
 		id: pkg,
-		entryPoints: [`../../packages/${pkg}/src/index.ts`],
-		tsconfig: `../../packages/${pkg}/tsconfig.json`,
+		entryPoints: [`../../packages/api-common/src/${packageSubpaths[pkg]}/index.ts`],
+		tsconfig: typedocTsconfig(pkg),
 		// The packages target the esnext lib and typecheck on their own
 		// toolchain; the docs workspace pins an older TS. Skip TypeDoc's
 		// redundant semantic check (matches the browser-common docs setup).

@@ -1,16 +1,16 @@
 import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi'
-import { signToken } from '@rtorcato/api-auth'
-import { type AuthVariables, authMiddleware } from '@rtorcato/api-auth-hono'
-import { BadRequestError, NotFoundError } from '@rtorcato/api-errors'
-import { errorHandler, notFoundHandler } from '@rtorcato/api-errors-hono'
-import { createHealthRegistry } from '@rtorcato/api-health'
-import { livenessHandler, readinessHandler } from '@rtorcato/api-health-hono'
-import { configureOpenAPI } from '@rtorcato/api-openapi-hono'
-import { memoryStore } from '@rtorcato/api-rate-limit'
-import { rateLimitMiddleware } from '@rtorcato/api-rate-limit-hono'
-import { ok } from '@rtorcato/api-response'
-import { timeoutMiddleware } from '@rtorcato/api-timeout-hono'
-import { webhookMiddleware } from '@rtorcato/api-webhooks-hono'
+import { signToken } from '@rtorcato/api-common/auth'
+import { type AuthVariables, authMiddleware } from '@rtorcato/api-common/auth/hono'
+import { BadRequestError, NotFoundError } from '@rtorcato/api-common/errors'
+import { errorHandler, notFoundHandler } from '@rtorcato/api-common/errors/hono'
+import { createHealthRegistry } from '@rtorcato/api-common/health'
+import { livenessHandler, readinessHandler } from '@rtorcato/api-common/health/hono'
+import { configureOpenAPI } from '@rtorcato/api-common/openapi/hono'
+import { memoryStore } from '@rtorcato/api-common/rate-limit'
+import { rateLimitMiddleware } from '@rtorcato/api-common/rate-limit/hono'
+import { ok } from '@rtorcato/api-common/response'
+import { timeoutMiddleware } from '@rtorcato/api-common/timeout/hono'
+import { webhookMiddleware } from '@rtorcato/api-common/webhooks/hono'
 
 // Schema-first: these Zod schemas drive request validation AND the generated
 // OpenAPI doc, so the API and its docs can't drift.
@@ -18,7 +18,7 @@ const ItemSchema = z.object({ id: z.string(), name: z.string() })
 const CreateItemBody = z.object({ name: z.string().min(1) })
 const IdParam = z.object({ id: z.string() })
 const success = <T extends z.ZodType>(data: T) => z.object({ success: z.literal(true), data })
-// Mirrors the envelope emitted by @rtorcato/api-errors-hono.
+// Mirrors the envelope emitted by @rtorcato/api-common/errors/hono.
 const ErrorSchema = z.object({
 	error: z.string(),
 	code: z.string(),
@@ -40,7 +40,7 @@ export function createApp(options: AppOptions = {}) {
 
 	const app = new OpenAPIHono<{ Variables: AuthVariables }>({
 		// Failed request validation flows through the shared error envelope
-		// (@rtorcato/api-errors-hono) instead of Hono's default 400 shape.
+		// (@rtorcato/api-common/errors/hono) instead of Hono's default 400 shape.
 		defaultHook: (result) => {
 			if (!result.success) throw new BadRequestError('Validation failed', 'validation_error')
 		},
@@ -55,7 +55,7 @@ export function createApp(options: AppOptions = {}) {
 	// Fail slow requests with a 503 instead of hanging the client.
 	app.use(timeoutMiddleware({ ms: 10_000 }))
 	// Single-process demo → in-memory store. Swap for redisStore() from
-	// @rtorcato/api-rate-limit-redis to share limits across instances.
+	// @rtorcato/api-common/rate-limit/redis to share limits across instances.
 	app.use(rateLimitMiddleware({ requests: 100, windowMs: 60_000, store: memoryStore() }))
 
 	// Webhook receiver (opt-in): verifies an HMAC signature over the raw body

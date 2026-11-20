@@ -1,5 +1,5 @@
 import { createHmac } from 'node:crypto'
-import { errorBody, honoFetch, successBody } from '@rtorcato/api-testing'
+import { errorBody, honoFetch, successBody } from '@rtorcato/api-common/testing'
 import { describe, expect, it } from 'vitest'
 import { createApp } from './app.js'
 

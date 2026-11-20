@@ -6,7 +6,7 @@ interface Logger {
 
 /**
  * Example local middleware — shows how to add app-specific middleware
- * alongside the published @rtorcato/api-* packages.
+ * alongside the published @rtorcato/api-common subpaths.
  *
  * Logs method, path, status, and duration for every request.
  */

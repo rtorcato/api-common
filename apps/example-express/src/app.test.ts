@@ -1,6 +1,6 @@
 import { createHmac } from 'node:crypto'
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3'
-import { errorBody, successBody, supertest } from '@rtorcato/api-testing'
+import { errorBody, successBody, supertest } from '@rtorcato/api-common/testing'
 import { mockClient } from 'aws-sdk-client-mock'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { createApp } from './app.js'

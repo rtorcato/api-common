@@ -1,0 +1,187 @@
+[
+  {
+    "subpath": "amqp",
+    "formerly": "@rtorcato/api-amqp",
+    "description": "Typed amqplib publisher/consumer helpers for RabbitMQ — JSON encoding, exchange/queue assertion, and ack/nack handling."
+  },
+  {
+    "subpath": "auth",
+    "formerly": "@rtorcato/api-auth",
+    "description": "Framework-agnostic JWT sign/verify helpers with Bearer-header and cookie token extraction."
+  },
+  {
+    "subpath": "auth/express",
+    "formerly": "@rtorcato/api-auth-express",
+    "description": "Express middleware for @rtorcato/api-auth — JWT authentication with Bearer-header and cookie support."
+  },
+  {
+    "subpath": "auth/hono",
+    "formerly": "@rtorcato/api-auth-hono",
+    "description": "Hono middleware for @rtorcato/api-auth — JWT authentication with Bearer-header and cookie support."
+  },
+  {
+    "subpath": "config",
+    "formerly": "@rtorcato/api-config",
+    "description": "Load and validate environment variables with dotenv + zod for Node API projects."
+  },
+  {
+    "subpath": "cors/express",
+    "formerly": "@rtorcato/api-cors-express",
+    "description": "Express CORS middleware with sane defaults (credentials, standard methods, preflight)."
+  },
+  {
+    "subpath": "errors",
+    "formerly": "@rtorcato/api-errors",
+    "description": "Framework-agnostic HTTP error classes for Node.js APIs."
+  },
+  {
+    "subpath": "errors/express",
+    "formerly": "@rtorcato/api-errors-express",
+    "description": "Express middleware for @rtorcato/api-errors (error handler + not-found handler)."
+  },
+  {
+    "subpath": "errors/hono",
+    "formerly": "@rtorcato/api-errors-hono",
+    "description": "Hono middleware for @rtorcato/api-errors (error handler + not-found handler)."
+  },
+  {
+    "subpath": "express-utils",
+    "formerly": "@rtorcato/api-express-utils",
+    "description": "Small Express utility helpers: client IP extraction and route logging."
+  },
+  {
+    "subpath": "graceful-shutdown",
+    "formerly": "@rtorcato/api-graceful-shutdown",
+    "description": "Framework-agnostic graceful shutdown for Node API servers — SIGTERM/SIGINT drain with ordered cleanup hooks and a hard timeout."
+  },
+  {
+    "subpath": "health",
+    "formerly": "@rtorcato/api-health",
+    "description": "Framework-agnostic liveness/readiness health-check registry for Node API projects."
+  },
+  {
+    "subpath": "health/express",
+    "formerly": "@rtorcato/api-health-express",
+    "description": "Express liveness/readiness probe handlers for @rtorcato/api-health."
+  },
+  {
+    "subpath": "health/hono",
+    "formerly": "@rtorcato/api-health-hono",
+    "description": "Hono liveness/readiness probe handlers for @rtorcato/api-health."
+  },
+  {
+    "subpath": "http",
+    "formerly": "@rtorcato/api-http",
+    "description": "Typed HTTP client over native fetch — base URL, default headers, timeout, and errors normalized to @rtorcato/api-errors."
+  },
+  {
+    "subpath": "logger",
+    "formerly": "@rtorcato/api-logger",
+    "description": "Framework-agnostic pino logger factory for Node API projects."
+  },
+  {
+    "subpath": "mcp",
+    "formerly": "@rtorcato/api-mcp",
+    "description": "Tiny result helpers for @modelcontextprotocol/sdk MCP servers."
+  },
+  {
+    "subpath": "openapi",
+    "formerly": "@rtorcato/api-openapi",
+    "description": "Framework-agnostic OpenAPI 3.1 helpers — generate Scalar docs HTML from a spec object."
+  },
+  {
+    "subpath": "openapi/express",
+    "formerly": "@rtorcato/api-openapi-express",
+    "description": "Express router that serves Scalar API docs from an OpenAPI spec object."
+  },
+  {
+    "subpath": "openapi/hono",
+    "formerly": "@rtorcato/api-openapi-hono",
+    "description": "Hono adapter for schema-first OpenAPI docs — wires @hono/zod-openapi and serves the Scalar API reference UI."
+  },
+  {
+    "subpath": "rate-limit",
+    "formerly": "@rtorcato/api-rate-limit",
+    "description": "Framework-agnostic sliding-window rate limiter for Node API projects, with a pluggable store (in-memory or Redis)."
+  },
+  {
+    "subpath": "rate-limit/express",
+    "formerly": "@rtorcato/api-rate-limit-express",
+    "description": "Express middleware for @rtorcato/api-rate-limit (sliding-window rate limiter)."
+  },
+  {
+    "subpath": "rate-limit/hono",
+    "formerly": "@rtorcato/api-rate-limit-hono",
+    "description": "Hono middleware for @rtorcato/api-rate-limit (sliding-window rate limiter)."
+  },
+  {
+    "subpath": "rate-limit/redis",
+    "formerly": "@rtorcato/api-rate-limit-redis",
+    "description": "Redis-backed store for @rtorcato/api-rate-limit — sliding-window limits shared across instances."
+  },
+  {
+    "subpath": "response",
+    "formerly": "@rtorcato/api-response",
+    "description": "Consistent success-response envelope and zod schema helper for Node API projects."
+  },
+  {
+    "subpath": "security/express",
+    "formerly": "@rtorcato/api-security-express",
+    "description": "Express security-headers middleware — a thin helmet wrapper with API-friendly defaults."
+  },
+  {
+    "subpath": "testing",
+    "formerly": "@rtorcato/api-testing",
+    "description": "Test helpers for API projects: supertest re-export, JWT auth fixtures, and response assertion matchers."
+  },
+  {
+    "subpath": "timeout",
+    "formerly": "@rtorcato/api-timeout",
+    "description": "Framework-agnostic per-request timeout for Node API projects — race a promise against a deadline and reject with a ServiceUnavailableError."
+  },
+  {
+    "subpath": "timeout/express",
+    "formerly": "@rtorcato/api-timeout-express",
+    "description": "Express middleware for @rtorcato/api-timeout — fail a request with 503 if it isn't answered within a deadline."
+  },
+  {
+    "subpath": "timeout/hono",
+    "formerly": "@rtorcato/api-timeout-hono",
+    "description": "Hono middleware for @rtorcato/api-timeout — fail a request with 503 if it isn't answered within a deadline."
+  },
+  {
+    "subpath": "ts-rest/express",
+    "formerly": "@rtorcato/api-ts-rest-express",
+    "description": "Mount a ts-rest contract on Express and serve its OpenAPI docs (Scalar) — wires @ts-rest/express + @ts-rest/open-api into api-common."
+  },
+  {
+    "subpath": "upload/express",
+    "formerly": "@rtorcato/api-upload",
+    "description": "Promise-based S3 file upload for Express via multer-s3 — public/private ACL, cache-control, deterministic keys, typed errors."
+  },
+  {
+    "subpath": "upload/hono",
+    "formerly": "@rtorcato/api-upload-hono",
+    "description": "Promise-based S3 file upload for Hono — parses multipart via c.req.parseBody() and PUTs to S3; public/private ACL, cache-control, deterministic keys, typed errors."
+  },
+  {
+    "subpath": "validation",
+    "formerly": "@rtorcato/api-validation",
+    "description": "Zod request validation helpers with pretty error formatting for Node API projects."
+  },
+  {
+    "subpath": "webhooks",
+    "formerly": "@rtorcato/api-webhooks",
+    "description": "Framework-agnostic webhook signature verification (HMAC) for Node API projects."
+  },
+  {
+    "subpath": "webhooks/express",
+    "formerly": "@rtorcato/api-webhooks-express",
+    "description": "Express webhook middleware for @rtorcato/api-webhooks — raw-body capture + HMAC signature verification."
+  },
+  {
+    "subpath": "webhooks/hono",
+    "formerly": "@rtorcato/api-webhooks-hono",
+    "description": "Hono webhook middleware for @rtorcato/api-webhooks — HMAC signature verification over the raw body."
+  }
+]

@@ -12,11 +12,11 @@
 		"node": ">=22"
 	},
 	"dependencies": {
-		"@rtorcato/api-amqp": "workspace:*",
-		"@rtorcato/api-config": "workspace:*",
-		"@rtorcato/api-graceful-shutdown": "workspace:*",
-		"@rtorcato/api-logger": "workspace:*",
+		"@rtorcato/api-common": "workspace:*",
 		"amqplib": "^2.2.0",
+		"dotenv": "^18.0.9",
+		"dotenv-expand": "^13.0.0",
+		"pino": "^10.4.0",
 		"zod": "^4.6.7"
 	},
 	"devDependencies": {

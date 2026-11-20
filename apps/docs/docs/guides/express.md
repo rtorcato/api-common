@@ -73,5 +73,5 @@ app.use(errorHandler({ includeStack: true }))
 When omitted, it defaults to `true` only when `process.env.NODE_ENV === 'development'`,
 and adds a `stack` field to the body. Leave it off in production.
 
-See the [API reference](../api/api-errors-express/index.md) for the full
+See the [API reference](../api/errors-express/index.md) for the full
 `ErrorHandlerOptions` type.

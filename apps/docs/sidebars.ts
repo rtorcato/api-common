@@ -1,5 +1,5 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs'
-import { publishablePackages } from './publishablePackages'
+import { packageSubpaths, publishablePackages } from './publishablePackages'
 
 // Each package's docusaurus-plugin-typedoc instance generates a single
 // docs/api/<pkg>/index.md (outputFileStrategy: 'modules' over a one-file
@@ -76,15 +76,15 @@ const sidebars: SidebarsConfig = {
 				type: 'generated-index',
 				title: 'API Reference',
 				description:
-					'TypeDoc reference for every published @rtorcato/api-* package. Pick a package below.',
+					'TypeDoc reference for every @rtorcato/api-common subpath. Pick a subpath below.',
 				slug: '/api',
 			},
 			// Derived from the workspace (same source as the typedoc instances)
-			// so every publishable package has a reference page automatically.
+			// so every subpath has a reference page automatically.
 			items: publishablePackages.map((pkg) => ({
 				type: 'doc' as const,
 				id: `api/${pkg}/index`,
-				label: pkg,
+				label: packageSubpaths[pkg],
 			})),
 		},
 		{

@@ -1,7 +1,7 @@
-import { connect } from '@rtorcato/api-amqp'
-import { loadEnv } from '@rtorcato/api-config'
-import { createShutdownController } from '@rtorcato/api-graceful-shutdown'
-import { createLogger } from '@rtorcato/api-logger'
+import { connect } from '@rtorcato/api-common/amqp'
+import { loadEnv } from '@rtorcato/api-common/config'
+import { createShutdownController } from '@rtorcato/api-common/graceful-shutdown'
+import { createLogger } from '@rtorcato/api-common/logger'
 import { z } from 'zod'
 import { createWorker } from './worker.js'
 

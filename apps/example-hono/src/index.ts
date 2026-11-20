@@ -1,8 +1,8 @@
 import type { Server } from 'node:http'
 import { serve } from '@hono/node-server'
-import { loadEnv } from '@rtorcato/api-config'
-import { closeHttpServer, createShutdownController } from '@rtorcato/api-graceful-shutdown'
-import { createLogger } from '@rtorcato/api-logger'
+import { loadEnv } from '@rtorcato/api-common/config'
+import { closeHttpServer, createShutdownController } from '@rtorcato/api-common/graceful-shutdown'
+import { createLogger } from '@rtorcato/api-common/logger'
 import { z } from 'zod'
 import { createApp } from './app.js'
 

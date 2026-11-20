@@ -1,7 +1,7 @@
-import { loadEnv } from '@rtorcato/api-config'
-import { logRoutes } from '@rtorcato/api-express-utils'
-import { createShutdownController, closeHttpServer } from '@rtorcato/api-graceful-shutdown'
-import { createLogger } from '@rtorcato/api-logger'
+import { loadEnv } from '@rtorcato/api-common/config'
+import { logRoutes } from '@rtorcato/api-common/express-utils'
+import { createShutdownController, closeHttpServer } from '@rtorcato/api-common/graceful-shutdown'
+import { createLogger } from '@rtorcato/api-common/logger'
 import { z } from 'zod'
 import { createApp } from './app.js'
 
