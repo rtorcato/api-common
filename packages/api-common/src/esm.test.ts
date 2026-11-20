@@ -13,9 +13,10 @@ const subpaths = Object.keys(pkg.exports)
 	.map((key) => key.slice(2))
 
 const built = existsSync(join(pkgDir, 'dist'))
+const { CI } = process.env
 
 // CI always builds before testing, so a missing dist/ there is a failure, not a skip.
-describe.skipIf(!built && !process.env.CI)('built ESM output', () => {
+describe.skipIf(!built && !CI)('built ESM output', () => {
 	it('loads every subpath under plain Node', () => {
 		const script = `
 			const failures = []
