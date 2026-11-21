@@ -36,7 +36,7 @@ const ITEMS: Item[] = [
 	{ label: 'API reference', to: '/docs/api/errors' },
 	{ label: 'Changelog', to: '/docs/changelog' },
 	{ label: 'GitHub', href: 'https://github.com/rtorcato/api-common' },
-	{ label: 'npm', href: 'https://www.npmjs.com/package/@rtorcato/api-errors' },
+	{ label: 'npm', href: 'https://www.npmjs.com/package/@rtorcato/api-common' },
 ]
 
 function closeDrawer(): void {

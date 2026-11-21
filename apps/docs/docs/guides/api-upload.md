@@ -3,7 +3,7 @@ title: api-upload
 description: Promise-based S3 file upload for Express via multer-s3.
 ---
 
-`@rtorcato/api-upload` uploads a single file from a multipart Express request
+`@rtorcato/api-common/upload/express` uploads a single file from a multipart Express request
 straight to S3 (via [multer-s3](https://github.com/anacronw/multer-s3)) and
 resolves with the stored object. ACL, cache-control, and deterministic keys are
 configurable, and failures come back as [api-errors](./api-errors.md) `HttpError`s
@@ -12,7 +12,7 @@ so they slot into the error handler.
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-upload @aws-sdk/client-s3 multer multer-s3 express
+pnpm add @rtorcato/api-common @aws-sdk/client-s3 multer multer-s3 express
 ```
 
 `@aws-sdk/client-s3`, `multer`, `multer-s3`, and `express` are peer dependencies —
@@ -22,7 +22,7 @@ you bring your own versions and S3 client.
 
 ```ts
 import { S3Client } from '@aws-sdk/client-s3'
-import { uploadFile } from '@rtorcato/api-upload'
+import { uploadFile } from '@rtorcato/api-common/upload/express'
 
 const s3 = new S3Client({ region: 'us-east-1' })
 

@@ -3,15 +3,15 @@ title: api-mcp
 description: Tiny result helpers for @modelcontextprotocol/sdk MCP tool handlers.
 ---
 
-`@rtorcato/api-mcp` provides two helpers that shape the result an MCP tool
+`@rtorcato/api-common/mcp` provides two helpers that shape the result an MCP tool
 handler returns. The official [`@modelcontextprotocol/sdk`](https://github.com/modelcontextprotocol/typescript-sdk)
-already owns tool/resource registration and transports — this package only
+already owns tool/resource registration and transports — this subpath only
 removes the result-shaping boilerplate every server rewrites.
 
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-mcp @modelcontextprotocol/sdk
+pnpm add @rtorcato/api-common @modelcontextprotocol/sdk
 ```
 
 `@modelcontextprotocol/sdk` is a peer dependency — you control the version.
@@ -30,7 +30,7 @@ Both return the SDK's `CallToolResult`, so they drop straight into a
 
 ```ts
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
-import { asText, mcpError } from '@rtorcato/api-mcp'
+import { asText, mcpError } from '@rtorcato/api-common/mcp'
 import { z } from 'zod'
 
 const server = new McpServer({ name: 'example', version: '0.0.0' })
@@ -54,7 +54,7 @@ server.registerTool(
 
 MCP tools have their own contract — a list of typed content blocks — which is
 deliberately **not** the `{ success, data }` REST envelope from
-[`@rtorcato/api-response`](./api-response.md). `asText` serializes a value into
+[`@rtorcato/api-common/response`](./api-response.md). `asText` serializes a value into
 the MCP-native `text` block; `mcpError` flags an expected failure so the model
 sees the reason instead of the call throwing. Everything else, use the SDK
 directly.

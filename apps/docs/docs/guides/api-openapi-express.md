@@ -3,13 +3,13 @@ title: api-openapi-express
 description: Express middleware for serving Swagger UI and Scalar API Reference from an OpenAPI spec.
 ---
 
-`@rtorcato/api-openapi-express` mounts API documentation UIs as Express routers.
+`@rtorcato/api-common/openapi/express` mounts API documentation UIs as Express routers.
 Each function serves the rendered HTML at `/` and the raw spec at `/openapi.json`.
 
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-openapi-express express
+pnpm add @rtorcato/api-common express swagger-jsdoc zod
 ```
 
 `express` is a peer dependency (`^4.18 || ^5`).
@@ -19,7 +19,7 @@ pnpm add @rtorcato/api-openapi-express express
 Mounts [Scalar](https://scalar.com) API Reference.
 
 ```ts
-import { serveApiDocs } from '@rtorcato/api-openapi-express'
+import { serveApiDocs } from '@rtorcato/api-common/openapi/express'
 import { spec } from './spec.js'
 
 app.use('/api-docs', serveApiDocs(spec, { title: 'My API', theme: 'deepSpace' }))
@@ -32,7 +32,7 @@ app.use('/api-docs', serveApiDocs(spec, { title: 'My API', theme: 'deepSpace' })
 Mounts Swagger UI.
 
 ```ts
-import { serveSwaggerDocs } from '@rtorcato/api-openapi-express'
+import { serveSwaggerDocs } from '@rtorcato/api-common/openapi/express'
 import { spec } from './spec.js'
 
 app.use('/swagger', serveSwaggerDocs(spec, { title: 'My API' }))

@@ -44,7 +44,7 @@ type InstallTabsProps = {
 }
 
 export default function InstallTabs({
-	pkg = '@rtorcato/api-errors',
+	pkg = '@rtorcato/api-common',
 }: InstallTabsProps): ReactElement {
 	const [active, setActive] = useState('npm')
 	const [copied, setCopied] = useState(false)

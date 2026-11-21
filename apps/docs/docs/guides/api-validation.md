@@ -3,18 +3,18 @@ title: api-validation
 description: Zod request validation that throws a BadRequestError on failure.
 ---
 
-`@rtorcato/api-validation` parses incoming data with a zod schema and throws a `BadRequestError` on failure — which the error-handler middleware converts to a 400 JSON response automatically.
+`@rtorcato/api-common/validation` parses incoming data with a zod schema and throws a `BadRequestError` on failure — which the error-handler middleware converts to a 400 JSON response automatically.
 
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-validation
+pnpm add @rtorcato/api-common zod zod-error
 ```
 
 ## Usage
 
 ```ts
-import { validate } from '@rtorcato/api-validation'
+import { validate } from '@rtorcato/api-common/validation'
 import { z } from 'zod'
 
 const createItemSchema = z.object({
@@ -61,7 +61,7 @@ The `BadRequestError` is caught by `errorHandler()` from `api-errors-express` or
 If you need the formatted error string without throwing:
 
 ```ts
-import { formatZodError } from '@rtorcato/api-validation'
+import { formatZodError } from '@rtorcato/api-common/validation'
 
 const result = schema.safeParse(data)
 if (!result.success) {

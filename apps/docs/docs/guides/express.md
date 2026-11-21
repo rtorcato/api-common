@@ -1,15 +1,15 @@
 ---
 title: Express middleware
-description: Map @rtorcato/api-errors into JSON responses with the Express adapter.
+description: Map @rtorcato/api-common/errors into JSON responses with the Express adapter.
 ---
 
-`@rtorcato/api-errors-express` provides two middleware functions that turn thrown
+`@rtorcato/api-common/errors/express` provides two middleware functions that turn thrown
 `HttpError` instances into a consistent JSON response.
 
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-errors @rtorcato/api-errors-express express
+pnpm add @rtorcato/api-common express zod
 ```
 
 `express` is a peer dependency (`^4.18 || ^5`) — you bring your own version.
@@ -20,8 +20,8 @@ Register `notFoundHandler` after your routes, and `errorHandler()` last:
 
 ```ts
 import express from 'express'
-import { NotFoundError } from '@rtorcato/api-errors'
-import { errorHandler, notFoundHandler } from '@rtorcato/api-errors-express'
+import { NotFoundError } from '@rtorcato/api-common/errors'
+import { errorHandler, notFoundHandler } from '@rtorcato/api-common/errors/express'
 
 const app = express()
 

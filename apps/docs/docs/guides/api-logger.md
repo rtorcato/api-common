@@ -3,12 +3,12 @@ title: api-logger
 description: Pino logger factory — pretty in dev, JSON in production.
 ---
 
-`@rtorcato/api-logger` wraps [pino](https://getpino.io) with sensible defaults: pretty-printed output in development, structured JSON in production.
+`@rtorcato/api-common/logger` wraps [pino](https://getpino.io) with sensible defaults: pretty-printed output in development, structured JSON in production.
 
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-logger
+pnpm add @rtorcato/api-common pino zod
 # Pretty output in dev requires pino-pretty:
 pnpm add -D pino-pretty
 ```
@@ -16,7 +16,7 @@ pnpm add -D pino-pretty
 ## Usage
 
 ```ts
-import { createLogger } from '@rtorcato/api-logger'
+import { createLogger } from '@rtorcato/api-common/logger'
 
 const log = createLogger({ level: 'info' })
 
@@ -62,7 +62,7 @@ const log = createLogger({ level: env.LOG_LEVEL })
 Pass a pino destination stream for tests or custom sinks (overrides `pretty`):
 
 ```ts
-import { createLogger } from '@rtorcato/api-logger'
+import { createLogger } from '@rtorcato/api-common/logger'
 import { pino } from 'pino'
 
 const dest = pino.destination('/var/log/app.log')

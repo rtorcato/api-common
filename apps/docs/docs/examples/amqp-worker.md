@@ -1,14 +1,14 @@
 ---
 title: AMQP worker example
-description: Long-running RabbitMQ worker wiring api-amqp and graceful shutdown together.
+description: Long-running RabbitMQ worker wiring the amqp and graceful-shutdown subpaths together.
 ---
 
 The `apps/example-amqp-worker` directory contains a long-running RabbitMQ
 **worker** — the only non-HTTP example in this repo. It publishes and consumes
 messages on the same broker via
-[`@rtorcato/api-amqp`](https://github.com/rtorcato/api-common/tree/main/packages/api-amqp),
+[`@rtorcato/api-common/amqp`](https://github.com/rtorcato/api-common/tree/main/packages/api-amqp),
 and drains cleanly on `SIGTERM` / `SIGINT` via
-[`@rtorcato/api-graceful-shutdown`](https://github.com/rtorcato/api-common/tree/main/packages/api-graceful-shutdown).
+[`@rtorcato/api-common/graceful-shutdown`](https://github.com/rtorcato/api-common/tree/main/packages/api-graceful-shutdown).
 
 On startup it opens one connection + channel, asserts a `demo` topic exchange,
 binds a `demo.work` queue to it (pattern `demo.#`), and starts a consumer that

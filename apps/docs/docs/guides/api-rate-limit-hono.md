@@ -3,14 +3,14 @@ title: api-rate-limit-hono
 description: Hono middleware for the api-rate-limit sliding-window limiter.
 ---
 
-`@rtorcato/api-rate-limit-hono` is the Hono adapter for
+`@rtorcato/api-common/rate-limit/hono` is the Hono adapter for
 [api-rate-limit](./api-rate-limit.md). It applies a sliding-window limit per client
 and responds `429` when the limit is exceeded.
 
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-rate-limit @rtorcato/api-rate-limit-hono hono
+pnpm add @rtorcato/api-common hono
 ```
 
 `hono` is a peer dependency (`^4`) — you bring your own version.
@@ -21,8 +21,8 @@ Pass a `store` — `memoryStore()` for a single process, or [`redisStore()`](./a
 to share limits across instances.
 
 ```ts
-import { memoryStore } from '@rtorcato/api-rate-limit'
-import { rateLimitMiddleware } from '@rtorcato/api-rate-limit-hono'
+import { memoryStore } from '@rtorcato/api-common/rate-limit'
+import { rateLimitMiddleware } from '@rtorcato/api-common/rate-limit/hono'
 
 app.use(rateLimitMiddleware({
   requests: 100,     // max requests per key

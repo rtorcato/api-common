@@ -3,14 +3,14 @@ title: api-webhooks-hono
 description: Hono webhook middleware — HMAC signature verification over the raw body.
 ---
 
-`@rtorcato/api-webhooks-hono` is the Hono adapter for
+`@rtorcato/api-common/webhooks/hono` is the Hono adapter for
 [api-webhooks](./api-webhooks.md). It verifies the HMAC signature over the **raw**
 request body.
 
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-webhooks @rtorcato/api-webhooks-hono hono
+pnpm add @rtorcato/api-common hono
 ```
 
 `hono` is a peer dependency (`^4`) — you bring your own version.
@@ -18,7 +18,7 @@ pnpm add @rtorcato/api-webhooks @rtorcato/api-webhooks-hono hono
 ## Usage
 
 ```ts
-import { webhookMiddleware } from '@rtorcato/api-webhooks-hono'
+import { webhookMiddleware } from '@rtorcato/api-common/webhooks/hono'
 
 // GitHub-style webhook: header `x-hub-signature-256: sha256=<hmac>`
 app.post('/webhooks/github', webhookMiddleware({

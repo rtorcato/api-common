@@ -1,12 +1,12 @@
 ---
 title: Testing your API
-description: How to test Express and Hono routes using @rtorcato/api-testing.
+description: How to test Express and Hono routes using @rtorcato/api-common/testing.
 ---
 
-The `@rtorcato/api-testing` package bundles everything you need to test routes built on api-common: a supertest re-export, a Hono fetch helper, response-shape matchers, and JWT helpers for auth flows.
+The `@rtorcato/api-common/testing` package bundles everything you need to test routes built on api-common: a supertest re-export, a Hono fetch helper, response-shape matchers, and JWT helpers for auth flows.
 
 ```bash
-pnpm add -D @rtorcato/api-testing
+pnpm add -D @rtorcato/api-common jsonwebtoken supertest
 ```
 
 ## Make your app testable
@@ -30,10 +30,10 @@ app.listen(3000)
 
 ## Express
 
-`@rtorcato/api-testing` re-exports `supertest` so you don't need a separate install.
+`@rtorcato/api-common/testing` re-exports `supertest` so you don't need a separate install.
 
 ```ts
-import { supertest, successBody, errorBody } from '@rtorcato/api-testing'
+import { supertest, successBody, errorBody } from '@rtorcato/api-common/testing'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { createApp } from './app.js'
 
@@ -75,7 +75,7 @@ describe('items API', () => {
 Hono apps expose a `fetch` handler — no HTTP server needed. Use `honoFetch` to call it directly.
 
 ```ts
-import { honoFetch, successBody, errorBody } from '@rtorcato/api-testing'
+import { honoFetch, successBody, errorBody } from '@rtorcato/api-common/testing'
 import { describe, expect, it } from 'vitest'
 import { createApp } from './app.js'
 
@@ -127,10 +127,10 @@ Assert on `code` — it's the stable, machine-readable field. Avoid asserting `e
 
 ## Auth helpers
 
-When testing protected routes that use `@rtorcato/api-auth`, use the built-in JWT helpers instead of crafting tokens by hand.
+When testing protected routes that use `@rtorcato/api-common/auth`, use the built-in JWT helpers instead of crafting tokens by hand.
 
 ```ts
-import { supertest, testToken, bearerHeader, TEST_JWT_SECRET } from '@rtorcato/api-testing'
+import { supertest, testToken, bearerHeader, TEST_JWT_SECRET } from '@rtorcato/api-common/testing'
 import { createApp } from './app.js'
 
 // createApp() must accept the same secret your middleware uses

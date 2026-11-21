@@ -3,7 +3,7 @@ title: api-upload-hono
 description: Promise-based S3 file upload for Hono.
 ---
 
-`@rtorcato/api-upload-hono` is the Hono counterpart to
+`@rtorcato/api-common/upload/hono` is the Hono counterpart to
 [api-upload](./api-upload.md). It uploads a single file from a multipart Hono
 request straight to S3 — parsing the body with `c.req.parseBody()` and writing
 the object with the AWS SDK directly (Hono has no multer/multer-s3 to wrap) —
@@ -13,7 +13,7 @@ and resolves with the stored object. Failures come back as
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-upload-hono @aws-sdk/client-s3 hono
+pnpm add @rtorcato/api-common @aws-sdk/client-s3 hono
 ```
 
 `@aws-sdk/client-s3` (v3) and `hono` (v4) are peer dependencies — you bring your
@@ -23,7 +23,7 @@ own versions and S3 client.
 
 ```ts
 import { S3Client } from '@aws-sdk/client-s3'
-import { uploadFile } from '@rtorcato/api-upload-hono'
+import { uploadFile } from '@rtorcato/api-common/upload/hono'
 
 const s3 = new S3Client({ region: 'us-east-1' })
 

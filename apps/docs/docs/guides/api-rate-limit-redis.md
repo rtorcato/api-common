@@ -3,7 +3,7 @@ title: api-rate-limit-redis
 description: Redis-backed store for api-rate-limit — sliding-window limits shared across instances.
 ---
 
-`@rtorcato/api-rate-limit-redis` is a Redis-backed store for
+`@rtorcato/api-common/rate-limit/redis` is a Redis-backed store for
 [api-rate-limit](./api-rate-limit.md). Counts live in Redis, so a sliding-window
 limit holds across every instance pointing at the same server — unlike the
 in-memory `memoryStore()`, where each replica keeps its own counts and the
@@ -12,7 +12,7 @@ effective limit becomes N× what you configured.
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-rate-limit @rtorcato/api-rate-limit-redis ioredis
+pnpm add @rtorcato/api-common ioredis
 ```
 
 `ioredis` is a peer dependency — you own the connection and its version.
@@ -21,8 +21,8 @@ pnpm add @rtorcato/api-rate-limit @rtorcato/api-rate-limit-redis ioredis
 
 ```ts
 import Redis from 'ioredis'
-import { createRateLimiter } from '@rtorcato/api-rate-limit'
-import { redisStore } from '@rtorcato/api-rate-limit-redis'
+import { createRateLimiter } from '@rtorcato/api-common/rate-limit'
+import { redisStore } from '@rtorcato/api-common/rate-limit/redis'
 
 const store = redisStore(new Redis(process.env.REDIS_URL))
 const limiter = createRateLimiter({ requests: 100, windowMs: 60_000, store })

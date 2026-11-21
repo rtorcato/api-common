@@ -4,7 +4,7 @@ description: Runnable Hono app wiring every api-common package together.
 ---
 
 The `apps/example-hono` directory contains a working Hono API that wires
-every `@rtorcato/api-*` package together. The API contract is identical to
+the `@rtorcato/api-common` subpaths together. The API contract is identical to
 the [Express example](./express.md) — same routes, same response shapes —
 so you can compare the two implementations side by side.
 
@@ -29,7 +29,7 @@ so you can compare the two implementations side by side.
 
 Request bodies are validated by the `@hono/zod-openapi` route schemas — a failed
 parse routes through the shared error envelope via the app's `defaultHook`, so
-this example needs no separate validation package.
+this example needs no separate validation subpath.
 
 ## Routes
 
@@ -69,7 +69,7 @@ cd apps/example-hono
 docker compose up
 ```
 
-The image builds from the monorepo root, installs workspace packages, and
+The image builds from the monorepo root, installs the workspace, and
 starts the server on port `3002`.
 
 ## Quick smoke test

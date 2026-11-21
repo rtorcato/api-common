@@ -20,13 +20,13 @@ MCP server against the HTTP APIs.
 
 Each tool returns its payload as a JSON string in a `text` content block — the
 MCP-native shape, deliberately *not* the `{ success, data }` REST envelope from
-`api-response`, since MCP has its own contract.
+`@rtorcato/api-common/response`, since MCP has its own contract.
 
-## Why no `api-mcp` package
+## Why the `mcp` subpath is tiny
 
-This demo talks to the SDK directly. The SDK already covers tool/resource
-registration and transports, so a `@rtorcato/api-mcp` wrapper would add little —
-which is why there is no such package.
+This demo uses the SDK directly for tools, resources and transports, which it already covers well. The
+`@rtorcato/api-common/mcp` subpath only adds two result helpers, `asText` and `mcpError`, so the tool
+handlers return the MCP-native shape. It needs the `@modelcontextprotocol/sdk` peer.
 
 ## Run locally
 

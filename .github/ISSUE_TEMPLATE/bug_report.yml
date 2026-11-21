@@ -8,14 +8,14 @@ body:
       label: Package
       description: Which package is affected?
       options:
-        - "@rtorcato/api-errors"
-        - "@rtorcato/api-errors-express"
-        - "@rtorcato/api-errors-hono"
-        - "@rtorcato/api-config"
-        - "@rtorcato/api-logger"
-        - "@rtorcato/api-rate-limit"
-        - "@rtorcato/api-response"
-        - "@rtorcato/api-validation"
+        - "@rtorcato/api-common/errors"
+        - "@rtorcato/api-common/errors/express"
+        - "@rtorcato/api-common/errors/hono"
+        - "@rtorcato/api-common/config"
+        - "@rtorcato/api-common/logger"
+        - "@rtorcato/api-common/rate-limit"
+        - "@rtorcato/api-common/response"
+        - "@rtorcato/api-common/validation"
         - "other / not sure"
     validations:
       required: true

@@ -3,18 +3,18 @@ title: api-response
 description: Consistent success-response envelope for JSON APIs.
 ---
 
-`@rtorcato/api-response` provides a single `ok()` helper that wraps your data in a consistent `{ success: true, data }` envelope — the counterpart to the error shape produced by `api-errors`.
+`@rtorcato/api-common/response` provides a single `ok()` helper that wraps your data in a consistent `{ success: true, data }` envelope — the counterpart to the error shape produced by `api-errors`.
 
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-response
+pnpm add @rtorcato/api-common zod
 ```
 
 ## Usage
 
 ```ts
-import { ok } from '@rtorcato/api-response'
+import { ok } from '@rtorcato/api-common/response'
 
 // Express
 res.json(ok(user))
@@ -43,7 +43,7 @@ ok(item, 'Item created successfully')
 `successSchema` and `errorSchema` build zod schemas for the response envelopes — useful for OpenAPI contracts and test assertions.
 
 ```ts
-import { successSchema, errorSchema } from '@rtorcato/api-response'
+import { successSchema, errorSchema } from '@rtorcato/api-common/response'
 import { z } from 'zod'
 
 const itemSchema = z.object({ id: z.string(), name: z.string() })

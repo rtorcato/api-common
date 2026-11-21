@@ -3,14 +3,14 @@ title: api-express-utils
 description: Small Express utilities — client IP extraction and route listing.
 ---
 
-`@rtorcato/api-express-utils` provides two lightweight helpers: `getIP` for
+`@rtorcato/api-common/express-utils` provides two lightweight helpers: `getIP` for
 extracting the client IP from an Express request, and `logRoutes` for printing
 the routes registered on an app.
 
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-express-utils express
+pnpm add @rtorcato/api-common express
 ```
 
 `express` is a peer dependency (`^4.18 || ^5`).
@@ -21,7 +21,7 @@ Extracts the client IP. Resolution order: `X-Forwarded-For` (leftmost entry) →
 `req.ip` → `socket.remoteAddress`.
 
 ```ts
-import { getIP } from '@rtorcato/api-express-utils'
+import { getIP } from '@rtorcato/api-common/express-utils'
 
 app.use((req, _res, next) => {
   console.log('client IP:', getIP(req))
@@ -45,7 +45,7 @@ Walks an Express app's router stack and returns its registered routes. Also
 prints them to the console by default — useful at startup.
 
 ```ts
-import { logRoutes } from '@rtorcato/api-express-utils'
+import { logRoutes } from '@rtorcato/api-common/express-utils'
 
 const app = express()
 app.get('/users', ...)
@@ -70,7 +70,7 @@ logRoutes(app, { log: (line) => logger.info(line) })
 ### RouteInfo type
 
 ```ts
-import type { RouteInfo } from '@rtorcato/api-express-utils'
+import type { RouteInfo } from '@rtorcato/api-common/express-utils'
 // { method: string; path: string }
 ```
 

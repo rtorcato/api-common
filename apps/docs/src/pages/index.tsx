@@ -87,7 +87,7 @@ type Pillar = {
 const PILLARS: Pillar[] = [
 	{
 		title: 'Mix and match',
-		desc: 'Focused packages — errors, auth, rate limiting, validation, config, logging, OpenAPI. Install only what you need.',
+		desc: 'One package with a subpath for each concern: errors, auth, rate limiting, validation, config, logging, OpenAPI. Import only what you need.',
 		icon: 'layers',
 	},
 	{
@@ -97,12 +97,12 @@ const PILLARS: Pillar[] = [
 	},
 	{
 		title: 'TypeScript-first',
-		desc: 'Strict types, typed handler options, JSDoc-rich in your IDE. Zero runtime dependencies in the core.',
+		desc: 'Strict types, typed handler options, JSDoc-rich in your IDE. One runtime dependency, everything else is an optional peer.',
 		icon: 'brackets',
 	},
 	{
 		title: 'Bring your own framework',
-		desc: 'Express and Hono adapters keep the framework as a peer dependency — you control the version.',
+		desc: 'Express and Hono adapters keep the framework as an optional peer dependency, so you control the version.',
 		icon: 'plug',
 	},
 ]
@@ -117,77 +117,77 @@ type Package = {
 
 const PACKAGES: Package[] = [
 	{
-		name: '@rtorcato/api-errors',
+		name: '@rtorcato/api-common/errors',
 		tagline: 'Errors',
 		desc: 'Framework-agnostic HTTP error classes: HttpError plus 400/401/403/404/409/500 subclasses, each carrying status + code.',
 		to: '/docs/guides/api-errors',
 		chips: ['Core', 'Express', 'Hono'],
 	},
 	{
-		name: '@rtorcato/api-auth',
+		name: '@rtorcato/api-common/auth',
 		tagline: 'Auth',
 		desc: 'JWT utilities — sign, verify, and extract bearer tokens — with an Express adapter for auth and optional-auth middleware.',
 		to: '/docs/guides/api-auth',
 		chips: ['Core', 'Express'],
 	},
 	{
-		name: '@rtorcato/api-rate-limit',
+		name: '@rtorcato/api-common/rate-limit',
 		tagline: 'Rate limit',
 		desc: 'In-memory sliding-window rate limiter with matching Express and Hono middleware adapters.',
 		to: '/docs/guides/api-rate-limit',
 		chips: ['Core', 'Express', 'Hono'],
 	},
 	{
-		name: '@rtorcato/api-openapi',
+		name: '@rtorcato/api-common/openapi',
 		tagline: 'API docs',
 		desc: 'HTML generators for Swagger UI and Scalar API Reference, plus Express and Hono adapters to serve them from an OpenAPI spec.',
 		to: '/docs/guides/api-openapi',
 		chips: ['Swagger UI', 'Scalar', 'Express', 'Hono'],
 	},
 	{
-		name: '@rtorcato/api-validation',
+		name: '@rtorcato/api-common/validation',
 		tagline: 'Validation',
 		desc: 'Zod request validation that throws a BadRequestError on failure — wires straight into the error handler.',
 		to: '/docs/guides/api-validation',
 		chips: ['zod', 'BadRequestError'],
 	},
 	{
-		name: '@rtorcato/api-response',
+		name: '@rtorcato/api-common/response',
 		tagline: 'Responses',
-		desc: 'Consistent success-response envelope for JSON APIs — the success-path counterpart to api-errors.',
+		desc: 'Consistent success-response envelope for JSON APIs — the success-path counterpart to the errors subpath.',
 		to: '/docs/guides/api-response',
 		chips: ['envelope'],
 	},
 	{
-		name: '@rtorcato/api-config',
+		name: '@rtorcato/api-common/config',
 		tagline: 'Config',
 		desc: 'Load and validate environment variables with dotenv + zod at startup, failing fast on bad config.',
 		to: '/docs/guides/api-config',
 		chips: ['dotenv', 'zod'],
 	},
 	{
-		name: '@rtorcato/api-logger',
+		name: '@rtorcato/api-common/logger',
 		tagline: 'Logging',
 		desc: 'Pino logger factory — pretty output in development, structured JSON in production.',
 		to: '/docs/guides/api-logger',
 		chips: ['pino'],
 	},
 	{
-		name: '@rtorcato/api-cors-express',
+		name: '@rtorcato/api-common/cors/express',
 		tagline: 'CORS',
 		desc: 'Opinionated CORS middleware for Express with sane defaults and a small config surface.',
 		to: '/docs/guides/api-cors-express',
 		chips: ['Express'],
 	},
 	{
-		name: '@rtorcato/api-express-utils',
+		name: '@rtorcato/api-common/express-utils',
 		tagline: 'Express utils',
 		desc: 'Small Express helpers — client IP extraction and route listing for boot-time logging.',
 		to: '/docs/guides/api-express-utils',
 		chips: ['getIP', 'logRoutes'],
 	},
 	{
-		name: '@rtorcato/api-testing',
+		name: '@rtorcato/api-common/testing',
 		tagline: 'Testing',
 		desc: 'Helpers for testing Express and Hono routes against the shared error and response contract.',
 		to: '/docs/guides/testing',
@@ -207,11 +207,11 @@ const EXAMPLES: Example[] = [
 		label: 'Express',
 		file: 'server.ts',
 		language: 'tsx',
-		code: `import { loadEnv } from '@rtorcato/api-config'
-import { NotFoundError } from '@rtorcato/api-errors'
-import { errorHandler } from '@rtorcato/api-errors-express'
-import { ok } from '@rtorcato/api-response'
-import { validate } from '@rtorcato/api-validation'
+		code: `import { loadEnv } from '@rtorcato/api-common/config'
+import { NotFoundError } from '@rtorcato/api-common/errors'
+import { errorHandler } from '@rtorcato/api-common/errors/express'
+import { ok } from '@rtorcato/api-common/response'
+import { validate } from '@rtorcato/api-common/validation'
 import { z } from 'zod'
 
 const env = loadEnv(z.object({ PORT: z.coerce.number().default(3000) }))
@@ -231,10 +231,10 @@ app.use(errorHandler())`,
 		label: 'Hono',
 		file: 'server.ts',
 		language: 'tsx',
-		code: `import { NotFoundError } from '@rtorcato/api-errors'
-import { errorHandler } from '@rtorcato/api-errors-hono'
-import { ok } from '@rtorcato/api-response'
-import { validate } from '@rtorcato/api-validation'
+		code: `import { NotFoundError } from '@rtorcato/api-common/errors'
+import { errorHandler } from '@rtorcato/api-common/errors/hono'
+import { ok } from '@rtorcato/api-common/response'
+import { validate } from '@rtorcato/api-common/validation'
 import { Hono } from 'hono'
 import { z } from 'zod'
 
@@ -255,8 +255,8 @@ app.onError(errorHandler())`,
 		label: 'Auth',
 		file: 'auth.ts',
 		language: 'tsx',
-		code: `import { signToken, verifyToken } from '@rtorcato/api-auth'
-import { requireAuth } from '@rtorcato/api-auth-express'
+		code: `import { signToken, verifyToken } from '@rtorcato/api-common/auth'
+import { requireAuth } from '@rtorcato/api-common/auth/express'
 
 const token = signToken({ sub: user.id }, env.JWT_SECRET, {
   expiresIn: '1h',
@@ -273,8 +273,8 @@ const claims = verifyToken(token, env.JWT_SECRET)`,
 		label: 'OpenAPI',
 		file: 'docs.ts',
 		language: 'tsx',
-		code: `import { buildOpenApiDocument } from '@rtorcato/api-openapi'
-import { serveApiDocs } from '@rtorcato/api-openapi-express'
+		code: `import { buildOpenApiDocument } from '@rtorcato/api-common/openapi'
+import { serveApiDocs } from '@rtorcato/api-common/openapi/express'
 import { z } from 'zod'
 
 const User = z.object({ id: z.uuid(), name: z.string(), email: z.email() })
@@ -342,7 +342,7 @@ function Hero(): ReactElement {
 							See API docs ↗
 						</Link>
 					</div>
-					<InstallTabs pkg="@rtorcato/api-errors" />
+					<InstallTabs pkg="@rtorcato/api-common" />
 				</div>
 			</div>
 		</header>
@@ -427,8 +427,8 @@ function Packages(): ReactElement {
 				<div>
 					<h2 className={styles.h2}>One toolkit, one contract</h2>
 					<p className={styles.sub}>
-						Install only the pieces you need — each package is independent, with framework adapters
-						as peer deps.
+						Import only the subpaths you need, with framework adapters as optional peer
+						dependencies.
 					</p>
 				</div>
 				<Link className={styles.viewAll} to="/docs/guides/installation">

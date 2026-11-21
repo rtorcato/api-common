@@ -3,7 +3,7 @@ title: api-openapi-hono
 description: Schema-first OpenAPI docs for Hono — Scalar UI derived from your route Zod schemas.
 ---
 
-`@rtorcato/api-openapi-hono` wires [`@hono/zod-openapi`](https://github.com/honojs/middleware/tree/main/packages/zod-openapi)
+`@rtorcato/api-common/openapi/hono` wires [`@hono/zod-openapi`](https://github.com/honojs/middleware/tree/main/packages/zod-openapi)
 and serves the [Scalar](https://github.com/scalar/scalar) API reference UI. The spec
 derives from your route Zod schemas, so the docs can't drift from validation. It's the
 Hono counterpart to [api-openapi-express](./api-openapi-express.md).
@@ -11,7 +11,7 @@ Hono counterpart to [api-openapi-express](./api-openapi-express.md).
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-openapi-hono @hono/zod-openapi @scalar/hono-api-reference hono
+pnpm add @rtorcato/api-common @hono/zod-openapi @scalar/hono-api-reference hono
 ```
 
 `hono`, `@hono/zod-openapi`, and `@scalar/hono-api-reference` are peer dependencies —
@@ -21,7 +21,7 @@ you bring your own versions.
 
 ```ts
 import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi'
-import { configureOpenAPI } from '@rtorcato/api-openapi-hono'
+import { configureOpenAPI } from '@rtorcato/api-common/openapi/hono'
 
 const app = new OpenAPIHono()
 

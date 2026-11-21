@@ -3,12 +3,12 @@ title: api-errors
 description: HTTP error classes for Node.js APIs — framework-agnostic, consistent error shapes.
 ---
 
-`@rtorcato/api-errors` provides typed HTTP error classes that pair with the Express and Hono error-handler middleware.
+`@rtorcato/api-common/errors` provides typed HTTP error classes that pair with the Express and Hono error-handler middleware.
 
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-errors
+pnpm add @rtorcato/api-common
 ```
 
 ## Error classes
@@ -30,7 +30,7 @@ All extend `HttpError`, which extends `Error`.
 ## Usage
 
 ```ts
-import { NotFoundError, ForbiddenError } from '@rtorcato/api-errors'
+import { NotFoundError, ForbiddenError } from '@rtorcato/api-common/errors'
 
 // Default message and code
 throw new NotFoundError()
@@ -49,19 +49,19 @@ throw new ForbiddenError('Trial expired', 'trial_expired')
 
 Throw from anywhere in your route — the error handler converts it to JSON automatically.
 
-**Express** (`@rtorcato/api-errors-express`):
+**Express** (`@rtorcato/api-common/errors/express`):
 
 ```ts
-import { errorHandler, notFoundHandler } from '@rtorcato/api-errors-express'
+import { errorHandler, notFoundHandler } from '@rtorcato/api-common/errors/express'
 
 app.use(notFoundHandler)   // catch unmatched routes
 app.use(errorHandler())    // convert HttpErrors to JSON
 ```
 
-**Hono** (`@rtorcato/api-errors-hono`):
+**Hono** (`@rtorcato/api-common/errors/hono`):
 
 ```ts
-import { errorHandler, notFoundHandler } from '@rtorcato/api-errors-hono'
+import { errorHandler, notFoundHandler } from '@rtorcato/api-common/errors/hono'
 
 app.notFound(notFoundHandler)
 app.onError(errorHandler())
@@ -84,7 +84,7 @@ app.onError(errorHandler())
 Extend `HttpError` for domain-specific errors:
 
 ```ts
-import { HttpError } from '@rtorcato/api-errors'
+import { HttpError } from '@rtorcato/api-common/errors'
 
 export class PaymentRequiredError extends HttpError {
   constructor(message = 'Payment required') {

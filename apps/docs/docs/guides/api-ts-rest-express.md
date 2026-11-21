@@ -3,7 +3,7 @@ title: api-ts-rest-express
 description: Mount a ts-rest contract on Express and serve its OpenAPI docs (Scalar) in one call.
 ---
 
-`@rtorcato/api-ts-rest-express` wires [ts-rest](https://ts-rest.com) into Express and
+`@rtorcato/api-common/ts-rest/express` wires [ts-rest](https://ts-rest.com) into Express and
 the api-common docs stack: `mountTsRest` registers a contract's routes with
 `@ts-rest/express` and, optionally, generates an OpenAPI 3.1 doc from the contract
 (`@ts-rest/open-api`) and serves it as Scalar docs via
@@ -12,8 +12,10 @@ the api-common docs stack: `mountTsRest` registers a contract's routes with
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-ts-rest-express @ts-rest/core @ts-rest/express @ts-rest/open-api express zod
+pnpm add @rtorcato/api-common @ts-rest/core@rc @ts-rest/express@rc @ts-rest/open-api@rc express zod swagger-jsdoc
 ```
+
+Install the three `@ts-rest/*` packages from the `rc` tag. The peers require `>=3.53.0-rc.1 <4`, and npm's default `latest` is 3.52.1, which is outside that range and fails with a peer conflict.
 
 :::note Version requirement
 Requires `@ts-rest/*` **≥ 3.53.0-rc.1** — the first release supporting **zod 4** and
@@ -28,7 +30,7 @@ the peer range to `^3.53` once it ships stable.
 ```ts
 import express from 'express'
 import { z } from 'zod'
-import { initContract, initServer, mountTsRest } from '@rtorcato/api-ts-rest-express'
+import { initContract, initServer, mountTsRest } from '@rtorcato/api-common/ts-rest/express'
 
 const c = initContract()
 const contract = c.router({
