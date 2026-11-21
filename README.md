@@ -107,6 +107,8 @@ Third-party libraries are optional peer dependencies. A subpath needs only the p
 | `ts-rest/express` | `express`, `@ts-rest/core`, `@ts-rest/express`, `@ts-rest/open-api`, `swagger-jsdoc`, `zod` |
 | `upload/express` | `express`, `multer`, `multer-s3`, `@aws-sdk/client-s3` |
 
+The `@ts-rest/*` peers need the release candidate, so install them with the `rc` tag (`pnpm add @ts-rest/core@rc @ts-rest/express@rc @ts-rest/open-api@rc`). npm's default `latest`, 3.52.1, is outside the supported range.
+
 Other subpaths, such as `health/express` or `webhooks/hono`, need only their framework (`express` or `hono`). `testing` needs `jsonwebtoken` and `supertest`, `validation` needs `zod` and `zod-error`, and `mcp` needs `@modelcontextprotocol/sdk`.
 
 ### Migrating from the old packages

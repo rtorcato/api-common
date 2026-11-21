@@ -12,8 +12,10 @@ the api-common docs stack: `mountTsRest` registers a contract's routes with
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-common @ts-rest/core @ts-rest/express @ts-rest/open-api express zod swagger-jsdoc
+pnpm add @rtorcato/api-common @ts-rest/core@rc @ts-rest/express@rc @ts-rest/open-api@rc express zod swagger-jsdoc
 ```
+
+Install the three `@ts-rest/*` packages from the `rc` tag. The peers require `>=3.53.0-rc.1 <4`, and npm's default `latest` is 3.52.1, which is outside that range and fails with a peer conflict.
 
 :::note Version requirement
 Requires `@ts-rest/*` **≥ 3.53.0-rc.1** — the first release supporting **zod 4** and

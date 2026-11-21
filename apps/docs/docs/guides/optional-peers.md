@@ -94,6 +94,8 @@ A subpath marked `none` works with no extra installs.
 
 ## Notes
 
+- **ts-rest** peers (`@ts-rest/core`, `@ts-rest/express` and `@ts-rest/open-api`) need the release candidate. Install them with the `rc` tag, for example `pnpm add @ts-rest/core@rc @ts-rest/express@rc @ts-rest/open-api@rc`. npm's default `latest` is 3.52.1, which is outside the supported range and causes a peer conflict.
+- **`config`** needs `dotenv`, `dotenv-expand` and `zod`. Don't skip `dotenv-expand`.
 - **`zod`** is needed by `config`, `logger`, `errors/express`, `errors/hono`, `openapi`, `openapi/express`, `response`, `validation` and `ts-rest/express`.
 - **Express** is needed by every `/express` subpath, and by `express-utils`. **Hono** is needed by every `/hono` subpath. Subpaths never import a framework they don't name, so an Express app never loads Hono.
 - **Testing** needs `jsonwebtoken` and `supertest` in your dev dependencies.
