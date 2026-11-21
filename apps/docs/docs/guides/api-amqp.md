@@ -3,7 +3,7 @@ title: api-amqp
 description: Typed amqplib publisher/consumer helpers for RabbitMQ.
 ---
 
-`@rtorcato/api-amqp` wraps [amqplib](https://github.com/amqp-node/amqplib) with
+`@rtorcato/api-common/amqp` wraps [amqplib](https://github.com/amqp-node/amqplib) with
 small typed helpers: JSON encoding, exchange/queue assertion, and
 ack-on-success / nack-on-throw. The publisher and consumer take an amqplib
 `Channel`, so they compose with a shared connection and test without a broker.
@@ -11,7 +11,7 @@ ack-on-success / nack-on-throw. The publisher and consumer take an amqplib
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-amqp amqplib
+pnpm add @rtorcato/api-common amqplib
 ```
 
 `amqplib` is a peer dependency — you bring your own version.
@@ -19,7 +19,7 @@ pnpm add @rtorcato/api-amqp amqplib
 ## Usage
 
 ```ts
-import { connect, createPublisher, createConsumer } from '@rtorcato/api-amqp'
+import { connect, createPublisher, createConsumer } from '@rtorcato/api-common/amqp'
 
 const { connection, channel } = await connect('amqp://localhost')
 

@@ -3,7 +3,7 @@ title: api-http
 description: Typed HTTP client over native fetch, with errors normalized to api-errors.
 ---
 
-`@rtorcato/api-http` is a small typed HTTP client built on Node's global `fetch`
+`@rtorcato/api-common/http` is a small typed HTTP client built on Node's global `fetch`
 (Node 22+) — no `axios`, no wrapper dependency. It adds a configured client (base
 URL, default headers, timeout, optional retry) and normalizes failures into
 [api-errors](./api-errors.md) `HttpError`s so they slot straight into the error
@@ -12,13 +12,13 @@ handlers.
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-http @rtorcato/api-errors
+pnpm add @rtorcato/api-common
 ```
 
 ## Usage
 
 ```ts
-import { createHttpClient } from '@rtorcato/api-http'
+import { createHttpClient } from '@rtorcato/api-common/http'
 
 const api = createHttpClient({
   baseURL: 'https://api.example.com',
@@ -41,7 +41,7 @@ from the response body (`{ message }` / `{ error }` / raw text). Network failure
 throw `HttpError` with status `0` and code `network_error`.
 
 ```ts
-import { HttpError } from '@rtorcato/api-errors'
+import { HttpError } from '@rtorcato/api-common/errors'
 
 try {
   await api.get('/missing')

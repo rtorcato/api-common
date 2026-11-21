@@ -4,7 +4,7 @@ description: Runnable Express 5 app wiring every api-common package together.
 ---
 
 The `apps/example-express` directory contains a working Express 5 API that
-wires every `@rtorcato/api-*` package together so you can see how they
+wires the `@rtorcato/api-common` subpaths together so you can see how they
 interact in a real server.
 
 ## What it demonstrates
@@ -73,7 +73,7 @@ cd apps/example-express
 docker compose up
 ```
 
-The image builds from the monorepo root, installs workspace packages, and
+The image builds from the monorepo root, installs the workspace, and
 starts the server on port `3001`.
 
 ## Quick smoke test

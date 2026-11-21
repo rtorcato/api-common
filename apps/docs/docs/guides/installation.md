@@ -1,44 +1,45 @@
 ---
 title: Installation
-description: Install the api-common packages and throw your first typed HTTP error.
+description: Install @rtorcato/api-common and throw your first typed HTTP error.
 ---
 
 ## Install
 
-Start with the core error classes:
+Install the package once:
 
 ```bash
-pnpm add @rtorcato/api-errors
-# or: npm install @rtorcato/api-errors
-# or: yarn add @rtorcato/api-errors
+pnpm add @rtorcato/api-common
+# or: npm install @rtorcato/api-common
+# or: yarn add @rtorcato/api-common
 ```
 
-Then add the adapter for your framework (the framework itself is a peer dependency):
+Then add the third-party libraries for the subpaths you use. They are optional peer dependencies, so you control the versions:
 
 ```bash
 # Express
-pnpm add @rtorcato/api-errors-express express
+pnpm add express zod
 
 # Hono
-pnpm add @rtorcato/api-errors-hono hono
+pnpm add hono zod
 ```
 
-All packages are **ESM-only**. Your `package.json` should have `"type": "module"`,
-and your `tsconfig.json` should use `"module": "nodenext"` (or `"esnext"`).
+The [optional peers](./optional-peers.md) page lists what each subpath needs. Coming from the old `@rtorcato/api-*` packages? Read [Migrating](./migration.md).
+
+The package is **ESM-only** and has **no root export**, so you always import from a subpath such as `@rtorcato/api-common/errors`. Your `package.json` should have `"type": "module"`, and your `tsconfig.json` should use `"module": "nodenext"` (or `"esnext"`).
 
 ## Requirements
 
-- **Node.js**: ≥22.
-- **TypeScript**: any recent version. Types ship with each package.
-- **Framework**: `express` `^4.18 || ^5` for the Express adapter, `hono` `^4` for the Hono adapter.
+- **Node.js**: 24 or newer.
+- **TypeScript**: any recent version. Types ship with the package.
+- **Framework**: `express` `^4.18 || ^5` for the Express adapters, `hono` `^4` for the Hono adapters.
 
 ## Throw your first error
 
-`@rtorcato/api-errors` works on its own — anywhere, no framework needed. Each class
+The `@rtorcato/api-common/errors` subpath works on its own — anywhere, no framework needed. Each class
 extends `HttpError` and carries a `status` and a machine-readable `code`:
 
 ```ts
-import { NotFoundError, BadRequestError } from '@rtorcato/api-errors'
+import { NotFoundError, BadRequestError } from '@rtorcato/api-common/errors'
 
 function getUser(id: string) {
 	if (!id) throw new BadRequestError('id is required')

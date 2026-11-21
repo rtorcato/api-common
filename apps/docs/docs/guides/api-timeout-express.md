@@ -3,14 +3,14 @@ title: api-timeout-express
 description: Express middleware for the api-timeout per-request deadline.
 ---
 
-`@rtorcato/api-timeout-express` is the Express adapter for
+`@rtorcato/api-common/timeout/express` is the Express adapter for
 [api-timeout](./api-timeout.md). It fails a request with `503` if the response
 isn't sent within a deadline.
 
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-timeout @rtorcato/api-timeout-express express
+pnpm add @rtorcato/api-common express
 ```
 
 `express` is a peer dependency (`^4.18 || ^5`) — you bring your own version.
@@ -18,7 +18,7 @@ pnpm add @rtorcato/api-timeout @rtorcato/api-timeout-express express
 ## Usage
 
 ```ts
-import { timeoutMiddleware } from '@rtorcato/api-timeout-express'
+import { timeoutMiddleware } from '@rtorcato/api-common/timeout/express'
 
 // Any request not answered within 5s gets a 503 error envelope.
 app.use(timeoutMiddleware({ ms: 5000 }))

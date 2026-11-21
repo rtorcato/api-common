@@ -187,7 +187,7 @@ const config: Config = {
 					position: 'right',
 				},
 				{
-					href: 'https://www.npmjs.com/package/@rtorcato/api-errors',
+					href: 'https://www.npmjs.com/package/@rtorcato/api-common',
 					label: 'npm',
 					position: 'right',
 				},

@@ -3,7 +3,7 @@ title: api-auth
 description: Framework-agnostic JWT utilities — sign, verify, and extract tokens.
 ---
 
-`@rtorcato/api-auth` provides framework-agnostic helpers for signing and verifying
+`@rtorcato/api-common/auth` provides framework-agnostic helpers for signing and verifying
 JWTs, plus extractors that pull a token from an `Authorization` header or cookie.
 It wraps `jsonwebtoken` and throws `UnauthorizedError` on invalid tokens so
 error-handling middleware downstream handles the 401 automatically.
@@ -11,7 +11,7 @@ error-handling middleware downstream handles the 401 automatically.
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-auth
+pnpm add @rtorcato/api-common jsonwebtoken
 ```
 
 `jsonwebtoken` is bundled. No peer dependency needed.
@@ -19,7 +19,7 @@ pnpm add @rtorcato/api-auth
 ## Sign a token
 
 ```ts
-import { signToken } from '@rtorcato/api-auth'
+import { signToken } from '@rtorcato/api-common/auth'
 
 const token = signToken({ sub: user.id, role: user.role }, process.env.JWT_SECRET, {
   expiresIn: '15m',
@@ -29,7 +29,7 @@ const token = signToken({ sub: user.id, role: user.role }, process.env.JWT_SECRE
 ## Verify a token
 
 ```ts
-import { verifyToken } from '@rtorcato/api-auth'
+import { verifyToken } from '@rtorcato/api-common/auth'
 
 const payload = verifyToken(token, process.env.JWT_SECRET)
 // payload is jwt.JwtPayload
@@ -49,7 +49,7 @@ const claims = verifyToken<Claims>(token, secret)
 cookie:
 
 ```ts
-import { findToken } from '@rtorcato/api-auth'
+import { findToken } from '@rtorcato/api-common/auth'
 
 // in any HTTP handler that exposes headers + cookies
 const token = findToken(req, { cookieName: 'access_token' })
@@ -59,7 +59,7 @@ const token = findToken(req, { cookieName: 'access_token' })
 `findRefreshToken` reads only from cookies:
 
 ```ts
-import { findRefreshToken } from '@rtorcato/api-auth'
+import { findRefreshToken } from '@rtorcato/api-common/auth'
 
 const refresh = findRefreshToken(req, { cookieName: 'refresh_token' })
 // cookieName defaults to 'refreshToken' if omitted
@@ -70,7 +70,7 @@ Both return `undefined` when no token is found — callers decide whether to err
 ## Re-exported types
 
 ```ts
-import type { JwtPayload, SignOptions, VerifyOptions, Secret } from '@rtorcato/api-auth'
+import type { JwtPayload, SignOptions, VerifyOptions, Secret } from '@rtorcato/api-common/auth'
 ```
 
 These are re-exported directly from `jsonwebtoken` so consumers don't need to

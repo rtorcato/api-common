@@ -1,16 +1,16 @@
 ---
 title: Hono middleware
-description: Map @rtorcato/api-errors into JSON responses with the Hono adapter.
+description: Map @rtorcato/api-common/errors into JSON responses with the Hono adapter.
 ---
 
-`@rtorcato/api-errors-hono` provides `errorHandler` and `notFoundHandler` that wire
+`@rtorcato/api-common/errors/hono` provides `errorHandler` and `notFoundHandler` that wire
 into Hono's `app.onError` / `app.notFound`, producing the **same** response body as
 the [Express adapter](./express.md).
 
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-errors @rtorcato/api-errors-hono hono
+pnpm add @rtorcato/api-common hono zod
 ```
 
 `hono` is a peer dependency (`^4`).
@@ -21,8 +21,8 @@ Unlike the Express adapter, these plug into Hono's dedicated hooks:
 
 ```ts
 import { Hono } from 'hono'
-import { NotFoundError } from '@rtorcato/api-errors'
-import { errorHandler, notFoundHandler } from '@rtorcato/api-errors-hono'
+import { NotFoundError } from '@rtorcato/api-common/errors'
+import { errorHandler, notFoundHandler } from '@rtorcato/api-common/errors/hono'
 
 const app = new Hono()
 

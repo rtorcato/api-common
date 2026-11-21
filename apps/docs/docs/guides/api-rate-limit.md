@@ -3,20 +3,20 @@ title: api-rate-limit
 description: Sliding-window rate limiter with a pluggable store (in-memory or Redis) and Express and Hono adapters.
 ---
 
-`@rtorcato/api-rate-limit` is a framework-agnostic sliding-window rate limiter with a **pluggable store**. Use it directly, or drop in the Express or Hono adapter middleware.
+`@rtorcato/api-common/rate-limit` is a framework-agnostic sliding-window rate limiter with a **pluggable store**. Use it directly, or drop in the Express or Hono adapter middleware.
 
 ## Install
 
 ```bash
 # Core (agnostic) — includes memoryStore()
-pnpm add @rtorcato/api-rate-limit
+pnpm add @rtorcato/api-common
 
 # Shared store for multi-instance deployments
-pnpm add @rtorcato/api-rate-limit-redis ioredis
+pnpm add @rtorcato/api-common ioredis
 
 # Framework adapters (pick one or both)
-pnpm add @rtorcato/api-rate-limit-express
-pnpm add @rtorcato/api-rate-limit-hono
+pnpm add @rtorcato/api-common express
+pnpm add @rtorcato/api-common hono
 ```
 
 ## Choosing a store
@@ -25,16 +25,16 @@ pnpm add @rtorcato/api-rate-limit-hono
 
 | Store | Package | Use when |
 |---|---|---|
-| `memoryStore()` | `@rtorcato/api-rate-limit` | Single process, local dev, tests |
-| `redisStore(client)` | [`@rtorcato/api-rate-limit-redis`](./api-rate-limit-redis.md) | Limits must hold across multiple instances |
+| `memoryStore()` | `@rtorcato/api-common/rate-limit` | Single process, local dev, tests |
+| `redisStore(client)` | [`@rtorcato/api-common/rate-limit/redis`](./api-rate-limit-redis.md) | Limits must hold across multiple instances |
 
 Both implement the same `RateLimitStore` interface, so swapping them touches only the `store` value.
 
 ## Express middleware
 
 ```ts
-import { memoryStore } from '@rtorcato/api-rate-limit'
-import { rateLimitMiddleware } from '@rtorcato/api-rate-limit-express'
+import { memoryStore } from '@rtorcato/api-common/rate-limit'
+import { rateLimitMiddleware } from '@rtorcato/api-common/rate-limit/express'
 
 app.use(rateLimitMiddleware({
   requests: 100,       // max requests per key
@@ -48,8 +48,8 @@ Responds with `429 Too Many Requests` when the limit is exceeded.
 ## Hono middleware
 
 ```ts
-import { memoryStore } from '@rtorcato/api-rate-limit'
-import { rateLimitMiddleware } from '@rtorcato/api-rate-limit-hono'
+import { memoryStore } from '@rtorcato/api-common/rate-limit'
+import { rateLimitMiddleware } from '@rtorcato/api-common/rate-limit/hono'
 
 app.use(rateLimitMiddleware({
   requests: 100,
@@ -76,7 +76,7 @@ app.use('/auth/*', rateLimitMiddleware({ requests: 10, windowMs: 60_000, store: 
 `check()` and `reset()` are async — a networked store can't be synchronous.
 
 ```ts
-import { createRateLimiter, memoryStore } from '@rtorcato/api-rate-limit'
+import { createRateLimiter, memoryStore } from '@rtorcato/api-common/rate-limit'
 
 const limiter = createRateLimiter({ requests: 50, windowMs: 60_000, store: memoryStore() })
 

@@ -8,7 +8,7 @@ The built-in error classes cover standard HTTP status codes. For domain-specific
 ## Pattern
 
 ```ts
-import { HttpError } from '@rtorcato/api-errors'
+import { HttpError } from '@rtorcato/api-common/errors'
 
 export class PaymentRequiredError extends HttpError {
   constructor(message = 'Payment required') {
@@ -56,7 +56,7 @@ Keep custom errors close to where they're thrown — e.g. `src/errors.ts` in you
 `instanceof` works for error-handling logic outside the middleware:
 
 ```ts
-import { HttpError } from '@rtorcato/api-errors'
+import { HttpError } from '@rtorcato/api-common/errors'
 import { TenantNotFoundError } from './errors.js'
 
 try {

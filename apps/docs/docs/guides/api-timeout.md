@@ -3,23 +3,23 @@ title: api-timeout
 description: Framework-agnostic per-request timeout with Express and Hono adapters.
 ---
 
-`@rtorcato/api-timeout` races a promise against a deadline. If the deadline elapses first it rejects with a `ServiceUnavailableError` (503) from [api-errors](./api-errors.md); otherwise it passes through the promise's own result. Use it directly, or drop in the Express or Hono adapter middleware.
+`@rtorcato/api-common/timeout` races a promise against a deadline. If the deadline elapses first it rejects with a `ServiceUnavailableError` (503) from [api-errors](./api-errors.md); otherwise it passes through the promise's own result. Use it directly, or drop in the Express or Hono adapter middleware.
 
 ## Install
 
 ```bash
 # Core (agnostic)
-pnpm add @rtorcato/api-timeout
+pnpm add @rtorcato/api-common
 
 # Framework adapters (pick one or both)
-pnpm add @rtorcato/api-timeout-express
-pnpm add @rtorcato/api-timeout-hono
+pnpm add @rtorcato/api-common express
+pnpm add @rtorcato/api-common hono
 ```
 
 ## Using the core helper
 
 ```ts
-import { withTimeout } from '@rtorcato/api-timeout'
+import { withTimeout } from '@rtorcato/api-common/timeout'
 
 // Resolves with the fetch result, or rejects with a 503 after 2s.
 const user = await withTimeout(fetchUser(id), 2000)
@@ -30,7 +30,7 @@ The timer is always cleared, so a promise that settles first leaves nothing dang
 ## Express middleware
 
 ```ts
-import { timeoutMiddleware } from '@rtorcato/api-timeout-express'
+import { timeoutMiddleware } from '@rtorcato/api-common/timeout/express'
 
 // Any request not answered within 5s gets a 503 error envelope.
 app.use(timeoutMiddleware({ ms: 5000 }))
@@ -39,7 +39,7 @@ app.use(timeoutMiddleware({ ms: 5000 }))
 ## Hono middleware
 
 ```ts
-import { timeoutMiddleware } from '@rtorcato/api-timeout-hono'
+import { timeoutMiddleware } from '@rtorcato/api-common/timeout/hono'
 
 app.use(timeoutMiddleware({ ms: 5000 }))
 ```

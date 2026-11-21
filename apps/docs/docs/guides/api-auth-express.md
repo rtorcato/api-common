@@ -3,7 +3,7 @@ title: api-auth-express
 description: JWT authentication middleware for Express — authMiddleware and optionalAuthMiddleware.
 ---
 
-`@rtorcato/api-auth-express` provides two Express middleware functions that verify
+`@rtorcato/api-common/auth/express` provides two Express middleware functions that verify
 a JWT and attach the decoded payload to `req.user`. Failures pass an
 `UnauthorizedError` to Express's error handler — pair with
 [api-errors-express](./express.md) for automatic JSON 401 responses.
@@ -11,7 +11,7 @@ a JWT and attach the decoded payload to `req.user`. Failures pass an
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-auth @rtorcato/api-auth-express express
+pnpm add @rtorcato/api-common express jsonwebtoken
 ```
 
 `express` is a peer dependency (`^4.18 || ^5`) — you bring your own version.
@@ -22,8 +22,8 @@ Requires a valid token. Returns `401` if the token is missing or invalid.
 
 ```ts
 import express from 'express'
-import { authMiddleware } from '@rtorcato/api-auth-express'
-import { errorHandler } from '@rtorcato/api-errors-express'
+import { authMiddleware } from '@rtorcato/api-common/auth/express'
+import { errorHandler } from '@rtorcato/api-common/errors/express'
 
 const app = express()
 const auth = authMiddleware(process.env.JWT_SECRET)
@@ -57,7 +57,7 @@ present `req.user` is set; if not (missing, expired, malformed), the request
 continues with `req.user` undefined.
 
 ```ts
-import { optionalAuthMiddleware } from '@rtorcato/api-auth-express'
+import { optionalAuthMiddleware } from '@rtorcato/api-common/auth/express'
 
 const optAuth = optionalAuthMiddleware(process.env.JWT_SECRET)
 

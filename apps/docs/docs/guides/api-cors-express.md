@@ -3,7 +3,7 @@ title: api-cors-express
 description: Opinionated CORS middleware for Express with sane defaults.
 ---
 
-`@rtorcato/api-cors-express` wraps the `cors` package with stricter defaults and a
+`@rtorcato/api-common/cors/express` wraps the `cors` package with stricter defaults and a
 friendlier API. The main difference: a bare string origin is treated as a list
 (proper per-request matching) rather than a static header, which avoids leaking
 the `Access-Control-Allow-Origin` value on mismatched origins.
@@ -11,7 +11,7 @@ the `Access-Control-Allow-Origin` value on mismatched origins.
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-cors-express express
+pnpm add @rtorcato/api-common express cors
 ```
 
 `express` is a peer dependency (`^4.18 || ^5`).
@@ -20,7 +20,7 @@ pnpm add @rtorcato/api-cors-express express
 
 ```ts
 import express from 'express'
-import { corsMiddleware } from '@rtorcato/api-cors-express'
+import { corsMiddleware } from '@rtorcato/api-common/cors/express'
 
 const app = express()
 

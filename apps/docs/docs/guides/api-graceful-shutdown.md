@@ -3,20 +3,20 @@ title: api-graceful-shutdown
 description: SIGTERM/SIGINT drain for Node API servers — ordered cleanup hooks with a hard timeout.
 ---
 
-`@rtorcato/api-graceful-shutdown` installs signal handlers that drain your process cleanly on `SIGTERM`/`SIGINT`: it runs your cleanup hooks in order (stop the HTTP server, close the message broker, end the DB pool) and then exits. If the hooks take too long, it force-exits so a stuck resource can't wedge a container restart.
+`@rtorcato/api-common/graceful-shutdown` installs signal handlers that drain your process cleanly on `SIGTERM`/`SIGINT`: it runs your cleanup hooks in order (stop the HTTP server, close the message broker, end the DB pool) and then exits. If the hooks take too long, it force-exits so a stuck resource can't wedge a container restart.
 
-Framework-agnostic — closing a Node HTTP server is identical under Express (`app.listen`) and Hono (`@hono/node-server`), so there's a single package with no per-framework adapter.
+Framework-agnostic — closing a Node HTTP server is identical under Express (`app.listen`) and Hono (`@hono/node-server`), so there is a single subpath with no per-framework adapter.
 
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-graceful-shutdown
+pnpm add @rtorcato/api-common
 ```
 
 ## Usage
 
 ```ts
-import { createShutdownController, closeHttpServer } from '@rtorcato/api-graceful-shutdown'
+import { createShutdownController, closeHttpServer } from '@rtorcato/api-common/graceful-shutdown'
 
 const server = app.listen(3000)
 

@@ -1,11 +1,11 @@
 ---
 title: ts-rest Express example
-description: Runnable contract-first Express 5 app built with ts-rest via api-ts-rest-express.
+description: Runnable contract-first Express 5 app built with ts-rest via the ts-rest/express subpath.
 ---
 
 The `apps/example-ts-rest-express` directory contains a working Express 5 API
 built **contract-first** with [ts-rest](https://ts-rest.com), via
-[`@rtorcato/api-ts-rest-express`](https://github.com/rtorcato/api-common/tree/main/packages/api-ts-rest-express).
+[`@rtorcato/api-common/ts-rest/express`](https://github.com/rtorcato/api-common/tree/main/packages/api-ts-rest-express).
 
 Where the [Express example](./express.md) wires routes and the OpenAPI spec by
 hand, here a single **contract** is the source of truth: ts-rest validates
@@ -58,7 +58,7 @@ cd apps/example-ts-rest-express
 docker compose up
 ```
 
-The image builds from the monorepo root, installs workspace packages, and
+The image builds from the monorepo root, installs the workspace, and
 starts the server on port `3003`.
 
 ## Quick smoke test

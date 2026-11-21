@@ -1,21 +1,21 @@
 ---
 title: api-health-hono
-description: Hono liveness/readiness probe handlers for @rtorcato/api-health.
+description: Hono liveness/readiness probe handlers for @rtorcato/api-common/health.
 ---
 
-`@rtorcato/api-health-hono` provides ready-made Hono handlers for liveness and readiness probes, backed by an [`@rtorcato/api-health`](./api-health.md) registry.
+`@rtorcato/api-common/health/hono` provides ready-made Hono handlers for liveness and readiness probes, backed by an [`@rtorcato/api-common/health`](./api-health.md) registry.
 
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-health @rtorcato/api-health-hono
+pnpm add @rtorcato/api-common hono
 ```
 
 ## Usage
 
 ```ts
-import { createHealthRegistry } from '@rtorcato/api-health'
-import { livenessHandler, readinessHandler } from '@rtorcato/api-health-hono'
+import { createHealthRegistry } from '@rtorcato/api-common/health'
+import { livenessHandler, readinessHandler } from '@rtorcato/api-common/health/hono'
 
 const health = createHealthRegistry()
 health.register('db', async () => { await db.query('SELECT 1') })

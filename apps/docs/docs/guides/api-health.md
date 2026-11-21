@@ -3,17 +3,17 @@ title: api-health
 description: Framework-agnostic liveness/readiness health-check registry with Express and Hono adapters.
 ---
 
-`@rtorcato/api-health` is a framework-agnostic registry of readiness checks. Register checks (DB pings, broker connections, …), then run them from a probe endpoint — or drop in the Express or Hono adapter for ready-made `/healthz` and `/readyz` handlers.
+`@rtorcato/api-common/health` is a framework-agnostic registry of readiness checks. Register checks (DB pings, broker connections, …), then run them from a probe endpoint — or drop in the Express or Hono adapter for ready-made `/healthz` and `/readyz` handlers.
 
 ## Install
 
 ```bash
 # Core (agnostic)
-pnpm add @rtorcato/api-health
+pnpm add @rtorcato/api-common
 
 # Framework adapters (pick one or both)
-pnpm add @rtorcato/api-health-express
-pnpm add @rtorcato/api-health-hono
+pnpm add @rtorcato/api-common express
+pnpm add @rtorcato/api-common hono
 ```
 
 ## Liveness vs readiness
@@ -24,7 +24,7 @@ pnpm add @rtorcato/api-health-hono
 ## Registering checks
 
 ```ts
-import { createHealthRegistry } from '@rtorcato/api-health'
+import { createHealthRegistry } from '@rtorcato/api-common/health'
 
 const health = createHealthRegistry()
 
@@ -45,8 +45,8 @@ Re-registering the same name replaces the previous check — handy for wiring a 
 ## Express adapter
 
 ```ts
-import { createHealthRegistry } from '@rtorcato/api-health'
-import { livenessHandler, readinessHandler } from '@rtorcato/api-health-express'
+import { createHealthRegistry } from '@rtorcato/api-common/health'
+import { livenessHandler, readinessHandler } from '@rtorcato/api-common/health/express'
 
 const health = createHealthRegistry()
 health.register('db', async () => { await db.query('SELECT 1') })
@@ -58,8 +58,8 @@ app.get('/readyz', readinessHandler(health))
 ## Hono adapter
 
 ```ts
-import { createHealthRegistry } from '@rtorcato/api-health'
-import { livenessHandler, readinessHandler } from '@rtorcato/api-health-hono'
+import { createHealthRegistry } from '@rtorcato/api-common/health'
+import { livenessHandler, readinessHandler } from '@rtorcato/api-common/health/hono'
 
 const health = createHealthRegistry()
 health.register('db', async () => { await db.query('SELECT 1') })

@@ -3,14 +3,14 @@ title: api-webhooks-express
 description: Express webhook middleware — raw-body capture + HMAC signature verification.
 ---
 
-`@rtorcato/api-webhooks-express` is the Express adapter for
+`@rtorcato/api-common/webhooks/express` is the Express adapter for
 [api-webhooks](./api-webhooks.md). It captures the **raw** request body, verifies
 its HMAC signature, then parses the JSON onto `req.body`.
 
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-webhooks @rtorcato/api-webhooks-express express
+pnpm add @rtorcato/api-common express
 ```
 
 `express` is a peer dependency (`^4.18 || ^5`) — you bring your own version.
@@ -18,7 +18,7 @@ pnpm add @rtorcato/api-webhooks @rtorcato/api-webhooks-express express
 ## Usage
 
 ```ts
-import { webhookMiddleware } from '@rtorcato/api-webhooks-express'
+import { webhookMiddleware } from '@rtorcato/api-common/webhooks/express'
 
 // GitHub-style webhook: header `x-hub-signature-256: sha256=<hmac>`
 app.post('/webhooks/github', webhookMiddleware({

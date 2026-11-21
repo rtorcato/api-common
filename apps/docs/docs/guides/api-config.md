@@ -3,18 +3,18 @@ title: api-config
 description: Load and validate environment variables with dotenv + zod at startup.
 ---
 
-`@rtorcato/api-config` loads a `.env` file and validates `process.env` against a zod schema, throwing on the first bad config rather than failing silently at runtime.
+`@rtorcato/api-common/config` loads a `.env` file and validates `process.env` against a zod schema, throwing on the first bad config rather than failing silently at runtime.
 
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-config
+pnpm add @rtorcato/api-common dotenv dotenv-expand zod
 ```
 
 ## Usage
 
 ```ts
-import { loadEnv } from '@rtorcato/api-config'
+import { loadEnv } from '@rtorcato/api-common/config'
 import { z } from 'zod'
 
 const env = loadEnv(

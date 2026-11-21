@@ -3,7 +3,7 @@ title: api-security-express
 description: Express security-headers middleware — a thin helmet wrapper applying its sane defaults.
 ---
 
-`@rtorcato/api-security-express` is a thin wrapper over
+`@rtorcato/api-common/security/express` is a thin wrapper over
 [helmet](https://helmetjs.github.io/) that applies its full, sane default header
 suite under the `@rtorcato/api-*` naming. Hono ships
 [`secureHeaders`](https://hono.dev/docs/middleware/builtin/secure-headers) built
@@ -12,7 +12,7 @@ in, so this adapter is Express-only.
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-security-express express
+pnpm add @rtorcato/api-common express helmet
 ```
 
 `express` is a peer dependency (`^4.18 || ^5`) — you bring your own version.
@@ -21,7 +21,7 @@ pnpm add @rtorcato/api-security-express express
 
 ```ts
 import express from 'express'
-import { securityMiddleware } from '@rtorcato/api-security-express'
+import { securityMiddleware } from '@rtorcato/api-common/security/express'
 
 const app = express()
 

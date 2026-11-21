@@ -3,7 +3,7 @@ title: api-auth-hono
 description: JWT authentication middleware for Hono — authMiddleware and optionalAuthMiddleware.
 ---
 
-`@rtorcato/api-auth-hono` provides two Hono middleware functions that verify a JWT
+`@rtorcato/api-common/auth/hono` provides two Hono middleware functions that verify a JWT
 and attach the decoded payload to the request context. Failures throw an
 `UnauthorizedError` — pair with [api-errors-hono](./hono.md) for automatic JSON 401
 responses. It's the Hono counterpart to [api-auth-express](./api-auth-express.md),
@@ -12,7 +12,7 @@ built on the same [api-auth](./api-auth.md) core.
 ## Install
 
 ```bash
-pnpm add @rtorcato/api-auth @rtorcato/api-auth-hono hono
+pnpm add @rtorcato/api-common hono jsonwebtoken
 ```
 
 `hono` is a peer dependency (`^4`) — you bring your own version.
@@ -26,8 +26,8 @@ Type the app with `{ Variables: AuthVariables }` to get a typed `c.get('user')`:
 
 ```ts
 import { Hono } from 'hono'
-import { authMiddleware, type AuthVariables } from '@rtorcato/api-auth-hono'
-import { errorHandler } from '@rtorcato/api-errors-hono'
+import { authMiddleware, type AuthVariables } from '@rtorcato/api-common/auth/hono'
+import { errorHandler } from '@rtorcato/api-common/errors/hono'
 
 const app = new Hono<{ Variables: AuthVariables }>()
 
@@ -60,7 +60,7 @@ Tries to verify the token but never blocks the request. If a valid token is pres
 with `user` undefined.
 
 ```ts
-import { optionalAuthMiddleware } from '@rtorcato/api-auth-hono'
+import { optionalAuthMiddleware } from '@rtorcato/api-common/auth/hono'
 
 app.use(optionalAuthMiddleware(process.env.JWT_SECRET))
 

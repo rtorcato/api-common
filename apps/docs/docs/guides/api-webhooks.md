@@ -3,7 +3,7 @@ title: api-webhooks
 description: Framework-agnostic webhook HMAC signature verification with Express and Hono adapters.
 ---
 
-`@rtorcato/api-webhooks` verifies inbound webhook signatures with a timing-safe
+`@rtorcato/api-common/webhooks` verifies inbound webhook signatures with a timing-safe
 HMAC comparison. Use the core helpers directly, or drop in the Express or Hono
 adapter middleware.
 
@@ -11,17 +11,17 @@ adapter middleware.
 
 ```bash
 # Core (agnostic)
-pnpm add @rtorcato/api-webhooks
+pnpm add @rtorcato/api-common
 
 # Framework adapters (pick one or both)
-pnpm add @rtorcato/api-webhooks-express
-pnpm add @rtorcato/api-webhooks-hono
+pnpm add @rtorcato/api-common express
+pnpm add @rtorcato/api-common hono
 ```
 
 ## Core helpers
 
 ```ts
-import { sign, verifySignature } from '@rtorcato/api-webhooks'
+import { sign, verifySignature } from '@rtorcato/api-common/webhooks'
 
 // GitHub-style header: `x-hub-signature-256: sha256=<hmac>`
 const ok = verifySignature(rawBody, signatureHeader, secret, { prefix: 'sha256=' })
@@ -44,7 +44,7 @@ preserves the raw body for you.
 ## Express middleware
 
 ```ts
-import { webhookMiddleware } from '@rtorcato/api-webhooks-express'
+import { webhookMiddleware } from '@rtorcato/api-common/webhooks/express'
 
 app.post('/webhooks/github', webhookMiddleware({
   secret: env.WEBHOOK_SECRET,
@@ -56,7 +56,7 @@ app.post('/webhooks/github', webhookMiddleware({
 ## Hono middleware
 
 ```ts
-import { webhookMiddleware } from '@rtorcato/api-webhooks-hono'
+import { webhookMiddleware } from '@rtorcato/api-common/webhooks/hono'
 
 app.post('/webhooks/github', webhookMiddleware({
   secret: env.WEBHOOK_SECRET,
@@ -65,5 +65,5 @@ app.post('/webhooks/github', webhookMiddleware({
 }), async (c) => c.body(null, 204))
 ```
 
-Both adapters respond `401` with the standard `@rtorcato/api-errors` envelope on
+Both adapters respond `401` with the standard `@rtorcato/api-common/errors` envelope on
 a missing or invalid signature.
